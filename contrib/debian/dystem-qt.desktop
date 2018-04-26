@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=DYSTEM
+Comment=DYSTEM P2P Cryptocurrency
+Comment[fr]=DYSTEM, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=DYSTEM, eşten eşe kriptografik sanal para birimi
+Exec=dystem-qt %u
+Terminal=false
+Type=Application
+Icon=dystem128
+MimeType=x-scheme-handler/dystem;
+Categories=Office;Finance;

@@ -1,0 +1,29 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource prefix="/translations">
+        <file alias="bg">locale/dystem_bg.qm</file>
+        <file alias="ca">locale/dystem_ca.qm</file>
+        <file alias="cs">locale/dystem_cs.qm</file>
+        <file alias="da">locale/dystem_da.qm</file>
+        <file alias="de">locale/dystem_de.qm</file>
+        <file alias="en">locale/dystem_en.qm</file>
+        <file alias="en_US">locale/dystem_en_US.qm</file>
+        <file alias="es">locale/dystem_es.qm</file>
+        <file alias="fi">locale/dystem_fi.qm</file>
+        <file alias="fr_FR">locale/dystem_fr_FR.qm</file>
+        <file alias="it">locale/dystem_it.qm</file>
+        <file alias="ja">locale/dystem_ja.qm</file>
+        <file alias="ko_KR">locale/dystem_ko_KR.qm</file>
+        <file alias="nl">locale/dystem_nl.qm</file>
+        <file alias="pl">locale/dystem_pl.qm</file>
+        <file alias="pt">locale/dystem_pt.qm</file>
+        <file alias="pt_BR">locale/dystem_pt_BR.qm</file>
+        <file alias="ro_RO">locale/dystem_ro_RO.qm</file>
+        <file alias="ru">locale/dystem_ru.qm</file>
+        <file alias="sk">locale/dystem_sk.qm</file>
+        <file alias="sv">locale/dystem_sv.qm</file>
+        <file alias="tr">locale/dystem_tr.qm</file>
+        <file alias="uk">locale/dystem_uk.qm</file>
+        <file alias="zh_CN">locale/dystem_zh_CN.qm</file>
+        <file alias="zh_TW">locale/dystem_zh_TW.qm</file>
+    </qresource>
+</RCC>

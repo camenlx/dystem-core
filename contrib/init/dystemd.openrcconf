@@ -1,0 +1,26 @@
+# /etc/conf.d/dystemd: config file for /etc/init.d/dystemd
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/dystem/dystem.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/dystemd"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/dystemd.pid"
+
+# Where to write dystemd data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/dystemd"
+
+# User and group to own dystemd process
+#BITCOIND_USER="dystem"
+#BITCOIND_GROUP="dystem"
+
+# Path to dystemd executable
+#BITCOIND_BIN="/usr/bin/dystemd"
+
+# Nice value to run dystemd under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+BITCOIND_OPTS=""
