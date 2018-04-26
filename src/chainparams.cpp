@@ -143,6 +143,10 @@ public:
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x04)(0x88)(0xAD)(0xE4).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x00)(0x00)(0xde).convert_to_container<std::vector<unsigned char> >();
 
+        vSeeds.push_back(CDNSSeedData("seed.dystem.io", "seed.dystem.io"));
+        vSeeds.push_back(CDNSSeedData("seed2.dystem.io", "seed2.dystem.io"));
+        vSeeds.push_back(CDNSSeedData("seed3.dystem.io", "seed3.dystem.io"));
+
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
         fMiningRequiresPeers = true;
