@@ -5,9 +5,9 @@ Dystem (DSTM) is the base coin of the dystem netowork. It is a modern decentrali
 
 Dystem is a POS (Proof of stake) and Masternode based coin, we do not support POW (proof of work) mining. 
 
-Masternode costs are 5000 DSTM. Masternodes recevie 82.5% of the rewards for producing new blocks and POS gets 1.75% of the reward.x
+Masternode costs are 5000 DSTM. Masternodes recevie 82.5% of the rewards for producing new blocks and POS gets 1.75% of the reward.
 
-## Coin Specs
+## Chain Specs
 
 | **Stat**                    | **Totals**.     |
 |-----------------------------|-----------------|
