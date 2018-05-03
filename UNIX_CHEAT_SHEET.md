@@ -50,7 +50,7 @@ Swap:          8191           0        8191
 
 //COMPILE
 
-git clone https://github.com/Dystem/Dystem.git
+git clone https://github.com/Dystem/dystem-core.git
 
 cd Dystem
 
@@ -59,31 +59,3 @@ cd Dystem
 make
 cd /src
 make install
-
-//TODO NEED TO ADD CONFIG HERE
-
-
-
-//ONLY DO THIS ONCE WHEN SETTUING UP CHAINAD
-//REPLACE ALERT KEY
-
-openssl ecparam -genkey -name secp256k1 -out alertkey.pem
-openssl ec -in alertkey.pem -text > alertkey.hex
-openssl ecparam -genkey -name secp256k1 -out testnetalert.pem
-openssl ec -in testnetalert.pem -text > testnetalert.hex
-openssl ecparam -genkey -name secp256k1 -out genesiscoinbase.pem
-openssl ec -in testnetalert.pem -text > genesiscoinbase.hex
-
-cat alertkey.hex
-
-paste output into "vAlertPubKey" key in the main net of the chain parms
-
-cat testnetalert.hex
-
-paste output into "vAlertPubKey" key in the test net of the chain parms
-
-cat genesiscoinbase.hex
-
-paste output into "scriptPubKey" key in the main net of the chain parms
-
-Backup public keys
