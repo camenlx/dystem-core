@@ -1,4 +1,4 @@
-// Copyright (c) 2010 Satoshi Nakamoto
+﻿// Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
@@ -144,9 +144,8 @@ public:
         base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x00)(0x00)(0xde).convert_to_container<std::vector<unsigned char> >();
 
         vSeeds.push_back(CDNSSeedData("seed.dystem.io", "seed.dystem.io"));
-        vSeeds.push_back(CDNSSeedData("seed2.dystem.io", "seed2.dystem.io"));
-        vSeeds.push_back(CDNSSeedData("seed3.dystem.io", "seed3.dystem.io"));
-
+        vSeeds.push_back(CDNSSeedData("seed.hashbeat.io", "seed.hashbeat.io"));
+ 
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
         fMiningRequiresPeers = true;
