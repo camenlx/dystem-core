@@ -1,4 +1,4 @@
-// Copyright (c) 2010 Satoshi Nakamoto
+﻿// Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
@@ -146,8 +146,9 @@ public:
         vSeeds.push_back(CDNSSeedData("seed.dystem.io", "seed.dystem.io"));
         vSeeds.push_back(CDNSSeedData("seed2.dystem.io", "seed2.dystem.io"));
         vSeeds.push_back(CDNSSeedData("seed3.dystem.io", "seed3.dystem.io"));
+        vSeeds.push_back(CDNSSeedData("seed.hashbeat.io", "seed.hashbeat.io"));
         vSeeds.push_back(CDNSSeedData("45.77.231.211", "45.77.231.211"));
-        
+
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
         fMiningRequiresPeers = true;
