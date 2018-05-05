@@ -176,16 +176,16 @@
         <translation>Confirme el cifrado del monedero</translation>
     </message>
     <message>
-        <source>DYSTEM will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DSTMs from being stolen by malware infecting your computer.</source>
-        <translation>DYSTEM se cerrará para finalizar el proceso de cifrado. Recuerde que cifrar su monedero no garantiza que sus DSTMs no sean robados mediante malware de su ordenador.</translation>
+        <source>DYSTEM will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DTEMs from being stolen by malware infecting your computer.</source>
+        <translation>DYSTEM se cerrará para finalizar el proceso de cifrado. Recuerde que cifrar su monedero no garantiza que sus DTEMs no sean robados mediante malware de su ordenador.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>¿Está seguro de que desea cifrar su monedero?</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DSTM&lt;/b&gt;!</source>
-        <translation>Atención: Si cifra su monedero y pierde su contraseña, perderá &lt;b&gt; TODOS SUS DSTM&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DTEM&lt;/b&gt;!</source>
+        <translation>Atención: Si cifra su monedero y pierde su contraseña, perderá &lt;b&gt; TODOS SUS DTEM&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -618,8 +618,8 @@
         <translation>&amp;Privacidad</translation>
     </message>
     <message>
-        <source>Privacy Action for zDSTM and Obfuscation</source>
-        <translation>Privacidad con zDSTM y Ofuscación</translation>
+        <source>Privacy Action for zDTEM and Obfuscation</source>
+        <translation>Privacidad con zDTEM y Ofuscación</translation>
     </message>
     <message>
         <source>&amp;Masternodes</source>
@@ -1528,32 +1528,32 @@ Por favor compruebe la dirección e inténtelo de nuevo.</translation>
         <translation>Por favor selecciones un nivel de privacidad.</translation>
     </message>
     <message>
-        <source>Use 2 separate masternodes to mix funds up to 5000 DSTM</source>
-        <translation>Use 2 nodos maestros diferentes para mezclar los fondos hasta los 5000 DSTM</translation>
+        <source>Use 2 separate masternodes to mix funds up to 5000 DTEM</source>
+        <translation>Use 2 nodos maestros diferentes para mezclar los fondos hasta los 5000 DTEM</translation>
     </message>
     <message>
-        <source>Use 8 separate masternodes to mix funds up to 5000 DSTM</source>
-        <translation>Use 8 nodos maestros diferentes para mezclar fondos hasta los 5000 DSTM</translation>
+        <source>Use 8 separate masternodes to mix funds up to 5000 DTEM</source>
+        <translation>Use 8 nodos maestros diferentes para mezclar fondos hasta los 5000 DTEM</translation>
     </message>
     <message>
         <source>Use 16 separate masternodes</source>
         <translation>Use 16 nodos maestros diferentes</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 DSTM to anonymize 5000 DSTM</source>
-        <translation>Esta opción es la más rápida y costará alrededor de ~0.025 DSTM para anonimizar 5000 DSTM</translation>
+        <source>This option is the quickest and will cost about ~0.025 DTEM to anonymize 5000 DTEM</source>
+        <translation>Esta opción es la más rápida y costará alrededor de ~0.025 DTEM para anonimizar 5000 DTEM</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 DSTM to anonymize 5000 DSTM</source>
-        <translation>Esta opción es moderadamente rápida y costará cerca de 0.05 DSTM para anonimizar 5000 DSTM.</translation>
+        <source>This option is moderately fast and will cost about 0.05 DTEM to anonymize 5000 DTEM</source>
+        <translation>Esta opción es moderadamente rápida y costará cerca de 0.05 DTEM para anonimizar 5000 DTEM.</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
         <translation>Esta es la opción más lenta pero más segura. Usar el máximo anonimato costará</translation>
     </message>
     <message>
-        <source>0.1 DSTM per 5000 DSTM you anonymize.</source>
-        <translation>0.1 DSTM por 5000 DSTM que anonimizas.</translation>
+        <source>0.1 DTEM per 5000 DTEM you anonymize.</source>
+        <translation>0.1 DTEM por 5000 DTEM que anonimizas.</translation>
     </message>
     <message>
         <source>Obfuscation Configuration</source>
@@ -1696,16 +1696,16 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Mapear un puerto utilizando &amp;UPnP</translation>
     </message>
     <message>
-        <source>Percentage of incoming DSTM which get automatically converted to zDSTM via Zerocoin Protocol (min: 10%)</source>
-        <translation>Porcentaje de DSTMs entrantes que serán automáticamente convertidos a zDSTM a través del Protocolo Zerocoin (mín: 10%)</translation>
+        <source>Percentage of incoming DTEM which get automatically converted to zDTEM via Zerocoin Protocol (min: 10%)</source>
+        <translation>Porcentaje de DTEMs entrantes que serán automáticamente convertidos a zDTEM a través del Protocolo Zerocoin (mín: 10%)</translation>
     </message>
     <message>
-        <source>Percentage of autominted zDSTM</source>
-        <translation>Porcentaje de zDSTM autogenerados</translation>
+        <source>Percentage of autominted zDTEM</source>
+        <translation>Porcentaje de zDTEM autogenerados</translation>
     </message>
     <message>
-        <source>Wait with automatic conversion to Zerocoin until enough DSTM for this denomination is available</source>
-        <translation>Retrasar la conversión automática a Zerocoin hasta que hayan suficientes DSTM disponibles para esta denominación</translation>
+        <source>Wait with automatic conversion to Zerocoin until enough DTEM for this denomination is available</source>
+        <translation>Retrasar la conversión automática a Zerocoin hasta que hayan suficientes DTEM disponibles para esta denominación</translation>
     </message>
     <message>
         <source>Connect to the DYSTEM network through a SOCKS5 proxy.</source>
@@ -1839,8 +1839,8 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Formulario</translation>
     </message>
     <message>
-        <source>DSTM Balances</source>
-        <translation>Balances DSTM</translation>
+        <source>DTEM Balances</source>
+        <translation>Balances DTEM</translation>
     </message>
     <message>
         <source>Available:</source>
@@ -2741,8 +2741,8 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Tamaño de UTXO:</translation>
     </message>
     <message>
-        <source>0 DSTM</source>
-        <translation>0 DSTM</translation>
+        <source>0 DTEM</source>
+        <translation>0 DTEM</translation>
     </message>
     <message>
         <source>Transaction Fee:</source>
@@ -2785,12 +2785,12 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Tiempo de confirmación:</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uDSTMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDSTMs in fee,&lt;br /&gt;while "at least" pays 1000 uDSTMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Si la comisión personalizada se fija en 1000 uDSTMs y la transacción necesita sólo 250 bytes, entonces la opción "por kilobyte" sólo pagará 250 uDSTMs de comisión,&lt;br/&gt;mientras "por lo menos" pagará 1000 uDSTMs. Para transacciones que midan más de un kilobyte ambas pagan por kilobyte.</translation>
+        <source>If the custom fee is set to 1000 uDTEMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDTEMs in fee,&lt;br /&gt;while "at least" pays 1000 uDTEMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Si la comisión personalizada se fija en 1000 uDTEMs y la transacción necesita sólo 250 bytes, entonces la opción "por kilobyte" sólo pagará 250 uDTEMs de comisión,&lt;br/&gt;mientras "por lo menos" pagará 1000 uDTEMs. Para transacciones que midan más de un kilobyte ambas pagan por kilobyte.</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uDSTMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDSTMs in fee,&lt;br /&gt;while "total at least" pays 1000 uDSTMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Si la comisión personalizada se fija en 1000 uDSTMs y la transacción necesita sólo 250 bytes, entonces la opción "por kilobyte" sólo pagará 250 uDSTMs de comisión,&lt;br/&gt;mientras "por lo menos" pagará 1000 uDSTMs. Para transacciones que midan más de un kilobyte ambas pagan por kilobyte.</translation>
+        <source>If the custom fee is set to 1000 uDTEMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDTEMs in fee,&lt;br /&gt;while "total at least" pays 1000 uDTEMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Si la comisión personalizada se fija en 1000 uDTEMs y la transacción necesita sólo 250 bytes, entonces la opción "por kilobyte" sólo pagará 250 uDTEMs de comisión,&lt;br/&gt;mientras "por lo menos" pagará 1000 uDTEMs. Para transacciones que midan más de un kilobyte ambas pagan por kilobyte.</translation>
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for DYSTEM transactions than the network can process.</source>
@@ -3761,8 +3761,8 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Enviar Monedas</translation>
     </message>
     <message>
-        <source>SwiftTX doesn't support sending values that high yet. Transactions are currently limited to %1 DSTM.</source>
-        <translation>SwiftTX no soporta el envío de importes tan altos todavía. Las transacciones están actualmente limitadas a %1 DSTM.</translation>
+        <source>SwiftTX doesn't support sending values that high yet. Transactions are currently limited to %1 DTEM.</source>
+        <translation>SwiftTX no soporta el envío de importes tan altos todavía. Las transacciones están actualmente limitadas a %1 DTEM.</translation>
     </message>
 </context>
 <context>
@@ -3898,12 +3898,12 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Ejecutar comando cuando el mejor bloque cambie (%s en cmd es reemplazado por el block hash)</translation>
     </message>
     <message>
-        <source>Fees (in DSTM/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>Comisiones (en DSTM/Kb) menores a esta son consideradas gratuitas para la propagación de la transacción (default: %s)</translation>
+        <source>Fees (in DTEM/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>Comisiones (en DTEM/Kb) menores a esta son consideradas gratuitas para la propagación de la transacción (default: %s)</translation>
     </message>
     <message>
-        <source>Fees (in DSTM/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
-        <translation>Comisiones (en DSTM/Kb) menores a esta son consideradas gratuitas para la creación de la transacción (default: %s)</translation>
+        <source>Fees (in DTEM/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <translation>Comisiones (en DTEM/Kb) menores a esta son consideradas gratuitas para la creación de la transacción (default: %s)</translation>
     </message>
     <message>
         <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: %u)</source>
@@ -4034,12 +4034,12 @@ por ejemplo: alertnotify=echo %%s | mail -s "DYSTEM Alert" admin@foo.com
         <translation>Imposible localizar suficientes fondos denominados de Ofuscación para esta transacción.</translation>
     </message>
     <message>
-        <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 5000 DSTM.</source>
-        <translation>Imposible localizar suficientes fondos no-denominados de Ofuscación para esta transacción que no es igual a 5000 DSTM.</translation>
+        <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 5000 DTEM.</source>
+        <translation>Imposible localizar suficientes fondos no-denominados de Ofuscación para esta transacción que no es igual a 5000 DTEM.</translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 5000 DSTM.</source>
-        <translation>Imposible localizar fondos suficientes para esta transacción que no es igual a 5000 DSTM.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 5000 DTEM.</source>
+        <translation>Imposible localizar fondos suficientes para esta transacción que no es igual a 5000 DTEM.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -4326,8 +4326,8 @@ por ejemplo: alertnotify=echo %%s | mail -s "DYSTEM Alert" admin@foo.com
         <translation>Falló al leer el bloque</translation>
     </message>
     <message>
-        <source>Fee (in DSTM/kB) to add to transactions you send (default: %s)</source>
-        <translation>Comisión (en DSTM/kB) para agregar a la transacción que envías (predeterminado: %s)</translation>
+        <source>Fee (in DTEM/kB) to add to transactions you send (default: %s)</source>
+        <translation>Comisión (en DTEM/kB) para agregar a la transacción que envías (predeterminado: %s)</translation>
     </message>
     <message>
         <source>Finalizing transaction.</source>

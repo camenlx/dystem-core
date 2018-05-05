@@ -255,9 +255,9 @@ UniValue validateaddress(const UniValue& params, bool fHelp)
     if (fHelp || params.size() != 1)
         throw runtime_error(
             "validateaddress \"dystemaddress\"\n"
-            "\nReturn information about the given dstm address.\n"
+            "\nReturn information about the given dtem address.\n"
             "\nArguments:\n"
-            "1. \"dystemaddress\"     (string, required) The dstm address to validate\n"
+            "1. \"dystemaddress\"     (string, required) The dtem address to validate\n"
             "\nResult:\n"
             "{\n"
             "  \"isvalid\" : true|false,         (boolean) If the address is valid or not. If not, this is the only property returned.\n"
@@ -370,9 +370,9 @@ UniValue createmultisig(const UniValue& params, bool fHelp)
 
                      "\nArguments:\n"
                      "1. nrequired      (numeric, required) The number of required signatures out of the n keys or addresses.\n"
-                     "2. \"keys\"       (string, required) A json array of keys which are dstm addresses or hex-encoded public keys\n"
+                     "2. \"keys\"       (string, required) A json array of keys which are dtem addresses or hex-encoded public keys\n"
                      "     [\n"
-                     "       \"key\"    (string) dstm address or hex-encoded public key\n"
+                     "       \"key\"    (string) dtem address or hex-encoded public key\n"
                      "       ,...\n"
                      "     ]\n"
 

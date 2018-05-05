@@ -35,7 +35,7 @@ QT_TRANSLATE_NOOP("dystem-core", ""
 QT_TRANSLATE_NOOP("dystem-core", ""
 "Calculated accumulator checkpoint is not what is recorded by block index"),
 QT_TRANSLATE_NOOP("dystem-core", ""
-"Cannot obtain a lock on data directory %s. DSTM Core is probably already "
+"Cannot obtain a lock on data directory %s. DTEM Core is probably already "
 "running."),
 QT_TRANSLATE_NOOP("dystem-core", ""
 "Change automatic finalized budget voting behavior. mode=auto: Vote for only "
@@ -89,10 +89,10 @@ QT_TRANSLATE_NOOP("dystem-core", ""
 "Execute command when the best block changes (%s in cmd is replaced by block "
 "hash)"),
 QT_TRANSLATE_NOOP("dystem-core", ""
-"Fees (in DSTM/Kb) smaller than this are considered zero fee for relaying "
+"Fees (in DTEM/Kb) smaller than this are considered zero fee for relaying "
 "(default: %s)"),
 QT_TRANSLATE_NOOP("dystem-core", ""
-"Fees (in DSTM/Kb) smaller than this are considered zero fee for transaction "
+"Fees (in DTEM/Kb) smaller than this are considered zero fee for transaction "
 "creation (default: %s)"),
 QT_TRANSLATE_NOOP("dystem-core", ""
 "Flush database activity from memory pool to disk log every <n> megabytes "
@@ -180,17 +180,17 @@ QT_TRANSLATE_NOOP("dystem-core", ""
 "If the file does not exist, create it with owner-readable-only file "
 "permissions.\n"
 "It is also recommended to set alertnotify so you are notified of problems;\n"
-"for example: alertnotify=echo %%s | mail -s \"DSTM Alert\" admin@foo.com\n"),
+"for example: alertnotify=echo %%s | mail -s \"DTEM Alert\" admin@foo.com\n"),
 QT_TRANSLATE_NOOP("dystem-core", ""
-"Unable to bind to %s on this computer. DSTM Core is probably already running."),
+"Unable to bind to %s on this computer. DTEM Core is probably already running."),
 QT_TRANSLATE_NOOP("dystem-core", ""
 "Unable to locate enough Obfuscation denominated funds for this transaction."),
 QT_TRANSLATE_NOOP("dystem-core", ""
 "Unable to locate enough Obfuscation non-denominated funds for this "
-"transaction that are not equal 5000 DSTM."),
+"transaction that are not equal 5000 DTEM."),
 QT_TRANSLATE_NOOP("dystem-core", ""
 "Unable to locate enough funds for this transaction that are not equal 5000 "
-"DSTM."),
+"DTEM."),
 QT_TRANSLATE_NOOP("dystem-core", ""
 "Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: "
 "%s)"),
@@ -289,7 +289,7 @@ QT_TRANSLATE_NOOP("dystem-core", "Error initializing wallet database environment
 QT_TRANSLATE_NOOP("dystem-core", "Error loading block database"),
 QT_TRANSLATE_NOOP("dystem-core", "Error loading wallet.dat"),
 QT_TRANSLATE_NOOP("dystem-core", "Error loading wallet.dat: Wallet corrupted"),
-QT_TRANSLATE_NOOP("dystem-core", "Error loading wallet.dat: Wallet requires newer version of DSTM Core"),
+QT_TRANSLATE_NOOP("dystem-core", "Error loading wallet.dat: Wallet requires newer version of DTEM Core"),
 QT_TRANSLATE_NOOP("dystem-core", "Error opening block database"),
 QT_TRANSLATE_NOOP("dystem-core", "Error reading from database, shutting down."),
 QT_TRANSLATE_NOOP("dystem-core", "Error recovering public key."),
@@ -305,7 +305,7 @@ QT_TRANSLATE_NOOP("dystem-core", "Failed to listen on any port. Use -listen=0 if
 QT_TRANSLATE_NOOP("dystem-core", "Failed to read block index"),
 QT_TRANSLATE_NOOP("dystem-core", "Failed to read block"),
 QT_TRANSLATE_NOOP("dystem-core", "Failed to write block index"),
-QT_TRANSLATE_NOOP("dystem-core", "Fee (in DSTM/kB) to add to transactions you send (default: %s)"),
+QT_TRANSLATE_NOOP("dystem-core", "Fee (in DTEM/kB) to add to transactions you send (default: %s)"),
 QT_TRANSLATE_NOOP("dystem-core", "Finalizing transaction."),
 QT_TRANSLATE_NOOP("dystem-core", "Force safe mode (default: %u)"),
 QT_TRANSLATE_NOOP("dystem-core", "Found enough users, signing ( waiting %s )"),
@@ -320,7 +320,7 @@ QT_TRANSLATE_NOOP("dystem-core", "Incompatible mode."),
 QT_TRANSLATE_NOOP("dystem-core", "Incompatible version."),
 QT_TRANSLATE_NOOP("dystem-core", "Incorrect or no genesis block found. Wrong datadir for network?"),
 QT_TRANSLATE_NOOP("dystem-core", "Information"),
-QT_TRANSLATE_NOOP("dystem-core", "Initialization sanity check failed. DSTM Core is shutting down."),
+QT_TRANSLATE_NOOP("dystem-core", "Initialization sanity check failed. DTEM Core is shutting down."),
 QT_TRANSLATE_NOOP("dystem-core", "Input is not valid."),
 QT_TRANSLATE_NOOP("dystem-core", "Insufficient funds"),
 QT_TRANSLATE_NOOP("dystem-core", "Insufficient funds."),
@@ -474,7 +474,7 @@ QT_TRANSLATE_NOOP("dystem-core", "Verifying blocks..."),
 QT_TRANSLATE_NOOP("dystem-core", "Verifying wallet..."),
 QT_TRANSLATE_NOOP("dystem-core", "Wallet %s resides outside data directory %s"),
 QT_TRANSLATE_NOOP("dystem-core", "Wallet is locked."),
-QT_TRANSLATE_NOOP("dystem-core", "Wallet needed to be rewritten: restart DSTM Core to complete"),
+QT_TRANSLATE_NOOP("dystem-core", "Wallet needed to be rewritten: restart DTEM Core to complete"),
 QT_TRANSLATE_NOOP("dystem-core", "Wallet options:"),
 QT_TRANSLATE_NOOP("dystem-core", "Wallet window title"),
 QT_TRANSLATE_NOOP("dystem-core", "Warning"),

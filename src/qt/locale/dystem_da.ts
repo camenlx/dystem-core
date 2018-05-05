@@ -176,7 +176,7 @@
         <translation>Bekræft, og tegnebogen krypteres.</translation>
     </message>
     <message>
-        <source>DYSTEM will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DSTMs from being stolen by malware infecting your computer.</source>
+        <source>DYSTEM will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DTEMs from being stolen by malware infecting your computer.</source>
         <translation>DYSTEM vil lukke ned for at færdiggøre kryptograferingsprocesserne. Husk at kryptering alene ikke sikrer mod tyveri af mønterne fra malware eller virus på computeren.</translation>
     </message>
     <message>
@@ -184,8 +184,8 @@
         <translation>Er du sikker på, at du vil kryptere din tegnebog?</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DSTM&lt;/b&gt;!</source>
-        <translation>Advarsel! Hvis du krypterer din tegnebog og mister dit password vil du &lt;b&gt;MISTE ALLE DINE DSTM&lt;/b&gt;. Passworded kan ikke genskabes.</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DTEM&lt;/b&gt;!</source>
+        <translation>Advarsel! Hvis du krypterer din tegnebog og mister dit password vil du &lt;b&gt;MISTE ALLE DINE DTEM&lt;/b&gt;. Passworded kan ikke genskabes.</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -1508,32 +1508,32 @@ Kontroller adressen og prøv igen.</translation>
         <translation>Vælg tilsløringsniveau</translation>
     </message>
     <message>
-        <source>Use 2 separate masternodes to mix funds up to 5000 DSTM</source>
-        <translation>Brug 2 separate masternoder for at tilsløre beløb op til 5000 DSTM</translation>
+        <source>Use 2 separate masternodes to mix funds up to 5000 DTEM</source>
+        <translation>Brug 2 separate masternoder for at tilsløre beløb op til 5000 DTEM</translation>
     </message>
     <message>
-        <source>Use 8 separate masternodes to mix funds up to 5000 DSTM</source>
-        <translation>Brug 8 separate masternoder for at tilsløre op til 5000 DSTM</translation>
+        <source>Use 8 separate masternodes to mix funds up to 5000 DTEM</source>
+        <translation>Brug 8 separate masternoder for at tilsløre op til 5000 DTEM</translation>
     </message>
     <message>
         <source>Use 16 separate masternodes</source>
         <translation>Brug 16 separate masternoder</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 DSTM to anonymize 5000 DSTM</source>
-        <translation>Dette valg er det hurtigste og vil koste i omegnen af 0.025 DSTM for at anonymiser 5000 DSTM</translation>
+        <source>This option is the quickest and will cost about ~0.025 DTEM to anonymize 5000 DTEM</source>
+        <translation>Dette valg er det hurtigste og vil koste i omegnen af 0.025 DTEM for at anonymiser 5000 DTEM</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 DSTM to anonymize 5000 DSTM</source>
-        <translation>Dette valg er relativt hurtigt og vil koste i omegnen af 0.05 DSTM for at anonymiser 5000 DSTM</translation>
+        <source>This option is moderately fast and will cost about 0.05 DTEM to anonymize 5000 DTEM</source>
+        <translation>Dette valg er relativt hurtigt og vil koste i omegnen af 0.05 DTEM for at anonymiser 5000 DTEM</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
         <translation>Denne mulighed er den langsomste og det mest sikre valg. Valg af maksimal tilsløring vil koste</translation>
     </message>
     <message>
-        <source>0.1 DSTM per 5000 DSTM you anonymize.</source>
-        <translation>0.1 pr 5000 DSTM for at tilsløre.</translation>
+        <source>0.1 DTEM per 5000 DTEM you anonymize.</source>
+        <translation>0.1 pr 5000 DTEM for at tilsløre.</translation>
     </message>
     <message>
         <source>Obfuscation Configuration</source>
@@ -2701,8 +2701,8 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>UTXO størrelse:</translation>
     </message>
     <message>
-        <source>0 DSTM</source>
-        <translation>0 DSTM</translation>
+        <source>0 DTEM</source>
+        <translation>0 DTEM</translation>
     </message>
     <message>
         <source>Transaction Fee:</source>
@@ -2745,12 +2745,12 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Bekræftelsestid</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uDSTMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDSTMs in fee,&lt;br /&gt;while "at least" pays 1000 uDSTMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Hvis den brugerfastsatte gebyrbetaling er sat til 1000 uDSTMs og transaktionen kun fylder 250 bytes, så vil "pr. kilobyte" kun udbetale 250 uDSTM i gebyr, &lt;br /&gt; mens "mindst" udbetaler 1000 uDSTMs. For transaktioner større end en kilobyte betales i begge tilfælde i forhold til antallet af kilobytes </translation>
+        <source>If the custom fee is set to 1000 uDTEMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDTEMs in fee,&lt;br /&gt;while "at least" pays 1000 uDTEMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Hvis den brugerfastsatte gebyrbetaling er sat til 1000 uDTEMs og transaktionen kun fylder 250 bytes, så vil "pr. kilobyte" kun udbetale 250 uDTEM i gebyr, &lt;br /&gt; mens "mindst" udbetaler 1000 uDTEMs. For transaktioner større end en kilobyte betales i begge tilfælde i forhold til antallet af kilobytes </translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uDSTMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDSTMs in fee,&lt;br /&gt;while "total at least" pays 1000 uDSTMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Hvis den brugerfastsatte gebyrbetaling er sat til 1000 uDSTMs og transaktionen kun fylder 250 bytes, så vil "pr. kilobyte" kun udbetale 250 uDSTM i gebyr, &lt;br /&gt; mens "Total-mindst" udbetaler 1000 uDSTMs. For transaktioner større end en kilobyte betales i begge tilfælde i forhold til antallet af kilobytes </translation>
+        <source>If the custom fee is set to 1000 uDTEMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDTEMs in fee,&lt;br /&gt;while "total at least" pays 1000 uDTEMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Hvis den brugerfastsatte gebyrbetaling er sat til 1000 uDTEMs og transaktionen kun fylder 250 bytes, så vil "pr. kilobyte" kun udbetale 250 uDTEM i gebyr, &lt;br /&gt; mens "Total-mindst" udbetaler 1000 uDTEMs. For transaktioner større end en kilobyte betales i begge tilfælde i forhold til antallet af kilobytes </translation>
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for DYSTEM transactions than the network can process.</source>
@@ -3721,8 +3721,8 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Send mønter</translation>
     </message>
     <message>
-        <source>SwiftTX doesn't support sending values that high yet. Transactions are currently limited to %1 DSTM.</source>
-        <translation>SwiftTx understøtter ikke afsendelse af så store beløb endnu. Transaktioner er for tiden begrænsede til %1DSTM.</translation>
+        <source>SwiftTX doesn't support sending values that high yet. Transactions are currently limited to %1 DTEM.</source>
+        <translation>SwiftTx understøtter ikke afsendelse af så store beløb endnu. Transaktioner er for tiden begrænsede til %1DTEM.</translation>
     </message>
 </context>
 <context>
@@ -3859,12 +3859,12 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Udfør en kommando når den bedste blok ændres (%s in cmd erstattes med blok hashen)</translation>
     </message>
     <message>
-        <source>Fees (in DSTM/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>Gebyrer (in DSTM/kb) lavere end dette betragtes som et nul-gebyr for at videresende (default: %s)</translation>
+        <source>Fees (in DTEM/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>Gebyrer (in DTEM/kb) lavere end dette betragtes som et nul-gebyr for at videresende (default: %s)</translation>
     </message>
     <message>
-        <source>Fees (in DSTM/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
-        <translation>Gebyrer (in DSTM/kb) lavere end dette betragtes som et nul-gebyr for at oprette en transaktion (default: %s)</translation>
+        <source>Fees (in DTEM/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <translation>Gebyrer (in DTEM/kb) lavere end dette betragtes som et nul-gebyr for at oprette en transaktion (default: %s)</translation>
     </message>
     <message>
         <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: %u)</source>
@@ -3995,12 +3995,12 @@ For eksempel: alertnotify=Echo %% | mail - s "DYSTEM ALARM!" e-mail@administrato
         <translation>Det er ikke muligt at allokere tilstrækkeligt med tilsløret designeret indestående for at gennemføre denne transaktion.</translation>
     </message>
     <message>
-        <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 5000 DSTM.</source>
-        <translation>Det er ikke muligt at allokere tilstrækkeligt med tilsløret  ikke-designeret indestående for at gennemføre denne transaktion, der ikke ækvivalerer 5000 DSTM.</translation>
+        <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 5000 DTEM.</source>
+        <translation>Det er ikke muligt at allokere tilstrækkeligt med tilsløret  ikke-designeret indestående for at gennemføre denne transaktion, der ikke ækvivalerer 5000 DTEM.</translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 5000 DSTM.</source>
-        <translation>Det var ikke muligt at allokere tilstrækkelige midler til denne transaktion som er forskellig fra 5000 DSTM.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 5000 DTEM.</source>
+        <translation>Det var ikke muligt at allokere tilstrækkelige midler til denne transaktion som er forskellig fra 5000 DTEM.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -4287,8 +4287,8 @@ For eksempel: alertnotify=Echo %% | mail - s "DYSTEM ALARM!" e-mail@administrato
         <translation>Læsning af blokken mislykkedes</translation>
     </message>
     <message>
-        <source>Fee (in DSTM/kB) to add to transactions you send (default: %s)</source>
-        <translation>Gebyr (i DSTM/kB) som skal tilføjes transaktionen der sendes (default: %s)</translation>
+        <source>Fee (in DTEM/kB) to add to transactions you send (default: %s)</source>
+        <translation>Gebyr (i DTEM/kB) som skal tilføjes transaktionen der sendes (default: %s)</translation>
     </message>
     <message>
         <source>Finalizing transaction.</source>

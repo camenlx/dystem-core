@@ -20,18 +20,18 @@ BitcoinUnits::BitcoinUnits(QObject* parent) : QAbstractListModel(parent),
 QList<BitcoinUnits::Unit> BitcoinUnits::availableUnits()
 {
     QList<BitcoinUnits::Unit> unitlist;
-    unitlist.append(DSTM);
-    unitlist.append(mDSTM);
-    unitlist.append(uDSTM);
+    unitlist.append(DTEM);
+    unitlist.append(mDTEM);
+    unitlist.append(uDTEM);
     return unitlist;
 }
 
 bool BitcoinUnits::valid(int unit)
 {
     switch (unit) {
-    case DSTM:
-    case mDSTM:
-    case uDSTM:
+    case DTEM:
+    case mDTEM:
+    case uDTEM:
         return true;
     default:
         return false;
@@ -41,12 +41,12 @@ bool BitcoinUnits::valid(int unit)
 QString BitcoinUnits::id(int unit)
 {
     switch (unit) {
-    case DSTM:
-        return QString("dstm");
-    case mDSTM:
-        return QString("mdstm");
-    case uDSTM:
-        return QString::fromUtf8("udstm");
+    case DTEM:
+        return QString("dtem");
+    case mDTEM:
+        return QString("mdtem");
+    case uDTEM:
+        return QString::fromUtf8("udtem");
     default:
         return QString("???");
     }
@@ -56,23 +56,23 @@ QString BitcoinUnits::name(int unit)
 {
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case DSTM:
-            return QString("DSTM");
-        case mDSTM:
-            return QString("mDSTM");
-        case uDSTM:
-            return QString::fromUtf8("μDSTM");
+        case DTEM:
+            return QString("DTEM");
+        case mDTEM:
+            return QString("mDTEM");
+        case uDTEM:
+            return QString::fromUtf8("μDTEM");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
-        case DSTM:
-            return QString("DSTM");
-        case mDSTM:
-            return QString("mtDSTM");
-        case uDSTM:
-            return QString::fromUtf8("μtDSTM");
+        case DTEM:
+            return QString("DTEM");
+        case mDTEM:
+            return QString("mtDTEM");
+        case uDTEM:
+            return QString::fromUtf8("μtDTEM");
         default:
             return QString("???");
         }
@@ -83,23 +83,23 @@ QString BitcoinUnits::description(int unit)
 {
     if (Params().NetworkID() == CBaseChainParams::MAIN) {
         switch (unit) {
-        case DSTM:
-            return QString("DSTM");
-        case mDSTM:
-            return QString("Milli-DSTM (1 / 1" THIN_SP_UTF8 "000)");
-        case uDSTM:
-            return QString("Micro-DSTM (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+        case DTEM:
+            return QString("DTEM");
+        case mDTEM:
+            return QString("Milli-DTEM (1 / 1" THIN_SP_UTF8 "000)");
+        case uDTEM:
+            return QString("Micro-DTEM (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
     } else {
         switch (unit) {
-        case DSTM:
-            return QString("TestDSTMs");
-        case mDSTM:
-            return QString("Milli-TestDSTM (1 / 1" THIN_SP_UTF8 "000)");
-        case uDSTM:
-            return QString("Micro-TestDSTM (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+        case DTEM:
+            return QString("TestDTEMs");
+        case mDTEM:
+            return QString("Milli-TestDTEM (1 / 1" THIN_SP_UTF8 "000)");
+        case uDTEM:
+            return QString("Micro-TestDTEM (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
         default:
             return QString("???");
         }
@@ -109,11 +109,11 @@ QString BitcoinUnits::description(int unit)
 qint64 BitcoinUnits::factor(int unit)
 {
     switch (unit) {
-    case DSTM:
+    case DTEM:
         return 100000000;
-    case mDSTM:
+    case mDTEM:
         return 100000;
-    case uDSTM:
+    case uDTEM:
         return 100;
     default:
         return 100000000;
@@ -123,11 +123,11 @@ qint64 BitcoinUnits::factor(int unit)
 int BitcoinUnits::decimals(int unit)
 {
     switch (unit) {
-    case DSTM:
+    case DTEM:
         return 8;
-    case mDSTM:
+    case mDTEM:
         return 5;
-    case uDSTM:
+    case uDTEM:
         return 2;
     default:
         return 0;

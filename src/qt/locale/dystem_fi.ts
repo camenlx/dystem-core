@@ -172,16 +172,16 @@
         <translation>Vahvista lompakon salaus</translation>
     </message>
     <message>
-        <source>DYSTEM will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DSTMs from being stolen by malware infecting your computer.</source>
-        <translation>DYSTEM sulkeutuu salausprosessin ajaksi. Muista, että lompakon salaus ei voi täysin suojella DSTMien varkaudelta, jos tietokoneesi sisältää haittaohjelmia.</translation>
+        <source>DYSTEM will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DTEMs from being stolen by malware infecting your computer.</source>
+        <translation>DYSTEM sulkeutuu salausprosessin ajaksi. Muista, että lompakon salaus ei voi täysin suojella DTEMien varkaudelta, jos tietokoneesi sisältää haittaohjelmia.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Oletko varma että tahdot salata lompakkosi?</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DSTM&lt;/b&gt;!</source>
-        <translation>Varoitus: Jos salaat lompakkosi ja unohdat salausavaimesi, &lt;b&gt;menetät kaikki DSTMisi&lt;/b&gt;</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DTEM&lt;/b&gt;!</source>
+        <translation>Varoitus: Jos salaat lompakkosi ja unohdat salausavaimesi, &lt;b&gt;menetät kaikki DTEMisi&lt;/b&gt;</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -1135,11 +1135,11 @@ Please check the address and try again.</source>
         <translation>Valitse yksityisyyden taso.</translation>
     </message>
     <message>
-        <source>Use 2 separate masternodes to mix funds up to 5000 DSTM</source>
+        <source>Use 2 separate masternodes to mix funds up to 5000 DTEM</source>
         <translation>Käytä 2 erillistä masternodea sekoittaaksesi enintään 5000 DYSTEM</translation>
     </message>
     <message>
-        <source>Use 8 separate masternodes to mix funds up to 5000 DSTM</source>
+        <source>Use 8 separate masternodes to mix funds up to 5000 DTEM</source>
         <translation>Käytä 8 erillistä masternodea sekoittaaksesi enintään 5000 DYSTEM</translation>
     </message>
     <message>
@@ -1147,11 +1147,11 @@ Please check the address and try again.</source>
         <translation>Käytä 16 erillistä masternodea</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 DSTM to anonymize 5000 DSTM</source>
-        <translation>Tämä vaihtoehto on nopein ja maksaa noin ~0.025 DSTM anonymoidaksesi 5000 DYSTEM</translation>
+        <source>This option is the quickest and will cost about ~0.025 DTEM to anonymize 5000 DTEM</source>
+        <translation>Tämä vaihtoehto on nopein ja maksaa noin ~0.025 DTEM anonymoidaksesi 5000 DYSTEM</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 DSTM to anonymize 5000 DSTM</source>
+        <source>This option is moderately fast and will cost about 0.05 DTEM to anonymize 5000 DTEM</source>
         <translation>Tämä vaihtoehto on suhteellisen nopea ja maksaa 0.05 DYSTEM anonymoidaksesi 5000 DYSTEM</translation>
     </message>
     <message>
@@ -1159,7 +1159,7 @@ Please check the address and try again.</source>
         <translation>Tämä on hitain ja turvallisin vaihtoehto. Täydesti anonymisoiminen ei maksa mitään.</translation>
     </message>
     <message>
-        <source>0.1 DSTM per 5000 DSTM you anonymize.</source>
+        <source>0.1 DTEM per 5000 DTEM you anonymize.</source>
         <translation>0.1 per 5000 DYSTEM, jotka anonymisoit.</translation>
     </message>
     <message>
@@ -1898,8 +1898,8 @@ Please check the address and try again.</source>
         <translation>Muutos:</translation>
     </message>
     <message>
-        <source>0 DSTM</source>
-        <translation>0 DSTM</translation>
+        <source>0 DTEM</source>
+        <translation>0 DTEM</translation>
     </message>
     <message>
         <source>Choose...</source>

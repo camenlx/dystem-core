@@ -172,16 +172,16 @@
         <translation>Bevestig versleuteling van de portemonnee</translation>
     </message>
     <message>
-        <source>DYSTEM will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DSTMs from being stolen by malware infecting your computer.</source>
-        <translation>DYSTEM zal nu afsluiten om het versleutelingsproces te voltooien. Onthoud dat het versleutelen van uw portemonnee u niet volledig kan beschermen: Malware kan uw computer infecteren en uw DSTMs stelen.</translation>
+        <source>DYSTEM will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DTEMs from being stolen by malware infecting your computer.</source>
+        <translation>DYSTEM zal nu afsluiten om het versleutelingsproces te voltooien. Onthoud dat het versleutelen van uw portemonnee u niet volledig kan beschermen: Malware kan uw computer infecteren en uw DTEMs stelen.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Weet u zeker dat u uw portemonnee wilt versleutelen?</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DSTM&lt;/b&gt;!</source>
-        <translation>Waarschuwing: Als u uw portemonnee versleutelt en uw wachtwoord vergeet, zult u &lt;b&gt;AL UW DSTM VERLIEZEN&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DTEM&lt;/b&gt;!</source>
+        <translation>Waarschuwing: Als u uw portemonnee versleutelt en uw wachtwoord vergeet, zult u &lt;b&gt;AL UW DTEM VERLIEZEN&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -1508,8 +1508,8 @@ MultiSend: %1</translation>
         <translation>0</translation>
     </message>
     <message>
-        <source>zDSTM</source>
-        <translation>zDSTM</translation>
+        <source>zDTEM</source>
+        <translation>zDTEM</translation>
     </message>
     <message>
         <source>Reset</source>
@@ -2029,8 +2029,8 @@ MultiSend: %1</translation>
         <translation>Wijzig:</translation>
     </message>
     <message>
-        <source>0 DSTM</source>
-        <translation>0 DSTM</translation>
+        <source>0 DTEM</source>
+        <translation>0 DTEM</translation>
     </message>
     <message>
         <source>Transaction Fee:</source>

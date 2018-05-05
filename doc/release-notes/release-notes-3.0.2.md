@@ -12,9 +12,9 @@ Please report bugs using the issue tracker at github:
 Recommended Update
 ==============
 
-DYSTEM Core v3.0.2 is a recommended, semi-mandatory update for all users. This release contains transaction creation bug fixes for zDSTM spends, automint calculation adjustments, and other various updates/fixes.
+DYSTEM Core v3.0.2 is a recommended, semi-mandatory update for all users. This release contains transaction creation bug fixes for zDTEM spends, automint calculation adjustments, and other various updates/fixes.
 
-zDSTM spending requires this update.
+zDTEM spending requires this update.
 
 How to Upgrade
 ==============
@@ -45,21 +45,21 @@ Notable Changes
 
 Auto Wallet Backup
 ---------------------
-In addition to the automatic wallet backup that is done at each start of the client, a new automatic backup function has been added that will, by default, create a backup of the wallet file during each zDSTM mint operation (zDSTM spends which re-mint their change are also included in this). This functionality is controlled by the `-backupzpiv` command-line option, which defaults to `1` (enabled, auto-backup).
+In addition to the automatic wallet backup that is done at each start of the client, a new automatic backup function has been added that will, by default, create a backup of the wallet file during each zDTEM mint operation (zDTEM spends which re-mint their change are also included in this). This functionality is controlled by the `-backupzpiv` command-line option, which defaults to `1` (enabled, auto-backup).
 
 Users that wish to prevent this behavior (not recommended) can pass `-backupzpiv=0` at the command-line when starting the client, or add `backupzpiv=0` to their `dystem.conf` file.
 
-zDSTM Automint Calculations
+zDTEM Automint Calculations
 ---------------------
-A bug in the automint calculations was made apparent on mainnet when block times exceeded expectations, resulting in zDSTM mint transactions that were in an unconfirmed state to still be treated as if they had never been minted. This caused automint to effectively mint more than what was intended.
+A bug in the automint calculations was made apparent on mainnet when block times exceeded expectations, resulting in zDTEM mint transactions that were in an unconfirmed state to still be treated as if they had never been minted. This caused automint to effectively mint more than what was intended.
 
-zDSTM Spending Fix
+zDTEM Spending Fix
 ---------------------
-The size of zDSTM spend transactions is knowingly larger than normal transactions, and while this was expected, a much stricter check against the scriptsig size is used for mainnet, causing the transactions to be rejected by the mempool, and thus not being packaged into any blocks.
+The size of zDTEM spend transactions is knowingly larger than normal transactions, and while this was expected, a much stricter check against the scriptsig size is used for mainnet, causing the transactions to be rejected by the mempool, and thus not being packaged into any blocks.
 
-zDSTM Transaction Recovery
+zDTEM Transaction Recovery
 ---------------------
-Due to the aforementioned issue with zDSTM spending, users may find that their attempted spends are now conflicted and zDSTM balances are not represented as expected. "Recovery" of these transactions can be done using the following methods:
+Due to the aforementioned issue with zDTEM spending, users may find that their attempted spends are now conflicted and zDTEM balances are not represented as expected. "Recovery" of these transactions can be done using the following methods:
 
 1. GUI:
 

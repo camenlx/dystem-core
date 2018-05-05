@@ -176,16 +176,16 @@
         <translation>Wallet-Verschlüsselung bestätigen</translation>
     </message>
     <message>
-        <source>DYSTEM will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DSTMs from being stolen by malware infecting your computer.</source>
-        <translation>Die Anwendungs wird nun geschlossen um die Verschlüsselung abzuschließen. Bitte beachten Sie, dass auch Verschlüsselung nicht nicht vollständig vor Diebstahl ihrer DSTMs durch Schadsoftware schützt, die ihren Computer befällt.</translation>
+        <source>DYSTEM will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DTEMs from being stolen by malware infecting your computer.</source>
+        <translation>Die Anwendungs wird nun geschlossen um die Verschlüsselung abzuschließen. Bitte beachten Sie, dass auch Verschlüsselung nicht nicht vollständig vor Diebstahl ihrer DTEMs durch Schadsoftware schützt, die ihren Computer befällt.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Sind Sie sich sicher, dass Sie ihre Wallet verschlüsseln möchten?</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DSTM&lt;/b&gt;!</source>
-        <translation>Warnung: Wenn Sie ihre Wallet verschlüsseln und Ihre Passphrase verlieren werden Sie &lt;b&gt;alle ihre DSTMs verlieren&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DTEM&lt;/b&gt;!</source>
+        <translation>Warnung: Wenn Sie ihre Wallet verschlüsseln und Ihre Passphrase verlieren werden Sie &lt;b&gt;alle ihre DTEMs verlieren&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -618,8 +618,8 @@
         <translation>&amp;Privatsphäre</translation>
     </message>
     <message>
-        <source>Privacy Action for zDSTM and Obfuscation</source>
-        <translation>Privatsphäre Aktion für zDSTM und Verschleierung</translation>
+        <source>Privacy Action for zDTEM and Obfuscation</source>
+        <translation>Privatsphäre Aktion für zDTEM und Verschleierung</translation>
     </message>
     <message>
         <source>&amp;Masternodes</source>
@@ -1539,32 +1539,32 @@ Bitte Adresse überprüfen und nochmals versuchen.</translation>
         <translation>Bitte den gewünschten Privatsphäre Level auswählen.</translation>
     </message>
     <message>
-        <source>Use 2 separate masternodes to mix funds up to 5000 DSTM</source>
-        <translation>2 separate Masternodes verwenden um bis zu 5000 DSTM zu mixen</translation>
+        <source>Use 2 separate masternodes to mix funds up to 5000 DTEM</source>
+        <translation>2 separate Masternodes verwenden um bis zu 5000 DTEM zu mixen</translation>
     </message>
     <message>
-        <source>Use 8 separate masternodes to mix funds up to 5000 DSTM</source>
-        <translation>8 separate Masternodes verwenden um bis zu 5000 DSTM zu mixen</translation>
+        <source>Use 8 separate masternodes to mix funds up to 5000 DTEM</source>
+        <translation>8 separate Masternodes verwenden um bis zu 5000 DTEM zu mixen</translation>
     </message>
     <message>
         <source>Use 16 separate masternodes</source>
         <translation>16 separate Masternodes verwenden</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 DSTM to anonymize 5000 DSTM</source>
-        <translation>Diese Option ist die schnellst und kostet ungefähr ~0.025 DSTM um 5000 DSTM zu anonymisieren </translation>
+        <source>This option is the quickest and will cost about ~0.025 DTEM to anonymize 5000 DTEM</source>
+        <translation>Diese Option ist die schnellst und kostet ungefähr ~0.025 DTEM um 5000 DTEM zu anonymisieren </translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 DSTM to anonymize 5000 DSTM</source>
-        <translation>Diese Option ist angemessen schnell und kostet ungefähr  0.05 DSTM um 5000 DSTM zu anonymisieren</translation>
+        <source>This option is moderately fast and will cost about 0.05 DTEM to anonymize 5000 DTEM</source>
+        <translation>Diese Option ist angemessen schnell und kostet ungefähr  0.05 DTEM um 5000 DTEM zu anonymisieren</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
         <translation>Diese Option ist die langsamste und sicherste Option. Die Verwendung maximaler Anonymisierung kostet</translation>
     </message>
     <message>
-        <source>0.1 DSTM per 5000 DSTM you anonymize.</source>
-        <translation>0.1 DSTM per 5000 DSTM die anonymisiert werden.</translation>
+        <source>0.1 DTEM per 5000 DTEM you anonymize.</source>
+        <translation>0.1 DTEM per 5000 DTEM die anonymisiert werden.</translation>
     </message>
     <message>
         <source>Obfuscation Configuration</source>
@@ -1707,20 +1707,20 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Port mit &amp;UPnP mappen</translation>
     </message>
     <message>
-        <source>Percentage of incoming DSTM which get automatically converted to zDSTM via Zerocoin Protocol (min: 10%)</source>
-        <translation>Anteil des einkommenden DSTM, welcher automatisch zu zDSTM via Zerocoin Protokoll konvertiert wird (min: 10%)</translation>
+        <source>Percentage of incoming DTEM which get automatically converted to zDTEM via Zerocoin Protocol (min: 10%)</source>
+        <translation>Anteil des einkommenden DTEM, welcher automatisch zu zDTEM via Zerocoin Protokoll konvertiert wird (min: 10%)</translation>
     </message>
     <message>
-        <source>Percentage of autominted zDSTM</source>
-        <translation>Prozentsatz der automatisierten zDSTM</translation>
+        <source>Percentage of autominted zDTEM</source>
+        <translation>Prozentsatz der automatisierten zDTEM</translation>
     </message>
     <message>
         <source>Wait with automatic conversion to Zerocoin until enough v for this denomination is available</source>
-        <translation>Warte mit automatischer Konvertierung zu Zerocoin, bis genügend DSTM für diese Stückelung verfügbar ist</translation>
+        <translation>Warte mit automatischer Konvertierung zu Zerocoin, bis genügend DTEM für diese Stückelung verfügbar ist</translation>
     </message>
     <message>
-        <source>Preferred Automint zDSTM Denomination</source>
-        <translation>Bevorzugte automatisierte zDSTM Stückelung </translation>
+        <source>Preferred Automint zDTEM Denomination</source>
+        <translation>Bevorzugte automatisierte zDTEM Stückelung </translation>
     </message>
     <message>
         <source>Connect to the DYSTEM network through a SOCKS5 proxy.</source>
@@ -1923,11 +1923,11 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
     </message>
     <message>
         <source>v:</source>
-        <translation>DSTM:</translation>
+        <translation>DTEM:</translation>
     </message>
     <message>
-        <source>zDSTM:</source>
-        <translation>zDSTM:</translation>
+        <source>zDTEM:</source>
+        <translation>zDTEM:</translation>
     </message>
     <message>
         <source>0 %</source>
@@ -2055,12 +2055,12 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
 <context>
     <name>PrivacyDialog</name>
     <message>
-        <source>DSTM which were anonymized via Zerocin Protocol</source>
-        <translation>DSTM, die über das Zerocin-Protokoll anonymisiert wurden</translation>
+        <source>DTEM which were anonymized via Zerocin Protocol</source>
+        <translation>DTEM, die über das Zerocin-Protokoll anonymisiert wurden</translation>
     </message>
     <message>
-        <source>Zerocoin DSTM (zDSTM)</source>
-        <translation>Zerocoin DSTM (zDSTM)</translation>
+        <source>Zerocoin DTEM (zDTEM)</source>
+        <translation>Zerocoin DTEM (zDTEM)</translation>
     </message>
     <message>
         <source>Zerocoin Actions:</source>
@@ -2083,16 +2083,16 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>0</translation>
     </message>
     <message>
-        <source>zDSTM</source>
-        <translation>zDSTM</translation>
+        <source>zDTEM</source>
+        <translation>zDTEM</translation>
     </message>
     <message>
         <source>Available for Minting:</source>
         <translation>Verfügbar für Prägung:</translation>
     </message>
     <message>
-        <source>0.000 000 00 DSTM</source>
-        <translation>0.000 000 00 DSTM</translation>
+        <source>0.000 000 00 DTEM</source>
+        <translation>0.000 000 00 DTEM</translation>
     </message>
     <message>
         <source>Reset Zerocoin Wallet DB. Deletes transactions that did not make it into the blockchain.</source>
@@ -2151,8 +2151,8 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Verfügbare Bilanz:</translation>
     </message>
     <message>
-        <source>0 zDSTM</source>
-        <translation>0 zDSTM</translation>
+        <source>0 zDTEM</source>
+        <translation>0 zDTEM</translation>
     </message>
     <message>
         <source>Security Level for Zerocoin Transactions. More is better, but needs more time and resources.</source>
@@ -2387,8 +2387,8 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Erfolgreich geprägt</translation>
     </message>
     <message>
-        <source> zDSTM in </source>
-        <translation> zDSTM in </translation>
+        <source> zDTEM in </source>
+        <translation> zDTEM in </translation>
     </message>
     <message>
         <source> sec. Used denominations:
@@ -2482,7 +2482,7 @@ Bitte haben Sie Geduld...</translation>
     </message>
     <message>
         <source>zPiv Spend #: </source>
-        <translation>zDSTM Ausgeben #:</translation>
+        <translation>zDTEM Ausgeben #:</translation>
     </message>
     <message>
         <source>denomination: </source>
@@ -3063,7 +3063,7 @@ Bitte haben Sie Geduld...</translation>
     <name>SendCoinsDialog</name>
     <message>
         <source>Send Coins</source>
-        <translation>DSTMs überweisen</translation>
+        <translation>DTEMs überweisen</translation>
     </message>
     <message>
         <source>Coin Control Features</source>
@@ -3134,8 +3134,8 @@ Bitte haben Sie Geduld...</translation>
         <translation>UTXO Größe:</translation>
     </message>
     <message>
-        <source>0 DSTM</source>
-        <translation>0 DSTM</translation>
+        <source>0 DTEM</source>
+        <translation>0 DTEM</translation>
     </message>
     <message>
         <source>Transaction Fee:</source>
@@ -3186,12 +3186,12 @@ Bitte haben Sie Geduld...</translation>
         <translation>Coins automatisch ausgewählt</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uDSTMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDSTMs in fee,&lt;br /&gt;while "at least" pays 1000 uDSTMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Wenn die kundenspezifische Gebühr auf 1000 uDSTMs eingestellt ist und die Transaktion nur 250 Bytes beträgt, dann zahlt man "pro Kilobyte" nur 250 uDSTMs an Gebühr,&lt;br /&gt;während man "mindestens" 1000 uDSTMs bezahlt. Für Transaktionen, die größer sind als ein Kilobyte, bezahlen sie mit Kilobyte.</translation>
+        <source>If the custom fee is set to 1000 uDTEMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDTEMs in fee,&lt;br /&gt;while "at least" pays 1000 uDTEMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Wenn die kundenspezifische Gebühr auf 1000 uDTEMs eingestellt ist und die Transaktion nur 250 Bytes beträgt, dann zahlt man "pro Kilobyte" nur 250 uDTEMs an Gebühr,&lt;br /&gt;während man "mindestens" 1000 uDTEMs bezahlt. Für Transaktionen, die größer sind als ein Kilobyte, bezahlen sie mit Kilobyte.</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uDSTMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDSTMs in fee,&lt;br /&gt;while "total at least" pays 1000 uDSTMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>Wenn die kundenspezifische Gebühr auf 1000 uDSTMs eingestellt ist und die Transaktion nur 250 Bytes beträgt, dann zahlt man "pro Kilobyte" nur 250 uDSTMs an Gebühr,&lt;br /&gt;während man "insgesamt mindestens" 1000 uDSTMs bezahlt. Für Transaktionen, die größer sind als ein Kilobyte, bezahlen sie mit Kilobyte.</translation>
+        <source>If the custom fee is set to 1000 uDTEMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDTEMs in fee,&lt;br /&gt;while "total at least" pays 1000 uDTEMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>Wenn die kundenspezifische Gebühr auf 1000 uDTEMs eingestellt ist und die Transaktion nur 250 Bytes beträgt, dann zahlt man "pro Kilobyte" nur 250 uDTEMs an Gebühr,&lt;br /&gt;während man "insgesamt mindestens" 1000 uDTEMs bezahlt. Für Transaktionen, die größer sind als ein Kilobyte, bezahlen sie mit Kilobyte.</translation>
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for DYSTEM transactions than the network can process.</source>
@@ -3242,8 +3242,8 @@ Bitte haben Sie Geduld...</translation>
         <translation>Empfänge&amp;r hinzufügen</translation>
     </message>
     <message>
-        <source>Anonymized DSTM</source>
-        <translation>Anonymisierte DSTM</translation>
+        <source>Anonymized DTEM</source>
+        <translation>Anonymisierte DTEM</translation>
     </message>
     <message>
         <source>SwiftTX</source>
@@ -3817,7 +3817,7 @@ Bitte haben Sie Geduld...</translation>
     </message>
     <message>
         <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
-        <translation>Erzeugte DSTMs müssen %1 Blöcke lang reifen, bevor sie ausgegeben werden können. Als Sie diesen Block erzeugten, wurde er an das Netzwerk übertragen, um ihn der Blockkette hinzuzufügen. Falls dies fehlschlägt wird der Status in "nicht angenommen" geändert und Sie werden keine DSTMs gutgeschrieben bekommen. Das kann gelegentlich passieren, wenn ein anderer Knoten einen Block fast zeitgleich erzeugt.</translation>
+        <translation>Erzeugte DTEMs müssen %1 Blöcke lang reifen, bevor sie ausgegeben werden können. Als Sie diesen Block erzeugten, wurde er an das Netzwerk übertragen, um ihn der Blockkette hinzuzufügen. Falls dies fehlschlägt wird der Status in "nicht angenommen" geändert und Sie werden keine DTEMs gutgeschrieben bekommen. Das kann gelegentlich passieren, wenn ein anderer Knoten einen Block fast zeitgleich erzeugt.</translation>
     </message>
     <message>
         <source>Debug information</source>
@@ -3963,23 +3963,23 @@ Bitte haben Sie Geduld...</translation>
     </message>
     <message>
         <source>Converted Piv to zPiv</source>
-        <translation>Umgewandeltes DSTM zu zDSTM</translation>
+        <translation>Umgewandeltes DTEM zu zDTEM</translation>
     </message>
     <message>
         <source>Spent zPiv</source>
-        <translation>Ausgeben zDSTM</translation>
+        <translation>Ausgeben zDTEM</translation>
     </message>
     <message>
         <source>Received Piv from zPiv</source>
-        <translation>Empfangene DSTM von zDSTM</translation>
+        <translation>Empfangene DTEM von zDTEM</translation>
     </message>
     <message>
         <source>Minted Change as zPiv from zPiv Spend</source>
-        <translation>Geprägtes Wechselgeld als zDSTM von zDSTM Ausgabe</translation>
+        <translation>Geprägtes Wechselgeld als zDTEM von zDTEM Ausgabe</translation>
     </message>
     <message>
         <source>Converted zPiv to Piv</source>
-        <translation>Umgewandeltes zDSTM zu DSTM</translation>
+        <translation>Umgewandeltes zDTEM zu DTEM</translation>
     </message>
     <message>
         <source>watch-only</source>
@@ -3987,7 +3987,7 @@ Bitte haben Sie Geduld...</translation>
     </message>
     <message>
         <source>zPiv Accumulator</source>
-        <translation>zDSTM Speicher</translation>
+        <translation>zDTEM Speicher</translation>
     </message>
     <message>
         <source>(n/a)</source>
@@ -4098,7 +4098,7 @@ Bitte haben Sie Geduld...</translation>
     </message>
     <message>
         <source>Received Piv from zPiv</source>
-        <translation>Empfangen DSTM von zDSTM</translation>
+        <translation>Empfangen DTEM von zDTEM</translation>
     </message>
     <message>
         <source>Zerocoin Mint</source>
@@ -4110,7 +4110,7 @@ Bitte haben Sie Geduld...</translation>
     </message>
     <message>
         <source>Zerocoin Spend, Change in zPiv</source>
-        <translation>Zerocoin Ausgabe, Wechselgeld in zDSTM</translation>
+        <translation>Zerocoin Ausgabe, Wechselgeld in zDTEM</translation>
     </message>
     <message>
         <source>Zerocoin Spend to Self</source>
@@ -4231,11 +4231,11 @@ Bitte haben Sie Geduld...</translation>
     <name>WalletModel</name>
     <message>
         <source>Send Coins</source>
-        <translation>DSTMs überweisen</translation>
+        <translation>DTEMs überweisen</translation>
     </message>
     <message>
-        <source>SwiftTX doesn't support sending values that high yet. Transactions are currently limited to %1 DSTM.</source>
-        <translation>SwiftTX unterstützt das Versenden von Beträgen dieser Höhe noch nicht. Transaktionen sind zur Zeit auf maximal %1 DSTM begrenzt.</translation>
+        <source>SwiftTX doesn't support sending values that high yet. Transactions are currently limited to %1 DTEM.</source>
+        <translation>SwiftTX unterstützt das Versenden von Beträgen dieser Höhe noch nicht. Transaktionen sind zur Zeit auf maximal %1 DTEM begrenzt.</translation>
     </message>
 </context>
 <context>
@@ -4281,7 +4281,7 @@ Bitte haben Sie Geduld...</translation>
     <name>ZPivControlDialog</name>
     <message>
         <source>Select zPiv to Spend</source>
-        <translation>Auswahl zDSTM als Ausgabe</translation>
+        <translation>Auswahl zDTEM als Ausgabe</translation>
     </message>
     <message>
         <source>Quantity</source>
@@ -4293,7 +4293,7 @@ Bitte haben Sie Geduld...</translation>
     </message>
     <message>
         <source>zPiv</source>
-        <translation>zDSTM</translation>
+        <translation>zDTEM</translation>
     </message>
     <message>
         <source>Select/Deselect All</source>
@@ -4379,12 +4379,12 @@ Bitte haben Sie Geduld...</translation>
         <translation>Befehl ausführen, wenn sich der beste Block ändert (%s in cmd wird durch Blockhash ersetzt)</translation>
     </message>
     <message>
-        <source>Fees (in DSTM/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>Gebühren (in DSTM/kB) kleiner als diese gelten als Null-Gebühr für die Weiterleitung (default: %s)</translation>
+        <source>Fees (in DTEM/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>Gebühren (in DTEM/kB) kleiner als diese gelten als Null-Gebühr für die Weiterleitung (default: %s)</translation>
     </message>
     <message>
-        <source>Fees (in DSTM/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
-        <translation>Gebühren (in DSTM/kB) kleiner als diese werden als Null-Gebühr für die Transaktionserstellung betrachtet (default: %s)</translation>
+        <source>Fees (in DTEM/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <translation>Gebühren (in DTEM/kB) kleiner als diese werden als Null-Gebühr für die Transaktionserstellung betrachtet (default: %s)</translation>
     </message>
     <message>
         <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: %u)</source>

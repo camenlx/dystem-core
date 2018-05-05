@@ -172,7 +172,7 @@
         <translation>Подтверждение шифрования кошелька</translation>
     </message>
     <message>
-        <source>DYSTEM will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DSTMs from being stolen by malware infecting your computer.</source>
+        <source>DYSTEM will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DTEMs from being stolen by malware infecting your computer.</source>
         <translation>DYSTEM сейчас закроется, чтобы завершить процесс шифрования. Помните, что шифрование вашего кошелька не может полностью защитить ваши DYSTEM от кражи с использованием вредоносного ПО.</translation>
     </message>
     <message>
@@ -180,8 +180,8 @@
         <translation>Вы действительно хотите зашифровать свой кошелек?</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DSTM&lt;/b&gt;!</source>
-        <translation>Внимание: если вы зашифруете свой кошелёк и потеряете от него пароль, то вы &lt;b&gt;ПОТЕРЯЕТЕ ВСЕ СВОИ DSTM&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DTEM&lt;/b&gt;!</source>
+        <translation>Внимание: если вы зашифруете свой кошелёк и потеряете от него пароль, то вы &lt;b&gt;ПОТЕРЯЕТЕ ВСЕ СВОИ DTEM&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -1504,32 +1504,32 @@ Please check the address and try again.</source>
         <translation>Выберите уровень конфиденциальности.</translation>
     </message>
     <message>
-        <source>Use 2 separate masternodes to mix funds up to 5000 DSTM</source>
-        <translation>Используйте 2 разные мастерноды для смешивания средств до 5000 DSTM</translation>
+        <source>Use 2 separate masternodes to mix funds up to 5000 DTEM</source>
+        <translation>Используйте 2 разные мастерноды для смешивания средств до 5000 DTEM</translation>
     </message>
     <message>
-        <source>Use 8 separate masternodes to mix funds up to 5000 DSTM</source>
-        <translation>Используйте 8 разных мастернод для смешивания средств до 5000 DSTM</translation>
+        <source>Use 8 separate masternodes to mix funds up to 5000 DTEM</source>
+        <translation>Используйте 8 разных мастернод для смешивания средств до 5000 DTEM</translation>
     </message>
     <message>
         <source>Use 16 separate masternodes</source>
         <translation>Используйте 16 разных мастернод</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 DSTM to anonymize 5000 DSTM</source>
-        <translation>Этот вариант является самым быстрым и будет стоить порядка ~0.025 DSTM для анонимизации 5000 DSTM</translation>
+        <source>This option is the quickest and will cost about ~0.025 DTEM to anonymize 5000 DTEM</source>
+        <translation>Этот вариант является самым быстрым и будет стоить порядка ~0.025 DTEM для анонимизации 5000 DTEM</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 DSTM to anonymize 5000 DSTM</source>
-        <translation>Это средний по скорости вариант и он будет стоить около 0.05 DSTM для анонимизации 5000 DSTM</translation>
+        <source>This option is moderately fast and will cost about 0.05 DTEM to anonymize 5000 DTEM</source>
+        <translation>Это средний по скорости вариант и он будет стоить около 0.05 DTEM для анонимизации 5000 DTEM</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
         <translation>Это самый медленный и безопасный вариант. Максимальная анонимность стоит</translation>
     </message>
     <message>
-        <source>0.1 DSTM per 5000 DSTM you anonymize.</source>
-        <translation>0.1 DSTM за 5000 DSTM которые вы собираетесь анонимизировать.</translation>
+        <source>0.1 DTEM per 5000 DTEM you anonymize.</source>
+        <translation>0.1 DTEM за 5000 DTEM которые вы собираетесь анонимизировать.</translation>
     </message>
     <message>
         <source>Obfuscation Configuration</source>
@@ -2570,8 +2570,8 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Изменить:</translation>
     </message>
     <message>
-        <source>0 DSTM</source>
-        <translation>0 DSTM</translation>
+        <source>0 DTEM</source>
+        <translation>0 DTEM</translation>
     </message>
     <message>
         <source>Transaction Fee:</source>

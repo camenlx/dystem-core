@@ -16,7 +16,7 @@
 CActiveMasternode activeMasternode;
 
 //
-// Bootup the Masternode, look for a 10000 DSTM input and register on the network
+// Bootup the Masternode, look for a 10000 DTEM input and register on the network
 //
 void CActiveMasternode::ManageStatus()
 {

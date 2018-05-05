@@ -176,16 +176,16 @@
         <translation>Confirm wallet encryption</translation>
     </message>
     <message>
-        <source>DYSTEM will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DSTMs from being stolen by malware infecting your computer.</source>
-        <translation>DYSTEM will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DSTMs from being stolen by malware infecting your computer.</translation>
+        <source>DYSTEM will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DTEMs from being stolen by malware infecting your computer.</source>
+        <translation>DYSTEM will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your DTEMs from being stolen by malware infecting your computer.</translation>
     </message>
     <message>
         <source>Are you sure you wish to encrypt your wallet?</source>
         <translation>Are you sure you wish to encrypt your wallet?</translation>
     </message>
     <message>
-        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DSTM&lt;/b&gt;!</source>
-        <translation>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DSTM&lt;/b&gt;!</translation>
+        <source>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DTEM&lt;/b&gt;!</source>
+        <translation>Warning: If you encrypt your wallet and lose your passphrase, you will &lt;b&gt;LOSE ALL OF YOUR DTEM&lt;/b&gt;!</translation>
     </message>
     <message>
         <source>Wallet encrypted</source>
@@ -1544,32 +1544,32 @@ Please check the address and try again.</translation>
         <translation>Please select a privacy level.</translation>
     </message>
     <message>
-        <source>Use 2 separate masternodes to mix funds up to 5000 DSTM</source>
-        <translation>Use 2 separate masternodes to mix funds up to 5000 DSTM</translation>
+        <source>Use 2 separate masternodes to mix funds up to 5000 DTEM</source>
+        <translation>Use 2 separate masternodes to mix funds up to 5000 DTEM</translation>
     </message>
     <message>
-        <source>Use 8 separate masternodes to mix funds up to 5000 DSTM</source>
-        <translation>Use 8 separate masternodes to mix funds up to 5000 DSTM</translation>
+        <source>Use 8 separate masternodes to mix funds up to 5000 DTEM</source>
+        <translation>Use 8 separate masternodes to mix funds up to 5000 DTEM</translation>
     </message>
     <message>
         <source>Use 16 separate masternodes</source>
         <translation>Use 16 separate masternodes</translation>
     </message>
     <message>
-        <source>This option is the quickest and will cost about ~0.025 DSTM to anonymize 5000 DSTM</source>
-        <translation>This option is the quickest and will cost about ~0.025 DSTM to anonymize 5000 DSTM</translation>
+        <source>This option is the quickest and will cost about ~0.025 DTEM to anonymize 5000 DTEM</source>
+        <translation>This option is the quickest and will cost about ~0.025 DTEM to anonymize 5000 DTEM</translation>
     </message>
     <message>
-        <source>This option is moderately fast and will cost about 0.05 DSTM to anonymize 5000 DSTM</source>
-        <translation>This option is moderately fast and will cost about 0.05 DSTM to anonymize 5000 DSTM</translation>
+        <source>This option is moderately fast and will cost about 0.05 DTEM to anonymize 5000 DTEM</source>
+        <translation>This option is moderately fast and will cost about 0.05 DTEM to anonymize 5000 DTEM</translation>
     </message>
     <message>
         <source>This is the slowest and most secure option. Using maximum anonymity will cost</source>
         <translation>This is the slowest and most secure option. Using maximum anonymity will cost</translation>
     </message>
     <message>
-        <source>0.1 DSTM per 5000 DSTM you anonymize.</source>
-        <translation>0.1 DSTM per 5000 DSTM you anonymize.</translation>
+        <source>0.1 DTEM per 5000 DTEM you anonymize.</source>
+        <translation>0.1 DTEM per 5000 DTEM you anonymize.</translation>
     </message>
     <message>
         <source>Obfuscation Configuration</source>
@@ -1927,8 +1927,8 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Obfuscation Balance:</translation>
     </message>
     <message>
-        <source>0 DSTM / 0 Rounds</source>
-        <translation>0 DSTM / 0 Rounds</translation>
+        <source>0 DTEM / 0 Rounds</source>
+        <translation>0 DTEM / 0 Rounds</translation>
     </message>
     <message>
         <source>Enabled/Disabled</source>
@@ -2792,8 +2792,8 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>UTXO Size:</translation>
     </message>
     <message>
-        <source>0 DSTM</source>
-        <translation>0 DSTM</translation>
+        <source>0 DTEM</source>
+        <translation>0 DTEM</translation>
     </message>
     <message>
         <source>Transaction Fee:</source>
@@ -2840,12 +2840,12 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Confirmation time:</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uDSTMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDSTMs in fee,&lt;br /&gt;while "at least" pays 1000 uDSTMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>If the custom fee is set to 1000 uDSTMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDSTMs in fee,&lt;br /&gt;while "at least" pays 1000 uDSTMs. For transactions bigger than a kilobyte both pay by kilobyte.</translation>
+        <source>If the custom fee is set to 1000 uDTEMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDTEMs in fee,&lt;br /&gt;while "at least" pays 1000 uDTEMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>If the custom fee is set to 1000 uDTEMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDTEMs in fee,&lt;br /&gt;while "at least" pays 1000 uDTEMs. For transactions bigger than a kilobyte both pay by kilobyte.</translation>
     </message>
     <message>
-        <source>If the custom fee is set to 1000 uDSTMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDSTMs in fee,&lt;br /&gt;while "total at least" pays 1000 uDSTMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
-        <translation>If the custom fee is set to 1000 uDSTMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDSTMs in fee,&lt;br /&gt;while "total at least" pays 1000 uDSTMs. For transactions bigger than a kilobyte both pay by kilobyte.</translation>
+        <source>If the custom fee is set to 1000 uDTEMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDTEMs in fee,&lt;br /&gt;while "total at least" pays 1000 uDTEMs. For transactions bigger than a kilobyte both pay by kilobyte.</source>
+        <translation>If the custom fee is set to 1000 uDTEMs and the transaction is only 250 bytes, then "per kilobyte" only pays 250 uDTEMs in fee,&lt;br /&gt;while "total at least" pays 1000 uDTEMs. For transactions bigger than a kilobyte both pay by kilobyte.</translation>
     </message>
     <message>
         <source>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for DYSTEM transactions than the network can process.</source>
@@ -3840,8 +3840,8 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Send Coins</translation>
     </message>
     <message>
-        <source>SwiftTX doesn't support sending values that high yet. Transactions are currently limited to %1 DSTM.</source>
-        <translation>SwiftTX doesn't support sending values that high yet. Transactions are currently limited to %1 DSTM.</translation>
+        <source>SwiftTX doesn't support sending values that high yet. Transactions are currently limited to %1 DTEM.</source>
+        <translation>SwiftTX doesn't support sending values that high yet. Transactions are currently limited to %1 DTEM.</translation>
     </message>
 </context>
 <context>
@@ -3974,12 +3974,12 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Execute command when the best block changes (%s in cmd is replaced by block hash)</translation>
     </message>
     <message>
-        <source>Fees (in DSTM/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
-        <translation>Fees (in DSTM/Kb) smaller than this are considered zero fee for relaying (default: %s)</translation>
+        <source>Fees (in DTEM/Kb) smaller than this are considered zero fee for relaying (default: %s)</source>
+        <translation>Fees (in DTEM/Kb) smaller than this are considered zero fee for relaying (default: %s)</translation>
     </message>
     <message>
-        <source>Fees (in DSTM/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
-        <translation>Fees (in DSTM/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</translation>
+        <source>Fees (in DTEM/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</source>
+        <translation>Fees (in DTEM/Kb) smaller than this are considered zero fee for transaction creation (default: %s)</translation>
     </message>
     <message>
         <source>Flush database activity from memory pool to disk log every &lt;n&gt; megabytes (default: %u)</source>
@@ -4114,12 +4114,12 @@ for example: alertnotify=echo %%s | mail -s "DYSTEM Alert" admin@foo.com
         <translation>Unable to locate enough Obfuscation denominated funds for this transaction.</translation>
     </message>
     <message>
-        <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 5000 DSTM.</source>
-        <translation>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 5000 DSTM.</translation>
+        <source>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 5000 DTEM.</source>
+        <translation>Unable to locate enough Obfuscation non-denominated funds for this transaction that are not equal 5000 DTEM.</translation>
     </message>
     <message>
-        <source>Unable to locate enough funds for this transaction that are not equal 5000 DSTM.</source>
-        <translation>Unable to locate enough funds for this transaction that are not equal 5000 DSTM.</translation>
+        <source>Unable to locate enough funds for this transaction that are not equal 5000 DTEM.</source>
+        <translation>Unable to locate enough funds for this transaction that are not equal 5000 DTEM.</translation>
     </message>
     <message>
         <source>Use separate SOCKS5 proxy to reach peers via Tor hidden services (default: %s)</source>
@@ -4406,8 +4406,8 @@ for example: alertnotify=echo %%s | mail -s "DYSTEM Alert" admin@foo.com
         <translation>Failed to read block</translation>
     </message>
     <message>
-        <source>Fee (in DSTM/kB) to add to transactions you send (default: %s)</source>
-        <translation>Fee (in DSTM/kB) to add to transactions you send (default: %s)</translation>
+        <source>Fee (in DTEM/kB) to add to transactions you send (default: %s)</source>
+        <translation>Fee (in DTEM/kB) to add to transactions you send (default: %s)</translation>
     </message>
     <message>
         <source>Finalizing transaction.</source>
@@ -4578,8 +4578,8 @@ for example: alertnotify=echo %%s | mail -s "DYSTEM Alert" admin@foo.com
         <translation>Enable staking functionality (0-1, default: %u)</translation>
     </message>
     <message>
-        <source>Keep N DSTM anonymized (default: %u)</source>
-        <translation>Keep N DSTM anonymized (default: %u)</translation>
+        <source>Keep N DTEM anonymized (default: %u)</source>
+        <translation>Keep N DTEM anonymized (default: %u)</translation>
     </message>
     <message>
         <source>Keep at most &lt;n&gt; unconnectable transactions in memory (default: %u)</source>
