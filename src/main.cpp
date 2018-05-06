@@ -1690,7 +1690,7 @@ void CheckForkWarningConditionsOnNewFork(CBlockIndex* pindexNewForkTip)
 }
 
 // Requires cs_main.
-void Misbehaving(NodeId pnode, int howmuch)
+void Misbehaving(NodeId pnode, int howmuch, std::string source)
 {
     if (howmuch == 0)
         return;
@@ -1702,6 +1702,9 @@ void Misbehaving(NodeId pnode, int howmuch)
     state->nMisbehavior += howmuch;
     int banscore = GetArg("-banscore", 100);
     if (state->nMisbehavior >= banscore && state->nMisbehavior - howmuch < banscore) {
+
+        LogPrintf(" DYSTEM >>>>>>>>> Misbehaving: %s ", source);
+
         //LogPrintf("Misbehaving: %s (%d -> %d) BAN THRESHOLD EXCEEDED\n", state->name, state->nMisbehavior - howmuch, state->nMisbehavior);
         //state->fShouldBan = true;
     } else
@@ -1732,7 +1735,7 @@ void static InvalidBlockFound(CBlockIndex* pindex, const CValidationState& state
             CBlockReject reject = {state.GetRejectCode(), state.GetRejectReason().substr(0, MAX_REJECT_MESSAGE_LENGTH), pindex->GetBlockHash()};
             State(it->second)->rejects.push_back(reject);
             if (nDoS > 0)
-                Misbehaving(it->second, nDoS);
+                Misbehaving(it->second, nDoS, "main::InvalidBlockFound");
         }
     }
     if (!state.CorruptionPossible()) {
@@ -4448,14 +4451,14 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         // Each connection can only send one version message
         if (pfrom->nVersion != 0) {
             pfrom->PushMessage("reject", strCommand, REJECT_DUPLICATE, string("Duplicate version message"));
-            Misbehaving(pfrom->GetId(), 1);
+            Misbehaving(pfrom->GetId(), 1, "main::ProcessMessage::ln4454");
             return false;
         }
 
         int64_t nTime;
         CAddress addrMe;
         CAddress addrFrom;
-        uint64_t nNonce = 1;
+        uint64_t nNonce = 1;, 
         vRecv >> pfrom->nVersion >> pfrom->nServices >> nTime >> addrMe;
         if (pfrom->DisconnectOldProtocol(ActiveProtocol(), strCommand))
             return false;
@@ -4553,7 +4556,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 
     else if (pfrom->nVersion == 0) {
         // Must have a version message before anything else
-        Misbehaving(pfrom->GetId(), 1);
+        Misbehaving(pfrom->GetId(), 1, "main::ProcessMessage::ln4559");
         return false;
     }
 
@@ -4577,7 +4580,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         if (pfrom->nVersion < CADDR_TIME_VERSION && addrman.size() > 1000)
             return true;
         if (vAddr.size() > 1000) {
-            Misbehaving(pfrom->GetId(), 20);
+            Misbehaving(pfrom->GetId(), 20, "main::ProcessMessage::ln4583");
             return error("message addr size() = %u", vAddr.size());
         }
 
@@ -4635,7 +4638,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         vector<CInv> vInv;
         vRecv >> vInv;
         if (vInv.size() > MAX_INV_SZ) {
-            Misbehaving(pfrom->GetId(), 20);
+            Misbehaving(pfrom->GetId(), 20, "main::ProcessMessage::ln4641");
             return error("message inv size() = %u", vInv.size());
         }
 
@@ -4669,7 +4672,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
             GetMainSignals().Inventory(inv.hash);
 
             if (pfrom->nSendSize > (SendBufferSize() * 2)) {
-                Misbehaving(pfrom->GetId(), 50);
+                Misbehaving(pfrom->GetId(), 50, "main::ProcessMessage::ln4675");
                 return error("send buffer size() = %u", pfrom->nSendSize);
             }
         }
@@ -4683,7 +4686,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         vector<CInv> vInv;
         vRecv >> vInv;
         if (vInv.size() > MAX_INV_SZ) {
-            Misbehaving(pfrom->GetId(), 20);
+            Misbehaving(pfrom->GetId(), 20, "main::ProcessMessage::ln4689");
             return error("message getdata size() = %u", vInv.size());
         }
 
@@ -4828,7 +4831,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
                         int nDos = 0;
                         if(stateDummy.IsInvalid(nDos) && nDos > 0) {
                             // Punish peer that gave us an invalid orphan tx
-                            Misbehaving(fromPeer, nDos);
+                            Misbehaving(fromPeer, nDos, "main::ProcessMessage::ln4834");
                             setMisbehaving.insert(fromPeer);
                             LogPrint("mempool", "   invalid orphan tx %s\n", orphanHash.ToString());
                         }
@@ -4866,7 +4869,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
             pfrom->PushMessage("reject", strCommand, state.GetRejectCode(),
                 state.GetRejectReason().substr(0, MAX_REJECT_MESSAGE_LENGTH), inv.hash);
             if (nDoS > 0)
-                Misbehaving(pfrom->GetId(), nDoS);
+                Misbehaving(pfrom->GetId(), nDoS, "main::ProcessMessage::ln4872");
         }
     }
 
@@ -4878,7 +4881,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         // Bypass the normal CBlock deserialization, as we don't want to risk deserializing 2000 full blocks.
         unsigned int nCount = ReadCompactSize(vRecv);
         if (nCount > MAX_HEADERS_RESULTS) {
-            Misbehaving(pfrom->GetId(), 20);
+            Misbehaving(pfrom->GetId(), 20, "main::ProcessMessage::ln4884");
             return error("headers message size = %u", nCount);
         }
         headers.resize(nCount);
@@ -4897,7 +4900,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         BOOST_FOREACH (const CBlockHeader& header, headers) {
             CValidationState state;
             if (pindexLast != NULL && header.hashPrevBlock != pindexLast->GetBlockHash()) {
-                Misbehaving(pfrom->GetId(), 20);
+                Misbehaving(pfrom->GetId(), 20, "main::ProcessMessage::ln4903");
                 return error("non-continuous headers sequence");
             }
 
@@ -4908,7 +4911,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
                 int nDoS;
                 if (state.IsInvalid(nDoS)) {
                     if (nDoS > 0)
-                        Misbehaving(pfrom->GetId(), nDoS);
+                        Misbehaving(pfrom->GetId(), nDoS, "main::ProcessMessage::ln4914");
                     std::string strError = "invalid header received " + header.GetHash().ToString();
                     return error(strError.c_str());
                 }
@@ -4960,7 +4963,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
                                        state.GetRejectReason().substr(0, MAX_REJECT_MESSAGE_LENGTH), inv.hash);
                     if(nDoS > 0) {
                         TRY_LOCK(cs_main, lockMain);
-                        if(lockMain) Misbehaving(pfrom->GetId(), nDoS);
+                        if(lockMain) Misbehaving(pfrom->GetId(), nDoS, "main::ProcessMessage::ln4966");
                     }
                 }
                 //disconnect this node if its old protocol version
@@ -5106,7 +5109,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
                 // This isn't a Misbehaving(100) (immediate ban) because the
                 // peer might be an older or different implementation with
                 // a different signature key, etc.
-                Misbehaving(pfrom->GetId(), 10);
+                Misbehaving(pfrom->GetId(), 10, "main::ProcessMessage::ln5112");
             }
         }
     }
@@ -5116,7 +5119,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
                  strCommand == "filteradd" ||
                  strCommand == "filterclear")) {
         LogPrintf("bloom message=%s\n", strCommand);
-        Misbehaving(pfrom->GetId(), 100);
+        Misbehaving(pfrom->GetId(), 100, "main::ProcessMessage::ln5122");
     }
 
     else if (strCommand == "filterload") {
@@ -5125,7 +5128,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 
         if (!filter.IsWithinSizeConstraints())
             // There is no excuse for sending a too-large filter
-            Misbehaving(pfrom->GetId(), 100);
+            Misbehaving(pfrom->GetId(), 100, "main::ProcessMessage::ln5131");
         else {
             LOCK(pfrom->cs_filter);
             delete pfrom->pfilter;
@@ -5143,13 +5146,13 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         // Nodes must NEVER send a data item > 520 bytes (the max size for a script data object,
         // and thus, the maximum size any matched object can have) in a filteradd message
         if (vData.size() > MAX_SCRIPT_ELEMENT_SIZE) {
-            Misbehaving(pfrom->GetId(), 100);
+            Misbehaving(pfrom->GetId(), 100, "main::ProcessMessage::ln5149");
         } else {
             LOCK(pfrom->cs_filter);
             if (pfrom->pfilter)
                 pfrom->pfilter->insert(vData);
             else
-                Misbehaving(pfrom->GetId(), 100);
+                Misbehaving(pfrom->GetId(), 100, "main::ProcessMessage::ln5155");
         }
     }
 

@@ -739,7 +739,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
         //  - this is expensive, so it's only done once per Masternode
         if (!masternodeSigner.IsVinAssociatedWithPubkey(mnb.vin, mnb.pubKeyCollateralAddress)) {
             LogPrint("masternode","mnb - Got mismatched pubkey and vin\n");
-            Misbehaving(pfrom->GetId(), 33);
+            Misbehaving(pfrom->GetId(), 33, "masternodeman::ProcessMessage::ln 741");
             return;
         }
 
@@ -752,7 +752,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
             LogPrint("masternode","mnb - Rejected Masternode entry %s\n", mnb.vin.prevout.hash.ToString());
 
             if (nDoS > 0)
-                Misbehaving(pfrom->GetId(), nDoS);
+                Misbehaving(pfrom->GetId(), nDoS, "masternodeman::ProcessMessage::ln 755");
         }
     }
 
@@ -770,7 +770,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
 
         if (nDoS > 0) {
             // if anything significant failed, mark that node
-            Misbehaving(pfrom->GetId(), nDoS);
+            Misbehaving(pfrom->GetId(), nDoS, "masternodeman::ProcessMessage::ln 755");
         } else {
             // if nothing significant failed, search existing Masternode list
             CMasternode* pmn = Find(mnp.vin);
@@ -796,7 +796,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
                 if (i != mAskedUsForMasternodeList.end()) {
                     int64_t t = (*i).second;
                     if (GetTime() < t) {
-                        Misbehaving(pfrom->GetId(), 34);
+                        Misbehaving(pfrom->GetId(), 34, "masternodeman::ProcessMessage::ln 799");
                         LogPrint("masternode","dseg - peer already asked me for the list\n");
                         return;
                     }
