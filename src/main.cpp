@@ -1703,6 +1703,7 @@ void Misbehaving(NodeId pnode, int howmuch, const std::string& reason)
     int banscore = GetArg("-banscore", 100);
     if (state->nMisbehavior >= banscore && state->nMisbehavior - howmuch < banscore) {
 
+//LogPrintf("*** %s\n", strMessage);
         LogPrintf(" DYSTEM >>>>>>>>> Misbehaving: %s ", reason);
 
         //LogPrintf("Misbehaving: %s (%d -> %d) BAN THRESHOLD EXCEEDED\n", state->name, state->nMisbehavior - howmuch, state->nMisbehavior);
