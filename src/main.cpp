@@ -1690,7 +1690,7 @@ void CheckForkWarningConditionsOnNewFork(CBlockIndex* pindexNewForkTip)
 }
 
 // Requires cs_main.
-void Misbehaving(NodeId pnode, int howmuch, std::string source)
+void Misbehaving(NodeId pnode, int howmuch, const std::string& userMessage = "")
 {
     if (howmuch == 0)
         return;
