@@ -322,7 +322,7 @@ void CMasternodePayments::ProcessMessageMasternodePayments(CNode* pfrom, std::st
         if (Params().NetworkID() == CBaseChainParams::MAIN) {
             if (pfrom->HasFulfilledRequest("mnget")) {
                 LogPrint("masternode","mnget - peer already asked me for the list\n");
-                Misbehaving(pfrom->GetId(), 20);
+                Misbehaving(pfrom->GetId(), 20, _("masternode-payments:ProcessMessageMasternodePayments::InvalidBlockFound"));
                 return;
             }
         }
@@ -369,7 +369,7 @@ void CMasternodePayments::ProcessMessageMasternodePayments(CNode* pfrom, std::st
 
         if (!winner.SignatureValid()) {
             // LogPrint("masternode","mnw - invalid signature\n");
-            if (masternodeSync.IsSynced()) Misbehaving(pfrom->GetId(), 20);
+            if (masternodeSync.IsSynced()) Misbehaving(pfrom->GetId(), 20, _("masternode-payments:ProcessMessageMasternodePayments::InvalidBlockFound"));
             // it could just be a non-synced masternode
             mnodeman.AskForMN(pfrom, winner.vinMasternode);
             return;
