@@ -1690,7 +1690,7 @@ void CheckForkWarningConditionsOnNewFork(CBlockIndex* pindexNewForkTip)
 }
 
 // Requires cs_main.
-void Misbehaving(NodeId pnode, int howmuch, const std::string& source = "")
+void Misbehaving(NodeId pnode, int howmuch, const std::string& reason = "")
 {
     if (howmuch == 0)
         return;
@@ -1703,7 +1703,7 @@ void Misbehaving(NodeId pnode, int howmuch, const std::string& source = "")
     int banscore = GetArg("-banscore", 100);
     if (state->nMisbehavior >= banscore && state->nMisbehavior - howmuch < banscore) {
 
-        LogPrintf(" DYSTEM >>>>>>>>> Misbehaving: %s ", source);
+        LogPrintf(" DYSTEM >>>>>>>>> Misbehaving: %s ", reason);
 
         //LogPrintf("Misbehaving: %s (%d -> %d) BAN THRESHOLD EXCEEDED\n", state->name, state->nMisbehavior - howmuch, state->nMisbehavior);
         //state->fShouldBan = true;
