@@ -618,10 +618,6 @@
         <translation>&amp;Privacidad</translation>
     </message>
     <message>
-        <source>Privacy Action for zDTEM and Obfuscation</source>
-        <translation>Privacidad con zDTEM y Ofuscación</translation>
-    </message>
-    <message>
         <source>&amp;Masternodes</source>
         <translation>Nodos &amp;Maestros</translation>
     </message>
@@ -1694,18 +1690,6 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
     <message>
         <source>Map port using &amp;UPnP</source>
         <translation>Mapear un puerto utilizando &amp;UPnP</translation>
-    </message>
-    <message>
-        <source>Percentage of incoming DTEM which get automatically converted to zDTEM via Zerocoin Protocol (min: 10%)</source>
-        <translation>Porcentaje de DTEMs entrantes que serán automáticamente convertidos a zDTEM a través del Protocolo Zerocoin (mín: 10%)</translation>
-    </message>
-    <message>
-        <source>Percentage of autominted zDTEM</source>
-        <translation>Porcentaje de zDTEM autogenerados</translation>
-    </message>
-    <message>
-        <source>Wait with automatic conversion to Zerocoin until enough DTEM for this denomination is available</source>
-        <translation>Retrasar la conversión automática a Zerocoin hasta que hayan suficientes DTEM disponibles para esta denominación</translation>
     </message>
     <message>
         <source>Connect to the DYSTEM network through a SOCKS5 proxy.</source>

@@ -1508,10 +1508,6 @@ MultiSend: %1</translation>
         <translation>0</translation>
     </message>
     <message>
-        <source>zDTEM</source>
-        <translation>zDTEM</translation>
-    </message>
-    <message>
         <source>Reset</source>
         <translation>Resetten</translation>
     </message>

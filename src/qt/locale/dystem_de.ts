@@ -618,10 +618,6 @@
         <translation>&amp;Privatsphäre</translation>
     </message>
     <message>
-        <source>Privacy Action for zDTEM and Obfuscation</source>
-        <translation>Privatsphäre Aktion für zDTEM und Verschleierung</translation>
-    </message>
-    <message>
         <source>&amp;Masternodes</source>
         <translation>&amp;Masternodes</translation>
     </message>
@@ -1707,22 +1703,6 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Port mit &amp;UPnP mappen</translation>
     </message>
     <message>
-        <source>Percentage of incoming DTEM which get automatically converted to zDTEM via Zerocoin Protocol (min: 10%)</source>
-        <translation>Anteil des einkommenden DTEM, welcher automatisch zu zDTEM via Zerocoin Protokoll konvertiert wird (min: 10%)</translation>
-    </message>
-    <message>
-        <source>Percentage of autominted zDTEM</source>
-        <translation>Prozentsatz der automatisierten zDTEM</translation>
-    </message>
-    <message>
-        <source>Wait with automatic conversion to Zerocoin until enough v for this denomination is available</source>
-        <translation>Warte mit automatischer Konvertierung zu Zerocoin, bis genügend DTEM für diese Stückelung verfügbar ist</translation>
-    </message>
-    <message>
-        <source>Preferred Automint zDTEM Denomination</source>
-        <translation>Bevorzugte automatisierte zDTEM Stückelung </translation>
-    </message>
-    <message>
         <source>Connect to the DYSTEM network through a SOCKS5 proxy.</source>
         <translation>Durch einen SOCKS5 Proxy mit dem DYSTEM Netzwerk verbinden.</translation>
     </message>
@@ -1926,16 +1906,8 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>DTEM:</translation>
     </message>
     <message>
-        <source>zDTEM:</source>
-        <translation>zDTEM:</translation>
-    </message>
-    <message>
         <source>0 %</source>
         <translation>0 %</translation>
-    </message>
-    <message>
-        <source>Zerocoin Balance</source>
-        <translation>Zerocoin Bilanz</translation>
     </message>
     <message>
         <source>Recent transactions</source>
@@ -2059,14 +2031,6 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>DTEM, die über das Zerocin-Protokoll anonymisiert wurden</translation>
     </message>
     <message>
-        <source>Zerocoin DTEM (zDTEM)</source>
-        <translation>Zerocoin DTEM (zDTEM)</translation>
-    </message>
-    <message>
-        <source>Zerocoin Actions:</source>
-        <translation>Zerocoin Handlungen:</translation>
-    </message>
-    <message>
         <source>The displayed information may be out of date. Your wallet automatically synchronizes with the DYSTEM network after a connection is established, but this process has not completed yet.</source>
         <translation>Die angezeigte Information ist möglicherweise nicht mehr aktuell. Ihre Wallet synchronisiert sich automatisch mit dem DYSTEM-Netzwerk, nachdem eine Verbindung hergestellt wurde. Aber dieser Vorgang ist noch nicht abgeschlossen.</translation>
     </message>
@@ -2075,16 +2039,8 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Eingabe des Piv-Betrags, um in zPiv umzuwandeln</translation>
     </message>
     <message>
-        <source>Mint Zerocoin</source>
-        <translation>Präge Zerocoin</translation>
-    </message>
-    <message>
         <source>0</source>
         <translation>0</translation>
-    </message>
-    <message>
-        <source>zDTEM</source>
-        <translation>zDTEM</translation>
     </message>
     <message>
         <source>Available for Minting:</source>
@@ -2093,10 +2049,6 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
     <message>
         <source>0.000 000 00 DTEM</source>
         <translation>0.000 000 00 DTEM</translation>
-    </message>
-    <message>
-        <source>Reset Zerocoin Wallet DB. Deletes transactions that did not make it into the blockchain.</source>
-        <translation>Zurücksetzen der Zerocoin-Wallet-DB. Löscht Transaktionen, die es nicht in die Blockchain geschafft haben.</translation>
     </message>
     <message>
         <source>Reset</source>
@@ -2113,10 +2065,6 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
     <message>
         <source>Amount:</source>
         <translation>Betrag:</translation>
-    </message>
-    <message>
-        <source>Rescan the complete blockchain for  Zerocoin mints and their meta-data. Needs a very long time, please be patient.</source>
-        <translation>Nachscannen der komplette Blockchain für Zerocoin-Prägungen und ihre Metadaten. Braucht eine sehr lange Zeit. Bitte seien Sie geduldig.</translation>
     </message>
     <message>
         <source>ReScan</source>
@@ -2139,24 +2087,8 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Menge ausgewählt:</translation>
     </message>
     <message>
-        <source>Spend Zerocoin. Without 'Pay To:' address creates payments to yourself.</source>
-        <translation>Ausgebene Zerocoin. Ohne 'Pay To:'-Adresse erstellte Zahlungen an Sie selbst.</translation>
-    </message>
-    <message>
-        <source>Spend Zerocoin</source>
-        <translation>Ausgebene Zerocoin.</translation>
-    </message>
-    <message>
         <source>Available Balance:</source>
         <translation>Verfügbare Bilanz:</translation>
-    </message>
-    <message>
-        <source>0 zDTEM</source>
-        <translation>0 zDTEM</translation>
-    </message>
-    <message>
-        <source>Security Level for Zerocoin Transactions. More is better, but needs more time and resources.</source>
-        <translation>Sicherheitsstufe für Zerocoin-Transaktionen. Mehr ist besser, braucht aber mehr Zeit und Ressourcen.</translation>
     </message>
     <message>
         <source>Security Level:</source>
@@ -2203,10 +2135,6 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Betra&amp;g:</translation>
     </message>
     <message>
-        <source>Convert Change to Zerocoin (might cost additional fees)</source>
-        <translation>Wandle Wechselgeld in Zerocoin um (kann zusätzliche Gebühren kosten)</translation>
-    </message>
-    <message>
         <source>If checked, the wallet tries to minimize the returning change instead of minimizing the number of spent denominations.</source>
         <translation>Wenn überprüft wird, versucht die Wallet, das zurückkehrende Wechselgeld zu minimieren, anstatt die Anzahl der verbrauchten Stückelungen zu minimieren.</translation>
     </message>
@@ -2215,20 +2143,8 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Minimiert Wechselgeld</translation>
     </message>
     <message>
-        <source>Information about the available Zerocoin funds.</source>
-        <translation>Informationen über die verfügbaren Zerocoin-Mittel.</translation>
-    </message>
-    <message>
-        <source>Zerocoin Stats:</source>
-        <translation>Zerocoin Statistiken:</translation>
-    </message>
-    <message>
         <source>Available Funds</source>
         <translation>Verfügbare Mittel</translation>
-    </message>
-    <message>
-        <source>Available Zerocoin  Balance:</source>
-        <translation>Verfügbare Zerocoin Bilanz:</translation>
     </message>
     <message>
         <source>Denominations with value 1:</source>
@@ -2387,18 +2303,10 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Erfolgreich geprägt</translation>
     </message>
     <message>
-        <source> zDTEM in </source>
-        <translation> zDTEM in </translation>
-    </message>
-    <message>
         <source> sec. Used denominations:
 </source>
         <translation> ausg. Verwendete Stückelungen:
 </translation>
-    </message>
-    <message>
-        <source>Starting ResetMintZerocoin: rescanning the complete blockchain, this will need up to 30 minutes depending on your hardware.&lt;br /&gt;&lt;br /&gt;</source>
-        <translation>Starten von ResetMintZerocoin: Nachscannung der kompletten Blockchain. Das benötigt bis zu 30 Minuten je nach Hardware.&lt;br /&gt;&lt;br /&gt;</translation>
     </message>
     <message>
         <source>You won't be able to do anything else during that time!&lt;br /&gt;</source>
@@ -2409,16 +2317,6 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Nachscannen bestätigen</translation>
     </message>
     <message>
-        <source>ResetMintZerocoin: action canceled by user</source>
-        <translation>ResetMintZerocoin: Aktion vom Benutzer abgebrochen</translation>
-    </message>
-    <message>
-        <source>Starting ResetMintZerocoin: rescanning complete blockchain, this will need up to 30 minutes depending on your hardware. 
-Please be patient...</source>
-        <translation>Starten von ResetMintZerocoin: Nachscannen der kompletten Blockchain. Das benötigt bis zu 30 Minuten je nach Hardware.
-Bitte haben Sie Geduld...</translation>
-    </message>
-    <message>
         <source>Duration: </source>
         <translation>Dauer:</translation>
     </message>
@@ -2427,10 +2325,6 @@ Bitte haben Sie Geduld...</translation>
 </source>
         <translation>ausg.
 </translation>
-    </message>
-    <message>
-        <source>Starting ResetSpentZerocoin: </source>
-        <translation>Starte ResetSpentZerocoin: </translation>
     </message>
     <message>
         <source>No 'Pay To' address provided, creating local payment</source>
@@ -2467,22 +2361,6 @@ Bitte haben Sie Geduld...</translation>
     <message>
         <source>Confirm send coins</source>
         <translation>Sende Coins bestätigen</translation>
-    </message>
-    <message>
-        <source>Spending Zerocoin.
-Computationally expensive, might need several minutes depending on the selected Security Level and your hardware. 
-Please be patient...</source>
-        <translation>Zerocoin ausgeben.
-Rechnerisch aufwändig. Kann je nach ausgewähltem Sicherheitsstufe und Ihrer Hardware mehrere Minuten benötigen
-Bitte haben Sie Geduld...</translation>
-    </message>
-    <message>
-        <source>Spend Zerocoin failed with status = </source>
-        <translation>Ausgeben Zerocoin fehlgeschlagen mit Status =</translation>
-    </message>
-    <message>
-        <source>zPiv Spend #: </source>
-        <translation>zDTEM Ausgeben #:</translation>
     </message>
     <message>
         <source>denomination: </source>
@@ -3962,32 +3840,8 @@ Bitte haben Sie Geduld...</translation>
         <translation>Verschleiert</translation>
     </message>
     <message>
-        <source>Converted Piv to zPiv</source>
-        <translation>Umgewandeltes DTEM zu zDTEM</translation>
-    </message>
-    <message>
-        <source>Spent zPiv</source>
-        <translation>Ausgeben zDTEM</translation>
-    </message>
-    <message>
-        <source>Received Piv from zPiv</source>
-        <translation>Empfangene DTEM von zDTEM</translation>
-    </message>
-    <message>
-        <source>Minted Change as zPiv from zPiv Spend</source>
-        <translation>Geprägtes Wechselgeld als zDTEM von zDTEM Ausgabe</translation>
-    </message>
-    <message>
-        <source>Converted zPiv to Piv</source>
-        <translation>Umgewandeltes zDTEM zu DTEM</translation>
-    </message>
-    <message>
         <source>watch-only</source>
         <translation>nur beobachtet</translation>
-    </message>
-    <message>
-        <source>zPiv Accumulator</source>
-        <translation>zDTEM Speicher</translation>
     </message>
     <message>
         <source>(n/a)</source>
@@ -4095,26 +3949,6 @@ Bitte haben Sie Geduld...</translation>
     <message>
         <source>Masternode Reward</source>
         <translation>Masternode Vergütung</translation>
-    </message>
-    <message>
-        <source>Received Piv from zPiv</source>
-        <translation>Empfangen DTEM von zDTEM</translation>
-    </message>
-    <message>
-        <source>Zerocoin Mint</source>
-        <translation>Zerocoin Prägung</translation>
-    </message>
-    <message>
-        <source>Zerocoin Spend</source>
-        <translation>Zerocoin Ausgabe</translation>
-    </message>
-    <message>
-        <source>Zerocoin Spend, Change in zPiv</source>
-        <translation>Zerocoin Ausgabe, Wechselgeld in zDTEM</translation>
-    </message>
-    <message>
-        <source>Zerocoin Spend to Self</source>
-        <translation>Zerocoin Ausgabe an sich Selbst</translation>
     </message>
     <message>
         <source>Other</source>
@@ -4280,20 +4114,12 @@ Bitte haben Sie Geduld...</translation>
 <context>
     <name>ZPivControlDialog</name>
     <message>
-        <source>Select zPiv to Spend</source>
-        <translation>Auswahl zDTEM als Ausgabe</translation>
-    </message>
-    <message>
         <source>Quantity</source>
         <translation>Menge</translation>
     </message>
     <message>
         <source>0</source>
         <translation>0</translation>
-    </message>
-    <message>
-        <source>zPiv</source>
-        <translation>zDTEM</translation>
     </message>
     <message>
         <source>Select/Deselect All</source>
@@ -4587,14 +4413,6 @@ Bitte haben Sie Geduld...</translation>
         <translation>Neuscannen...</translation>
     </message>
     <message>
-        <source>ResetMintZerocoin finished: </source>
-        <translation>ResetMintZerocoin abgeschlossen: </translation>
-    </message>
-    <message>
-        <source>ResetSpentZerocoin finished: </source>
-        <translation>ResetSpentZerocoin abgeschlossen: </translation>
-    </message>
-    <message>
         <source>Show all debugging options (usage: --help -help-debug)</source>
         <translation>Zeige alle debugging Optionen (verwende: --help -help-debug)</translation>
     </message>
@@ -4817,14 +4635,6 @@ Bitte haben Sie Geduld...</translation>
     <message>
         <source>ZeroMQ notification options:</source>
         <translation>ZeroMQ Benachrichtigungsoptionen:</translation>
-    </message>
-    <message>
-        <source>Zerocoin options:</source>
-        <translation>Zerocoin Optionen:</translation>
-    </message>
-    <message>
-        <source>failed to validate zerocoin</source>
-        <translation>fehlgeschlagen beim Zerocoin validieren</translation>
     </message>
     <message>
         <source>on startup</source>

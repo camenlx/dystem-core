@@ -545,11 +545,6 @@
         <translation>Browse transaction history</translation>
     </message>
     <message>
-        <location line="+11"/>
-        <source>Privacy Actions for zDTEM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location line="+42"/>
         <source>E&amp;xit</source>
         <translation>E&amp;xit</translation>
@@ -2418,27 +2413,6 @@ https://www.transifex.com/dystem-project/dystem-project-translations</source>
         <translation>Map port using &amp;UPnP</translation>
     </message>
     <message>
-        <location line="-133"/>
-        <source>Percentage of incoming DTEM which get automatically converted to zDTEM via Zerocoin Protocol (min: 10%)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Percentage of autominted zDTEM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+30"/>
-        <location line="+16"/>
-        <source>Wait with automatic conversion to Zerocoin until enough DTEM for this denomination is available</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-13"/>
-        <source>Preferred Automint zDTEM Denomination</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location line="+114"/>
         <source>Connect to the DYSTEM network through a SOCKS5 proxy.</source>
         <translation type="unfinished"></translation>
@@ -2710,26 +2684,9 @@ https://www.transifex.com/dystem-project/dystem-project-translations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+35"/>
-        <source>zDTEM:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+7"/>
-        <source>Current percentage of zDTEM.
-If AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location line="+4"/>
         <location line="+66"/>
         <source>0 %</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-46"/>
-        <location line="+13"/>
-        <source>Locked DTEM or Masternode collaterals. These are excluded from zDTEM minting.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2747,37 +2704,13 @@ If AutoMint is enabled this percentage will settle around the configured AutoMin
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+7"/>
-        <location line="+10"/>
-        <source>Unlocked DTEMs. These can be used for zDTEM minting.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location line="-7"/>
         <source>Unlocked:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+77"/>
-        <source>Zerocoin Balance</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+14"/>
-        <location line="+104"/>
-        <source>Mature: more than 20 confirmation and more than 3 mints of the same denomination after it was minted.
-These zDTEM are spendable.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location line="-100"/>
         <source>Mature:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+23"/>
-        <location line="+35"/>
-        <source>All available zDTEM, unconfirmed and immature zDTEM included.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2804,13 +2737,6 @@ Immature: confirmed, but less than 3 mints of the same denomination after it was
         <location line="+1"/>
         <source>out of sync</source>
         <translation>out of sync</translation>
-    </message>
-    <message>
-        <location line="+93"/>
-        <source>Current percentage of zDTEM.
-If AutoMint is enabled this percentage will settle around the configured AutoMint percentage (default = 10%).
-</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+4"/>
@@ -2977,16 +2903,6 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+6"/>
-        <source>Zerocoin DTEM (zDTEM)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+25"/>
-        <source>Zerocoin Actions:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location line="+10"/>
         <source>The displayed information may be out of date. Your wallet automatically synchronizes with the DYSTEM network after a connection is established, but this process has not completed yet.</source>
         <translation type="unfinished"></translation>
@@ -2998,23 +2914,10 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="-43"/>
-        <location filename="../privacydialog.cpp" line="+150"/>
-        <location line="+113"/>
-        <source>Mint Zerocoin</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location line="+13"/>
         <location line="+329"/>
         <location line="+30"/>
         <source>0</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-349"/>
-        <location line="+629"/>
-        <source>zDTEM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3030,11 +2933,6 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
     <message>
         <location line="+13"/>
         <source>0.000 000 00 DTEM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+29"/>
-        <source>Reset Zerocoin Wallet DB. Deletes transactions that did not make it into the blockchain.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3056,11 +2954,6 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
         <location line="+22"/>
         <source>Amount:</source>
         <translation type="unfinished">Amount:</translation>
-    </message>
-    <message>
-        <location line="+91"/>
-        <source>Rescan the complete blockchain for  Zerocoin mints and their meta-data.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+3"/>
@@ -3088,46 +2981,8 @@ To enable AutoMint change &apos;enablezeromint=0&apos; to &apos;enablezeromint=1
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+37"/>
-        <source>Spend Zerocoin. Without &apos;Pay To:&apos; address creates payments to yourself.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <location filename="../privacydialog.cpp" line="+46"/>
-        <location line="+4"/>
-        <location line="+12"/>
-        <location line="+100"/>
-        <location line="+4"/>
-        <source>Spend Zerocoin</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+7"/>
-        <source>Available (mature and spendable) zDTEM for spending</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location line="+3"/>
         <source>Available Balance:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+16"/>
-        <source>Available (mature and spendable) zDTEM for spending
-
-zDTEM are mature when they have more than 20 confirmations AND more than 2 mints of the same denomination after them were minted</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+5"/>
-        <location line="+417"/>
-        <source>0 zDTEM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-394"/>
-        <source>Security Level for Zerocoin Transactions. More is better, but needs more time and resources.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3186,11 +3041,6 @@ zDTEM are mature when they have more than 20 confirmations AND more than 2 mints
         <translation type="unfinished">A&amp;mount:</translation>
     </message>
     <message>
-        <location line="+55"/>
-        <source>Convert Change to Zerocoin (might cost additional fees)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location line="+7"/>
         <source>If checked, the wallet tries to minimize the returning change instead of minimizing the number of spent denominations.</source>
         <translation type="unfinished"></translation>
@@ -3202,33 +3052,7 @@ zDTEM are mature when they have more than 20 confirmations AND more than 2 mints
     </message>
     <message>
         <location line="+52"/>
-        <source>Information about the available Zerocoin funds.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Zerocoin Stats:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+62"/>
-        <location line="+38"/>
-        <source>Total Balance including unconfirmed and immature zDTEM</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-35"/>
-        <source>Total Zerocoin  Balance:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+52"/>
         <source>Denominations with value 1:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+3"/>
-        <source>Denom. with value 1:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3422,18 +3246,6 @@ Immature: confirmed, but less than 2 mints of the same denomination after it was
         <translation type="unfinished">Copy amount</translation>
     </message>
     <message>
-        <location line="+45"/>
-        <location line="+3"/>
-        <source>zDTEM is currently disabled due to maintenance.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+50"/>
-        <location line="+113"/>
-        <source>zDTEM is currently undergoing maintenance.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location line="-99"/>
         <source>Error: Your wallet is locked. Please enter the wallet passphrase first.</source>
         <translation type="unfinished"></translation>
@@ -3454,20 +3266,9 @@ Immature: confirmed, but less than 2 mints of the same denomination after it was
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+0"/>
-        <source> zDTEM in </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location line="+1"/>
         <source> sec. Used denominations:
 </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+30"/>
-        <source>Starting ResetMintZerocoin: rescanning complete blockchain, this will need up to 30 minutes depending on your hardware. 
-Please be patient...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3483,11 +3284,6 @@ Please be patient...</source>
         <location line="+216"/>
         <source> sec.
 </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="-221"/>
-        <source>Starting ResetSpentZerocoin: </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3536,13 +3332,6 @@ Please be patient...</source>
         <translation type="unfinished">Confirm send coins</translation>
     </message>
     <message>
-        <location line="+11"/>
-        <source>Spending Zerocoin.
-Computationally expensive, might need several minutes depending on the selected Security Level and your hardware. 
-Please be patient...</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location line="+27"/>
         <source>Too much inputs (</source>
         <translation type="unfinished"></translation>
@@ -3557,12 +3346,6 @@ Maximum allowed: </source>
         <location line="+1"/>
         <source>
 Either mint higher denominations (so fewer inputs are needed) or reduce the amount to spend.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+2"/>
-        <location line="+4"/>
-        <source>Spend Zerocoin failed with status = </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5707,26 +5490,6 @@ Either mint higher denominations (so fewer inputs are needed) or reduce the amou
     </message>
     <message>
         <location line="+1"/>
-        <source>Zerocoin Mint</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Zerocoin Spend</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Zerocoin Spend, Change in zPiv</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Zerocoin Spend to Self</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
         <source>Other</source>
         <translation>Other</translation>
     </message>
@@ -6498,11 +6261,6 @@ for example: alertnotify=echo %%s | mail -s &quot;DYSTEM Alert&quot; admin@foo.c
         <translation type="unfinished">Done loading</translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Enable automatic Zerocoin minting (0-1, default: %u)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location line="+2"/>
         <source>Enable publish hash transaction (locked via SwiftX) in &lt;address&gt;</source>
         <translation type="unfinished"></translation>
@@ -6825,11 +6583,6 @@ for example: alertnotify=echo %%s | mail -s &quot;DYSTEM Alert&quot; admin@foo.c
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+38"/>
-        <source>Disable all DYSTEM specific functionality (Masternodes, Zerocoin, SwiftX, Budgeting) (0-1, default: %u)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location line="+6"/>
         <source>Enable SwiftX, show confirmations for locked transactions (bool, default: %s)</source>
         <translation type="unfinished"></translation>
@@ -6852,11 +6605,6 @@ for example: alertnotify=echo %%s | mail -s &quot;DYSTEM Alert&quot; admin@foo.c
     <message>
         <location line="+3"/>
         <source>Error: Unsupported argument -checklevel found. Checklevel must be level 4.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+58"/>
-        <source>Preferred Denomination for automatically minted Zerocoin  (1/5/10/50/100/500/1000/5000), 0 for no preference. default: %u)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -7126,11 +6874,6 @@ for example: alertnotify=echo %%s | mail -s &quot;DYSTEM Alert&quot; admin@foo.c
     </message>
     <message>
         <location line="+1"/>
-        <source>Percentage of automatically minted Zerocoin  (10-100, default: %u)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
         <source>Preparing for resync...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7213,16 +6956,6 @@ for example: alertnotify=echo %%s | mail -s &quot;DYSTEM Alert&quot; admin@foo.c
         <location line="+1"/>
         <source>Rescanning...</source>
         <translation type="unfinished">Rescanning...</translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>ResetMintZerocoin finished: </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>ResetSpentZerocoin finished: </source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+1"/>
@@ -7647,16 +7380,6 @@ for example: alertnotify=echo %%s | mail -s &quot;DYSTEM Alert&quot; admin@foo.c
     <message>
         <location line="+1"/>
         <source>ZeroMQ notification options:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>Zerocoin options:</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location line="+1"/>
-        <source>failed to validate zerocoin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
