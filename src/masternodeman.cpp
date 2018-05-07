@@ -729,7 +729,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
         int nDoS = 0;
         if (!mnb.CheckAndUpdate(nDoS)) {
             if (nDoS > 0)
-                Misbehaving(pfrom->GetId(), nDoS, _("masternodeman::ProcessMessage::ln 732"));
+                Misbehaving(pfrom->GetId(), nDoS, _("masternodeman::ProcessMessage::ln 732::Masternode DoS count greater than 0"));
 
             //failed
             return;
@@ -752,7 +752,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
             LogPrint("masternode","mnb - Rejected Masternode entry %s\n", mnb.vin.prevout.hash.ToString());
 
             if (nDoS > 0)
-                Misbehaving(pfrom->GetId(), nDoS, _("masternodeman::ProcessMessage::ln 755"));
+                Misbehaving(pfrom->GetId(), nDoS, _("masternodeman::ProcessMessage::ln 755::Masternode DoS count greater than 0"));
         }
     }
 
@@ -770,7 +770,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
 
         if (nDoS > 0) {
             // if anything significant failed, mark that node
-            Misbehaving(pfrom->GetId(), nDoS, _("masternodeman::ProcessMessage::ln 755"));
+            Misbehaving(pfrom->GetId(), nDoS, _("masternodeman::ProcessMessage::ln 755::Masternode DoS count greater than 0"));
         } else {
             // if nothing significant failed, search existing Masternode list
             CMasternode* pmn = Find(mnp.vin);
@@ -796,7 +796,8 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
                 if (i != mAskedUsForMasternodeList.end()) {
                     int64_t t = (*i).second;
                     if (GetTime() < t) {
-                        Misbehaving(pfrom->GetId(), 34, _("masternodeman::ProcessMessage::ln 799"));
+                        //AnonCodeBot - Fix this when MN's are online :: issue #075258
+                        //Misbehaving(pfrom->GetId(), 34, _("masternodeman::ProcessMessage::ln 799::Multiple duplicate requests for masternode list"));
                         LogPrint("masternode","dseg - peer already asked me for the list\n");
                         return;
                     }

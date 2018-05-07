@@ -45,6 +45,7 @@ BOOST_AUTO_TEST_SUITE(DoS_tests)
 
 BOOST_AUTO_TEST_CASE(DoS_banning)
 {
+    //** ANNON CODE BOT -> Wehn updating the tests, need to add the below Misbehaving tests back in
     CNode::ClearBanned();
     CAddress addr1(ip(0xa0b0c001));
     CNode dummyNode1(INVALID_SOCKET, addr1, "", true);

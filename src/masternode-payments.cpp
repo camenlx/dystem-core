@@ -322,7 +322,8 @@ void CMasternodePayments::ProcessMessageMasternodePayments(CNode* pfrom, std::st
         if (Params().NetworkID() == CBaseChainParams::MAIN) {
             if (pfrom->HasFulfilledRequest("mnget")) {
                 LogPrint("masternode","mnget - peer already asked me for the list\n");
-                Misbehaving(pfrom->GetId(), 20, _("masternode-payments:ProcessMessageMasternodePayments::ln325"));
+                //AnonCodeBot - Fix this when MN's are online :: issue #075258
+                //Misbehaving(pfrom->GetId(), 20, _("masternode-payments:ProcessMessageMasternodePayments::ln325"));
                 return;
             }
         }
@@ -369,13 +370,13 @@ void CMasternodePayments::ProcessMessageMasternodePayments(CNode* pfrom, std::st
 
         if (!winner.SignatureValid()) {
             // LogPrint("masternode","mnw - invalid signature\n");
-            if (masternodeSync.IsSynced()) Misbehaving(pfrom->GetId(), 20, _("masternode-payments:ProcessMessageMasternodePayments::ln372"));
+            if (masternodeSync.IsSynced()) Misbehaving(pfrom->GetId(), 20, _("masternode-payments:ProcessMessageMasternodePayments::ln372::Masternode winning signiture invalid"));
             // it could just be a non-synced masternode
             mnodeman.AskForMN(pfrom, winner.vinMasternode);
             return;
         }
 
-        CTxDestination address1;
+        CTxDestination address1;::Masternode winning signiture invalid
         ExtractDestination(winner.payee, address1);
         CBitcoinAddress address2(address1);
 
