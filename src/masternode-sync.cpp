@@ -146,9 +146,9 @@ void CMasternodeSync::GetNextAsset()
     case (MASTERNODE_SYNC_INITIAL):
     case (MASTERNODE_SYNC_FAILED): // should never be used here actually, use Reset() instead
         ClearFulfilledRequest();
-        RequestedMasternodeAssets = MASTERNODE_SYNC_SPORKS;
+        RequestedMasternodeAssets = MASTERNODE_WARM_UP;
         break;
-    case (MASTERNODE_SYNC_SPORKS):
+    case (MASTERNODE_WARM_UP):
         RequestedMasternodeAssets = MASTERNODE_SYNC_LIST;
         break;
     case (MASTERNODE_SYNC_LIST):
@@ -170,8 +170,8 @@ std::string CMasternodeSync::GetSyncStatus()
     switch (masternodeSync.RequestedMasternodeAssets) {
     case MASTERNODE_SYNC_INITIAL:
         return _("Synchronization pending...");
-    case MASTERNODE_SYNC_SPORKS:
-        return _("Synchronizing sporks...");
+    case MASTERNODE_WARM_UP:
+        return _("Warming up...");
     case MASTERNODE_SYNC_LIST:
         return _("Synchronizing masternodes...");
     case MASTERNODE_SYNC_MNW:
@@ -264,7 +264,7 @@ void CMasternodeSync::Process()
 
     // Blockchain is not synd, wait until we're almost at a recent block to continue
     if (Params().NetworkID() != CBaseChainParams::REGTEST &&
-        !IsBlockchainSynced() && RequestedMasternodeAssets > MASTERNODE_SYNC_SPORKS ) {
+        !IsBlockchainSynced() && RequestedMasternodeAssets > MASTERNODE_WARM_UP ) {
         return;
     }
 
@@ -272,8 +272,6 @@ void CMasternodeSync::Process()
     if (!lockRecv) return;
 
     BOOST_FOREACH (CNode* pnode, vNodes) {
-        //AnonCoder bot NEED TO RE AD THIS FOR THE TESTS
-/*
         if (Params().NetworkID() == CBaseChainParams::REGTEST) {
             if (RequestedMasternodeAttempt <= 2) {
                 mnodeman.DsegUpdate(pnode);
@@ -288,12 +286,13 @@ void CMasternodeSync::Process()
             RequestedMasternodeAttempt++;
             return;
         }
-*/
 
         //set to synced
-        if (RequestedMasternodeAssets == MASTERNODE_SYNC_SPORKS) {
-            if (RequestedMasternodeAttempt >= 2) GetNextAsset();
-            RequestedMasternodeAttempt++;
+        if (RequestedMasternodeAssets == MASTERNODE_WARM_UP) {
+            
+            GetNextAsset();
+            //if (RequestedMasternodeAttempt >= 2) GetNextAsset();
+            //RequestedMasternodeAttempt++;
             return;
         }
 
