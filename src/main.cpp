@@ -5119,7 +5119,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
                  strCommand == "filteradd" ||
                  strCommand == "filterclear")) {
         LogPrintf("bloom message=%s\n", strCommand);
-        Misbehaving(pfrom->GetId(), 100, _("main::ProcessMessage::ln5122::bloom message=%s\n",strCommand));
+        Misbehaving(pfrom->GetId(), 100, _("main::ProcessMessage::ln5122::bloom message=SEE ABOVE"));
     }
 
     else if (strCommand == "filterload") {
