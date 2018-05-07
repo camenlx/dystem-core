@@ -289,10 +289,7 @@ void CMasternodeSync::Process()
 
         //set to synced
         if (RequestedMasternodeAssets == MASTERNODE_WARM_UP) {
-            
             GetNextAsset();
-            //if (RequestedMasternodeAttempt >= 2) GetNextAsset();
-            //RequestedMasternodeAttempt++;
             return;
         }
 
