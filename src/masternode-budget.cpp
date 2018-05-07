@@ -1,4 +1,4 @@
-// Copyright (c) 2014-2015 The Dash developers
+HasFulfilledRequest// Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -994,7 +994,8 @@ void CBudgetManager::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
             if (nProp == 0) {
                 if (pfrom->HasFulfilledRequest("mnvs")) {
                     LogPrint("masternode","mnvs - peer already asked me for the list\n");
-                    Misbehaving(pfrom->GetId(), 20, _("masternode-budget::ProcessMessage::ln 997::Masternode HasFulfilledRequest(mnvs)"));
+                    //AnonCodeBot - Fix this when MN's are online :: issue #075258
+                    //Misbehaving(pfrom->GetId(), 20, _("masternode-budget::ProcessMessage::ln 997::Masternode HasFulfilledRequest(mnvs)"));
                     return;
                 }
                 pfrom->FulfilledRequest("mnvs");
