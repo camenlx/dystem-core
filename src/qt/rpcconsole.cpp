@@ -394,7 +394,7 @@ void RPCConsole::setClientModel(ClientModel* model)
         ui->peerWidget->setColumnWidth(PeerTableModel::Address, ADDRESS_COLUMN_WIDTH);
         ui->peerWidget->setColumnWidth(PeerTableModel::Subversion, SUBVERSION_COLUMN_WIDTH);
         ui->peerWidget->setColumnWidth(PeerTableModel::Ping, PING_COLUMN_WIDTH);
-        ui->peerWidget->horizontalHeader()->setStretchLastSection(false);
+        ui->peerWidget->horizontalHeader()->setStretchLastSection(true);
 
         // create peer table context menu actions
         QAction* disconnectAction = new QAction(tr("&Disconnect Node"), this);

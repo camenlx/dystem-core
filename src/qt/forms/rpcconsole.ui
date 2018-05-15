@@ -39,7 +39,7 @@
       </font>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="tab_info">
       <attribute name="title">
@@ -863,6 +863,9 @@
            </property>
            <attribute name="horizontalHeaderHighlightSections">
             <bool>false</bool>
+           </attribute>
+           <attribute name="verticalHeaderMinimumSectionSize">
+            <number>100</number>
            </attribute>
           </widget>
          </item>
