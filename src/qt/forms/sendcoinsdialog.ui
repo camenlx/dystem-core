@@ -53,7 +53,7 @@
          <number>0</number>
         </property>
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_Header" stretch="">
+         <layout class="QHBoxLayout" name="horizontalLayout_Header">
           <property name="spacing">
            <number>6</number>
           </property>
@@ -157,6 +157,7 @@
                     </property>
                     <property name="font">
                      <font>
+                      <family>Open Sans</family>
                       <pointsize>12</pointsize>
                       <weight>75</weight>
                       <bold>true</bold>
@@ -203,6 +204,11 @@
                 </property>
                 <item>
                  <widget class="QPushButton" name="pushButtonCoinControl">
+                  <property name="font">
+                   <font>
+                    <family>Open Sans</family>
+                   </font>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true"/>
                   </property>
@@ -216,6 +222,11 @@
                 </item>
                 <item>
                  <widget class="QLabel" name="labelCoinControlAutomaticallySelected">
+                  <property name="font">
+                   <font>
+                    <family>Open Sans</family>
+                   </font>
+                  </property>
                   <property name="text">
                    <string>Coins automatically selected</string>
                   </property>
@@ -228,6 +239,7 @@
                  <widget class="QLabel" name="labelCoinControlInsuffFunds">
                   <property name="font">
                    <font>
+                    <family>Open Sans</family>
                     <weight>75</weight>
                     <bold>true</bold>
                    </font>
@@ -320,6 +332,7 @@
                       <widget class="QLabel" name="labelCoinControlQuantityText">
                        <property name="font">
                         <font>
+                         <family>Open Sans</family>
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
@@ -355,6 +368,7 @@
                       <widget class="QLabel" name="labelCoinControlBytesText">
                        <property name="font">
                         <font>
+                         <family>Open Sans</family>
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
@@ -403,6 +417,7 @@
                       <widget class="QLabel" name="labelCoinControlAmountText">
                        <property name="font">
                         <font>
+                         <family>Open Sans</family>
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
@@ -417,6 +432,11 @@
                      </item>
                      <item row="0" column="1">
                       <widget class="QLabel" name="labelCoinControlAmount">
+                       <property name="font">
+                        <font>
+                         <family>Open Sans</family>
+                        </font>
+                       </property>
                        <property name="cursor">
                         <cursorShape>IBeamCursor</cursorShape>
                        </property>
@@ -435,6 +455,7 @@
                       <widget class="QLabel" name="labelCoinControlPriorityText">
                        <property name="font">
                         <font>
+                         <family>Open Sans</family>
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
@@ -446,6 +467,11 @@
                      </item>
                      <item row="1" column="1">
                       <widget class="QLabel" name="labelCoinControlPriority">
+                       <property name="font">
+                        <font>
+                         <family>Open Sans</family>
+                        </font>
+                       </property>
                        <property name="cursor">
                         <cursorShape>IBeamCursor</cursorShape>
                        </property>
@@ -483,6 +509,7 @@
                       <widget class="QLabel" name="labelCoinControlFeeText">
                        <property name="font">
                         <font>
+                         <family>Open Sans</family>
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
@@ -497,6 +524,11 @@
                      </item>
                      <item row="0" column="1">
                       <widget class="QLabel" name="labelCoinControlFee">
+                       <property name="font">
+                        <font>
+                         <family>Open Sans</family>
+                        </font>
+                       </property>
                        <property name="cursor">
                         <cursorShape>IBeamCursor</cursorShape>
                        </property>
@@ -515,6 +547,7 @@
                       <widget class="QLabel" name="labelCoinControlLowOutputText">
                        <property name="font">
                         <font>
+                         <family>Open Sans</family>
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
@@ -526,6 +559,11 @@
                      </item>
                      <item row="1" column="1">
                       <widget class="QLabel" name="labelCoinControlLowOutput">
+                       <property name="font">
+                        <font>
+                         <family>Open Sans</family>
+                        </font>
+                       </property>
                        <property name="cursor">
                         <cursorShape>IBeamCursor</cursorShape>
                        </property>
@@ -563,6 +601,7 @@
                       <widget class="QLabel" name="labelCoinControlAfterFeeText">
                        <property name="font">
                         <font>
+                         <family>Open Sans</family>
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
@@ -577,6 +616,11 @@
                      </item>
                      <item row="0" column="1">
                       <widget class="QLabel" name="labelCoinControlAfterFee">
+                       <property name="font">
+                        <font>
+                         <family>Open Sans</family>
+                        </font>
+                       </property>
                        <property name="cursor">
                         <cursorShape>IBeamCursor</cursorShape>
                        </property>
@@ -595,6 +639,7 @@
                       <widget class="QLabel" name="labelCoinControlChangeText">
                        <property name="font">
                         <font>
+                         <family>Open Sans</family>
                          <weight>75</weight>
                          <bold>true</bold>
                         </font>
@@ -606,6 +651,11 @@
                      </item>
                      <item row="1" column="1">
                       <widget class="QLabel" name="labelCoinControlChange">
+                       <property name="font">
+                        <font>
+                         <family>Open Sans</family>
+                        </font>
+                       </property>
                        <property name="cursor">
                         <cursorShape>IBeamCursor</cursorShape>
                        </property>
@@ -660,6 +710,11 @@
                     <width>200</width>
                     <height>16777215</height>
                    </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Open Sans</family>
+                   </font>
                   </property>
                   <property name="toolTip">
                    <string>If this is activated, but the change address is empty or invalid, change will be sent to a newly generated address.</string>
@@ -740,6 +795,11 @@
                     <height>16777215</height>
                    </size>
                   </property>
+                  <property name="font">
+                   <font>
+                    <family>Open Sans</family>
+                   </font>
+                  </property>
                   <property name="text">
                    <string>Split UTXO</string>
                   </property>
@@ -772,6 +832,11 @@
                 </item>
                 <item>
                  <widget class="QLabel" name="labelBlockSizeText">
+                  <property name="font">
+                   <font>
+                    <family>Open Sans</family>
+                   </font>
+                  </property>
                   <property name="text">
                    <string>UTXO Size:</string>
                   </property>
@@ -779,6 +844,11 @@
                 </item>
                 <item>
                  <widget class="QLabel" name="labelBlockSize">
+                  <property name="font">
+                   <font>
+                    <family>Open Sans</family>
+                   </font>
+                  </property>
                   <property name="text">
                    <string>0 DTEM</string>
                   </property>
@@ -829,7 +899,7 @@
              <x>0</x>
              <y>0</y>
              <width>938</width>
-             <height>87</height>
+             <height>73</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,1">
@@ -960,6 +1030,7 @@
                      </property>
                      <property name="font">
                       <font>
+                       <family>Open Sans</family>
                        <weight>75</weight>
                        <bold>true</bold>
                       </font>
@@ -981,6 +1052,11 @@
                    </item>
                    <item>
                     <widget class="QPushButton" name="buttonChooseFee">
+                     <property name="font">
+                      <font>
+                       <family>Open Sans</family>
+                      </font>
+                     </property>
                      <property name="text">
                       <string>Choose...</string>
                      </property>
@@ -988,6 +1064,11 @@
                    </item>
                    <item>
                     <widget class="QPushButton" name="buttonMinimizeFee">
+                     <property name="font">
+                      <font>
+                       <family>Open Sans</family>
+                      </font>
+                     </property>
                      <property name="toolTip">
                       <string>collapse fee-settings</string>
                      </property>
@@ -1106,6 +1187,11 @@
                   </item>
                   <item row="3" column="1">
                    <widget class="QLabel" name="labelCustomFee">
+                    <property name="font">
+                     <font>
+                      <family>Open Sans</family>
+                     </font>
+                    </property>
                     <property name="text">
                      <string>Custom:</string>
                     </property>
@@ -1123,6 +1209,11 @@
                      <layout class="QHBoxLayout" name="horizontalLayoutFee13">
                       <item>
                        <widget class="QRadioButton" name="radioCustomPerKilobyte">
+                        <property name="font">
+                         <font>
+                          <family>Open Sans</family>
+                         </font>
+                        </property>
                         <property name="toolTip">
                          <string>If the custom fee is set to 1000 uDTEMs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uDTEMs in fee,&lt;br /&gt;while &quot;at least&quot; pays 1000 uDTEMs. For transactions bigger than a kilobyte both pay by kilobyte.</string>
                         </property>
@@ -1139,6 +1230,11 @@
                       </item>
                       <item>
                        <widget class="QRadioButton" name="radioCustomAtLeast">
+                        <property name="font">
+                         <font>
+                          <family>Open Sans</family>
+                         </font>
+                        </property>
                         <property name="toolTip">
                          <string>If the custom fee is set to 1000 uDTEMs and the transaction is only 250 bytes, then &quot;per kilobyte&quot; only pays 250 uDTEMs in fee,&lt;br /&gt;while &quot;total at least&quot; pays 1000 uDTEMs. For transactions bigger than a kilobyte both pay by kilobyte.</string>
                         </property>
@@ -1185,6 +1281,11 @@
                         <property name="enabled">
                          <bool>true</bool>
                         </property>
+                        <property name="font">
+                         <font>
+                          <family>Open Sans</family>
+                         </font>
+                        </property>
                         <property name="toolTip">
                          <string>Paying only the minimum fee is just fine as long as there is less transaction volume than space in the blocks.&lt;br /&gt;But be aware that this can end up in a never confirming transaction once there is more demand for DYSTEM transactions than the network can process.</string>
                         </property>
@@ -1215,6 +1316,11 @@
                   </item>
                   <item row="1" column="1">
                    <widget class="QLabel" name="labelSmartFee_2">
+                    <property name="font">
+                     <font>
+                      <family>Open Sans</family>
+                     </font>
+                    </property>
                     <property name="text">
                      <string>Recommended</string>
                     </property>
@@ -1235,6 +1341,11 @@
                      <layout class="QHBoxLayout" name="horizontalLayoutFee9">
                       <item>
                        <widget class="QLabel" name="labelSmartFee3">
+                        <property name="font">
+                         <font>
+                          <family>Open Sans</family>
+                         </font>
+                        </property>
                         <property name="text">
                          <string>Confirmation time:</string>
                         </property>
@@ -1245,6 +1356,11 @@
                       </item>
                       <item>
                        <widget class="QLabel" name="labelSmartFeeNormal">
+                        <property name="font">
+                         <font>
+                          <family>Open Sans</family>
+                         </font>
+                        </property>
                         <property name="text">
                          <string>normal</string>
                         </property>
@@ -1326,6 +1442,11 @@
                       </item>
                       <item>
                        <widget class="QLabel" name="labelSmartFee2">
+                        <property name="font">
+                         <font>
+                          <family>Open Sans</family>
+                         </font>
+                        </property>
                         <property name="text">
                          <string>(Smart fee not initialized yet. This usually takes a few blocks...)</string>
                         </property>
@@ -1457,6 +1578,11 @@
                   </property>
                   <item>
                    <widget class="QCheckBox" name="checkBoxFreeTx">
+                    <property name="font">
+                     <font>
+                      <family>Open Sans</family>
+                     </font>
+                    </property>
                     <property name="text">
                      <string>Send as zero-fee transaction if possible</string>
                     </property>
@@ -1535,6 +1661,11 @@
                <height>0</height>
               </size>
              </property>
+             <property name="font">
+              <font>
+               <family>Open Sans</family>
+              </font>
+             </property>
              <property name="toolTip">
               <string>Confirm the send action</string>
              </property>
@@ -1561,6 +1692,11 @@
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="font">
+              <font>
+               <family>Open Sans</family>
+              </font>
+             </property>
              <property name="toolTip">
               <string>Clear all fields of the form.</string>
              </property>
@@ -1578,6 +1714,11 @@
            </item>
            <item>
             <widget class="QPushButton" name="addButton">
+             <property name="font">
+              <font>
+               <family>Open Sans</family>
+              </font>
+             </property>
              <property name="toolTip">
               <string>Send to multiple recipients at once</string>
              </property>
@@ -1622,6 +1763,11 @@
                  <height>0</height>
                 </size>
                </property>
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
+               </property>
                <property name="text">
                 <string>SwiftX</string>
                </property>
@@ -1629,6 +1775,11 @@
              </item>
              <item>
               <widget class="QLabel" name="label">
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
+               </property>
                <property name="text">
                 <string>Balance:</string>
                </property>
@@ -1641,6 +1792,11 @@
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
                </property>
                <property name="cursor">
                 <cursorShape>IBeamCursor</cursorShape>

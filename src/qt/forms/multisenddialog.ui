@@ -35,7 +35,7 @@
       <widget class="QLabel" name="label_2">
        <property name="font">
         <font>
-         <family>Helvetica</family>
+         <family>Open Sans</family>
         </font>
        </property>
        <property name="lineWidth">
@@ -82,7 +82,7 @@ MultiSend will not be activated unless you have clicked Activate</string>
           <widget class="QCheckBox" name="multiSendStakeCheckBox">
            <property name="font">
             <font>
-             <family>Helvetica</family>
+             <family>Open Sans</family>
             </font>
            </property>
            <property name="text">
@@ -94,7 +94,7 @@ MultiSend will not be activated unless you have clicked Activate</string>
           <widget class="QCheckBox" name="multiSendMasternodeCheckBox">
            <property name="font">
             <font>
-             <family>Helvetica</family>
+             <family>Open Sans</family>
             </font>
            </property>
            <property name="text">
@@ -116,7 +116,7 @@ MultiSend will not be activated unless you have clicked Activate</string>
            </property>
            <property name="font">
             <font>
-             <family>Helvetica</family>
+             <family>Open Sans</family>
             </font>
            </property>
            <property name="toolTip">
@@ -131,7 +131,7 @@ MultiSend will not be activated unless you have clicked Activate</string>
           <widget class="QLineEdit" name="multiSendPercentEdit">
            <property name="font">
             <font>
-             <family>Helvetica</family>
+             <family>Open Sans</family>
             </font>
            </property>
            <property name="toolTip">
@@ -156,7 +156,7 @@ MultiSend will not be activated unless you have clicked Activate</string>
            </property>
            <property name="font">
             <font>
-             <family>Helvetica</family>
+             <family>Open Sans</family>
             </font>
            </property>
            <property name="toolTip">
@@ -171,7 +171,7 @@ MultiSend will not be activated unless you have clicked Activate</string>
           <widget class="QLineEdit" name="multiSendAddressEdit">
            <property name="font">
             <font>
-             <family>Helvetica</family>
+             <family>Open Sans</family>
             </font>
            </property>
            <property name="toolTip">
@@ -221,7 +221,7 @@ MultiSend will not be activated unless you have clicked Activate</string>
          </property>
          <property name="font">
           <font>
-           <family>Helvetica</family>
+           <family>Open Sans</family>
           </font>
          </property>
          <property name="text">
@@ -233,7 +233,7 @@ MultiSend will not be activated unless you have clicked Activate</string>
         <widget class="QLineEdit" name="labelAddressLabelEdit">
          <property name="font">
           <font>
-           <family>Helvetica</family>
+           <family>Open Sans</family>
           </font>
          </property>
          <property name="placeholderText">
@@ -270,7 +270,7 @@ MultiSend will not be activated unless you have clicked Activate</string>
           <widget class="QPushButton" name="viewButton">
            <property name="font">
             <font>
-             <family>Helvetica</family>
+             <family>Open Sans</family>
             </font>
            </property>
            <property name="toolTip">
@@ -292,7 +292,7 @@ MultiSend will not be activated unless you have clicked Activate</string>
           <widget class="QPushButton" name="addButton">
            <property name="font">
             <font>
-             <family>Helvetica</family>
+             <family>Open Sans</family>
             </font>
            </property>
            <property name="toolTip">
@@ -310,7 +310,7 @@ MultiSend will not be activated unless you have clicked Activate</string>
           <widget class="QPushButton" name="deleteButton">
            <property name="font">
             <font>
-             <family>Helvetica</family>
+             <family>Open Sans</family>
             </font>
            </property>
            <property name="toolTip">
@@ -332,7 +332,7 @@ MultiSend will not be activated unless you have clicked Activate</string>
           <widget class="QPushButton" name="activateButton">
            <property name="font">
             <font>
-             <family>Helvetica</family>
+             <family>Open Sans</family>
             </font>
            </property>
            <property name="statusTip">
@@ -347,7 +347,7 @@ MultiSend will not be activated unless you have clicked Activate</string>
           <widget class="QPushButton" name="disableButton">
            <property name="font">
             <font>
-             <family>Helvetica</family>
+             <family>Open Sans</family>
             </font>
            </property>
            <property name="statusTip">
@@ -369,6 +369,11 @@ MultiSend will not be activated unless you have clicked Activate</string>
          <width>0</width>
          <height>180</height>
         </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Open Sans</family>
+        </font>
        </property>
        <property name="frameShape">
         <enum>QFrame::Panel</enum>

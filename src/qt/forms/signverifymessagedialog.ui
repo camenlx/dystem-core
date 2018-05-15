@@ -34,6 +34,11 @@
       <layout class="QVBoxLayout" name="verticalLayout_SM">
        <item>
         <widget class="QLabel" name="infoLabel_SM">
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string>You can sign messages with your addresses to prove you own them. Be careful not to sign anything vague, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</string>
          </property>
@@ -49,6 +54,11 @@
         <layout class="QHBoxLayout" name="horizontalLayout_1_SM">
          <item>
           <widget class="QValidatedLineEdit" name="addressIn_SM">
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
            <property name="toolTip">
             <string>The DYSTEM address to sign the message with</string>
            </property>
@@ -92,6 +102,11 @@
        </item>
        <item>
         <widget class="QPlainTextEdit" name="messageIn_SM">
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="toolTip">
           <string>Enter the message you want to sign here</string>
          </property>
@@ -99,6 +114,11 @@
        </item>
        <item>
         <widget class="QLabel" name="signatureLabel_SM">
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string>Signature</string>
          </property>
@@ -113,6 +133,7 @@
           <widget class="QLineEdit" name="signatureOut_SM">
            <property name="font">
             <font>
+             <family>Open Sans</family>
              <italic>true</italic>
             </font>
            </property>
@@ -141,6 +162,11 @@
         <layout class="QHBoxLayout" name="horizontalLayout_3_SM">
          <item>
           <widget class="QPushButton" name="signMessageButton_SM">
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
            <property name="toolTip">
             <string>Sign the message to prove you own this DYSTEM address</string>
            </property>
@@ -158,6 +184,11 @@
          </item>
          <item>
           <widget class="QPushButton" name="clearButton_SM">
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
            <property name="toolTip">
             <string>Reset all sign message fields</string>
            </property>

@@ -25,7 +25,7 @@
       </font>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="tabBip38Encrypt">
       <attribute name="title">
@@ -312,6 +312,11 @@
       <layout class="QVBoxLayout" name="verticalLayout_VM">
        <item>
         <widget class="QLabel" name="infoLabel_DEC">
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string>Enter the BIP 38 encrypted private key. Enter the passphrase in the middle box. Click Decrypt Key to compute the private key. After the key is decrypted, clicking 'Import Address' will add this private key to the wallet.</string>
          </property>
@@ -333,6 +338,11 @@
              <height>0</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
            <property name="text">
             <string>Encrypted Key:</string>
            </property>
@@ -343,6 +353,11 @@
          </item>
          <item>
           <widget class="QValidatedLineEdit" name="encryptedKeyIn_DEC">
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
            <property name="toolTip">
             <string>The encrypted private key</string>
            </property>
@@ -377,6 +392,11 @@
              <height>0</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
            <property name="text">
             <string>Passphrase: </string>
            </property>
@@ -387,6 +407,11 @@
          </item>
          <item>
           <widget class="QLineEdit" name="passphraseIn_DEC">
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
            <property name="echoMode">
             <enum>QLineEdit::Password</enum>
            </property>
@@ -398,6 +423,11 @@
         <layout class="QHBoxLayout" name="horizontalLayout_2_DEC">
          <item>
           <widget class="QPushButton" name="decryptKeyButton_DEC">
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
            <property name="toolTip">
             <string>Decrypt the entered key using the passphrase</string>
            </property>
@@ -415,6 +445,11 @@
          </item>
          <item>
           <widget class="QPushButton" name="clearButton_DEC">
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
            <property name="toolTip">
             <string>Reset all fields</string>
            </property>
@@ -478,13 +513,24 @@
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
           <widget class="QLabel" name="label_3">
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
            <property name="text">
             <string>Decrypted Key:</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QValidatedLineEdit" name="decryptedKeyOut_DEC"/>
+          <widget class="QValidatedLineEdit" name="decryptedKeyOut_DEC">
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
@@ -492,6 +538,11 @@
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item>
           <widget class="QPushButton" name="importAddressButton_DEC">
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
            <property name="text">
             <string>Import Address</string>
            </property>
@@ -499,13 +550,24 @@
          </item>
          <item>
           <widget class="QLabel" name="label_4">
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
            <property name="text">
             <string>Address:</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="addressOut_DEC"/>
+          <widget class="QLineEdit" name="addressOut_DEC">
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>

@@ -550,7 +550,6 @@ WalletModel::UnlockContext WalletModel::requestUnlock(AskPassphraseDialog::Conte
     bool valid = getEncryptionStatus() != Locked;
 
     return UnlockContext(valid, relock);
-    //    return UnlockContext(this, valid, was_locked && !isAnonymizeOnlyUnlocked());
 }
 
 WalletModel::UnlockContext::UnlockContext(bool valid, bool relock) : valid(valid), relock(relock)
@@ -559,11 +558,9 @@ WalletModel::UnlockContext::UnlockContext(bool valid, bool relock) : valid(valid
 
 WalletModel::UnlockContext::~UnlockContext()
 {
-/*
     if (valid && relock) {
         wallet->setWalletLocked(true);
     }
-*/
 }
 
 void WalletModel::UnlockContext::CopyFrom(const UnlockContext& rhs)

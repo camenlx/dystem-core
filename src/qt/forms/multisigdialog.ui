@@ -31,7 +31,7 @@
       <string notr="true">QScrollArea{border: 1px solid #5b4c7c;}</string>
      </property>
      <property name="currentIndex">
-      <number>2</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="addMultisigTab">
       <property name="sizePolicy">

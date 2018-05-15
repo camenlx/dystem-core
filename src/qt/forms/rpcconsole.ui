@@ -39,7 +39,7 @@
       </font>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="tab_info">
       <attribute name="title">
@@ -855,6 +855,11 @@
          </property>
          <item>
           <widget class="QTableView" name="peerWidget">
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
            <property name="horizontalScrollBarPolicy">
             <enum>Qt::ScrollBarAsNeeded</enum>
            </property>
@@ -891,6 +896,7 @@
            </property>
            <property name="font">
             <font>
+             <family>Open Sans</family>
              <pointsize>12</pointsize>
             </font>
            </property>
@@ -918,6 +924,11 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
            </property>
            <property name="horizontalScrollBarPolicy">
             <enum>Qt::ScrollBarAsNeeded</enum>
@@ -948,6 +959,7 @@
          </property>
          <property name="font">
           <font>
+           <family>Open Sans</family>
            <pointsize>10</pointsize>
            <weight>75</weight>
            <bold>true</bold>
@@ -981,6 +993,11 @@
          <layout class="QGridLayout" name="gridLayout_3">
           <item row="0" column="0">
            <widget class="QLabel" name="label_30">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="text">
              <string>Whitelisted</string>
             </property>
@@ -988,6 +1005,11 @@
           </item>
           <item row="0" column="2">
            <widget class="QLabel" name="peerWhitelisted">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="cursor">
              <cursorShape>IBeamCursor</cursorShape>
             </property>
@@ -1004,6 +1026,11 @@
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="label_23">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="text">
              <string>Direction</string>
             </property>
@@ -1011,6 +1038,11 @@
           </item>
           <item row="1" column="2">
            <widget class="QLabel" name="peerDirection">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="cursor">
              <cursorShape>IBeamCursor</cursorShape>
             </property>
@@ -1027,6 +1059,11 @@
           </item>
           <item row="2" column="0">
            <widget class="QLabel" name="label_21">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="text">
              <string>Protocol</string>
             </property>
@@ -1034,6 +1071,11 @@
           </item>
           <item row="2" column="2">
            <widget class="QLabel" name="peerVersion">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="cursor">
              <cursorShape>IBeamCursor</cursorShape>
             </property>
@@ -1050,6 +1092,11 @@
           </item>
           <item row="3" column="0">
            <widget class="QLabel" name="label_28">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="text">
              <string>Version</string>
             </property>
@@ -1057,6 +1104,11 @@
           </item>
           <item row="3" column="2">
            <widget class="QLabel" name="peerSubversion">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="cursor">
              <cursorShape>IBeamCursor</cursorShape>
             </property>
@@ -1073,6 +1125,11 @@
           </item>
           <item row="4" column="0">
            <widget class="QLabel" name="label_4">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="text">
              <string>Services</string>
             </property>
@@ -1080,6 +1137,11 @@
           </item>
           <item row="4" column="2">
            <widget class="QLabel" name="peerServices">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="cursor">
              <cursorShape>IBeamCursor</cursorShape>
             </property>
@@ -1096,6 +1158,11 @@
           </item>
           <item row="5" column="0">
            <widget class="QLabel" name="label_29">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="text">
              <string>Starting Block</string>
             </property>
@@ -1103,6 +1170,11 @@
           </item>
           <item row="5" column="2">
            <widget class="QLabel" name="peerHeight">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="cursor">
              <cursorShape>IBeamCursor</cursorShape>
             </property>
@@ -1119,6 +1191,11 @@
           </item>
           <item row="6" column="0">
            <widget class="QLabel" name="label_27">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="text">
              <string>Synced Headers</string>
             </property>
@@ -1126,6 +1203,11 @@
           </item>
           <item row="6" column="2">
            <widget class="QLabel" name="peerSyncHeight">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="cursor">
              <cursorShape>IBeamCursor</cursorShape>
             </property>
@@ -1142,6 +1224,11 @@
           </item>
           <item row="7" column="0">
            <widget class="QLabel" name="label_25">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="text">
              <string>Synced Blocks</string>
             </property>
@@ -1149,6 +1236,11 @@
           </item>
           <item row="7" column="2">
            <widget class="QLabel" name="peerCommonHeight">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="cursor">
              <cursorShape>IBeamCursor</cursorShape>
             </property>
@@ -1165,6 +1257,11 @@
           </item>
           <item row="8" column="0">
            <widget class="QLabel" name="label_24">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="text">
              <string>Ban Score</string>
             </property>
@@ -1172,6 +1269,11 @@
           </item>
           <item row="8" column="2">
            <widget class="QLabel" name="peerBanScore">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="cursor">
              <cursorShape>IBeamCursor</cursorShape>
             </property>
@@ -1188,6 +1290,11 @@
           </item>
           <item row="9" column="0">
            <widget class="QLabel" name="label_22">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="text">
              <string>Connection Time</string>
             </property>
@@ -1195,6 +1302,11 @@
           </item>
           <item row="9" column="2">
            <widget class="QLabel" name="peerConnTime">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="cursor">
              <cursorShape>IBeamCursor</cursorShape>
             </property>
@@ -1211,6 +1323,11 @@
           </item>
           <item row="10" column="0">
            <widget class="QLabel" name="label_15">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="text">
              <string>Last Send</string>
             </property>
@@ -1218,6 +1335,11 @@
           </item>
           <item row="10" column="2">
            <widget class="QLabel" name="peerLastSend">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="cursor">
              <cursorShape>IBeamCursor</cursorShape>
             </property>
@@ -1234,6 +1356,11 @@
           </item>
           <item row="11" column="0">
            <widget class="QLabel" name="label_19">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="text">
              <string>Last Receive</string>
             </property>
@@ -1241,6 +1368,11 @@
           </item>
           <item row="11" column="2">
            <widget class="QLabel" name="peerLastRecv">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="cursor">
              <cursorShape>IBeamCursor</cursorShape>
             </property>
@@ -1257,6 +1389,11 @@
           </item>
           <item row="12" column="0">
            <widget class="QLabel" name="label_18">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="text">
              <string>Bytes Sent</string>
             </property>
@@ -1264,6 +1401,11 @@
           </item>
           <item row="12" column="2">
            <widget class="QLabel" name="peerBytesSent">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="cursor">
              <cursorShape>IBeamCursor</cursorShape>
             </property>
@@ -1280,6 +1422,11 @@
           </item>
           <item row="13" column="0">
            <widget class="QLabel" name="label_20">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="text">
              <string>Bytes Received</string>
             </property>
@@ -1287,6 +1434,11 @@
           </item>
           <item row="13" column="2">
            <widget class="QLabel" name="peerBytesRecv">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="cursor">
              <cursorShape>IBeamCursor</cursorShape>
             </property>
@@ -1303,6 +1455,11 @@
           </item>
           <item row="14" column="0">
            <widget class="QLabel" name="label_26">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="text">
              <string>Ping Time</string>
             </property>
@@ -1310,6 +1467,11 @@
           </item>
           <item row="14" column="2">
            <widget class="QLabel" name="peerPingTime">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="cursor">
              <cursorShape>IBeamCursor</cursorShape>
             </property>
@@ -1326,6 +1488,11 @@
           </item>
           <item row="15" column="0">
            <widget class="QLabel" name="peerPingWaitLabel">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="toolTip">
              <string>The duration of a currently outstanding ping.</string>
             </property>
@@ -1336,6 +1503,11 @@
           </item>
           <item row="15" column="2">
            <widget class="QLabel" name="peerPingWait">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="cursor">
              <cursorShape>IBeamCursor</cursorShape>
             </property>
@@ -1352,6 +1524,11 @@
           </item>
           <item row="16" column="0">
            <widget class="QLabel" name="label_timeoffset">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="text">
              <string>Time Offset</string>
             </property>
@@ -1359,6 +1536,11 @@
           </item>
           <item row="16" column="2">
            <widget class="QLabel" name="timeoffset">
+            <property name="font">
+             <font>
+              <family>Open Sans</family>
+             </font>
+            </property>
             <property name="cursor">
              <cursorShape>IBeamCursor</cursorShape>
             </property>
@@ -1407,6 +1589,11 @@
            <height>23</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string>Delete local Blockchain Folders</string>
          </property>
@@ -1416,6 +1603,7 @@
         <widget class="QLabel" name="label_repair_header">
          <property name="font">
           <font>
+           <family>Open Sans</family>
            <weight>75</weight>
            <bold>true</bold>
           </font>
@@ -1429,6 +1617,7 @@
         <widget class="QLabel" name="label_repair_helptext">
          <property name="font">
           <font>
+           <family>Helvetica</family>
            <weight>50</weight>
            <bold>false</bold>
           </font>
@@ -1485,6 +1674,11 @@
            <height>23</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string>Salvage wallet</string>
          </property>
@@ -1492,6 +1686,11 @@
        </item>
        <item row="4" column="2">
         <widget class="QLabel" name="label_repair_salvage_command">
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string notr="true">-salvagewallet:</string>
          </property>
@@ -1499,6 +1698,11 @@
        </item>
        <item row="4" column="3">
         <widget class="QLabel" name="label_repair_salvage">
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string>Attempt to recover private keys from a corrupt wallet.dat.</string>
          </property>
@@ -1515,6 +1719,11 @@
            <height>23</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string>Rescan blockchain files</string>
          </property>
@@ -1522,6 +1731,11 @@
        </item>
        <item row="5" column="2">
         <widget class="QLabel" name="label_repair_rescan_command">
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string notr="true">-rescan:</string>
          </property>
@@ -1529,6 +1743,11 @@
        </item>
        <item row="5" column="3">
         <widget class="QLabel" name="label_repair_rescan">
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string>Rescan the block chain for missing wallet transactions.</string>
          </property>
@@ -1545,6 +1764,11 @@
            <height>23</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string>Recover transactions 1</string>
          </property>
@@ -1552,6 +1776,11 @@
        </item>
        <item row="6" column="2">
         <widget class="QLabel" name="label_repair_zap1_command">
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string notr="true">-zapwallettxes=1:</string>
          </property>
@@ -1559,6 +1788,11 @@
        </item>
        <item row="6" column="3">
         <widget class="QLabel" name="label_repair_zap1">
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string>Recover transactions from blockchain (keep meta-data, e.g. account owner).</string>
          </property>
@@ -1575,6 +1809,11 @@
            <height>23</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string>Recover transactions 2</string>
          </property>
@@ -1582,6 +1821,11 @@
        </item>
        <item row="7" column="2">
         <widget class="QLabel" name="label_repair_zap2_command">
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string notr="true">-zapwallettxes=2:</string>
          </property>
@@ -1589,6 +1833,11 @@
        </item>
        <item row="7" column="3">
         <widget class="QLabel" name="label_repair_zap2">
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string>Recover transactions from blockchain (drop meta-data).</string>
          </property>
@@ -1605,6 +1854,11 @@
            <height>23</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string>Upgrade wallet format</string>
          </property>
@@ -1612,6 +1866,11 @@
        </item>
        <item row="8" column="2">
         <widget class="QLabel" name="label_repair_upgrade_command">
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string notr="true">-upgradewallet:</string>
          </property>
@@ -1619,6 +1878,11 @@
        </item>
        <item row="8" column="3">
         <widget class="QLabel" name="label_repair_upgrade">
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string>Upgrade wallet to latest format on startup. (Note: this is NOT an update of the wallet itself!)</string>
          </property>
@@ -1635,6 +1899,11 @@
            <height>23</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string>Rebuild index</string>
          </property>
@@ -1642,6 +1911,11 @@
        </item>
        <item row="9" column="2">
         <widget class="QLabel" name="label_repair_reindex_command">
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string notr="true">-reindex:</string>
          </property>
@@ -1649,6 +1923,11 @@
        </item>
        <item row="9" column="3">
         <widget class="QLabel" name="label_repair_reindex">
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string>Rebuild block chain index from current blk000??.dat files.</string>
          </property>
@@ -1672,6 +1951,11 @@
        </item>
        <item row="10" column="2">
         <widget class="QLabel" name="label_repair_resync_command">
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string>-resync:</string>
          </property>
@@ -1679,6 +1963,11 @@
        </item>
        <item row="10" column="3">
         <widget class="QLabel" name="label_repair_resync">
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
+         </property>
          <property name="text">
           <string>Deletes all local blockchain folders so the wallet synchronizes from scratch.</string>
          </property>
