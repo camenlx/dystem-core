@@ -55,7 +55,11 @@ git clone https://github.com/Dystem/dystem-core.git
 cd Dystem
 
 ./autogen.sh
+
 ./configure
+
 make
+
 cd /src
+
 make install
