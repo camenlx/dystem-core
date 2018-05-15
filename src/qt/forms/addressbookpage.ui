@@ -90,6 +90,11 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="newAddress">
+       <property name="font">
+        <font>
+         <family>Open Sans</family>
+        </font>
+       </property>
        <property name="toolTip">
         <string>Create a new address</string>
        </property>
@@ -107,6 +112,11 @@
      </item>
      <item>
       <widget class="QPushButton" name="copyAddress">
+       <property name="font">
+        <font>
+         <family>Open Sans</family>
+        </font>
+       </property>
        <property name="toolTip">
         <string>Copy the currently selected address to the system clipboard</string>
        </property>
@@ -124,6 +134,11 @@
      </item>
      <item>
       <widget class="QPushButton" name="deleteAddress">
+       <property name="font">
+        <font>
+         <family>Open Sans</family>
+        </font>
+       </property>
        <property name="toolTip">
         <string>Delete the currently selected address from the list</string>
        </property>
@@ -154,6 +169,11 @@
      </item>
      <item>
       <widget class="QPushButton" name="exportButton">
+       <property name="font">
+        <font>
+         <family>Open Sans</family>
+        </font>
+       </property>
        <property name="toolTip">
         <string>Export the data in the current tab to a file</string>
        </property>
@@ -176,6 +196,11 @@
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Open Sans</family>
+        </font>
        </property>
        <property name="text">
         <string>C&amp;lose</string>
