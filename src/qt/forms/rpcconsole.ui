@@ -864,6 +864,9 @@
            <attribute name="horizontalHeaderHighlightSections">
             <bool>false</bool>
            </attribute>
+           <attribute name="horizontalHeaderMinimumSectionSize">
+            <number>200</number>
+           </attribute>
            <attribute name="verticalHeaderDefaultSectionSize">
             <number>100</number>
            </attribute>
