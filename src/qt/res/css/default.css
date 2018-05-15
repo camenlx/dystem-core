@@ -78,10 +78,10 @@ QToolBar > QToolButton {
 	selection-background-color:transparent;
 	padding: 0em 2em;
 	min-height:3em;
-	padding: 0em 2.566668em;
+	padding: 0em 3em;
 	font-size: 12px;
 	color:#fff;
-	width: 88px;
+	width: 94px;
 }
 
 QToolBar > QToolButton:checked {
