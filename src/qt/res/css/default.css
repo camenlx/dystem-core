@@ -81,7 +81,7 @@ QToolBar > QToolButton {
 	padding: 0em 2em;
 	font-size: 12px;
 	color:#fff;
-	width: 127px;
+	width: 124px;
 }
 
 QToolBar > QToolButton:checked {
