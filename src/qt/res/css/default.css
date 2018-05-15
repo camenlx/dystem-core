@@ -71,14 +71,14 @@ padding:1;
 margin:0;
 width: 40px;
 }
-
+/*	padding: 0em 3.566668em; */
 QToolBar > QToolButton {
 	background-color: #4c75a1;
 	border:0px solid #333;
 	selection-background-color:transparent;
 	padding: 0em 2em;
 	min-height:3em;
-	padding: 0em 3.566668em;
+	padding: 0em 2.566668em;
 	font-size: 12px;
 	color:#fff;
 	width: 88px;
