@@ -10,34 +10,12 @@
     <height>589</height>
    </rect>
   </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
-  </property>
-  <property name="maximumSize">
-   <size>
-    <width>938</width>
-    <height>623</height>
-   </size>
-  </property>
-  <property name="font">
-   <font>
-    <family>Open Sans</family>
-   </font>
-  </property>
   <property name="windowTitle">
    <string>Tools window</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <widget class="QTabWidget" name="tabWidget">
-     <property name="font">
-      <font>
-       <family>Open Sans</family>
-      </font>
-     </property>
      <property name="currentIndex">
       <number>3</number>
      </property>
@@ -53,7 +31,6 @@
         <widget class="QLabel" name="generalHeader">
          <property name="font">
           <font>
-           <family>Open Sans</family>
            <weight>75</weight>
            <bold>true</bold>
           </font>
@@ -65,11 +42,6 @@
        </item>
        <item row="1" column="0">
         <widget class="QLabel" name="clientNameLabel">
-         <property name="font">
-          <font>
-           <family>Open Sans</family>
-          </font>
-         </property>
          <property name="text">
           <string>Client name</string>
          </property>
@@ -77,11 +49,6 @@
        </item>
        <item row="1" column="1">
         <widget class="QLabel" name="clientName">
-         <property name="font">
-          <font>
-           <family>Open Sans</family>
-          </font>
-         </property>
          <property name="cursor">
           <cursorShape>IBeamCursor</cursorShape>
          </property>
@@ -98,11 +65,6 @@
        </item>
        <item row="2" column="0">
         <widget class="QLabel" name="clientVersionLabel">
-         <property name="font">
-          <font>
-           <family>Open Sans</family>
-          </font>
-         </property>
          <property name="text">
           <string>Client version</string>
          </property>
@@ -110,11 +72,6 @@
        </item>
        <item row="2" column="1">
         <widget class="QLabel" name="clientVersion">
-         <property name="font">
-          <font>
-           <family>Open Sans</family>
-          </font>
-         </property>
          <property name="cursor">
           <cursorShape>IBeamCursor</cursorShape>
          </property>
@@ -131,11 +88,6 @@
        </item>
        <item row="3" column="0">
         <widget class="QLabel" name="openSSLVersionLabel">
-         <property name="font">
-          <font>
-           <family>Open Sans</family>
-          </font>
-         </property>
          <property name="text">
           <string>Using OpenSSL version</string>
          </property>
@@ -146,11 +98,6 @@
        </item>
        <item row="3" column="1">
         <widget class="QLabel" name="openSSLVersion">
-         <property name="font">
-          <font>
-           <family>Open Sans</family>
-          </font>
-         </property>
          <property name="cursor">
           <cursorShape>IBeamCursor</cursorShape>
          </property>
@@ -167,11 +114,6 @@
        </item>
        <item row="4" column="0">
         <widget class="QLabel" name="berkeleyDBVersionLabel">
-         <property name="font">
-          <font>
-           <family>Open Sans</family>
-          </font>
-         </property>
          <property name="text">
           <string>Using BerkeleyDB version</string>
          </property>
@@ -182,11 +124,6 @@
        </item>
        <item row="4" column="1">
         <widget class="QLabel" name="berkeleyDBVersion">
-         <property name="font">
-          <font>
-           <family>Open Sans</family>
-          </font>
-         </property>
          <property name="cursor">
           <cursorShape>IBeamCursor</cursorShape>
          </property>
@@ -203,11 +140,6 @@
        </item>
        <item row="5" column="0">
         <widget class="QLabel" name="buildDateLabel">
-         <property name="font">
-          <font>
-           <family>Open Sans</family>
-          </font>
-         </property>
          <property name="text">
           <string>Build date</string>
          </property>
@@ -215,11 +147,6 @@
        </item>
        <item row="5" column="1">
         <widget class="QLabel" name="buildDate">
-         <property name="font">
-          <font>
-           <family>Open Sans</family>
-          </font>
-         </property>
          <property name="cursor">
           <cursorShape>IBeamCursor</cursorShape>
          </property>
@@ -236,11 +163,6 @@
        </item>
        <item row="6" column="0">
         <widget class="QLabel" name="startupTimeLabel">
-         <property name="font">
-          <font>
-           <family>Open Sans</family>
-          </font>
-         </property>
          <property name="text">
           <string>Startup time</string>
          </property>
@@ -248,11 +170,6 @@
        </item>
        <item row="6" column="1">
         <widget class="QLabel" name="startupTime">
-         <property name="font">
-          <font>
-           <family>Open Sans</family>
-          </font>
-         </property>
          <property name="cursor">
           <cursorShape>IBeamCursor</cursorShape>
          </property>
@@ -271,7 +188,6 @@
         <widget class="QLabel" name="networkHeader">
          <property name="font">
           <font>
-           <family>Open Sans</family>
            <weight>75</weight>
            <bold>true</bold>
           </font>
@@ -283,11 +199,6 @@
        </item>
        <item row="8" column="0">
         <widget class="QLabel" name="networkNameLabel">
-         <property name="font">
-          <font>
-           <family>Open Sans</family>
-          </font>
-         </property>
          <property name="text">
           <string>Name</string>
          </property>
@@ -295,11 +206,6 @@
        </item>
        <item row="8" column="1">
         <widget class="QLabel" name="networkName">
-         <property name="font">
-          <font>
-           <family>Open Sans</family>
-          </font>
-         </property>
          <property name="cursor">
           <cursorShape>IBeamCursor</cursorShape>
          </property>
@@ -316,11 +222,6 @@
        </item>
        <item row="9" column="0">
         <widget class="QLabel" name="numberOfConnectionsLabel">
-         <property name="font">
-          <font>
-           <family>Open Sans</family>
-          </font>
-         </property>
          <property name="text">
           <string>Number of connections</string>
          </property>
@@ -328,11 +229,6 @@
        </item>
        <item row="9" column="1">
         <widget class="QLabel" name="numberOfConnections">
-         <property name="font">
-          <font>
-           <family>Open Sans</family>
-          </font>
-         </property>
          <property name="cursor">
           <cursorShape>IBeamCursor</cursorShape>
          </property>
@@ -349,11 +245,6 @@
        </item>
        <item row="10" column="0">
         <widget class="QLabel" name="masternodeCountLabel">
-         <property name="font">
-          <font>
-           <family>Open Sans</family>
-          </font>
-         </property>
          <property name="text">
           <string>Number of Masternodes</string>
          </property>
@@ -361,11 +252,6 @@
        </item>
        <item row="10" column="1">
         <widget class="QLabel" name="masternodeCount">
-         <property name="font">
-          <font>
-           <family>Open Sans</family>
-          </font>
-         </property>
          <property name="cursor">
           <cursorShape>IBeamCursor</cursorShape>
          </property>
@@ -384,7 +270,6 @@
         <widget class="QLabel" name="blockchainHeader">
          <property name="font">
           <font>
-           <family>Open Sans</family>
            <weight>75</weight>
            <bold>true</bold>
           </font>
@@ -396,11 +281,6 @@
        </item>
        <item row="12" column="0">
         <widget class="QLabel" name="numberOfBlocksLabel">
-         <property name="font">
-          <font>
-           <family>Open Sans</family>
-          </font>
-         </property>
          <property name="text">
           <string>Current number of blocks</string>
          </property>
@@ -408,11 +288,6 @@
        </item>
        <item row="12" column="1">
         <widget class="QLabel" name="numberOfBlocks">
-         <property name="font">
-          <font>
-           <family>Open Sans</family>
-          </font>
-         </property>
          <property name="cursor">
           <cursorShape>IBeamCursor</cursorShape>
          </property>
@@ -429,11 +304,6 @@
        </item>
        <item row="13" column="0">
         <widget class="QLabel" name="lastBlockTimeLabel">
-         <property name="font">
-          <font>
-           <family>Open Sans</family>
-          </font>
-         </property>
          <property name="text">
           <string>Last block time</string>
          </property>
@@ -441,11 +311,6 @@
        </item>
        <item row="13" column="1">
         <widget class="QLabel" name="lastBlockTime">
-         <property name="font">
-          <font>
-           <family>Open Sans</family>
-          </font>
-         </property>
          <property name="cursor">
           <cursorShape>IBeamCursor</cursorShape>
          </property>
@@ -477,7 +342,6 @@
         <widget class="QLabel" name="debugLogFileHeader">
          <property name="font">
           <font>
-           <family>Open Sans</family>
            <weight>75</weight>
            <bold>true</bold>
           </font>
@@ -489,11 +353,6 @@
        </item>
        <item row="16" column="0">
         <widget class="QPushButton" name="openDebugLogfileButton">
-         <property name="font">
-          <font>
-           <family>Open Sans</family>
-          </font>
-         </property>
          <property name="toolTip">
           <string>Open the DYSTEM debug log file from the current data directory. This can take a few seconds for large log files.</string>
          </property>
@@ -523,11 +382,6 @@
            <height>100</height>
           </size>
          </property>
-         <property name="font">
-          <font>
-           <family>Helvetica</family>
-          </font>
-         </property>
          <property name="readOnly">
           <bool>true</bool>
          </property>
@@ -552,13 +406,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit">
-           <property name="font">
-            <font>
-             <family>Helvetica</family>
-            </font>
-           </property>
-          </widget>
+          <widget class="QLineEdit" name="lineEdit"/>
          </item>
          <item>
           <widget class="QPushButton" name="clearButton">
