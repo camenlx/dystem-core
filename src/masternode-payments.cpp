@@ -322,7 +322,6 @@ void CMasternodePayments::ProcessMessageMasternodePayments(CNode* pfrom, std::st
         if (Params().NetworkID() == CBaseChainParams::MAIN) {
             if (pfrom->HasFulfilledRequest("mnget")) {
                 LogPrint("masternode","mnget - peer already asked me for the list\n");
-                //AnonCodeBot - Fix this when MN's are online :: issue #075258
                 Misbehaving(pfrom->GetId(), 20, _("masternode-payments:ProcessMessageMasternodePayments::ln325"));
                 return;
             }

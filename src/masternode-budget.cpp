@@ -994,7 +994,6 @@ void CBudgetManager::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
             if (nProp == 0) {
                 if (pfrom->HasFulfilledRequest("mnvs")) {
                     LogPrint("masternode","mnvs - peer already asked me for the list\n");
-                    //AnonCodeBot - Fix this when MN's are online :: issue #075258
                     Misbehaving(pfrom->GetId(), 20, _("masternode-budget::ProcessMessage::ln 997::Masternode HasFulfilledRequest(mnvs)"));
                     return;
                 }
