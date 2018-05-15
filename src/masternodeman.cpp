@@ -797,7 +797,7 @@ void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
                     int64_t t = (*i).second;
                     if (GetTime() < t) {
                         //AnonCodeBot - Fix this when MN's are online :: issue #075258
-                        //Misbehaving(pfrom->GetId(), 34, _("masternodeman::ProcessMessage::ln 799::Multiple duplicate requests for masternode list"));
+                        Misbehaving(pfrom->GetId(), 34, _("masternodeman::ProcessMessage::ln 799::Multiple duplicate requests for masternode list"));
                         LogPrint("masternode","dseg - peer already asked me for the list\n");
                         return;
                     }
