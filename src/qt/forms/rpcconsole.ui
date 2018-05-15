@@ -865,13 +865,7 @@
             <bool>false</bool>
            </attribute>
            <attribute name="horizontalHeaderMinimumSectionSize">
-            <number>200</number>
-           </attribute>
-           <attribute name="verticalHeaderDefaultSectionSize">
-            <number>100</number>
-           </attribute>
-           <attribute name="verticalHeaderMinimumSectionSize">
-            <number>100</number>
+            <number>180</number>
            </attribute>
           </widget>
          </item>
