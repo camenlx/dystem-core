@@ -558,9 +558,6 @@ WalletModel::UnlockContext::UnlockContext(bool valid, bool relock) : valid(valid
 
 WalletModel::UnlockContext::~UnlockContext()
 {
-    if (valid && relock) {
-        wallet->setWalletLocked(true);
-    }
 }
 
 void WalletModel::UnlockContext::CopyFrom(const UnlockContext& rhs)

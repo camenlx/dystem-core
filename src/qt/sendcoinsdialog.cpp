@@ -415,6 +415,8 @@ void SendCoinsDialog::send(QList<SendCoinsRecipient> recipients, QString strFee,
         coinControlUpdateLabels();
     }
     fNewRecipientAllowed = true;
+
+    model->setWalletLocked(true);
 }
 
 void SendCoinsDialog::clear()
