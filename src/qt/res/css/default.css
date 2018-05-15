@@ -635,8 +635,8 @@ border-right: 1px solid #d7d7d7;
 }
 
 QDialog .QTabWidget QTabBar::tab:selected, QDialog .QTabWidget QTabBar::tab:hover {
-background-color:#4c75a1;
-color:#333;
+background-color:#5787bb;
+color:#ffffff;
 }
 
 QDialog .QTabWidget .QWidget {
