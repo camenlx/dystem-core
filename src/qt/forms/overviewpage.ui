@@ -165,6 +165,7 @@
                          </property>
                          <property name="font">
                           <font>
+                           <family>Open Sans</family>
                            <pointsize>12</pointsize>
                            <weight>75</weight>
                            <bold>true</bold>
@@ -236,6 +237,11 @@
                        </item>
                        <item row="1" column="0">
                         <widget class="QLabel" name="labelBalanceText">
+                         <property name="font">
+                          <font>
+                           <family>Open Sans</family>
+                          </font>
+                         </property>
                          <property name="text">
                           <string>Available:</string>
                          </property>
@@ -245,6 +251,7 @@
                         <widget class="QLabel" name="labelBalance">
                          <property name="font">
                           <font>
+                           <family>Open Sans</family>
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
@@ -270,6 +277,7 @@
                         <widget class="QLabel" name="labelWatchAvailable">
                          <property name="font">
                           <font>
+                           <family>Open Sans</family>
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
@@ -293,6 +301,11 @@
                        </item>
                        <item row="2" column="0">
                         <widget class="QLabel" name="labelPendingText">
+                         <property name="font">
+                          <font>
+                           <family>Open Sans</family>
+                          </font>
+                         </property>
                          <property name="text">
                           <string>Pending:</string>
                          </property>
@@ -302,6 +315,7 @@
                         <widget class="QLabel" name="labelUnconfirmed">
                          <property name="font">
                           <font>
+                           <family>Open Sans</family>
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
@@ -327,6 +341,7 @@
                         <widget class="QLabel" name="labelWatchPending">
                          <property name="font">
                           <font>
+                           <family>Open Sans</family>
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
@@ -350,6 +365,11 @@
                        </item>
                        <item row="3" column="0">
                         <widget class="QLabel" name="labelImmatureText">
+                         <property name="font">
+                          <font>
+                           <family>Open Sans</family>
+                          </font>
+                         </property>
                          <property name="text">
                           <string>Immature:</string>
                          </property>
@@ -359,6 +379,7 @@
                         <widget class="QLabel" name="labelImmature">
                          <property name="font">
                           <font>
+                           <family>Open Sans</family>
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
@@ -384,6 +405,7 @@
                         <widget class="QLabel" name="labelWatchImmature">
                          <property name="font">
                           <font>
+                           <family>Open Sans</family>
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
@@ -407,6 +429,11 @@
                        </item>
                        <item row="4" column="0">
                         <widget class="QLabel" name="labelTotalText">
+                         <property name="font">
+                          <font>
+                           <family>Open Sans</family>
+                          </font>
+                         </property>
                          <property name="toolTip">
                           <string>Your current DYSTEM balance, unconfirmed and immature transactions included</string>
                          </property>
@@ -419,6 +446,7 @@
                         <widget class="QLabel" name="labelTotal">
                          <property name="font">
                           <font>
+                           <family>Open Sans</family>
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
@@ -444,6 +472,7 @@
                         <widget class="QLabel" name="labelWatchTotal">
                          <property name="font">
                           <font>
+                           <family>Open Sans</family>
                            <weight>75</weight>
                            <bold>true</bold>
                           </font>
@@ -530,6 +559,7 @@
                       </property>
                       <property name="font">
                        <font>
+                        <family>Open Sans</family>
                         <pointsize>12</pointsize>
                         <weight>75</weight>
                         <bold>true</bold>
@@ -542,6 +572,11 @@
                     </item>
                     <item>
                      <widget class="QLabel" name="labelTransactionsStatus">
+                      <property name="font">
+                       <font>
+                        <family>Open Sans</family>
+                       </font>
+                      </property>
                       <property name="cursor">
                        <cursorShape>WhatsThisCursor</cursorShape>
                       </property>
@@ -641,6 +676,11 @@
                       <width>16777215</width>
                       <height>16777215</height>
                      </size>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <family>Open Sans</family>
+                     </font>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">background-color: qlineargradient(x1: 0, y1: 0, x2: 1, y2: 0, stop:0 #F0D0A0, stop:1 #F8D488); color:#000000;</string>

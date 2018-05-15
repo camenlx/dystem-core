@@ -22,11 +22,16 @@
   <layout class="QVBoxLayout" name="verticalLayout_8">
    <item>
     <widget class="QTabWidget" name="multisigTabWidget">
+     <property name="font">
+      <font>
+       <family>Open Sans</family>
+      </font>
+     </property>
      <property name="styleSheet">
       <string notr="true">QScrollArea{border: 1px solid #5b4c7c;}</string>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <widget class="QWidget" name="addMultisigTab">
       <property name="sizePolicy">
@@ -65,6 +70,11 @@
          </item>
          <item>
           <widget class="QLabel" name="enterMLabel">
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
            <property name="text">
             <string>Enter the minimum number of signatures required to sign transactions</string>
            </property>
@@ -76,13 +86,24 @@
         <layout class="QHBoxLayout" name="addressLabelLayout">
          <item>
           <widget class="QLabel" name="addressLableLabel">
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
            <property name="text">
             <string>Address Label:</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="multisigAddressLabel"/>
+          <widget class="QLineEdit" name="multisigAddressLabel">
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>
@@ -90,6 +111,11 @@
         <layout class="QHBoxLayout" name="addAddressLayout">
          <item>
           <widget class="QPushButton" name="addAddressButton">
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
            <property name="toolTip">
             <string>Add another address that could sign to verify a transaction from the multisig address.</string>
            </property>
@@ -112,6 +138,11 @@
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
            </property>
            <property name="text">
             <string>Local addresses or public keys that can sign:</string>
@@ -149,8 +180,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>759</width>
-            <height>166</height>
+            <width>729</width>
+            <height>119</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -184,6 +215,11 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
            <property name="toolTip">
             <string>Create a new multisig address</string>
            </property>
@@ -204,6 +240,11 @@
          </item>
          <item>
           <widget class="QLabel" name="label">
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
            <property name="text">
             <string>Status:</string>
            </property>
@@ -223,6 +264,11 @@
              <height>75</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
            <property name="readOnly">
             <bool>true</bool>
            </property>
@@ -240,6 +286,11 @@
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <family>Open Sans</family>
+          </font>
          </property>
          <property name="text">
           <string>Use below to quickly import an address by its redeem. Don't forget to add a label before clicking import!
@@ -264,6 +315,11 @@ Please be patient after clicking import.</string>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
            <property name="text">
             <string>&amp;Import Redeem</string>
            </property>
@@ -280,6 +336,11 @@ Please be patient after clicking import.</string>
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
            </property>
           </widget>
          </item>
@@ -306,6 +367,11 @@ Please be patient after clicking import.</string>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
+               </property>
                <property name="text">
                 <string>Inputs:</string>
                </property>
@@ -319,6 +385,11 @@ Please be patient after clicking import.</string>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
+               </property>
                <property name="text">
                 <string>Coin Control</string>
                </property>
@@ -331,6 +402,11 @@ Please be patient after clicking import.</string>
                </property>
                <item row="0" column="0">
                 <widget class="QLabel" name="labelQuantity">
+                 <property name="font">
+                  <font>
+                   <family>Open Sans</family>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>Quantity Selected:</string>
                  </property>
@@ -338,6 +414,11 @@ Please be patient after clicking import.</string>
                </item>
                <item row="0" column="1">
                 <widget class="QLabel" name="labelQuantity_int">
+                 <property name="font">
+                  <font>
+                   <family>Open Sans</family>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>0</string>
                  </property>
@@ -345,6 +426,11 @@ Please be patient after clicking import.</string>
                </item>
                <item row="1" column="0">
                 <widget class="QLabel" name="labelAmount">
+                 <property name="font">
+                  <font>
+                   <family>Open Sans</family>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>Amount:</string>
                  </property>
@@ -352,6 +438,11 @@ Please be patient after clicking import.</string>
                </item>
                <item row="1" column="1">
                 <widget class="QLabel" name="labelAmount_int">
+                 <property name="font">
+                  <font>
+                   <family>Open Sans</family>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>0</string>
                  </property>
@@ -366,6 +457,11 @@ Please be patient after clicking import.</string>
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
                </property>
                <property name="toolTip">
                 <string>Add an input to fund the outputs</string>
@@ -397,8 +493,8 @@ Please be patient after clicking import.</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>747</width>
-                <height>131</height>
+                <width>713</width>
+                <height>116</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -426,6 +522,11 @@ Please be patient after clicking import.</string>
             <layout class="QHBoxLayout" name="addDestinationLayout">
              <item>
               <widget class="QLabel" name="addDestinationLabel">
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
+               </property>
                <property name="text">
                 <string>Address / Amount:</string>
                </property>
@@ -438,6 +539,11 @@ Please be patient after clicking import.</string>
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
                </property>
                <property name="toolTip">
                 <string>Add destinations to send DTEM to</string>
@@ -482,8 +588,8 @@ Please be patient after clicking import.</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>747</width>
-                <height>130</height>
+                <width>713</width>
+                <height>96</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -523,6 +629,11 @@ Please be patient after clicking import.</string>
                  <height>0</height>
                 </size>
                </property>
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
+               </property>
                <property name="toolTip">
                 <string>Create a transaction object using the given inputs to the given outputs</string>
                </property>
@@ -549,6 +660,11 @@ Please be patient after clicking import.</string>
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
+               </property>
                <property name="text">
                 <string>Status:</string>
                </property>
@@ -570,6 +686,11 @@ Please be patient after clicking import.</string>
                  <width>16777215</width>
                  <height>16777215</height>
                 </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
                </property>
                <property name="sizeAdjustPolicy">
                 <enum>QAbstractScrollArea::AdjustToContents</enum>
@@ -610,6 +731,11 @@ txScrollArea:{
         <layout class="QHBoxLayout" name="transactionHexLayout">
          <item>
           <widget class="QLabel" name="transactionHexLabel">
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
            <property name="text">
             <string>Transaction Hex:</string>
            </property>
@@ -617,6 +743,11 @@ txScrollArea:{
          </item>
          <item>
           <widget class="QLineEdit" name="transactionHex">
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
            <property name="toolTip">
             <string/>
            </property>
@@ -643,6 +774,11 @@ txScrollArea:{
                  <width>150</width>
                  <height>0</height>
                 </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
                </property>
                <property name="toolTip">
                 <string>Sign the transaction from this wallet or from provided private keys</string>
@@ -673,6 +809,11 @@ txScrollArea:{
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
+               </property>
                <property name="toolTip">
                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;DISABLED until transaction has been signed enough times.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                </property>
@@ -701,6 +842,11 @@ txScrollArea:{
                    <verstretch>0</verstretch>
                   </sizepolicy>
                  </property>
+                 <property name="font">
+                  <font>
+                   <family>Open Sans</family>
+                  </font>
+                 </property>
                  <property name="toolTip">
                   <string>Add private keys to sign the transaction with</string>
                  </property>
@@ -715,6 +861,11 @@ txScrollArea:{
                </item>
                <item>
                 <widget class="QLabel" name="addPrivKeyLabel">
+                 <property name="font">
+                  <font>
+                   <family>Open Sans</family>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>Sign with only private keys (Not Recommened)</string>
                  </property>
@@ -728,6 +879,11 @@ txScrollArea:{
             <layout class="QHBoxLayout" name="horizontalLayout_5">
              <item>
               <widget class="QLabel" name="signButtonStatusLabel">
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
+               </property>
                <property name="text">
                 <string>Status:</string>
                </property>
@@ -746,6 +902,11 @@ txScrollArea:{
                  <width>16777215</width>
                  <height>16777215</height>
                 </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
                </property>
                <property name="verticalScrollBarPolicy">
                 <enum>Qt::ScrollBarAsNeeded</enum>
@@ -779,8 +940,8 @@ txScrollArea:{
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>755</width>
-                <height>168</height>
+                <width>725</width>
+                <height>139</height>
                </rect>
               </property>
               <layout class="QVBoxLayout" name="verticalLayout_9">

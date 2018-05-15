@@ -23,6 +23,11 @@
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QTextEdit" name="helpMessage">
+       <property name="font">
+        <font>
+         <family>Open Sans</family>
+        </font>
+       </property>
        <property name="readOnly">
         <bool>true</bool>
        </property>
@@ -48,6 +53,11 @@
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
           <widget class="QLabel" name="aboutMessage">
+           <property name="font">
+            <font>
+             <family>Open Sans</family>
+            </font>
+           </property>
            <property name="cursor">
             <cursorShape>IBeamCursor</cursorShape>
            </property>
@@ -71,6 +81,11 @@
      </item>
      <item>
       <widget class="QDialogButtonBox" name="okButton">
+       <property name="font">
+        <font>
+         <family>Open Sans</family>
+        </font>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>

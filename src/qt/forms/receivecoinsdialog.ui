@@ -32,7 +32,7 @@
          <number>0</number>
         </property>
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_Header" stretch=""/>
+         <layout class="QHBoxLayout" name="horizontalLayout_Header"/>
         </item>
        </layout>
       </widget>
@@ -71,6 +71,11 @@
             <layout class="QGridLayout" name="gridLayout">
              <item row="7" column="2">
               <widget class="QCheckBox" name="reuseAddress">
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
+               </property>
                <property name="toolTip">
                 <string>Reuse one of the previously used receiving addresses.&lt;br&gt;Reusing addresses has security and privacy issues.&lt;br&gt;Do not use this unless re-generating a payment request made before.</string>
                </property>
@@ -88,6 +93,11 @@
              </item>
              <item row="6" column="0">
               <widget class="QLabel" name="label_3">
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
+               </property>
                <property name="toolTip">
                 <string>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the DYSTEM network.</string>
                </property>
@@ -104,6 +114,11 @@
              </item>
              <item row="4" column="2">
               <widget class="QLineEdit" name="reqLabel">
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
+               </property>
                <property name="toolTip">
                 <string>An optional label to associate with the new receiving address.</string>
                </property>
@@ -111,6 +126,11 @@
              </item>
              <item row="6" column="2">
               <widget class="QLineEdit" name="reqMessage">
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
+               </property>
                <property name="toolTip">
                 <string>An optional message to attach to the payment request, which will be displayed when the request is opened.&lt;br&gt;Note: The message will not be sent with the payment over the DYSTEM network.</string>
                </property>
@@ -118,6 +138,11 @@
              </item>
              <item row="2" column="2">
               <widget class="QLabel" name="label_5">
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
+               </property>
                <property name="text">
                 <string>Use this form to request payments. All fields are &lt;b&gt;optional&lt;/b&gt;.</string>
                </property>
@@ -125,6 +150,11 @@
              </item>
              <item row="4" column="0">
               <widget class="QLabel" name="label_2">
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
+               </property>
                <property name="toolTip">
                 <string>An optional label to associate with the new receiving address.</string>
                </property>
@@ -141,6 +171,11 @@
              </item>
              <item row="5" column="0">
               <widget class="QLabel" name="label">
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
+               </property>
                <property name="toolTip">
                 <string>An optional amount to request. Leave this empty or zero to not request a specific amount.</string>
                </property>
@@ -162,6 +197,11 @@
                  <width>80</width>
                  <height>0</height>
                 </size>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
                </property>
                <property name="toolTip">
                 <string>An optional amount to request. Leave this empty or zero to not request a specific amount.</string>
@@ -185,6 +225,11 @@
                    <height>0</height>
                   </size>
                  </property>
+                 <property name="font">
+                  <font>
+                   <family>Open Sans</family>
+                  </font>
+                 </property>
                  <property name="text">
                   <string>&amp;Request payment</string>
                  </property>
@@ -201,6 +246,11 @@
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Open Sans</family>
+                  </font>
                  </property>
                  <property name="toolTip">
                   <string>Clear all fields of the form.</string>
@@ -269,6 +319,7 @@
             <widget class="QLabel" name="label_6">
              <property name="font">
               <font>
+               <family>Open Sans</family>
                <weight>75</weight>
                <bold>true</bold>
               </font>
@@ -335,6 +386,11 @@
                <property name="enabled">
                 <bool>false</bool>
                </property>
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
+               </property>
                <property name="toolTip">
                 <string>Show the selected request (does the same as double clicking an entry)</string>
                </property>
@@ -354,6 +410,11 @@
               <widget class="QPushButton" name="removeRequestButton">
                <property name="enabled">
                 <bool>false</bool>
+               </property>
+               <property name="font">
+                <font>
+                 <family>Open Sans</family>
+                </font>
                </property>
                <property name="toolTip">
                 <string>Remove the selected entries from the list</string>

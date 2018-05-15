@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>564</width>
-    <height>109</height>
+    <height>131</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,6 +16,11 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QLabel" name="label_2">
+     <property name="font">
+      <font>
+       <family>Open Sans</family>
+      </font>
+     </property>
      <property name="text">
       <string>Open payment request from URI or file</string>
      </property>
@@ -25,13 +30,24 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QLabel" name="label">
+       <property name="font">
+        <font>
+         <family>Open Sans</family>
+        </font>
+       </property>
        <property name="text">
         <string>URI:</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QValidatedLineEdit" name="uriEdit"/>
+      <widget class="QValidatedLineEdit" name="uriEdit">
+       <property name="font">
+        <font>
+         <family>Open Sans</family>
+        </font>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QPushButton" name="selectFileButton">
@@ -63,6 +79,11 @@
    </item>
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="font">
+      <font>
+       <family>Open Sans</family>
+      </font>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>

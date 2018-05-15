@@ -32,6 +32,11 @@
     </property>
     <item row="0" column="0">
      <widget class="QLabel" name="payToLabel">
+      <property name="font">
+       <font>
+        <family>Open Sans</family>
+       </font>
+      </property>
       <property name="text">
        <string>Pay &amp;To:</string>
       </property>
@@ -50,6 +55,11 @@
       </property>
       <item>
        <widget class="QValidatedLineEdit" name="payTo">
+        <property name="font">
+         <font>
+          <family>Open Sans</family>
+         </font>
+        </property>
         <property name="toolTip">
          <string>The DYSTEM address to send the payment to</string>
         </property>
@@ -57,6 +67,11 @@
       </item>
       <item>
        <widget class="QToolButton" name="addressBookButton">
+        <property name="font">
+         <font>
+          <family>Open Sans</family>
+         </font>
+        </property>
         <property name="toolTip">
          <string>Choose previously used address</string>
         </property>
@@ -74,6 +89,11 @@
       </item>
       <item>
        <widget class="QToolButton" name="pasteButton">
+        <property name="font">
+         <font>
+          <family>Open Sans</family>
+         </font>
+        </property>
         <property name="toolTip">
          <string>Paste address from clipboard</string>
         </property>
@@ -91,6 +111,11 @@
       </item>
       <item>
        <widget class="QToolButton" name="deleteButton">
+        <property name="font">
+         <font>
+          <family>Open Sans</family>
+         </font>
+        </property>
         <property name="toolTip">
          <string>Remove this entry</string>
         </property>
@@ -107,6 +132,11 @@
     </item>
     <item row="1" column="0">
      <widget class="QLabel" name="labelLabel">
+      <property name="font">
+       <font>
+        <family>Open Sans</family>
+       </font>
+      </property>
       <property name="text">
        <string>&amp;Label:</string>
       </property>
@@ -120,6 +150,11 @@
     </item>
     <item row="1" column="1">
      <widget class="QLineEdit" name="addAsLabel">
+      <property name="font">
+       <font>
+        <family>Open Sans</family>
+       </font>
+      </property>
       <property name="toolTip">
        <string>Enter a label for this address to add it to the list of used addresses</string>
       </property>
@@ -127,6 +162,11 @@
     </item>
     <item row="2" column="0">
      <widget class="QLabel" name="amountLabel">
+      <property name="font">
+       <font>
+        <family>Open Sans</family>
+       </font>
+      </property>
       <property name="text">
        <string>A&amp;mount:</string>
       </property>
@@ -139,10 +179,21 @@
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="BitcoinAmountField" name="payAmount"/>
+     <widget class="BitcoinAmountField" name="payAmount">
+      <property name="font">
+       <font>
+        <family>Open Sans</family>
+       </font>
+      </property>
+     </widget>
     </item>
     <item row="3" column="0">
      <widget class="QLabel" name="messageLabel">
+      <property name="font">
+       <font>
+        <family>Open Sans</family>
+       </font>
+      </property>
       <property name="text">
        <string>Message:</string>
       </property>
@@ -153,6 +204,11 @@
     </item>
     <item row="3" column="1">
      <widget class="QLabel" name="messageTextLabel">
+      <property name="font">
+       <font>
+        <family>Open Sans</family>
+       </font>
+      </property>
       <property name="toolTip">
        <string>A message that was attached to the DYSTEM: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the DYSTEM network.</string>
       </property>
@@ -1215,6 +1271,7 @@
    <class>BitcoinAmountField</class>
    <extends>QLineEdit</extends>
    <header>bitcoinamountfield.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <tabstops>
