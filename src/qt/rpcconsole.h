@@ -137,9 +137,9 @@ private:
     void updateNodeDetail(const CNodeCombinedStats* stats);
 
     enum ColumnWidths {
-        ADDRESS_COLUMN_WIDTH = 100,
-        SUBVERSION_COLUMN_WIDTH = 20,
-        PING_COLUMN_WIDTH = 20,
+        ADDRESS_COLUMN_WIDTH = 10,
+        SUBVERSION_COLUMN_WIDTH = 2,
+        PING_COLUMN_WIDTH = 2,
         BANSUBNET_COLUMN_WIDTH = 200,
         BANTIME_COLUMN_WIDTH = 250
     };
