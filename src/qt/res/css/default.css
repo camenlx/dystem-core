@@ -63,6 +63,7 @@ background-color:#f2f0f0;
 color:#333;
 }
 
+/*background-color: #4c75a1;*/
 QToolBar {
 background-color: #ff0000;
 border:0px solid #333;
@@ -80,6 +81,7 @@ QToolBar > QToolButton {
 	padding: 0em 3.566668em;
 	font-size: 12px;
 	color:#fff;
+	width: 40px;
 }
 
 QToolBar > QToolButton:checked {
