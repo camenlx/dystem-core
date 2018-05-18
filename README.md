@@ -1,3 +1,5 @@
+<span style="display:block;text-align:center">![alt text](https://i.imgur.com/wS44zyP.png)</span>
+
 Dystem integration/staging repository
 =====================================
 
