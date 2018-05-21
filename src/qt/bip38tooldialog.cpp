@@ -7,7 +7,6 @@
 #include "bip38tooldialog.h"
 #include "ui_bip38tooldialog.h"
 
-#include "addressbookpage.h"
 #include "guiutil.h"
 #include "walletmodel.h"
 
