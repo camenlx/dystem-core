@@ -78,7 +78,7 @@ public:
     void refreshAddressTable()
     {
         printf("refreshAddressTable");
-        
+
         cachedAddressTable.clear();
         {
             LOCK(wallet->cs_wallet);
@@ -101,6 +101,8 @@ public:
 
     void updateEntry(const QString& address, const QString& label, bool isMine, const QString& purpose, int status)
     {
+                printf(">>>>> DYSTEM: updateEntry");
+
         // Find address / label in model
         QList<AddressTableEntry>::iterator lower = qLowerBound(
             cachedAddressTable.begin(), cachedAddressTable.end(), address, AddressTableEntryLessThan());
@@ -183,6 +185,8 @@ int AddressTableModel::columnCount(const QModelIndex& parent) const
 
 QVariant AddressTableModel::data(const QModelIndex& index, int role) const
 {
+    printf(">>>>> DYSTEM: AddressTableModel::data");
+
     if (!index.isValid())
         return QVariant();
 
@@ -220,6 +224,7 @@ QVariant AddressTableModel::data(const QModelIndex& index, int role) const
 
 bool AddressTableModel::setData(const QModelIndex& index, const QVariant& value, int role)
 {
+    printf(">>>>> DYSTEM: AddressTableModel::data 2");
     if (!index.isValid())
         return false;
     AddressTableEntry* rec = static_cast<AddressTableEntry*>(index.internalPointer());
@@ -269,6 +274,7 @@ bool AddressTableModel::setData(const QModelIndex& index, const QVariant& value,
 
 QVariant AddressTableModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
+    printf(">>>>> DYSTEM: AddressTableModel::headerData");
     if (orientation == Qt::Horizontal) {
         if (role == Qt::DisplayRole && section < columns.size()) {
             return columns[section];
@@ -316,6 +322,8 @@ void AddressTableModel::updateEntry(const QString& address,
 
 QString AddressTableModel::addRow(const QString& type, const QString& label, const QString& address)
 {
+        printf(">>>>> DYSTEM: AddressTableModel::addRow");
+
     std::string strLabel = label.toStdString();
     std::string strAddress = address.toStdString();
 
