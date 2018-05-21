@@ -16,6 +16,8 @@
 #include <QDebug>
 #include <QFont>
 
+#include <stdio.h>
+
 const QString AddressTableModel::Send = "S";
 const QString AddressTableModel::Receive = "R";
 
@@ -75,6 +77,8 @@ public:
 
     void refreshAddressTable()
     {
+        printf("refreshAddressTable");
+        
         cachedAddressTable.clear();
         {
             LOCK(wallet->cs_wallet);
