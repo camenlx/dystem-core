@@ -233,6 +233,7 @@ QVariant AddressTableModel::data(const QModelIndex& index, int role) const
 bool AddressTableModel::setData(const QModelIndex& index, const QVariant& value, int role)
 {
     LogPrintf("\n>>>>> DYSTEM: AddressTableModel::data 2");
+    /*
     if (!index.isValid())
         return false;
     AddressTableEntry* rec = static_cast<AddressTableEntry*>(index.internalPointer());
@@ -240,7 +241,7 @@ bool AddressTableModel::setData(const QModelIndex& index, const QVariant& value,
     editStatus = OK;
 
     if (role == Qt::EditRole) {
-        LOCK(wallet->cs_wallet); /* For SetAddressBook / DelAddressBook */
+        LOCK(wallet->cs_wallet); /* For SetAddressBook / DelAddressBook *
         CTxDestination curAddress = CBitcoinAddress(rec->address.toStdString()).Get();
         if (index.column() == Label) {
             // Do nothing, if old label == new label
@@ -276,7 +277,7 @@ bool AddressTableModel::setData(const QModelIndex& index, const QVariant& value,
             }
         }
         return true;
-    }
+    }*/
     return false;
 }
 
