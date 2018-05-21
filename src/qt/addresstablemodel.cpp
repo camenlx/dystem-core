@@ -310,9 +310,11 @@ Qt::ItemFlags AddressTableModel::flags(const QModelIndex& index) const
 
 QModelIndex AddressTableModel::index(int row, int column, const QModelIndex& parent) const
 {
-    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::index");
     Q_UNUSED(parent);
     AddressTableEntry* data = priv->index(row);
+
+    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::index ROW: %i COLOUMN: %i label %s address %s", row, column, role, rec->label.toStdString(), rec->address.toStdString());
+
     if (data) {
         return createIndex(row, column, priv->index(row));
     } else {
