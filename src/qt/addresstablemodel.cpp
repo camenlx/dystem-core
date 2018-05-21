@@ -395,7 +395,7 @@ bool AddressTableModel::removeRows(int row, int count, const QModelIndex& parent
  */
 QString AddressTableModel::labelForAddress(const QString& address) const
 {
-    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::labelForAddress %s", address.toStdString());
+    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::labelForAddress '%s'", address.toStdString());
     {
         LOCK(wallet->cs_wallet);
         CBitcoinAddress address_parsed(address.toStdString());
