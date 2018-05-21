@@ -176,6 +176,7 @@ AddressTableModel::~AddressTableModel()
 int AddressTableModel::rowCount(const QModelIndex& parent) const
 {
     Q_UNUSED(parent);
+    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::rowCount %i", priv->size());
     return priv->size();
 }
 
@@ -187,7 +188,7 @@ int AddressTableModel::columnCount(const QModelIndex& parent) const
 
 QVariant AddressTableModel::data(const QModelIndex& index, int role) const
 {
-    printf("\n>>>>> DYSTEM: AddressTableModel::data");
+    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::data");
 
     if (!index.isValid())
         return QVariant();
@@ -397,7 +398,7 @@ bool AddressTableModel::removeRows(int row, int count, const QModelIndex& parent
  */
 QString AddressTableModel::labelForAddress(const QString& address) const
 {
-    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::labelForAddress '%s'", address.toStdString());
+    //LogPrintf("\n>>>>> DYSTEM: AddressTableModel::labelForAddress '%s'", address.toStdString());
     {
         LOCK(wallet->cs_wallet);
         CBitcoinAddress address_parsed(address.toStdString());
