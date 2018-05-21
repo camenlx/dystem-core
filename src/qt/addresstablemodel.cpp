@@ -312,11 +312,6 @@ Qt::ItemFlags AddressTableModel::flags(const QModelIndex& index) const
 
 QModelIndex AddressTableModel::index(int row, int column, const QModelIndex& parent) const
 {
-
-    Q_UNUSED(parent);
-
-    return createIndex(row, column);
-    
     Q_UNUSED(parent);
     AddressTableEntry* data = priv->index(row);
 
@@ -325,10 +320,9 @@ QModelIndex AddressTableModel::index(int row, int column, const QModelIndex& par
     if (data) {
         return createIndex(row, column, priv->index(row));
     } else {
-        LogPrintf("\n>>>>> DYSTEM: SKIPPING DUE TO NO DATA OI OI OI ADDY %s", data->address.toStdString());
+        LogPrintf("\n>>>>> DYSTEM: SKIPPING DUE TO NO DATA OI OI OI ADDY");
         return QModelIndex();
     }
-    
 }
 
 void AddressTableModel::updateEntry(const QString& address,
