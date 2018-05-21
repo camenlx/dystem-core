@@ -337,8 +337,7 @@ HEADERS += src/activemasternode.h \
            src/qt/overviewpage.moc \
            src/qt/rpcconsole.moc \
            src/secp256k1/src/secp256k1.c
-FORMS += src/qt/forms/addressbookpage.ui \
-         src/qt/forms/askpassphrasedialog.ui \
+FORMS += src/qt/forms/askpassphrasedialog.ui \
          src/qt/forms/coincontroldialog.ui \
          src/qt/forms/obfuscationconfig.ui \
          src/qt/forms/editaddressdialog.ui \

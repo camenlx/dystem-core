@@ -34,7 +34,6 @@ QT_TS = \
   qt/locale/dystem_zh_TW.ts
 
 QT_FORMS_UI = \
-  qt/forms/addressbookpage.ui \
   qt/forms/askpassphrasedialog.ui \
   qt/forms/bip38tooldialog.ui \
   qt/forms/coincontroldialog.ui \
@@ -57,8 +56,6 @@ QT_FORMS_UI = \
   qt/forms/transactiondescdialog.ui
 
 QT_MOC_CPP = \
-  qt/moc_addressbookpage.cpp \
-  qt/moc_addresstablemodel.cpp \
   qt/moc_askpassphrasedialog.cpp \
   qt/moc_bantablemodel.cpp \
   qt/moc_bip38tooldialog.cpp \
