@@ -179,6 +179,8 @@ void WalletModel::updateTransaction()
 
 void WalletModel::updateAddressBook(const QString& address, const QString& label, bool isMine, const QString& purpose, int status)
 {
+    LogPrintf("\n>>>>> DYSTEM: 11111 WalletModel:updateAddressBook: address %s label %s status %i", address.toStdString(), label.toStdString(), status);
+
     if (addressTableModel)
         addressTableModel->updateEntry(address, label, isMine, purpose, status);
 }
