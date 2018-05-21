@@ -164,8 +164,6 @@ HEADERS += src/activemasternode.h \
            src/obj/build.h \
            src/primitives/block.h \
            src/primitives/transaction.h \
-           src/qt/addressbookpage.h \
-           src/qt/addresstablemodel.h \
            src/qt/askpassphrasedialog.h \
            src/qt/bitcoinaddressvalidator.h \
            src/qt/bitcoinamountfield.h \
@@ -457,8 +455,6 @@ SOURCES += src/activemasternode.cpp \
            src/json/json_spirit_writer.cpp \
            src/primitives/block.cpp \
            src/primitives/transaction.cpp \
-           src/qt/addressbookpage.cpp \
-           src/qt/addresstablemodel.cpp \
            src/qt/askpassphrasedialog.cpp \
            src/qt/bitcoinaddressvalidator.cpp \
            src/qt/bitcoinamountfield.cpp \
