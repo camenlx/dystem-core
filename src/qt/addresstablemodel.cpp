@@ -77,7 +77,7 @@ public:
 
     void refreshAddressTable()
     {
-        printf("refreshAddressTable");
+        LogPrintf("\n>>>>> DYSTEM:  refreshAddressTable");
 
         cachedAddressTable.clear();
         {
@@ -101,7 +101,7 @@ public:
 
     void updateEntry(const QString& address, const QString& label, bool isMine, const QString& purpose, int status)
     {
-                printf(">>>>> DYSTEM: updateEntry");
+                LogPrintf("\n>>>>> DYSTEM: updateEntry");
 
         // Find address / label in model
         QList<AddressTableEntry>::iterator lower = qLowerBound(
@@ -185,7 +185,7 @@ int AddressTableModel::columnCount(const QModelIndex& parent) const
 
 QVariant AddressTableModel::data(const QModelIndex& index, int role) const
 {
-    printf(">>>>> DYSTEM: AddressTableModel::data");
+    printf("\n>>>>> DYSTEM: AddressTableModel::data");
 
     if (!index.isValid())
         return QVariant();
@@ -224,7 +224,7 @@ QVariant AddressTableModel::data(const QModelIndex& index, int role) const
 
 bool AddressTableModel::setData(const QModelIndex& index, const QVariant& value, int role)
 {
-    printf(">>>>> DYSTEM: AddressTableModel::data 2");
+    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::data 2");
     if (!index.isValid())
         return false;
     AddressTableEntry* rec = static_cast<AddressTableEntry*>(index.internalPointer());
@@ -274,7 +274,7 @@ bool AddressTableModel::setData(const QModelIndex& index, const QVariant& value,
 
 QVariant AddressTableModel::headerData(int section, Qt::Orientation orientation, int role) const
 {
-    printf(">>>>> DYSTEM: AddressTableModel::headerData");
+    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::headerData");
     if (orientation == Qt::Horizontal) {
         if (role == Qt::DisplayRole && section < columns.size()) {
             return columns[section];
@@ -285,6 +285,7 @@ QVariant AddressTableModel::headerData(int section, Qt::Orientation orientation,
 
 Qt::ItemFlags AddressTableModel::flags(const QModelIndex& index) const
 {
+    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::flags");
     if (!index.isValid())
         return 0;
     AddressTableEntry* rec = static_cast<AddressTableEntry*>(index.internalPointer());
@@ -301,6 +302,7 @@ Qt::ItemFlags AddressTableModel::flags(const QModelIndex& index) const
 
 QModelIndex AddressTableModel::index(int row, int column, const QModelIndex& parent) const
 {
+    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::index");
     Q_UNUSED(parent);
     AddressTableEntry* data = priv->index(row);
     if (data) {
@@ -316,13 +318,14 @@ void AddressTableModel::updateEntry(const QString& address,
     const QString& purpose,
     int status)
 {
+    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::updateEntry");
     // Update address book model from Dystem core
     priv->updateEntry(address, label, isMine, purpose, status);
 }
 
 QString AddressTableModel::addRow(const QString& type, const QString& label, const QString& address)
 {
-        printf(">>>>> DYSTEM: AddressTableModel::addRow");
+        LogPrintf("\n>>>>> DYSTEM: AddressTableModel::addRow");
 
     std::string strLabel = label.toStdString();
     std::string strAddress = address.toStdString();
@@ -373,6 +376,7 @@ QString AddressTableModel::addRow(const QString& type, const QString& label, con
 
 bool AddressTableModel::removeRows(int row, int count, const QModelIndex& parent)
 {
+    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::removeRows");
     Q_UNUSED(parent);
     AddressTableEntry* rec = priv->index(row);
     if (count != 1 || !rec || rec->type == AddressTableEntry::Receiving) {
@@ -391,6 +395,7 @@ bool AddressTableModel::removeRows(int row, int count, const QModelIndex& parent
  */
 QString AddressTableModel::labelForAddress(const QString& address) const
 {
+    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::labelForAddress");
     {
         LOCK(wallet->cs_wallet);
         CBitcoinAddress address_parsed(address.toStdString());
@@ -404,6 +409,7 @@ QString AddressTableModel::labelForAddress(const QString& address) const
 
 int AddressTableModel::lookupAddress(const QString& address) const
 {
+    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::lookupAddress");
     QModelIndexList lst = match(index(0, Address, QModelIndex()),
         Qt::EditRole, address, 1, Qt::MatchExactly);
     if (lst.isEmpty()) {
@@ -415,5 +421,6 @@ int AddressTableModel::lookupAddress(const QString& address) const
 
 void AddressTableModel::emitDataChanged(int idx)
 {
+    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::emitDataChanged");
     emit dataChanged(index(idx, 0, QModelIndex()), index(idx, columns.length() - 1, QModelIndex()));
 }
