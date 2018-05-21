@@ -278,7 +278,7 @@ bool AddressTableModel::setData(const QModelIndex& index, const QVariant& value,
         }
         return true;
     }*/
-    return false;
+    return true;
 }
 
 QVariant AddressTableModel::headerData(int section, Qt::Orientation orientation, int role) const
