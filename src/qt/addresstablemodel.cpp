@@ -63,7 +63,7 @@ static AddressTableEntry::Type translateTransactionType(const QString& strPurpos
     else if (strPurpose == "receive")
         addressType = AddressTableEntry::Receiving;
     else if (strPurpose == "unknown" || strPurpose == "") // if purpose not set, guess
-        addressType = (isMine ? AddressTableEntry::Receiving : AddressTableEntry::Sending);
+        addressType = AddressTableEntry::Receiving; //(isMine ? AddressTableEntry::Receiving : AddressTableEntry::Sending);
     return addressType;
 }
 
