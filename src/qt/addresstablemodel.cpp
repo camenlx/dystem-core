@@ -63,7 +63,7 @@ static AddressTableEntry::Type translateTransactionType(const QString& strPurpos
     else if (strPurpose == "receive")
         addressType = AddressTableEntry::Receiving;
     else if (strPurpose == "unknown" || strPurpose == "") // if purpose not set, guess
-        addressType = AddressTableEntry::Receiving; //(isMine ? AddressTableEntry::Receiving : AddressTableEntry::Sending);
+        addressType = (isMine ? AddressTableEntry::Receiving : AddressTableEntry::Sending);
     return addressType;
 }
 
@@ -190,8 +190,12 @@ QVariant AddressTableModel::data(const QModelIndex& index, int role) const
 {
     LogPrintf("\n>>>>> DYSTEM: AddressTableModel::data");
 
-    if (!index.isValid())
+    if (!index.isValid()) {
+         LogPrintf("\n>>>>> DYSTEM: INVALID INDEX !!!!")
         return QVariant();
+    } else {
+                 LogPrintf("\n>>>>> DYSTEM: **VALID INDEX !!!!")
+    }
 
     AddressTableEntry* rec = static_cast<AddressTableEntry*>(index.internalPointer());
 
