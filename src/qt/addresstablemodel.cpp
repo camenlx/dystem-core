@@ -196,8 +196,8 @@ QVariant AddressTableModel::data(const QModelIndex& index, int role) const
 {
     LogPrintf("\n>>>>> DYSTEM: AddressTableModel::data IDX: %i ", index.column());
 
-    if (!index.isValid())
-        return QVariant();
+    //if (!index.isValid())
+        //return QVariant();
 
     AddressTableEntry* rec = static_cast<AddressTableEntry*>(index.internalPointer());
 
@@ -215,13 +215,16 @@ QVariant AddressTableModel::data(const QModelIndex& index, int role) const
         case Address:
             return rec->address;
         }
-    } else if (role == Qt::FontRole) {
+    }
+    /* 
+    else if (role == Qt::FontRole) {
         LogPrintf("\n>>>>> DYSTEM: 22222");
         QFont font;
         if (index.column() == Address) {
             font = GUIUtil::bitcoinAddressFont();
         }
         return font;
+    */
     } else if (role == TypeRole) {
         LogPrintf("\n>>>>> DYSTEM: 33333 TYPE %i",rec->type);
         switch (rec->type) {
@@ -230,7 +233,7 @@ QVariant AddressTableModel::data(const QModelIndex& index, int role) const
         case AddressTableEntry::Receiving:
             return Receive;
         default:
-            break;
+            return Send;
         }
     }
     return QVariant();
