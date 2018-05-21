@@ -82,6 +82,8 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
                                                                             masternodeAction(0),
                                                                             quitAction(0),
                                                                             sendCoinsAction(0),
+                                                                            usedSendingAddressesAction(0),
+                                                                            usedReceivingAddressesAction(0),
                                                                             signMessageAction(0),
                                                                             verifyMessageAction(0),
                                                                             bip38ToolAction(0),
@@ -419,6 +421,11 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     showBackupsAction = new QAction(QIcon(":/icons/browse"), tr("Show Automatic &Backups"), this);
     showBackupsAction->setStatusTip(tr("Show automatically created wallet backups"));
 
+    usedSendingAddressesAction = new QAction(QIcon(":/icons/address-book"), tr("&Sending addresses..."), this);
+    usedSendingAddressesAction->setStatusTip(tr("Show the list of used sending addresses and labels"));
+    usedReceivingAddressesAction = new QAction(QIcon(":/icons/address-book"), tr("&Receiving addresses..."), this);
+    usedReceivingAddressesAction->setStatusTip(tr("Show the list of used receiving addresses and labels"));
+
     multisigCreateAction = new QAction(QIcon(":/icons/address-book"), tr("&Multisignature creation..."), this);
     multisigCreateAction->setStatusTip(tr("Create a new multisignature address and add it to this wallet"));
     multisigSpendAction = new QAction(QIcon(":/icons/send"), tr("&Multisignature spending..."), this);
@@ -451,6 +458,8 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
         connect(signMessageAction, SIGNAL(triggered()), this, SLOT(gotoSignMessageTab()));
         connect(verifyMessageAction, SIGNAL(triggered()), this, SLOT(gotoVerifyMessageTab()));
         connect(bip38ToolAction, SIGNAL(triggered()), this, SLOT(gotoBip38Tool()));
+        connect(usedSendingAddressesAction, SIGNAL(triggered()), walletFrame, SLOT(usedSendingAddresses()));
+        connect(usedReceivingAddressesAction, SIGNAL(triggered()), walletFrame, SLOT(usedReceivingAddresses()));
         connect(openAction, SIGNAL(triggered()), this, SLOT(openClicked()));
         connect(multiSendAction, SIGNAL(triggered()), this, SLOT(gotoMultiSendDialog()));
         connect(multisigCreateAction, SIGNAL(triggered()), this, SLOT(gotoMultisigCreate()));
@@ -477,6 +486,9 @@ void BitcoinGUI::createMenuBar()
         file->addAction(backupWalletAction);
         file->addAction(signMessageAction);
         file->addAction(verifyMessageAction);
+        file->addSeparator();
+        file->addAction(usedSendingAddressesAction);
+        file->addAction(usedReceivingAddressesAction);
         file->addSeparator();
         file->addAction(multisigCreateAction);
         file->addAction(multisigSpendAction);
@@ -634,6 +646,8 @@ void BitcoinGUI::setWalletActionsEnabled(bool enabled)
     multisigSpendAction->setEnabled(enabled);
     multisigSignAction->setEnabled(enabled);
     bip38ToolAction->setEnabled(enabled);
+    usedSendingAddressesAction->setEnabled(enabled);
+    usedReceivingAddressesAction->setEnabled(enabled);
     openAction->setEnabled(enabled);
 }
 
