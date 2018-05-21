@@ -117,28 +117,34 @@ public:
 
         switch (status) {
         case CT_NEW:
+        /*
             if (inModel) {
                 qWarning() << "AddressTablePriv::updateEntry : Warning: Got CT_NEW, but entry is already in model";
                 break;
             }
+        */
             parent->beginInsertRows(QModelIndex(), lowerIndex, lowerIndex);
             cachedAddressTable.insert(lowerIndex, AddressTableEntry(newEntryType, label, address));
             parent->endInsertRows();
             break;
         case CT_UPDATED:
+        /*
             if (!inModel) {
                 qWarning() << "AddressTablePriv::updateEntry : Warning: Got CT_UPDATED, but entry is not in model";
                 break;
             }
+        */
             lower->type = newEntryType;
             lower->label = label;
             parent->emitDataChanged(lowerIndex);
             break;
         case CT_DELETED:
+        /*
             if (!inModel) {
                 qWarning() << "AddressTablePriv::updateEntry : Warning: Got CT_DELETED, but entry is not in model";
                 break;
             }
+        */
             parent->beginRemoveRows(QModelIndex(), lowerIndex, upperIndex - 1);
             cachedAddressTable.erase(lower, upper);
             parent->endRemoveRows();
