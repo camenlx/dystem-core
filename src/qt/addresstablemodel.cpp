@@ -224,13 +224,15 @@ QVariant AddressTableModel::data(const QModelIndex& index, int role) const
             font = GUIUtil::bitcoinAddressFont();
         }
         return font;
-    
+
     }*/ else if (role == TypeRole) {
         LogPrintf("\n>>>>> DYSTEM: 33333 TYPE %i",rec->type);
         switch (rec->type) {
         case AddressTableEntry::Sending:
+            LogPrintf("\n>>>>> DYSTEM: SEND !!!");
             return Send;
         case AddressTableEntry::Receiving:
+            LogPrintf("\n>>>>> DYSTEM: RECEIVE !!!");
             return Receive;
         default:
             return Send;
