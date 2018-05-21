@@ -190,16 +190,12 @@ QVariant AddressTableModel::data(const QModelIndex& index, int role) const
 {
     LogPrintf("\n>>>>> DYSTEM: AddressTableModel::data");
 
-    if (!index.isValid()) {
-         LogPrintf("\n>>>>> DYSTEM: INVALID INDEX !!!!");
+    if (!index.isValid())
         return QVariant();
-    } else {
-                 LogPrintf("\n>>>>> DYSTEM: **VALID INDEX !!!!");
-    }
 
     AddressTableEntry* rec = static_cast<AddressTableEntry*>(index.internalPointer());
 
-LogPrintf("\n>>>>> DYSTEM: role %i label %s", role, rec->label.toStdString());
+LogPrintf("\n>>>>> DYSTEM: role %i label %s address %s", role, rec->label.toStdString(), rec->address.toStdString());
 
     if (role == Qt::DisplayRole || role == Qt::EditRole) {
         LogPrintf("\n>>>>> DYSTEM: 11111");
