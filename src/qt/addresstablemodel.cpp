@@ -103,7 +103,7 @@ public:
 
     void updateEntry(const QString& address, const QString& label, bool isMine, const QString& purpose, int status)
     {
-                LogPrintf("\n>>>>> DYSTEM: updateEntry");
+        LogPrintf("\n>>>>> DYSTEM: updateEntry");
 
         // Find address / label in model
         QList<AddressTableEntry>::iterator lower = qLowerBound(
@@ -195,7 +195,7 @@ QVariant AddressTableModel::data(const QModelIndex& index, int role) const
 
     AddressTableEntry* rec = static_cast<AddressTableEntry*>(index.internalPointer());
 
-LogPrintf("\n>>>>> DYSTEM: role %i label %s address %s", role, rec->label.toStdString(), rec->address.toStdString());
+    //LogPrintf("\n>>>>> DYSTEM: role %i label %s address %s", role, rec->label.toStdString(), rec->address.toStdString());
 
     if (role == Qt::DisplayRole || role == Qt::EditRole) {
         LogPrintf("\n>>>>> DYSTEM: 11111");
@@ -294,6 +294,7 @@ QVariant AddressTableModel::headerData(int section, Qt::Orientation orientation,
 Qt::ItemFlags AddressTableModel::flags(const QModelIndex& index) const
 {
     LogPrintf("\n>>>>> DYSTEM: AddressTableModel::flags");
+    //ANON Coder commented out here
     //if (!index.isValid())
         //return 0;
     AddressTableEntry* rec = static_cast<AddressTableEntry*>(index.internalPointer());
@@ -313,7 +314,7 @@ QModelIndex AddressTableModel::index(int row, int column, const QModelIndex& par
     Q_UNUSED(parent);
     AddressTableEntry* data = priv->index(row);
 
-    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::index ROW: %i COLOUMN: %i label %s address %s", row, column, data->label.toStdString(), data->address.toStdString());
+    //LogPrintf("\n>>>>> DYSTEM: AddressTableModel::index ROW: %i COLOUMN: %i label %s address %s", row, column, data->label.toStdString(), data->address.toStdString());
 
     if (data) {
         return createIndex(row, column, priv->index(row));
@@ -335,7 +336,7 @@ void AddressTableModel::updateEntry(const QString& address,
 
 QString AddressTableModel::addRow(const QString& type, const QString& label, const QString& address)
 {
-        LogPrintf("\n>>>>> DYSTEM: AddressTableModel::addRow");
+    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::addRow");
 
     std::string strLabel = label.toStdString();
     std::string strAddress = address.toStdString();
