@@ -96,8 +96,6 @@ private:
     QAction* masternodeAction;
     QAction* quitAction;
     QAction* sendCoinsAction;
-    QAction* usedSendingAddressesAction;
-    QAction* usedReceivingAddressesAction;
     QAction* signMessageAction;
     QAction* verifyMessageAction;
     QAction* bip38ToolAction;
