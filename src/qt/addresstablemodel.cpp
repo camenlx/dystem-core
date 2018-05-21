@@ -318,6 +318,7 @@ QString AddressTableModel::addRow(const QString& type, const QString& label, con
         CPubKey newKey;
         if (!wallet->GetKeyFromPool(newKey)) {
             WalletModel::UnlockContext ctx(walletModel->requestUnlock(AskPassphraseDialog::Context::Unlock_Full, true));
+            /*
             if (!ctx.isValid()) {
                 // Unlock wallet failed or was cancelled
                 editStatus = WALLET_UNLOCK_FAILURE;
@@ -327,6 +328,7 @@ QString AddressTableModel::addRow(const QString& type, const QString& label, con
                 editStatus = KEY_GENERATION_FAILURE;
                 return QString();
             }
+            */
         }
         strAddress = CBitcoinAddress(newKey.GetID()).ToString();
     } else {
