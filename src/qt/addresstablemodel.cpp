@@ -188,14 +188,14 @@ int AddressTableModel::columnCount(const QModelIndex& parent) const
 
 QVariant AddressTableModel::data(const QModelIndex& index, int role) const
 {
-    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::data");
+    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::data IDX: ");
 
     if (!index.isValid())
         return QVariant();
 
     AddressTableEntry* rec = static_cast<AddressTableEntry*>(index.internalPointer());
 
-    //LogPrintf("\n>>>>> DYSTEM: role %i label %s address %s", role, rec->label.toStdString(), rec->address.toStdString());
+    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::data IS VALID role %i label %s address %s", role, rec->label.toStdString(), rec->address.toStdString());
 
     if (role == Qt::DisplayRole || role == Qt::EditRole) {
         LogPrintf("\n>>>>> DYSTEM: 11111");
@@ -217,7 +217,7 @@ QVariant AddressTableModel::data(const QModelIndex& index, int role) const
         }
         return font;
     } else if (role == TypeRole) {
-        LogPrintf("\n>>>>> DYSTEM: 33333");
+        LogPrintf("\n>>>>> DYSTEM: 33333 TYPE %i",rec->type);
         switch (rec->type) {
         case AddressTableEntry::Sending:
             return Send;
