@@ -188,7 +188,7 @@ int AddressTableModel::columnCount(const QModelIndex& parent) const
 
 QVariant AddressTableModel::data(const QModelIndex& index, int role) const
 {
-    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::data IDX: ");
+    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::data IDX: %i ", index.column());
 
     if (!index.isValid())
         return QVariant();
@@ -233,51 +233,6 @@ QVariant AddressTableModel::data(const QModelIndex& index, int role) const
 bool AddressTableModel::setData(const QModelIndex& index, const QVariant& value, int role)
 {
     LogPrintf("\n>>>>> DYSTEM: AddressTableModel::data 2");
-    /*
-    if (!index.isValid())
-        return false;
-    AddressTableEntry* rec = static_cast<AddressTableEntry*>(index.internalPointer());
-    std::string strPurpose = (rec->type == AddressTableEntry::Sending ? "send" : "receive");
-    editStatus = OK;
-
-    if (role == Qt::EditRole) {
-        LOCK(wallet->cs_wallet); /* For SetAddressBook / DelAddressBook *
-        CTxDestination curAddress = CBitcoinAddress(rec->address.toStdString()).Get();
-        if (index.column() == Label) {
-            // Do nothing, if old label == new label
-            if (rec->label == value.toString()) {
-                editStatus = NO_CHANGES;
-                return false;
-            }
-            wallet->SetAddressBook(curAddress, value.toString().toStdString(), strPurpose);
-        } else if (index.column() == Address) {
-            CTxDestination newAddress = CBitcoinAddress(value.toString().toStdString()).Get();
-            // Refuse to set invalid address, set error status and return false
-            if (boost::get<CNoDestination>(&newAddress)) {
-                editStatus = INVALID_ADDRESS;
-                return false;
-            }
-            // Do nothing, if old address == new address
-            else if (newAddress == curAddress) {
-                editStatus = NO_CHANGES;
-                return false;
-            }
-            // Check for duplicate addresses to prevent accidental deletion of addresses, if you try
-            // to paste an existing address over another address (with a different label)
-            else if (wallet->mapAddressBook.count(newAddress)) {
-                editStatus = DUPLICATE_ADDRESS;
-                return false;
-            }
-            // Double-check that we're not overwriting a receiving address
-            else if (rec->type == AddressTableEntry::Sending) {
-                // Remove old entry
-                wallet->DelAddressBook(curAddress);
-                // Add new entry with new address
-                wallet->SetAddressBook(newAddress, rec->label.toStdString(), strPurpose);
-            }
-        }
-        return true;
-    }*/
     return true;
 }
 
