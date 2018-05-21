@@ -164,6 +164,8 @@ HEADERS += src/activemasternode.h \
            src/obj/build.h \
            src/primitives/block.h \
            src/primitives/transaction.h \
+           src/qt/addressbookpage.h \
+           src/qt/addresstablemodel.h \
            src/qt/askpassphrasedialog.h \
            src/qt/bitcoinaddressvalidator.h \
            src/qt/bitcoinamountfield.h \
@@ -335,7 +337,8 @@ HEADERS += src/activemasternode.h \
            src/qt/overviewpage.moc \
            src/qt/rpcconsole.moc \
            src/secp256k1/src/secp256k1.c
-FORMS += src/qt/forms/askpassphrasedialog.ui \
+FORMS += src/qt/forms/addressbookpage.ui \
+         src/qt/forms/askpassphrasedialog.ui \
          src/qt/forms/coincontroldialog.ui \
          src/qt/forms/obfuscationconfig.ui \
          src/qt/forms/editaddressdialog.ui \
@@ -455,6 +458,8 @@ SOURCES += src/activemasternode.cpp \
            src/json/json_spirit_writer.cpp \
            src/primitives/block.cpp \
            src/primitives/transaction.cpp \
+           src/qt/addressbookpage.cpp \
+           src/qt/addresstablemodel.cpp \
            src/qt/askpassphrasedialog.cpp \
            src/qt/bitcoinaddressvalidator.cpp \
            src/qt/bitcoinamountfield.cpp \
