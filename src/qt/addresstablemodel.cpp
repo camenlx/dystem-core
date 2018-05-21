@@ -191,10 +191,10 @@ QVariant AddressTableModel::data(const QModelIndex& index, int role) const
     LogPrintf("\n>>>>> DYSTEM: AddressTableModel::data");
 
     if (!index.isValid()) {
-         LogPrintf("\n>>>>> DYSTEM: INVALID INDEX !!!!")
+         LogPrintf("\n>>>>> DYSTEM: INVALID INDEX !!!!");
         return QVariant();
     } else {
-                 LogPrintf("\n>>>>> DYSTEM: **VALID INDEX !!!!")
+                 LogPrintf("\n>>>>> DYSTEM: **VALID INDEX !!!!");
     }
 
     AddressTableEntry* rec = static_cast<AddressTableEntry*>(index.internalPointer());
