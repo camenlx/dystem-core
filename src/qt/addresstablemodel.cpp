@@ -313,7 +313,7 @@ QModelIndex AddressTableModel::index(int row, int column, const QModelIndex& par
     Q_UNUSED(parent);
     AddressTableEntry* data = priv->index(row);
 
-    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::index ROW: %i COLOUMN: %i label %s address %s", row, column, role, rec->label.toStdString(), rec->address.toStdString());
+    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::index ROW: %i COLOUMN: %i label %s address %s", row, column, rec->label.toStdString(), rec->address.toStdString());
 
     if (data) {
         return createIndex(row, column, priv->index(row));
