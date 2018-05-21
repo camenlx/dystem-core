@@ -55,6 +55,8 @@ struct AddressTableEntryLessThan {
 static AddressTableEntry::Type translateTransactionType(const QString& strPurpose, bool isMine)
 {
     AddressTableEntry::Type addressType = AddressTableEntry::Hidden;
+
+     LogPrintf("\n>>>>> DYSTEM: translateTransactionType purpose '%s'", strPurpose.toStdString());
     // "refund" addresses aren't shown, and change addresses aren't in mapAddressBook at all.
     if (strPurpose == "send")
         addressType = AddressTableEntry::Sending;
@@ -395,14 +397,14 @@ bool AddressTableModel::removeRows(int row, int count, const QModelIndex& parent
  */
 QString AddressTableModel::labelForAddress(const QString& address) const
 {
-    LogPrintf("\n>>>>> DYSTEM: AddressTableModel::labelForAddress '%s'", address.toStdString());
+    //LogPrintf("\n>>>>> DYSTEM: AddressTableModel::labelForAddress '%s'", address.toStdString());
     {
         LOCK(wallet->cs_wallet);
         CBitcoinAddress address_parsed(address.toStdString());
         std::map<CTxDestination, CAddressBookData>::iterator mi = wallet->mapAddressBook.find(address_parsed.Get());
-        //if (mi != wallet->mapAddressBook.end()) {
+        if (mi != wallet->mapAddressBook.end()) {
             return QString::fromStdString(mi->second.name);
-        //}
+        }
     }
     return QString();
 }
