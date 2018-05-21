@@ -312,6 +312,11 @@ Qt::ItemFlags AddressTableModel::flags(const QModelIndex& index) const
 
 QModelIndex AddressTableModel::index(int row, int column, const QModelIndex& parent) const
 {
+
+    Q_UNUSED(parent);
+
+    return createIndex(row, column);
+    /*
     Q_UNUSED(parent);
     AddressTableEntry* data = priv->index(row);
 
@@ -322,6 +327,7 @@ QModelIndex AddressTableModel::index(int row, int column, const QModelIndex& par
     } else {
         return QModelIndex();
     }
+    */
 }
 
 void AddressTableModel::updateEntry(const QString& address,
