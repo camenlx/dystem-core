@@ -400,9 +400,9 @@ QString AddressTableModel::labelForAddress(const QString& address) const
         LOCK(wallet->cs_wallet);
         CBitcoinAddress address_parsed(address.toStdString());
         std::map<CTxDestination, CAddressBookData>::iterator mi = wallet->mapAddressBook.find(address_parsed.Get());
-        if (mi != wallet->mapAddressBook.end()) {
+        //if (mi != wallet->mapAddressBook.end()) {
             return QString::fromStdString(mi->second.name);
-        }
+        //}
     }
     return QString();
 }
