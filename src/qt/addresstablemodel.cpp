@@ -190,41 +190,6 @@ QVariant AddressTableModel::data(const QModelIndex& index, int role) const
 {
     LogPrintf("\n>>>>> DYSTEM: AddressTableModel::data IDX: ");
 
-    if (!index.isValid() || index.row() >= list.length())
-        return QVariant();
-
-    const RecentRequestEntry* rec = &list[index.row()];
-
-    if (role == Qt::DisplayRole || role == Qt::EditRole) {
-        switch (index.column()) {
-        case Date:
-            return GUIUtil::dateTimeStr(rec->date);
-        case Label:
-            if (rec->recipient.label.isEmpty() && role == Qt::DisplayRole) {
-                return tr("(no label)");
-            } else {
-                return rec->recipient.label;
-            }
-        case Message:
-            if (rec->recipient.message.isEmpty() && role == Qt::DisplayRole) {
-                return tr("(no message)");
-            } else {
-                return rec->recipient.message;
-            }
-        case Amount:
-            if (rec->recipient.amount == 0 && role == Qt::DisplayRole)
-                return tr("(no amount)");
-            else if (role == Qt::EditRole)
-                return BitcoinUnits::format(walletModel->getOptionsModel()->getDisplayUnit(), rec->recipient.amount, false, BitcoinUnits::separatorNever);
-            else
-                return BitcoinUnits::format(walletModel->getOptionsModel()->getDisplayUnit(), rec->recipient.amount);
-        }
-    } else if (role == Qt::TextAlignmentRole) {
-        if (index.column() == Amount)
-            return (int)(Qt::AlignRight | Qt::AlignVCenter);
-    }
-    return QVariant();
-/*
     if (!index.isValid())
         return QVariant();
 
@@ -263,7 +228,6 @@ QVariant AddressTableModel::data(const QModelIndex& index, int role) const
         }
     }
     return QVariant();
-*/
 }
 
 bool AddressTableModel::setData(const QModelIndex& index, const QVariant& value, int role)
@@ -314,7 +278,7 @@ bool AddressTableModel::setData(const QModelIndex& index, const QVariant& value,
         }
         return true;
     }*/
-    return false;
+    return true;
 }
 
 QVariant AddressTableModel::headerData(int section, Qt::Orientation orientation, int role) const
