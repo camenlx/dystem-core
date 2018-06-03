@@ -16,6 +16,7 @@
 #include "csvmodelwriter.h"
 #include "editaddressdialog.h"
 #include "guiutil.h"
+#include "util.h"
 
 #include <QIcon>
 #include <QMenu>
@@ -163,7 +164,7 @@ void AddressBookPage::onCopyLabelAction()
 void AddressBookPage::onEditAction()
 {
     LogPrintf("ON EDIT ACTION OI OI OI");
-    
+
     if (!model)
         return;
 
