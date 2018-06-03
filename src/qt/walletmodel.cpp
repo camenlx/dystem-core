@@ -108,8 +108,12 @@ void WalletModel::updateStatus()
 
     LogPrintf("newEncryptionStatus %i \n",newEncryptionStatus);
 
-    if (cachedEncryptionStatus != newEncryptionStatus)
+    if (cachedEncryptionStatus != newEncryptionStatus) {
+        LogPrintf("cachedEncryptionStatus != newEncryptionStatus \n");
         emit encryptionStatusChanged(newEncryptionStatus);
+    } else {
+        LogPrintf("SKIPPING cachedEncryptionStatus == newEncryptionStatus \n");
+    }
 }
 
 void WalletModel::pollBalanceChanged()
