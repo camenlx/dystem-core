@@ -383,7 +383,7 @@ void WalletView::toggleLockWallet()
         dlg.exec();
     }
 
-    else if (encStatus == walletModel->Unlocked) {
+    else if (encStatus == walletModel->Unlocked || encStatus == walletModel->UnlockedForStakingOnly ) {
         LogPrintf("WalletView:: else if (encStatus == walletModel->Unlocked) { \n");
         walletModel->setWalletLocked(true);
     }
