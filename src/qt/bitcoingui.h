@@ -137,6 +137,9 @@ private:
     int prevBlocks;
     int spinnerFrame;
 
+    /** Keeping track of the previous lock status as lock / unlock is the same for the state case WalletModel::UnlockedForStakingOnly: **/
+    int previousLockState;
+
     /** Create the main UI actions. */
     void createActions(const NetworkStyle* networkStyle);
     /** Create the menu bar and sub-menus. */
