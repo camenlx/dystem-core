@@ -366,6 +366,7 @@ void WalletView::lockWallet()
 
 void WalletView::toggleLockWallet()
 {
+    LogPrintf("WalletView::toggleLockWallet()\n");
     if (!walletModel)
         return;
 

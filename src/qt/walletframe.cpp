@@ -230,6 +230,7 @@ void WalletFrame::lockWallet()
 
 void WalletFrame::toggleLockWallet()
 {
+    LogPrintf("WalletFrame::toggleLockWallet()\n");
     WalletView* walletView = currentWalletView();
     if (walletView)
         walletView->toggleLockWallet();
