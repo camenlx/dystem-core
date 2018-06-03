@@ -423,7 +423,6 @@ bool WalletModel::setWalletLocked(bool locked, const SecureString& passPhrase, b
 {
     LogPrintf("WalletModel::setWalletLocked\n");
     LogPrintf("locked %i \n", locked);
-    LogPrintf("passPhrase \n", passPhrase);
     LogPrintf("stakeOnly %i \n", stakeOnly);
 
     if (locked) {
