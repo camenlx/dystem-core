@@ -103,6 +103,7 @@ CAmount WalletModel::getWatchImmatureBalance() const
 
 void WalletModel::updateStatus()
 {
+    LogPrintf("222 WalletModel::updateStatus() \n");
     EncryptionStatus newEncryptionStatus = getEncryptionStatus();
 
     if (cachedEncryptionStatus != newEncryptionStatus)
@@ -541,9 +542,7 @@ void WalletModel::unsubscribeFromCoreSignals()
 
 // WalletModel::UnlockContext implementation
 WalletModel::UnlockContext WalletModel::requestUnlock(AskPassphraseDialog::Context context, bool relock)
-{
-    LogPrintf("WalletModel::requestUnlock \n");
-    
+{    
     bool was_locked = getEncryptionStatus() == Locked;
 
     if (!was_locked && isStakingUnlocked()) {

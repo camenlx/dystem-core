@@ -199,7 +199,7 @@ bool CCryptoKeyStore::Lock()
     LogPrintf("CCryptoKeyStore::Lock \n");
 
     if (!SetCrypted()){
-        LogPrintf("CCryptoKeyStore::Lock \n");
+        LogPrintf("CCryptoKeyStore::Lock !SetCrypted() \n");
         return false;
     }
 
