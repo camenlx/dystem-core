@@ -408,6 +408,7 @@ WalletModel::EncryptionStatus WalletModel::getEncryptionStatus() const
     if (!wallet->IsCrypted()) {
         return Unencrypted;
     } else if (wallet->fWalletUnlockStakingOnly) {
+        wallet->fWalletUnlockStakingOnly = false;
         return UnlockedForStakingOnly;
     } else if (wallet->IsLocked()) {
         return Locked;
