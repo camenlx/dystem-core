@@ -1152,20 +1152,19 @@ bool BitcoinGUI::handlePaymentRequest(const SendCoinsRecipient& recipient)
 
 void BitcoinGUI::setEncryptionStatus(int status)
 {
-    LogPrintf("BitcoinGUI::setEncryptionStatus() status %i \n", status);
-
+    print("setEncryptedStatus ", status)
+    
     switch (status) {
     case WalletModel::Unencrypted:
-        LogPrintf("BitcoinGUI::Unencrypted");
         labelEncryptionIcon->hide();
         encryptWalletAction->setChecked(false);
         changePassphraseAction->setEnabled(false);
         unlockWalletAction->setVisible(false);
         lockWalletAction->setVisible(false);
         encryptWalletAction->setEnabled(true);
+        previousLockState = status;
         break;
     case WalletModel::Unlocked:
-        LogPrintf("BitcoinGUI::Unlocked");
         labelEncryptionIcon->show();
         labelEncryptionIcon->setIcon(QIcon(":/icons/lock_open").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
         labelEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>unlocked</b>"));
@@ -1174,20 +1173,20 @@ void BitcoinGUI::setEncryptionStatus(int status)
         unlockWalletAction->setVisible(false);
         lockWalletAction->setVisible(true);
         encryptWalletAction->setEnabled(false); // TODO: decrypt currently not supported
+        previousLockState = status;
         break;
     case WalletModel::UnlockedForStakingOnly:
-        LogPrintf("BitcoinGUI::UnlockedForStakingOnly");
-        LogPrintf("Previous lock state %i ", previousLockState);
-
         labelEncryptionIcon->show();
         if( previousLockState == WalletModel::UnlockedForStakingOnly ) {
             labelEncryptionIcon->setIcon(QIcon(":/icons/lock_closed").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
             labelEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>locked</b>"));
             lockWalletAction->setVisible(false);
+            previousLockState = WalletModel::Locked;
         } else {
             labelEncryptionIcon->setIcon(QIcon(":/icons/lock_open").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
             labelEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>unlocked</b> for staking only"));
             lockWalletAction->setVisible(true);
+            previousLockState = status;
         }
         
         encryptWalletAction->setChecked(true);
@@ -1196,7 +1195,6 @@ void BitcoinGUI::setEncryptionStatus(int status)
         encryptWalletAction->setEnabled(false); // TODO: decrypt currently not supported
         break;
     case WalletModel::Locked:
-        LogPrintf("BitcoinGUI::Locked");
         labelEncryptionIcon->show();
         labelEncryptionIcon->setIcon(QIcon(":/icons/lock_closed").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
         labelEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>locked</b>"));
@@ -1204,10 +1202,9 @@ void BitcoinGUI::setEncryptionStatus(int status)
         changePassphraseAction->setEnabled(true);
         unlockWalletAction->setVisible(true);
         encryptWalletAction->setEnabled(false); // TODO: decrypt currently not supported
+        previousLockState = status;
         break;
     }
-
-    previousLockState = status;
 }
 #endif // ENABLE_WALLET
 
