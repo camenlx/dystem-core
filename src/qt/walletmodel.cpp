@@ -421,10 +421,17 @@ bool WalletModel::setWalletEncrypted(bool encrypted, const SecureString& passphr
 
 bool WalletModel::setWalletLocked(bool locked, const SecureString& passPhrase, bool stakeOnly)
 {
+    LogPrintf("WalletModel::setWalletLocked\n");
+    LogPrintf("locked %i \n", locked);
+    LogPrintf("passPhrase \n", passPhrase);
+    LogPrintf("stakeOnly %i \n", stakeOnly);
+
     if (locked) {
+        LogPrintf("if (locked) return wallet->Lock() \n");
         // Lock
         return wallet->Lock();
     } else {
+        LogPrintf("else return wallet->Unlock(passPhrase, stakeOnly); \n");
         // Unlock
         return wallet->Unlock(passPhrase, stakeOnly);
     }

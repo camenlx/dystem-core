@@ -367,18 +367,24 @@ void WalletView::lockWallet()
 void WalletView::toggleLockWallet()
 {
     LogPrintf("WalletView::toggleLockWallet()\n");
-    if (!walletModel)
+    if (!walletModel) {
+        LogPrintf("WalletView:: if (!walletModel) \n");
         return;
+    }
 
     WalletModel::EncryptionStatus encStatus = walletModel->getEncryptionStatus();
 
+    LogPrintf("WalletView:: EncryptionStatus %s \n", encStatus);
+
     // Unlock the wallet when requested
     if (encStatus == walletModel->Locked) {
+        LogPrintf("WalletView:: encStatus == walletModel->Locked \n");
         AskPassphraseDialog dlg(AskPassphraseDialog::Mode::UnlockStaking, this, walletModel, AskPassphraseDialog::Context::ToggleLock);
         dlg.exec();
     }
 
     else if (encStatus == walletModel->Unlocked) {
+        LogPrintf("WalletView:: else if (encStatus == walletModel->Unlocked) { \n");
         walletModel->setWalletLocked(true);
     }
 }
