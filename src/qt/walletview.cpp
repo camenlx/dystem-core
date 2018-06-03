@@ -177,6 +177,7 @@ void WalletView::setWalletModel(WalletModel* walletModel)
 
         // Handle changes in encryption status
         connect(walletModel, SIGNAL(encryptionStatusChanged(int)), this, SIGNAL(encryptionStatusChanged(int)));
+        LogPrintf(">>>> 3333333");
         updateEncryptionStatus();
 
         // Balloon pop-up for new transaction
@@ -316,7 +317,7 @@ void WalletView::encryptWallet(bool status)
     AskPassphraseDialog dlg(status ? AskPassphraseDialog::Mode::Encrypt : AskPassphraseDialog::Mode::Decrypt, this, 
                             walletModel, AskPassphraseDialog::Context::Encrypt);
     dlg.exec();
-
+    LogPrintf(">>>> 2222222");
     updateEncryptionStatus();
 }
 
