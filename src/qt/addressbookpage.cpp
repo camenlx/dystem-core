@@ -162,6 +162,8 @@ void AddressBookPage::onCopyLabelAction()
 
 void AddressBookPage::onEditAction()
 {
+    LogPrintf("ON EDIT ACTION OI OI OI");
+    
     if (!model)
         return;
 
