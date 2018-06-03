@@ -106,6 +106,8 @@ void WalletModel::updateStatus()
     LogPrintf("222 WalletModel::updateStatus() \n");
     EncryptionStatus newEncryptionStatus = getEncryptionStatus();
 
+    LogPrintf("newEncryptionStatus %i \n",newEncryptionStatus);
+
     if (cachedEncryptionStatus != newEncryptionStatus)
         emit encryptionStatusChanged(newEncryptionStatus);
 }
@@ -543,15 +545,19 @@ void WalletModel::unsubscribeFromCoreSignals()
 // WalletModel::UnlockContext implementation
 WalletModel::UnlockContext WalletModel::requestUnlock(AskPassphraseDialog::Context context, bool relock)
 {    
+    LogPrintf(" WalletModel::requestUnlock() \n");
+
     bool was_locked = getEncryptionStatus() == Locked;
 
     if (!was_locked && isStakingUnlocked()) {
+        LogPrintf(" if (!was_locked && isStakingUnlocked()) \n");
         setWalletLocked(true);
         wallet->fWalletUnlockStakingOnly = false;
         was_locked = getEncryptionStatus() == Locked;
     }
 
     if (was_locked) {
+        LogPrintf(" if (was_locked) { \n");
         // Request UI to unlock wallet
         emit requireUnlock(context);
     }
