@@ -253,7 +253,7 @@ bool CWallet::Unlock(const SecureString& strWalletPassphrase, bool stakeOnly)
 
         //AnonCoderBot: the state should not be changed here if it isn't locked, dont unlock period.
         //ALSO this flag is not used anywhere outside of the class
-        //fWalletUnlockStakingOnly = stakeOnly;
+        fWalletUnlockStakingOnly = stakeOnly;
         return true;
     }
 
