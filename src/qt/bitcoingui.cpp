@@ -1152,6 +1152,8 @@ bool BitcoinGUI::handlePaymentRequest(const SendCoinsRecipient& recipient)
 
 void BitcoinGUI::setEncryptionStatus(int status)
 {
+    LogPrintf("BitcoinGUI::setEncryptionStatus() status %i \n", status);
+
     switch (status) {
     case WalletModel::Unencrypted:
         labelEncryptionIcon->hide();
