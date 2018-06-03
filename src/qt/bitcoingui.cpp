@@ -1205,6 +1205,8 @@ void BitcoinGUI::setEncryptionStatus(int status)
         previousLockState = status;
         break;
     }
+
+    previousLockState = status;
 }
 #endif // ENABLE_WALLET
 
