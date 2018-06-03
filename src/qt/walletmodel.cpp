@@ -111,6 +111,7 @@ void WalletModel::updateStatus()
     if (cachedEncryptionStatus != newEncryptionStatus) {
         LogPrintf("cachedEncryptionStatus != newEncryptionStatus \n");
         //ANON CODER BOT -> WE ARE DOING THIS HERE 
+        LogPrintf(">>>>  WalletModel::updateStatus()");
         emit encryptionStatusChanged(newEncryptionStatus);
     } else {
         LogPrintf("SKIPPING cachedEncryptionStatus == newEncryptionStatus \n");
