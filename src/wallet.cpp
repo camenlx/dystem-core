@@ -244,15 +244,9 @@ bool CWallet::LoadMultiSig(const CScript& dest)
 
 bool CWallet::Unlock(const SecureString& strWalletPassphrase, bool stakeOnly)
 {
-    LogPrintf("CWallet::Unlock stqke only %i \n", stakeOnly);
-
     SecureString strWalletPassphraseFinal;
 
     if (!IsLocked()) {
-        LogPrintf("if (!IsLocked()) ** Note this is shonky as \n");
-
-        //AnonCoderBot: the state should not be changed here if it isn't locked, dont unlock period.
-        //ALSO this flag is not used anywhere outside of the class
         fWalletUnlockStakingOnly = stakeOnly;
         return true;
     }

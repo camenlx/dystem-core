@@ -103,18 +103,10 @@ CAmount WalletModel::getWatchImmatureBalance() const
 
 void WalletModel::updateStatus()
 {
-    LogPrintf("222 WalletModel::updateStatus() \n");
     EncryptionStatus newEncryptionStatus = getEncryptionStatus();
 
-    LogPrintf("newEncryptionStatus %i \n",newEncryptionStatus);
-
     if (cachedEncryptionStatus != newEncryptionStatus) {
-        LogPrintf("cachedEncryptionStatus != newEncryptionStatus \n");
-        //ANON CODER BOT -> WE ARE DOING THIS HERE 
-        LogPrintf(">>>>  WalletModel::updateStatus()");
         emit encryptionStatusChanged(newEncryptionStatus);
-    } else {
-        LogPrintf("SKIPPING cachedEncryptionStatus == newEncryptionStatus \n");
     }
 }
 
@@ -431,16 +423,10 @@ bool WalletModel::setWalletEncrypted(bool encrypted, const SecureString& passphr
 
 bool WalletModel::setWalletLocked(bool locked, const SecureString& passPhrase, bool stakeOnly)
 {
-    LogPrintf("WalletModel::setWalletLocked\n");
-    LogPrintf("locked %i \n", locked);
-    LogPrintf("stakeOnly %i \n", stakeOnly);
-
     if (locked) {
-        LogPrintf("if (locked) return wallet->Lock() \n");
         // Lock
         return wallet->Lock();
     } else {
-        LogPrintf("else return wallet->Unlock(passPhrase, stakeOnly); \n");
         // Unlock
         return wallet->Unlock(passPhrase, stakeOnly);
     }
@@ -552,19 +538,15 @@ void WalletModel::unsubscribeFromCoreSignals()
 // WalletModel::UnlockContext implementation
 WalletModel::UnlockContext WalletModel::requestUnlock(AskPassphraseDialog::Context context, bool relock)
 {    
-    LogPrintf(" WalletModel::requestUnlock() \n");
-
     bool was_locked = getEncryptionStatus() == Locked;
 
     if (!was_locked && isStakingUnlocked()) {
-        LogPrintf(" if (!was_locked && isStakingUnlocked()) \n");
         setWalletLocked(true);
         wallet->fWalletUnlockStakingOnly = false;
         was_locked = getEncryptionStatus() == Locked;
     }
 
     if (was_locked) {
-        LogPrintf(" if (was_locked) { \n");
         // Request UI to unlock wallet
         emit requireUnlock(context);
     }
