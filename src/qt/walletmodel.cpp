@@ -105,8 +105,9 @@ void WalletModel::updateStatus()
 {
     EncryptionStatus newEncryptionStatus = getEncryptionStatus();
 
-    if (cachedEncryptionStatus != newEncryptionStatus)
+    if (cachedEncryptionStatus != newEncryptionStatus) {
         emit encryptionStatusChanged(newEncryptionStatus);
+    }
 }
 
 void WalletModel::pollBalanceChanged()
@@ -399,6 +400,7 @@ WalletModel::EncryptionStatus WalletModel::getEncryptionStatus() const
     if (!wallet->IsCrypted()) {
         return Unencrypted;
     } else if (wallet->fWalletUnlockStakingOnly) {
+        wallet->fWalletUnlockStakingOnly = false;
         return UnlockedForStakingOnly;
     } else if (wallet->IsLocked()) {
         return Locked;
@@ -535,7 +537,7 @@ void WalletModel::unsubscribeFromCoreSignals()
 
 // WalletModel::UnlockContext implementation
 WalletModel::UnlockContext WalletModel::requestUnlock(AskPassphraseDialog::Context context, bool relock)
-{
+{    
     bool was_locked = getEncryptionStatus() == Locked;
 
     if (!was_locked && isStakingUnlocked()) {

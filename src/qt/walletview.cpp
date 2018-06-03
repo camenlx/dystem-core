@@ -316,7 +316,6 @@ void WalletView::encryptWallet(bool status)
     AskPassphraseDialog dlg(status ? AskPassphraseDialog::Mode::Encrypt : AskPassphraseDialog::Mode::Decrypt, this, 
                             walletModel, AskPassphraseDialog::Context::Encrypt);
     dlg.exec();
-
     updateEncryptionStatus();
 }
 
@@ -366,8 +365,9 @@ void WalletView::lockWallet()
 
 void WalletView::toggleLockWallet()
 {
-    if (!walletModel)
+    if (!walletModel) {
         return;
+    }
 
     WalletModel::EncryptionStatus encStatus = walletModel->getEncryptionStatus();
 
@@ -377,7 +377,7 @@ void WalletView::toggleLockWallet()
         dlg.exec();
     }
 
-    else if (encStatus == walletModel->Unlocked) {
+    else if (encStatus == walletModel->Unlocked || encStatus == walletModel->UnlockedForStakingOnly ) {
         walletModel->setWalletLocked(true);
     }
 }
