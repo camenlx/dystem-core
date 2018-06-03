@@ -188,7 +188,6 @@ QVariant AddressTableModel::data(const QModelIndex& index, int role) const
     AddressTableEntry* rec = static_cast<AddressTableEntry*>(index.internalPointer());
 
     if (role == Qt::DisplayRole || role == Qt::EditRole) {
-        LogPrintf("\n>>>>> DYSTEM: 11111");
         switch (index.column()) {
         case Label:
             if (rec->label.isEmpty() && role == Qt::DisplayRole) {
