@@ -1152,7 +1152,7 @@ bool BitcoinGUI::handlePaymentRequest(const SendCoinsRecipient& recipient)
 
 void BitcoinGUI::setEncryptionStatus(int status)
 {
-    LogPrintf("setEncryptedStatus ", status);
+    //LogPrintf("setEncryptedStatus ", status);
 
     switch (status) {
     case WalletModel::Unencrypted:
@@ -1162,7 +1162,7 @@ void BitcoinGUI::setEncryptionStatus(int status)
         unlockWalletAction->setVisible(false);
         lockWalletAction->setVisible(false);
         encryptWalletAction->setEnabled(true);
-        previousLockState = status;
+        //previousLockState = status;
         break;
     case WalletModel::Unlocked:
         labelEncryptionIcon->show();
@@ -1173,7 +1173,7 @@ void BitcoinGUI::setEncryptionStatus(int status)
         unlockWalletAction->setVisible(false);
         lockWalletAction->setVisible(true);
         encryptWalletAction->setEnabled(false); // TODO: decrypt currently not supported
-        previousLockState = status;
+        //previousLockState = status;
         break;
     case WalletModel::UnlockedForStakingOnly:
         labelEncryptionIcon->show();
@@ -1181,12 +1181,12 @@ void BitcoinGUI::setEncryptionStatus(int status)
             labelEncryptionIcon->setIcon(QIcon(":/icons/lock_closed").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
             labelEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>locked</b>"));
             lockWalletAction->setVisible(false);
-            previousLockState = WalletModel::Locked;
+            //previousLockState = WalletModel::Locked;
         } else {
             labelEncryptionIcon->setIcon(QIcon(":/icons/lock_open").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
             labelEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>unlocked</b> for staking only"));
             lockWalletAction->setVisible(true);
-            previousLockState = status;
+            //previousLockState = status;
         }
         
         encryptWalletAction->setChecked(true);
@@ -1202,7 +1202,7 @@ void BitcoinGUI::setEncryptionStatus(int status)
         changePassphraseAction->setEnabled(true);
         unlockWalletAction->setVisible(true);
         encryptWalletAction->setEnabled(false); // TODO: decrypt currently not supported
-        previousLockState = status;
+        //previousLockState = status;
         break;
     }
 
