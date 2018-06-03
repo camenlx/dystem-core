@@ -196,8 +196,12 @@ bool CCryptoKeyStore::SetCrypted()
 
 bool CCryptoKeyStore::Lock()
 {
-    if (!SetCrypted())
+    LogPrintf("CCryptoKeyStore::Lock \n");
+
+    if (!SetCrypted()){
+        LogPrintf("CCryptoKeyStore::Lock \n");
         return false;
+    }
 
     {
         LOCK(cs_KeyStore);
