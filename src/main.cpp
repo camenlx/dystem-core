@@ -1699,8 +1699,6 @@ void Misbehaving(NodeId pnode, int howmuch, const std::string& reason)
     if (state == NULL)
         return;
 
-    LogPrintf(" DYSTEM >>>>>>>>> Misbehaving: %s ", reason);
-
     state->nMisbehavior += howmuch;
     int banscore = GetArg("-banscore", 100);
     if (state->nMisbehavior >= banscore && state->nMisbehavior - howmuch < banscore) {
