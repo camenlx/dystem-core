@@ -1,1 +1,0 @@
-qt/libbitcoinqt_a-qrc_dystem.o: qt/qrc_dystem.cpp

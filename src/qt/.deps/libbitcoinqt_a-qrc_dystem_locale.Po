@@ -1,1 +1,0 @@
-qt/libbitcoinqt_a-qrc_dystem_locale.o: qt/qrc_dystem_locale.cpp
