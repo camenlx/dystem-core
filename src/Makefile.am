@@ -174,6 +174,7 @@ BITCOIN_CORE_H = \
   utiltime.h \
   validationinterface.h \
   version.h \
+  stakeinput.h \
   wallet.h \
   wallet_ismine.h \
   walletdb.h \
@@ -218,6 +219,7 @@ libbitcoin_server_a_SOURCES = \
   rpcserver.cpp \
   script/sigcache.cpp \
   timedata.cpp \
+  stakeinput.cpp \
   torcontrol.cpp \
   txdb.cpp \
   txmempool.cpp \

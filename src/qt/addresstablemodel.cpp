@@ -55,7 +55,6 @@ struct AddressTableEntryLessThan {
 static AddressTableEntry::Type translateTransactionType(const QString& strPurpose, bool isMine)
 {
     AddressTableEntry::Type addressType = AddressTableEntry::Hidden;
-
     // "refund" addresses aren't shown, and change addresses aren't in mapAddressBook at all.
     if (strPurpose == "send")
         addressType = AddressTableEntry::Sending;
@@ -188,7 +187,6 @@ QVariant AddressTableModel::data(const QModelIndex& index, int role) const
     AddressTableEntry* rec = static_cast<AddressTableEntry*>(index.internalPointer());
 
     if (role == Qt::DisplayRole || role == Qt::EditRole) {
-        LogPrintf("\n>>>>> DYSTEM: 11111");
         switch (index.column()) {
         case Label:
             if (rec->label.isEmpty() && role == Qt::DisplayRole) {
@@ -199,14 +197,12 @@ QVariant AddressTableModel::data(const QModelIndex& index, int role) const
         case Address:
             return rec->address;
         }
-    }
-    else if (role == Qt::FontRole) {
+    } else if (role == Qt::FontRole) {
         QFont font;
         if (index.column() == Address) {
             font = GUIUtil::bitcoinAddressFont();
         }
         return font;
-
     } else if (role == TypeRole) {
         switch (rec->type) {
         case AddressTableEntry::Sending:
@@ -214,7 +210,7 @@ QVariant AddressTableModel::data(const QModelIndex& index, int role) const
         case AddressTableEntry::Receiving:
             return Receive;
         default:
-            return Send;
+            break;
         }
     }
     return QVariant();
@@ -222,7 +218,51 @@ QVariant AddressTableModel::data(const QModelIndex& index, int role) const
 
 bool AddressTableModel::setData(const QModelIndex& index, const QVariant& value, int role)
 {
-    return true;
+    if (!index.isValid())
+        return false;
+    AddressTableEntry* rec = static_cast<AddressTableEntry*>(index.internalPointer());
+    std::string strPurpose = (rec->type == AddressTableEntry::Sending ? "send" : "receive");
+    editStatus = OK;
+
+    if (role == Qt::EditRole) {
+        LOCK(wallet->cs_wallet); /* For SetAddressBook / DelAddressBook */
+        CTxDestination curAddress = CBitcoinAddress(rec->address.toStdString()).Get();
+        if (index.column() == Label) {
+            // Do nothing, if old label == new label
+            if (rec->label == value.toString()) {
+                editStatus = NO_CHANGES;
+                return false;
+            }
+            wallet->SetAddressBook(curAddress, value.toString().toStdString(), strPurpose);
+        } else if (index.column() == Address) {
+            CTxDestination newAddress = CBitcoinAddress(value.toString().toStdString()).Get();
+            // Refuse to set invalid address, set error status and return false
+            if (boost::get<CNoDestination>(&newAddress)) {
+                editStatus = INVALID_ADDRESS;
+                return false;
+            }
+            // Do nothing, if old address == new address
+            else if (newAddress == curAddress) {
+                editStatus = NO_CHANGES;
+                return false;
+            }
+            // Check for duplicate addresses to prevent accidental deletion of addresses, if you try
+            // to paste an existing address over another address (with a different label)
+            else if (wallet->mapAddressBook.count(newAddress)) {
+                editStatus = DUPLICATE_ADDRESS;
+                return false;
+            }
+            // Double-check that we're not overwriting a receiving address
+            else if (rec->type == AddressTableEntry::Sending) {
+                // Remove old entry
+                wallet->DelAddressBook(curAddress);
+                // Add new entry with new address
+                wallet->SetAddressBook(newAddress, rec->label.toStdString(), strPurpose);
+            }
+        }
+        return true;
+    }
+    return false;
 }
 
 QVariant AddressTableModel::headerData(int section, Qt::Orientation orientation, int role) const
@@ -255,7 +295,6 @@ QModelIndex AddressTableModel::index(int row, int column, const QModelIndex& par
 {
     Q_UNUSED(parent);
     AddressTableEntry* data = priv->index(row);
-
     if (data) {
         return createIndex(row, column, priv->index(row));
     } else {
@@ -298,7 +337,6 @@ QString AddressTableModel::addRow(const QString& type, const QString& label, con
         CPubKey newKey;
         if (!wallet->GetKeyFromPool(newKey)) {
             WalletModel::UnlockContext ctx(walletModel->requestUnlock(AskPassphraseDialog::Context::Unlock_Full, true));
-            
             if (!ctx.isValid()) {
                 // Unlock wallet failed or was cancelled
                 editStatus = WALLET_UNLOCK_FAILURE;
