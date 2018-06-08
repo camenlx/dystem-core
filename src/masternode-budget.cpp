@@ -650,12 +650,14 @@ TrxValidationStatus CBudgetManager::IsTransactionValid(const CTransaction& txNew
 
     std::string strProposals = "";
     int nCountThreshold = nHighestCount - mnodeman.CountEnabled(ActiveProtocol()) / 10;
+    bool fThreshold = false;
     it = mapFinalizedBudgets.begin();
     while (it != mapFinalizedBudgets.end()) {
         CFinalizedBudget* pfinalizedBudget = &((*it).second);
         strProposals = pfinalizedBudget->GetProposals();
 
         if (pfinalizedBudget->GetVoteCount() > nCountThreshold) {
+            fThreshold = true;
             if (nBlockHeight >= pfinalizedBudget->GetBlockStart() && nBlockHeight <= pfinalizedBudget->GetBlockEnd()) {
                 transactionStatus = pfinalizedBudget->IsTransactionValid(txNew, nBlockHeight);
                 if (transactionStatus == TrxValidationStatus::Valid) {
@@ -665,6 +667,10 @@ TrxValidationStatus CBudgetManager::IsTransactionValid(const CTransaction& txNew
         }
 
         ++it;
+    }
+
+    if(!fThreshold) {
+        transactionStatus = TrxValidationStatus::VoteThreshold;
     }
 
     //we looked through all of the known budgets
@@ -775,7 +781,10 @@ std::vector<CBudgetProposal*> CBudgetManager::GetBudget()
 struct sortFinalizedBudgetsByVotes {
     bool operator()(const std::pair<CFinalizedBudget*, int>& left, const std::pair<CFinalizedBudget*, int>& right)
     {
-        return left.second > right.second;
+        if (left.second != right.second)
+            return left.second > right.second;
+        
+        return (left.first->nFeeTXHash > right.first->nFeeTXHash);
     }
 };
 

@@ -286,7 +286,66 @@ bool stakeTargetHit(uint256 hashProofOfStake, int64_t nValueIn, uint256 bnTarget
     uint256 bnCoinDayWeight = uint256(nValueIn) / 100;
 
     // Now check if proof-of-stake hash meets target protocol
-    return (uint256(hashProofOfStake) < bnCoinDayWeight * bnTargetPerCoinDay);
+    return hashProofOfStake < (bnCoinDayWeight * bnTargetPerCoinDay);
+}
+
+bool CheckStake(const CDataStream& ssUniqueID, CAmount nValueIn, const uint64_t nStakeModifier, const uint256& bnTarget,
+                unsigned int nTimeBlockFrom, unsigned int& nTimeTx, uint256& hashProofOfStake)
+{
+    CDataStream ss(SER_GETHASH, 0);
+    ss << nStakeModifier << nTimeBlockFrom << ssUniqueID << nTimeTx;
+    hashProofOfStake = Hash(ss.begin(), ss.end());
+    //LogPrintf("%s: modifier:%d nTimeBlockFrom:%d nTimeTx:%d hash:%s\n", __func__, nStakeModifier, nTimeBlockFrom, nTimeTx, hashProofOfStake.GetHex());
+
+    return stakeTargetHit(hashProofOfStake, nValueIn, bnTarget);
+}
+
+bool Stake(CStakeInput* stakeInput, unsigned int nBits, unsigned int nTimeBlockFrom, unsigned int& nTimeTx, uint256& hashProofOfStake)
+{
+    if (nTimeTx < nTimeBlockFrom)
+        return error("CheckStakeKernelHash() : nTime violation");
+
+    if (nTimeBlockFrom + nStakeMinAge > nTimeTx) // Min age requirement
+        return error("CheckStakeKernelHash() : min age violation - nTimeBlockFrom=%d nStakeMinAge=%d nTimeTx=%d",
+                     nTimeBlockFrom, nStakeMinAge, nTimeTx);
+
+    //grab difficulty
+    uint256 bnTargetPerCoinDay;
+    bnTargetPerCoinDay.SetCompact(nBits);
+
+    //grab stake modifier
+    uint64_t nStakeModifier = 0;
+    if (!stakeInput->GetModifier(nStakeModifier))
+        return error("failed to get kernel stake modifier");
+
+    bool fSuccess = false;
+    unsigned int nTryTime = 0;
+    int nHeightStart = chainActive.Height();
+    int nHashDrift = 30;
+    CDataStream ssUniqueID = stakeInput->GetUniqueness();
+    CAmount nValueIn = stakeInput->GetValue();
+    for (int i = 0; i < nHashDrift; i++) //iterate the hashing
+    {
+        //new block came in, move on
+        if (chainActive.Height() != nHeightStart)
+            break;
+
+        //hash this iteration
+        nTryTime = nTimeTx + nHashDrift - i;
+
+        // if stake hash does not meet the target then continue to next iteration
+        if (!CheckStake(ssUniqueID, nValueIn, nStakeModifier, bnTargetPerCoinDay, nTimeBlockFrom, nTryTime, hashProofOfStake))
+            continue;
+
+        fSuccess = true; // if we make it this far then we have successfully created a stake hash
+        //LogPrintf("%s: hashproof=%s\n", __func__, hashProofOfStake.GetHex());
+        nTimeTx = nTryTime;
+        break;
+    }
+
+    mapHashedBlocks.clear();
+    mapHashedBlocks[chainActive.Tip()->nHeight] = GetTime(); //store a time stamp of when we last hashed on this block
+    return fSuccess;
 }
 
 //instead of looping outside and reinitializing variables many times, we will give a nTimeTx and also search interval so that we can do all the hashing here

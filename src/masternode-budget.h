@@ -32,9 +32,10 @@ class CTxBudgetPayment;
 #define VOTE_NO 2
 
 enum class TrxValidationStatus {
-    InValid,         /** Transaction verification failed */
-    Valid,           /** Transaction successfully verified */
-    DoublePayment    /** Transaction successfully verified, but includes a double-budget-payment */
+    InValid,        /** Transaction verification failed */
+    Valid,          /** Transaction successfully verified */
+    DoublePayment,  /** Transaction successfully verified, but includes a double-budget-payment */
+    VoteThreshold   /** If not enough masternodes have voted on a finalized budget */
 };
 
 static const CAmount PROPOSAL_FEE_TX = (50 * COIN);

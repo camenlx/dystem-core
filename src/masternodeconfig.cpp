@@ -4,6 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 // clang-format off
+#include "netbase.h"
 #include "net.h"
 #include "masternodeconfig.h"
 #include "util.h"
@@ -60,7 +61,16 @@ bool CMasternodeConfig::read(std::string& strErr)
             }
         }
 
-/*
+        int port = 0;
+        std::string hostname = "";
+        SplitHostPort(ip, port, hostname);
+        if(port == 0 || hostname == "") {
+            strErr = _("Failed to parse host:port string") + "\n"+
+                strprintf(_("Line: %d"), linenumber) + "\n\"" + line + "\"";
+            streamConfig.close();
+            return false;
+        }
+
         if (Params().NetworkID() == CBaseChainParams::MAIN) {
             if (CService(ip).GetPort() != 65443) {
                 strErr = _("Invalid port detected in masternode.conf") + "\n" +
@@ -76,7 +86,6 @@ bool CMasternodeConfig::read(std::string& strErr)
             streamConfig.close();
             return false;
         }
-*/
 
         add(alias, ip, privKey, txHash, outputIndex);
     }
