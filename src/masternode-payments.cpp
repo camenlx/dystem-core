@@ -227,25 +227,7 @@ bool IsBlockPayeeValid(const CBlock& block, int nBlockHeight)
     }
 
     const CTransaction& txNew = (nBlockHeight > Params().LAST_POW_BLOCK() ? block.vtx[1] : block.vtx[0]);
-/*
-    //check if it's a budget block
-    if (IsSporkActive(SPORK_13_ENABLE_SUPERBLOCKS)) {
-        if (budget.IsBudgetPaymentBlock(nBlockHeight)) {
-            transactionStatus = budget.IsTransactionValid(txNew, nBlockHeight);
-            if (transactionStatus == TrxValidationStatus::Valid) {
-                return true;
-            }
 
-            if (transactionStatus == TrxValidationStatus::InValid) {
-                LogPrint("masternode","Invalid budget payment detected %s\n", txNew.ToString().c_str());
-                if (IsSporkActive(SPORK_9_MASTERNODE_BUDGET_ENFORCEMENT))
-                    return false;
-
-                LogPrint("masternode","Budget enforcement is disabled, accepting block\n");
-            }
-        }
-    }
-*/
     // If we end here the transaction was either TrxValidationStatus::InValid and Budget enforcement is disabled, or
     // a double budget payment (status = TrxValidationStatus::DoublePayment) was detected
     // In both cases a masternode will get the payment for this block
