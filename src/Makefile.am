@@ -157,6 +157,7 @@ BITCOIN_CORE_H = \
   script/standard.h \
   script/script_error.h \
   serialize.h \
+  stakeinput.h \
   streams.h \
   sync.h \
   threadsafety.h \
@@ -174,7 +175,6 @@ BITCOIN_CORE_H = \
   utiltime.h \
   validationinterface.h \
   version.h \
-  stakeinput.h \
   wallet.h \
   wallet_ismine.h \
   walletdb.h \
@@ -219,7 +219,6 @@ libbitcoin_server_a_SOURCES = \
   rpcserver.cpp \
   script/sigcache.cpp \
   timedata.cpp \
-  stakeinput.cpp \
   torcontrol.cpp \
   txdb.cpp \
   txmempool.cpp \
@@ -258,6 +257,7 @@ libbitcoin_wallet_a_SOURCES = \
   wallet.cpp \
   wallet_ismine.cpp \
   walletdb.cpp \
+  stakeinput.cpp \
   $(BITCOIN_CORE_H)
 
 # crypto primitives library
