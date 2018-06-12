@@ -86,10 +86,10 @@ bool CMasternodeConfig::read(std::string& strErr)
             streamConfig.close();
             return false;
         }
-
+*/
         add(alias, ip, privKey, txHash, outputIndex);
     }
-*/
+
     streamConfig.close();
     return true;
 }
