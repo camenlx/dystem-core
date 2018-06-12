@@ -71,6 +71,8 @@ bool CMasternodeConfig::read(std::string& strErr)
             return false;
         }
 
+        LogPrintf(">>>>>>>>> OI DAN THE ACTUAL PORT IS %ui",Params().NetworkID());
+
         if (Params().NetworkID() == CBaseChainParams::MAIN) {
             if (CService(ip).GetPort() != 65443) {
                 strErr = _("Invalid port detected in masternode.conf") + "\n" +
