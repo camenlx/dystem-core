@@ -163,7 +163,7 @@ private:
 
 public:
     bool MintableCoins();
-    bool SelectStakeCoins(std::set<std::pair<const CWalletTx*, unsigned int> >& setCoins, CAmount nTargetAmount) const;
+    bool SelectStakeCoins(std::list<std::unique_ptr<CStakeInput> >& listInputs, CAmount nTargetAmount);
     int CountInputsWithAmount(CAmount nInputAmount);
     bool AddAccountingEntry(const CAccountingEntry& acentry, CWalletDB & pwalletdb);
     /*

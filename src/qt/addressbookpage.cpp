@@ -16,6 +16,7 @@
 #include "csvmodelwriter.h"
 #include "editaddressdialog.h"
 #include "guiutil.h"
+#include "util.h"
 
 #include <QIcon>
 #include <QMenu>
@@ -157,11 +158,14 @@ void AddressBookPage::on_copyAddress_clicked()
 
 void AddressBookPage::onCopyLabelAction()
 {
+    LogPrintf("AddressBookPage::onCopyLabelAction");
     GUIUtil::copyEntryData(ui->tableView, AddressTableModel::Label);
 }
 
 void AddressBookPage::onEditAction()
 {
+    LogPrintf("AddressBookPage::onEditAction");
+
     if (!model)
         return;
 
@@ -184,6 +188,7 @@ void AddressBookPage::onEditAction()
 
 void AddressBookPage::on_newAddress_clicked()
 {
+    LogPrintf("AddressBookPage::on_newAddress_clicked");
     if (!model)
         return;
 
@@ -200,6 +205,7 @@ void AddressBookPage::on_newAddress_clicked()
 
 void AddressBookPage::on_deleteAddress_clicked()
 {
+    LogPrintf("AddressBookPage::on_deleteAddress_clicked");
     QTableView* table = ui->tableView;
     if (!table->selectionModel())
         return;
@@ -212,6 +218,7 @@ void AddressBookPage::on_deleteAddress_clicked()
 
 void AddressBookPage::selectionChanged()
 {
+    LogPrintf("AddressBookPage::selectionChanged");
     // Set button states based on selected tab and selection
     QTableView* table = ui->tableView;
     if (!table->selectionModel())
@@ -241,6 +248,7 @@ void AddressBookPage::selectionChanged()
 
 void AddressBookPage::done(int retval)
 {
+    LogPrintf("AddressBookPage::done");
     QTableView* table = ui->tableView;
     if (!table->selectionModel() || !table->model())
         return;
@@ -294,6 +302,7 @@ void AddressBookPage::contextualMenu(const QPoint& point)
 
 void AddressBookPage::selectNewAddress(const QModelIndex& parent, int begin, int /*end*/)
 {
+    LogPrintf("AddressBookPage::selectNewAddress");
     QModelIndex idx = proxyModel->mapFromSource(model->index(begin, AddressTableModel::Address, parent));
     if (idx.isValid() && (idx.data(Qt::EditRole).toString() == newAddressToSelect)) {
         // Select row of newly created address, once

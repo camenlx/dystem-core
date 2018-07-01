@@ -105,8 +105,9 @@ void WalletModel::updateStatus()
 {
     EncryptionStatus newEncryptionStatus = getEncryptionStatus();
 
-    if (cachedEncryptionStatus != newEncryptionStatus)
+    if (cachedEncryptionStatus != newEncryptionStatus) {
         emit encryptionStatusChanged(newEncryptionStatus);
+    }
 }
 
 void WalletModel::pollBalanceChanged()
@@ -179,8 +180,6 @@ void WalletModel::updateTransaction()
 
 void WalletModel::updateAddressBook(const QString& address, const QString& label, bool isMine, const QString& purpose, int status)
 {
-    LogPrintf("\n>>>>> ***** DYSTEM: 11111 WalletModel:updateAddressBook: address %s label %s status %i", address.toStdString(), label.toStdString(), status);
-
     if (addressTableModel)
         addressTableModel->updateEntry(address, label, isMine, purpose, status);
 }
@@ -399,6 +398,7 @@ WalletModel::EncryptionStatus WalletModel::getEncryptionStatus() const
     if (!wallet->IsCrypted()) {
         return Unencrypted;
     } else if (wallet->fWalletUnlockStakingOnly) {
+        wallet->fWalletUnlockStakingOnly = false;
         return UnlockedForStakingOnly;
     } else if (wallet->IsLocked()) {
         return Locked;
@@ -535,7 +535,7 @@ void WalletModel::unsubscribeFromCoreSignals()
 
 // WalletModel::UnlockContext implementation
 WalletModel::UnlockContext WalletModel::requestUnlock(AskPassphraseDialog::Context context, bool relock)
-{
+{    
     bool was_locked = getEncryptionStatus() == Locked;
 
     if (!was_locked && isStakingUnlocked()) {
