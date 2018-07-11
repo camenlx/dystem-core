@@ -1,4 +1,4 @@
-<span style="display:block;text-align:center">![alt text](https://i.imgur.com/wS44zyP.png)</span>
+<span style="display:block;text-align:center">![alt text](https://dystem.io/images/dystem_icon_tran_small.png)</span>
 
 Dystem integration/staging repository
 =====================================
