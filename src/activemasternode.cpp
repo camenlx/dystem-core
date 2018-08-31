@@ -225,7 +225,7 @@ bool CActiveMasternode::Register(std::string strService, std::string strKeyMaste
         return false;
     }
 
-    CService service = CService(strService);
+    //CService service = CService(strService);
 
     addrman.Add(CAddress(service), CNetAddr("127.0.0.1"), 2 * 60 * 60);
 
