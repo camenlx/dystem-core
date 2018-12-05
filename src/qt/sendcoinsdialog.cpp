@@ -278,7 +278,7 @@ void SendCoinsDialog::on_sendButton_clicked()
         amount.append("</b> ").append(strFunds);
 
         // generate monospace address string
-        QString address = "<span style='font-family: monospace;'>" + rcp.address;
+        QString address = "<span style='font-family: Open Sans;'>" + rcp.address;
         address.append("</span>");
 
         QString recipientElement;

@@ -537,7 +537,7 @@
               </layout>
              </item>
              <item>
-              <layout class="QVBoxLayout" name="verticalLayout_right" stretch="1">
+              <layout class="QVBoxLayout" name="verticalLayout_right" stretch="0">
                <item>
                 <widget class="QFrame" name="frame_RecentTransactions">
                  <property name="minimumSize">
@@ -665,12 +665,12 @@
                      <enum>Qt::Vertical</enum>
                     </property>
                     <property name="sizeType">
-                     <enum>QSizePolicy::Expanding</enum>
+                     <enum>QSizePolicy::Ignored</enum>
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
                       <width>20</width>
-                      <height>40</height>
+                      <height>20</height>
                      </size>
                     </property>
                    </spacer>

@@ -602,12 +602,12 @@
         <translation>Tabs toolbar</translation>
     </message>
     <message>
-        <source>DYSTEM Core</source>
-        <translation>DYSTEM Core</translation>
+        <source>Dystem Core</source>
+        <translation>Dystem Core</translation>
     </message>
     <message>
-        <source>Send coins to a DYSTEM address</source>
-        <translation>Send coins to a DYSTEM address</translation>
+        <source>Send coins to a Dystem address</source>
+        <translation>Send coins to a Dystem address</translation>
     </message>
     <message>
         <source>Request payments (generates QR codes and dystem: URIs)</source>
@@ -622,24 +622,24 @@
         <translation>Browse masternodes</translation>
     </message>
     <message>
-        <source>&amp;About DYSTEM Core</source>
-        <translation>&amp;About DYSTEM Core</translation>
+        <source>&amp;About Dystem Core</source>
+        <translation>&amp;About Dystem Core</translation>
     </message>
     <message>
-        <source>Show information about DYSTEM Core</source>
-        <translation>Show information about DYSTEM Core</translation>
+        <source>Show information about Dystem Core</source>
+        <translation>Show information about Dystem Core</translation>
     </message>
     <message>
-        <source>Modify configuration options for DYSTEM</source>
-        <translation>Modify configuration options for DYSTEM</translation>
+        <source>Modify configuration options for Dystem</source>
+        <translation>Modify configuration options for Dystem</translation>
     </message>
     <message>
-        <source>Sign messages with your DYSTEM addresses to prove you own them</source>
-        <translation>Sign messages with your DYSTEM addresses to prove you own them</translation>
+        <source>Sign messages with your Dystem addresses to prove you own them</source>
+        <translation>Sign messages with your Dystem addresses to prove you own them</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified DYSTEM addresses</source>
-        <translation>Verify messages to ensure they were signed with specified DYSTEM addresses</translation>
+        <source>Verify messages to ensure they were signed with specified Dystem addresses</source>
+        <translation>Verify messages to ensure they were signed with specified Dystem addresses</translation>
     </message>
     <message>
         <source>&amp;BIP38 tool</source>

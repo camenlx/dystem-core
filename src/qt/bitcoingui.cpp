@@ -290,10 +290,16 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 {
     QActionGroup* tabGroup = new QActionGroup(this);
 
+    QIcon overviewIcon;
+    overviewIcon.addFile(":/icons/overview",QSize(40,40),QIcon::Normal,QIcon::On);
+    overviewIcon.addFile(":/icons/overview_off",QSize(40,40),QIcon::Normal,QIcon::Off);
+
     overviewAction = new QAction(QIcon(":/icons/overview"), tr("&Overview"), this);
-    overviewAction->setStatusTip(tr("Show general overview of wallet"));
+    overviewAction->setStatusTip(tr("Balance and Transaction overview"));
     overviewAction->setToolTip(overviewAction->statusTip());
     overviewAction->setCheckable(true);
+    overviewAction->setIcon(overviewIcon);
+
 #ifdef Q_OS_MAC
     overviewAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_1));
 #else
@@ -301,10 +307,14 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 #endif
     tabGroup->addAction(overviewAction);
 
+    QIcon sendIcon;
+    sendIcon.addFile(":/icons/send",QSize(40,40),QIcon::Normal,QIcon::On);
+    sendIcon.addFile(":/icons/send_off",QSize(40,40),QIcon::Normal,QIcon::Off);
     sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send"), this);
     sendCoinsAction->setStatusTip(tr("Send coins to a dystem address"));
     sendCoinsAction->setToolTip(sendCoinsAction->statusTip());
     sendCoinsAction->setCheckable(true);
+    sendCoinsAction->setIcon(sendIcon);
 #ifdef Q_OS_MAC
     sendCoinsAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_2));
 #else
@@ -312,10 +322,15 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 #endif
     tabGroup->addAction(sendCoinsAction);
 
+    QIcon receiveIcon;
+    receiveIcon.addFile(":/icons/receiving_addresses",QSize(40,40),QIcon::Normal,QIcon::On);
+    receiveIcon.addFile(":/icons/receiving_addresses_off",QSize(40,40),QIcon::Normal,QIcon::Off);
     receiveCoinsAction = new QAction(QIcon(":/icons/receiving_addresses"), tr("&Receive"), this);
     receiveCoinsAction->setStatusTip(tr("Request payments (generates QR codes and dystem: URIs)"));
     receiveCoinsAction->setToolTip(receiveCoinsAction->statusTip());
     receiveCoinsAction->setCheckable(true);
+    receiveCoinsAction->setIcon(receiveIcon);
+
 #ifdef Q_OS_MAC
     receiveCoinsAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_3));
 #else
@@ -323,10 +338,15 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 #endif
     tabGroup->addAction(receiveCoinsAction);
 
+    QIcon historyIcon;
+    historyIcon.addFile(":/icons/history",QSize(40,40),QIcon::Normal,QIcon::On);
+    historyIcon.addFile(":/icons/history_off",QSize(40,40),QIcon::Normal,QIcon::Off);
     historyAction = new QAction(QIcon(":/icons/history"), tr("&Transactions"), this);
     historyAction->setStatusTip(tr("Browse transaction history"));
     historyAction->setToolTip(historyAction->statusTip());
     historyAction->setCheckable(true);
+    historyAction->setIcon(historyIcon);
+
 #ifdef Q_OS_MAC
     historyAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_4));
 #else
@@ -338,10 +358,14 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 
     QSettings settings;
     if (settings.value("fShowMasternodesTab").toBool()) {
+        QIcon masternodeIcon;
+        masternodeIcon.addFile(":/icons/masternodes",QSize(40,40),QIcon::Normal,QIcon::On);
+        masternodeIcon.addFile(":/icons/masternodes_off",QSize(40,40),QIcon::Normal,QIcon::Off);
         masternodeAction = new QAction(QIcon(":/icons/masternodes"), tr("&Masternodes"), this);
         masternodeAction->setStatusTip(tr("Browse masternodes"));
         masternodeAction->setToolTip(masternodeAction->statusTip());
         masternodeAction->setCheckable(true);
+        masternodeAction->setIcon(masternodeIcon);
 #ifdef Q_OS_MAC
         masternodeAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_6));
 #else
@@ -371,6 +395,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     aboutAction = new QAction(networkStyle->getAppIcon(), tr("&About Dystem Core"), this);
     aboutAction->setStatusTip(tr("Show information about Dystem Core"));
     aboutAction->setMenuRole(QAction::AboutRole);
+    /*
 #if QT_VERSION < 0x050000
     aboutQtAction = new QAction(QIcon(":/trolltech/qmessagebox/images/qtlogo-64.png"), tr("About &Qt"), this);
 #else
@@ -378,6 +403,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 #endif
     aboutQtAction->setStatusTip(tr("Show information about Qt"));
     aboutQtAction->setMenuRole(QAction::AboutQtRole);
+*/
     optionsAction = new QAction(QIcon(":/icons/options"), tr("&Options..."), this);
     optionsAction->setStatusTip(tr("Modify configuration options for Dystem"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
@@ -543,6 +569,10 @@ void BitcoinGUI::createToolBars()
         toolbar->addAction(masternodeAction);
         toolbar->setMovable(false); // remove unused icon in upper left corner
         overviewAction->setChecked(true);
+
+        QLayout* lay = toolbar->layout();
+        for(int i = 0; i < lay->count(); ++i)
+            lay->itemAt(i)->setAlignment(Qt::AlignHCenter);
 
         /** Create additional container for toolbar and walletFrame and make it the central widget.
             This is a workaround mostly for toolbar styling on Mac OS but should work fine for every other OSes too.

@@ -46,8 +46,11 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle* networkStyle) 
     // load the bitmap for writing some text over it
     pixmap = networkStyle->getSplashImage();
 
+    QPen p;
+    p.setColor(QColor(245, 245, 245));
+
     QPainter pixPaint(&pixmap);
-    pixPaint.setPen(QColor(100, 100, 100));
+    pixPaint.setPen(p);
 
     // check font size and drawing with
     pixPaint.setFont(QFont(font, 28 * fontFactor));
@@ -63,15 +66,19 @@ SplashScreen::SplashScreen(Qt::WindowFlags f, const NetworkStyle* networkStyle) 
     //titleTextWidth = fm.width(titleText);
     pixPaint.drawText(paddingLeft, paddingTop, titleText);
 
-    pixPaint.setFont(QFont(font, 15 * fontFactor));
+    QFont f2 = QFont(font, 12 * fontFactor);
+    f2.setWeight(5);
+    pixPaint.setFont(f2);
     pixPaint.drawText(paddingLeft, paddingTop + titleVersionVSpace, versionText);
 
+    QFont f3 = QFont(font, 10 * fontFactor);
+    f3.setWeight(QFont::Light);
     // draw copyright stuff
-    pixPaint.setFont(QFont(font, 10 * fontFactor));
+    pixPaint.setFont(f3);
     pixPaint.drawText(paddingLeft, paddingTop + titleCopyrightVSpace, copyrightTextBtc);
-    pixPaint.drawText(paddingLeft, paddingTop + titleCopyrightVSpace + 12, copyrightTextDash);
-    pixPaint.drawText(paddingLeft, paddingTop + titleCopyrightVSpace + 24, copyrightTextPIVX);
-    pixPaint.drawText(paddingLeft, paddingTop + titleCopyrightVSpace + 36, copyrightTextDYSTEM);
+    pixPaint.drawText(paddingLeft, paddingTop + titleCopyrightVSpace + 13, copyrightTextDash);
+    pixPaint.drawText(paddingLeft, paddingTop + titleCopyrightVSpace + 26, copyrightTextPIVX);
+    pixPaint.drawText(paddingLeft, paddingTop + titleCopyrightVSpace + 39, copyrightTextDYSTEM);
 
     // draw additional text if special network
     if (!titleAddText.isEmpty()) {
@@ -114,7 +121,7 @@ static void InitMessage(SplashScreen* splash, const std::string& message)
         Qt::QueuedConnection,
         Q_ARG(QString, QString::fromStdString(message)),
         Q_ARG(int, Qt::AlignBottom | Qt::AlignHCenter),
-        Q_ARG(QColor, QColor(100, 100, 100)));
+        Q_ARG(QColor, QColor(245, 245, 245)));
 }
 
 static void ShowProgress(SplashScreen* splash, const std::string& title, int nProgress)

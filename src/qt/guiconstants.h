@@ -32,7 +32,7 @@ static const bool DEFAULT_SPLASHSCREEN = true;
 /* Transaction list -- TX status decoration - offline */
 #define COLOR_TX_STATUS_OFFLINE QColor(192, 192, 192)
 /* Transaction list -- TX status decoration - default color */
-#define COLOR_BLACK QColor(51, 51, 51)
+#define COLOR_BLACK QColor(245, 245, 245)
 /* Transaction list -- TX status decoration - conflicted */
 #define COLOR_CONFLICTED QColor(255, 0, 0)
 
@@ -50,7 +50,7 @@ static const int MAX_URI_LENGTH = 255;
 /* Number of frames in spinner animation */
 #define SPINNER_FRAMES 35
 
-#define QAPP_ORG_NAME "DYSTEM"
+#define QAPP_ORG_NAME "Dystem"
 #define QAPP_ORG_DOMAIN "dystem.org"
 #define QAPP_APP_NAME_DEFAULT "DYSTEM-Qt"
 #define QAPP_APP_NAME_TESTNET "DYSTEM-Qt-testnet"

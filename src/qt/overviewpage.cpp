@@ -23,8 +23,9 @@
 #include <QSettings>
 #include <QTimer>
 
-#define DECORATION_SIZE 48
-#define ICON_OFFSET 16
+#define DECORATION_SIZE 38
+#define ROW_SIZE 49
+#define ICON_OFFSET 2
 #define NUM_ITEMS 9
 
 extern CWallet* pwalletMain;
@@ -41,15 +42,17 @@ public:
     {
         painter->save();
 
+        QString font = QApplication::font().toString();
+
         QIcon icon = qvariant_cast<QIcon>(index.data(Qt::DecorationRole));
         QRect mainRect = option.rect;
         mainRect.moveLeft(ICON_OFFSET);
         QRect decorationRect(mainRect.topLeft(), QSize(DECORATION_SIZE, DECORATION_SIZE));
         int xspace = DECORATION_SIZE + 8;
-        int ypad = 6;
+        int ypad = 0;
         int halfheight = (mainRect.height() - 2 * ypad) / 2;
-        QRect amountRect(mainRect.left() + xspace, mainRect.top() + ypad, mainRect.width() - xspace - ICON_OFFSET, halfheight);
-        QRect addressRect(mainRect.left() + xspace, mainRect.top() + ypad + halfheight, mainRect.width() - xspace, halfheight);
+        QRect amountRect(mainRect.left() + xspace, mainRect.top() + ypad, mainRect.width() - xspace - ICON_OFFSET - 8, halfheight);
+        QRect addressRect(mainRect.left() + xspace, mainRect.top() + ypad + halfheight, mainRect.width() - ( xspace * 2 ), halfheight);
         icon.paint(painter, decorationRect);
 
         QDateTime date = index.data(TransactionTableModel::DateRole).toDateTime();
@@ -69,13 +72,16 @@ public:
         }
 
         QVariant value = index.data(Qt::ForegroundRole);
-        QColor foreground = COLOR_BLACK;
+        QFont f1 = QFont(font, 12);
+        f1.setWeight(QFont::Light);
+        QPen p;
         if (value.canConvert<QBrush>()) {
             QBrush brush = qvariant_cast<QBrush>(value);
-            foreground = brush.color();
+            p.setColor(brush.color());
         }
-
-        painter->setPen(foreground);
+        
+        painter->setPen(p);
+        painter->setFont(f1);
         QRect boundingRect;
         painter->drawText(addressRect, Qt::AlignLeft | Qt::AlignVCenter, address, &boundingRect);
 
@@ -86,22 +92,22 @@ public:
         }
 
         if(fConflicted) { // No need to check anything else for conflicted transactions
-            foreground = COLOR_CONFLICTED;
+            p.setColor(COLOR_CONFLICTED);
         } else if (!confirmed || fImmature) {
-            foreground = COLOR_UNCONFIRMED;
+            p.setColor(COLOR_UNCONFIRMED);
         } else if (amount < 0) {
-            foreground = COLOR_NEGATIVE;
+            p.setColor(COLOR_NEGATIVE);
         } else {
-            foreground = COLOR_BLACK;
+            p.setColor(COLOR_BLACK);
         }
-        painter->setPen(foreground);
+        
+        painter->setPen(p);
+        painter->setFont(f1);
         QString amountText = BitcoinUnits::formatWithUnit(unit, amount, true, BitcoinUnits::separatorNever);
         if (!confirmed) {
             amountText = QString("[") + amountText + QString("]");
         }
         painter->drawText(amountRect, Qt::AlignRight | Qt::AlignVCenter, amountText);
-
-        painter->setPen(COLOR_BLACK);
         painter->drawText(amountRect, Qt::AlignLeft | Qt::AlignVCenter, GUIUtil::dateTimeStr(date));
 
         painter->restore();
@@ -109,7 +115,7 @@ public:
 
     inline QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const
     {
-        return QSize(DECORATION_SIZE, DECORATION_SIZE);
+        return QSize(ROW_SIZE, ROW_SIZE);
     }
 
     int unit;

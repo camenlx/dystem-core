@@ -258,25 +258,6 @@ std::string BlockToString(CBlockIndex* pBlock)
     Content += ">&nbsp;►</a></h2>";
     Content += BlockContent;
     Content += "</br>";
-    /*
-    if (block.nHeight > getThirdHardforkBlock())
-    {
-        std::vector<std::string> votes[2];
-        for (int i = 0; i < 2; i++)
-        {
-            for (unsigned int j = 0; j < block.vvotes[i].size(); j++)
-            {
-                votes[i].push_back(block.vvotes[i][j].hash.ToString() + ':' + itostr(block.vvotes[i][j].n));
-            }
-        }
-        Content += "<h3>" + _("Votes +") + "</h3>";
-        Content += makeHTMLTable(&votes[1][0], votes[1].size(), 1);
-        Content += "</br>";
-        Content += "<h3>" + _("Votes -") + "</h3>";
-        Content += makeHTMLTable(&votes[0][0], votes[0].size(), 1);
-        Content += "</br>";
-    }
-    */
     Content += "<h2>" + _("Transactions") + "</h2>";
     Content += TxContent;
 
@@ -350,7 +331,6 @@ std::string TxToString(uint256 BlockHash, const CTransaction& tx)
             _("Hash"), "<pre>" + Hash + "</pre>",
         };
 
-    // std::map<uint256, CBlockIndex*>::iterator iter = mapBlockIndex.find(BlockHash);
     BlockMap::iterator iter = mapBlockIndex.find(BlockHash);
     if (iter != mapBlockIndex.end()) {
         CBlockIndex* pIndex = iter->second;
@@ -465,7 +445,6 @@ bool BlockExplorer::switchTo(const QString& query)
     // If the query is not an integer, assume it is a block hash
     uint256 hash = uint256S(query.toUtf8().constData());
 
-    // std::map<uint256, CBlockIndex*>::iterator iter = mapBlockIndex.find(hash);
     BlockMap::iterator iter = mapBlockIndex.find(hash);
     if (iter != mapBlockIndex.end()) {
         setBlock(iter->second);
@@ -518,7 +497,7 @@ void BlockExplorer::setBlock(CBlockIndex* pBlock)
 
 void BlockExplorer::setContent(const std::string& Content)
 {
-    QString CSS = "body {font-size:12px; color:#f8f6f6; bgcolor:#5787bb;}\n a, span { font-family: monospace; }\n span.addr {color:#5787bb; font-weight: bold;}\n table tr td {padding: 3px; border: 1px solid black; background-color: #5787bb;}\n td.d0 {font-weight: bold; color:#f8f6f6;}\n h2, h3 { white-space:nowrap; color:#5787bb;}\n a { color:#88f6f6; text-decoration:none; }\n a.nav {color:#5787bb;}\n";
+    QString CSS = "body {font-size:12px; color:#orange; bgcolor:red;}\n a, span { font-family: Open Sans; }\n span.addr {color:green; font-weight: bold;}\n table tr td {padding: 3px; border: 1px solid black; background-color: whitesmoke;}\n td.d0 {font-weight: bold; color: #324e6b;}\n h2, h3 { white-space:nowrap; color: #324e6b;}\n a { color: #324e6b; text-decoration:none; }\n a.nav {color: #324e6b;}\n";
     QString FullContent = "<html><head><style type=\"text/css\">" + CSS + "</style></head>" + "<body>" + Content.c_str() + "</body></html>";
     ui->content->setText(FullContent);
 }
