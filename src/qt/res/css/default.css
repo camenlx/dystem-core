@@ -330,7 +330,7 @@ QComboBox::item {
 }
 
 QComboBox::item:alternate {
-background:cyan;
+	background:cyan;
 }
 
 QComboBox::item:selected {
@@ -490,7 +490,6 @@ QScrollBar {
 
 }
 
-
 /* Vertical Scroll Bar Attributes */
 QScrollBar:vertical { 
 	border:0;
@@ -543,15 +542,7 @@ QScrollBar::handle:horizontal:pressed {
 QScrollBar::add-page, QScrollBar::sub-page { 
 	background:whitesmoke;
 }
-/*
-THIS FUCKS LOADS OF THINGS
-QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical, QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal { /
-background-color:whitesmoke;
-border: 1px solid #355271;
-width:16px;
-height:16px;
-}
-*/
+
 QScrollBar::add-line:vertical:pressed, QScrollBar::sub-line:vertical:pressed, QScrollBar::add-line:horizontal:pressed, QScrollBar::sub-line:horizontal:pressed {
 	background-color:lightgray;
 }
@@ -1212,7 +1203,7 @@ QWidget .QFrame#frame_RecentTransactions {
 	margin-left:0;
 	margin-top:0;
 	color:whitesmoke;
-	color: aqua;
+	color: #355271;
 }
 
   /* Recent Transactions Label */
@@ -1616,7 +1607,7 @@ padding-right:10px;
 }
 
 QWidget#ReceiveCoinsDialog .QFrame#frame2 QPushButton:pressed {
-	border:1px solid red;
+	/*border:1px solid red;*/
 }
 
 /* Requested Payments History Label */
@@ -1630,7 +1621,12 @@ QWidget#ReceiveCoinsDialog .QFrame#frame .QLabel#label_6 {
 
  /* Contents of Receive Coin Dialog */
 QDialog#ReceiveRequestDialog QTextEdit {
-border:1px solid blue;
+	border:1px solid #324e6b;
+	color: #324e6b;
+}
+
+ReceiveRequestDialog .QTextEdit {
+	color: #324e6b;
 }
 
 /**************************** TRANSACTIONS PAGE *****************************************/
@@ -1676,32 +1672,6 @@ QTabWidget#tabWidget {
 /* Contents of Receive Coin Dialog*/
 QDialog#TransactionDescDialog QTextEdit { 
 	border:1px solid blue;
-}
-
-/**************************** PRIVACY PAGE *****************************************/
-/* QDialog#PrivacyDialog */
-/* QWidget#PrivacyDialog */
-/* QFrame::HLine == 0x0004 */
-QWidget#PrivacyDialog .QFrame[frameShape="4"] { 
-	border:1px solid cyan;
-}
-
-QWidget#PrivacyDialog .QFrame#frame_Content {
-	background-color:orange;
-}
-
-QWidget#PrivacyDialog .QFrame#verticalFrameLeft {
-	background-color:yellow;
-}
-
-QWidget#PrivacyDialog .QFrame#verticalFrameRight {
-	background-color:orange;
-}
-
-QWidget#PrivacyDialog .QToolButton {
-	margin:2px;
-	min-height: 24px;
-	min-width: 24px;
 }
 
 /**************************** MASTERNODE LIST ******************************************/
