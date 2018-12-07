@@ -354,7 +354,7 @@ void SendCoinsDialog::send(QList<SendCoinsRecipient> recipients, QString strFee,
 
     if (txFee > 0) {
         // append fee string if a fee is required
-        questionString.append("<hr /><span style='color:#aa0000;'>");
+        questionString.append("<hr /><span style='color:green;'>");
         questionString.append(BitcoinUnits::formatHtmlWithUnit(model->getOptionsModel()->getDisplayUnit(), txFee));
         questionString.append("</span> ");
         questionString.append(tr("are added as transaction fee"));
@@ -375,7 +375,7 @@ void SendCoinsDialog::send(QList<SendCoinsRecipient> recipients, QString strFee,
     }
 
     // Show total amount + all alternative units
-    questionString.append(tr("Total Amount = <b>%1</b><br />= %2")
+    questionString.append(tr("Total Amount = <b style='color:orange;'>%1</b><br />= %2")
                               .arg(BitcoinUnits::formatHtmlWithUnit(model->getOptionsModel()->getDisplayUnit(), totalAmount))
                               .arg(alternativeUnits.join("<br />= ")));
 
@@ -391,7 +391,7 @@ void SendCoinsDialog::send(QList<SendCoinsRecipient> recipients, QString strFee,
         }
     }
     questionString.append("<hr />");
-    questionString.append(tr("<b>(%1 of %2 entries displayed)</b>").arg(displayedEntries).arg(messageEntries));
+    questionString.append(tr("<b style='color:brown;'> (%1 of %2 entries displayed)</b>").arg(displayedEntries).arg(messageEntries));
 
     // Display message box
     QMessageBox::StandardButton retval = QMessageBox::question(this, tr("Confirm send coins"),

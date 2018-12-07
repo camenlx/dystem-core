@@ -87,6 +87,11 @@ QToolBar > QToolButton:pressed {
 
 QMessageBox {
 	background-color: whitesmoke;
+	color:  #355271;
+}
+
+QMessageBox QLabel {
+    color: #355271;
 }
 
 QProgressBar {
@@ -194,6 +199,7 @@ QLabel {
 	color:#355271;
 	background-color:whitesmoke;
 	selection-background-color: #355271;
+	selection-color: whitesmoke;
 }
 
 .QValidatedLineEdit:!focus {
@@ -457,8 +463,6 @@ QTableView::item {
 	background-color:whitesmoke;
 	font-size:12px;
 	color:#355271;
-	selection-background-color: #355271;
-	selection-color: whitesmoke;
 }
 
 /* Table Item Selected */
@@ -627,18 +631,16 @@ QDialog {
 
 AskPassphraseDialog {
 	color: #355271;
-	background-color:white ;
+	background-color:white;
 }
 
-AskPassphraseDialog QLabel {
+AskPassphraseDialog .QLabel {
 	color: #355271;
 }
 
-/*
-QDialog .QTabWidget {
-	border-bottom:1px solid coral;
+AskPassphraseDialog .QCheckBox {
+	color: #355271;
 }
-*/
 
 QDialog .QTabWidget::pane {
 	border: 1px solid #355271;
@@ -743,6 +745,7 @@ QWidget#AddressBookPage QLabel#labelExplanation {
 
 QWidget#AddressBookPage QTableView { /* Address Listing */
 	font-size:12px;
+	font-weight: 200;
 }
 
 QWidget#AddressBookPage QHeaderView::section { /* Min width for Windows fix */
@@ -825,12 +828,7 @@ QDialog#RPCConsole QWidget#tab_peers QLabel#peerHeading { /* Peers Info Header *
 QDialog#RPCConsole QTableView#peerWidget::item { /* Peers Table Items */
 	color:#355271;
 }
-/*
-TableView::item:selected { 
-	background-color: #355271;
-	color:whitesmoke;
-}
-*/
+
 QDialog#RPCConsole QTableView#peerWidget::selected { /* Peers Table Items */
 	background-color: #355271;
 	color:whitesmoke;
@@ -1544,7 +1542,6 @@ QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::branch:selected {
 	background-image: url(':/images/qtreeview_selected');
 	background-repeat:no-repeat;
 	background-position:center;
-	color:#333;
 	color: whitesmoke;
 }
 
@@ -1669,7 +1666,6 @@ QTabWidget#tabWidget {
 }
 /**************************** TRANSACTION DETAILS DIALOG ********************************/
 
-/* Contents of Receive Coin Dialog*/
 QDialog#TransactionDescDialog QTextEdit { 
 	border:1px solid blue;
 }
