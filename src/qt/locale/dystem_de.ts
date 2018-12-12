@@ -2035,10 +2035,6 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
         <translation>Die angezeigte Information ist möglicherweise nicht mehr aktuell. Ihre Wallet synchronisiert sich automatisch mit dem DYSTEM-Netzwerk, nachdem eine Verbindung hergestellt wurde. Aber dieser Vorgang ist noch nicht abgeschlossen.</translation>
     </message>
     <message>
-        <source>Enter an amount of Piv to convert to zPiv</source>
-        <translation>Eingabe des Piv-Betrags, um in zPiv umzuwandeln</translation>
-    </message>
-    <message>
         <source>0</source>
         <translation>0</translation>
     </message>
@@ -2073,14 +2069,6 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
     <message>
         <source>Status and/or Mesages from the last Mint Action.</source>
         <translation>Status und/oder Mitteilungen aus der letzten Präge-Action</translation>
-    </message>
-    <message>
-        <source>zPiv Control</source>
-        <translation>zPiv Kontrolle</translation>
-    </message>
-    <message>
-        <source>zPiv Selected:</source>
-        <translation>zPiv Ausgewählt:</translation>
     </message>
     <message>
         <source>Quantity Selected:</source>
@@ -2381,10 +2369,6 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
     <message>
         <source>address: </source>
         <translation>Adresse:</translation>
-    </message>
-    <message>
-        <source>zPiv Mint</source>
-        <translation>zPiv Prägen</translation>
     </message>
     <message>
         <source>Sending successful, return code: </source>
@@ -4109,25 +4093,6 @@ https://www.transifex.com/dystem-project/dystem-project-translations</translatio
     <message>
         <source>The wallet data was successfully saved to %1.</source>
         <translation>Speichern der Wallet-Daten nach %1 war erfolgreich.</translation>
-    </message>
-</context>
-<context>
-    <name>ZPivControlDialog</name>
-    <message>
-        <source>Quantity</source>
-        <translation>Menge</translation>
-    </message>
-    <message>
-        <source>0</source>
-        <translation>0</translation>
-    </message>
-    <message>
-        <source>Select/Deselect All</source>
-        <translation>Markiere/Demarkiere Alle</translation>
-    </message>
-    <message>
-        <source>Is Spendable</source>
-        <translation>ist aufwendbar</translation>
     </message>
 </context>
 <context>

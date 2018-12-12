@@ -1,3 +1,7 @@
+// Copyright (c) 2017-2018 The PIVX developers
+// Distributed under the MIT software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "blockexplorer.h"
 #include "bitcoinunits.h"
 #include "chainparams.h"
@@ -258,6 +262,25 @@ std::string BlockToString(CBlockIndex* pBlock)
     Content += ">&nbsp;►</a></h2>";
     Content += BlockContent;
     Content += "</br>";
+    /*
+    if (block.nHeight > getThirdHardforkBlock())
+    {
+        std::vector<std::string> votes[2];
+        for (int i = 0; i < 2; i++)
+        {
+            for (unsigned int j = 0; j < block.vvotes[i].size(); j++)
+            {
+                votes[i].push_back(block.vvotes[i][j].hash.ToString() + ':' + itostr(block.vvotes[i][j].n));
+            }
+        }
+        Content += "<h3>" + _("Votes +") + "</h3>";
+        Content += makeHTMLTable(&votes[1][0], votes[1].size(), 1);
+        Content += "</br>";
+        Content += "<h3>" + _("Votes -") + "</h3>";
+        Content += makeHTMLTable(&votes[0][0], votes[0].size(), 1);
+        Content += "</br>";
+    }
+    */
     Content += "<h2>" + _("Transactions") + "</h2>";
     Content += TxContent;
 

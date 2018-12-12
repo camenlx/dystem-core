@@ -58,11 +58,6 @@ QT_TRANSLATE_NOOP("dystem-core", ""
 QT_TRANSLATE_NOOP("dystem-core", ""
 "Enable SwiftX, show confirmations for locked transactions (bool, default: %s)"),
 QT_TRANSLATE_NOOP("dystem-core", ""
-"Enable automatic wallet backups triggered after each zPiv minting (0-1, "
-"default: %u)"),
-QT_TRANSLATE_NOOP("dystem-core", ""
-"Enable spork administration functionality with the appropriate private key."),
-QT_TRANSLATE_NOOP("dystem-core", ""
 "Enter regression test mode, which uses a special chain in which blocks can "
 "be solved instantly."),
 QT_TRANSLATE_NOOP("dystem-core", ""
@@ -487,8 +482,6 @@ QT_TRANSLATE_NOOP("dystem-core", "Your entries added successfully."),
 QT_TRANSLATE_NOOP("dystem-core", "Your transaction was accepted into the pool!"),
 QT_TRANSLATE_NOOP("dystem-core", "Zapping all transactions from wallet..."),
 QT_TRANSLATE_NOOP("dystem-core", "ZeroMQ notification options:"),
-QT_TRANSLATE_NOOP("dystem-core", "Zerocoin options:"),
-QT_TRANSLATE_NOOP("dystem-core", "failed to validate zerocoin"),
 QT_TRANSLATE_NOOP("dystem-core", "on startup"),
 QT_TRANSLATE_NOOP("dystem-core", "wallet.dat corrupt, salvage failed"),
 };

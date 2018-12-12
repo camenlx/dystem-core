@@ -1,4 +1,5 @@
 // Copyright (c) 2009-2014 The Bitcoin developers
+// Copyright (c) 2017-2018 The PIVX developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -191,7 +192,7 @@ public:
             mi++;
         }
     }
-
+    
     /**
      * Wallet status (encrypted, locked) changed.
      * Note: Called without locks held.

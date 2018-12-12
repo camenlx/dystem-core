@@ -53,6 +53,8 @@ static const CAmount DEFAULT_TRANSACTION_MAXFEE = 1 * COIN;
 static const CAmount nHighTransactionMaxFeeWarning = 100 * nHighTransactionFeeWarning;
 //! Largest (in bytes) free transaction we're willing to create
 static const unsigned int MAX_FREE_TRANSACTION_CREATE_SIZE = 1000;
+//! -custombackupthreshold default
+static const int DEFAULT_CUSTOMBACKUPTHRESHOLD = 1;
 
 class CAccountingEntry;
 class CCoinControl;
@@ -166,6 +168,9 @@ public:
     bool SelectStakeCoins(std::list<std::unique_ptr<CStakeInput> >& listInputs, CAmount nTargetAmount);
     int CountInputsWithAmount(CAmount nInputAmount);
     bool AddAccountingEntry(const CAccountingEntry& acentry, CWalletDB & pwalletdb);
+    string GetUniqueWalletBackupName() const;
+
+
     /*
      * Main wallet lock.
      * This lock protects all the fields added by CWallet
@@ -365,7 +370,8 @@ public:
     bool EncryptWallet(const SecureString& strWalletPassphrase);
 
     void GetKeyBirthTimes(std::map<CKeyID, int64_t>& mapKeyBirth) const;
-
+    unsigned int ComputeTimeSmart(const CWalletTx& wtx) const;
+    
     /**
      * Increment the next transaction order id
      * @return next transaction order id
@@ -422,6 +428,8 @@ public:
 
     bool GetBudgetSystemCollateralTX(CTransaction& tx, uint256 hash, bool useIX);
     bool GetBudgetSystemCollateralTX(CWalletTx& tx, uint256 hash, bool useIX);
+
+    bool IsUsed(const CBitcoinAddress address) const;
 
     isminetype IsMine(const CTxIn& txin) const;
     CAmount GetDebit(const CTxIn& txin, const isminefilter& filter) const;
@@ -549,6 +557,9 @@ public:
 
     /** MultiSig address added */
     boost::signals2::signal<void(bool fHaveMultiSig)> NotifyMultiSigChanged;
+
+    /** notify wallet file backed up */
+    boost::signals2::signal<void (const bool& fSuccess, const std::string& filename)> NotifyWalletBacked;
 };
 
 

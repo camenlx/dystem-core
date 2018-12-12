@@ -1,10 +1,15 @@
+// Copyright (c) 2015-2017 The Bitcoin Core developers
+// Copyright (c) 2017 The PIVX developers
+// Distributed under the MIT software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "httprpc.h"
 
 #include "base58.h"
 #include "chainparams.h"
 #include "httpserver.h"
-#include "rpcprotocol.h"
-#include "rpcserver.h"
+#include "rpc/protocol.h"
+#include "rpc/server.h"
 #include "random.h"
 #include "sync.h"
 #include "util.h"
@@ -12,9 +17,6 @@
 #include "ui_interface.h"
 
 #include <boost/algorithm/string.hpp> // boost::trim
-
-/** WWW-Authenticate to present with 401 Unauthorized response */
-static const char* WWW_AUTH_HEADER_DATA = "Basic realm=\"jsonrpc\"";
 
 /** Simple one-shot callback timer to be used by the RPC mechanism to e.g.
  * re-lock the wellet.
@@ -97,7 +99,6 @@ static bool HTTPReq_JSONRPC(HTTPRequest* req, const std::string &)
     // Check authorization
     std::pair<bool, std::string> authHeader = req->GetHeader("authorization");
     if (!authHeader.first) {
-        req->WriteHeader("WWW-Authenticate", WWW_AUTH_HEADER_DATA);
         req->WriteReply(HTTP_UNAUTHORIZED);
         return false;
     }
@@ -110,7 +111,6 @@ static bool HTTPReq_JSONRPC(HTTPRequest* req, const std::string &)
            shouldn't have their RPC port exposed. */
         MilliSleep(250);
 
-        req->WriteHeader("WWW-Authenticate", WWW_AUTH_HEADER_DATA);
         req->WriteReply(HTTP_UNAUTHORIZED);
         return false;
     }
@@ -177,7 +177,7 @@ bool StartHTTPRPC()
 
     assert(EventBase());
     httpRPCTimerInterface = new HTTPRPCTimerInterface(EventBase());
-    RPCRegisterTimerInterface(httpRPCTimerInterface);
+    RPCSetTimerInterface(httpRPCTimerInterface);
     return true;
 }
 
@@ -191,7 +191,7 @@ void StopHTTPRPC()
     LogPrint("rpc", "Stopping HTTP RPC server\n");
     UnregisterHTTPHandler("/", true);
     if (httpRPCTimerInterface) {
-        RPCUnregisterTimerInterface(httpRPCTimerInterface);
+        RPCUnsetTimerInterface(httpRPCTimerInterface);
         delete httpRPCTimerInterface;
         httpRPCTimerInterface = 0;
     }

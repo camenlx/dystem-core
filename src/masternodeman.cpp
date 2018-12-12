@@ -350,15 +350,12 @@ int CMasternodeMan::stable_size ()
 {
     int nStable_size = 0;
     int nMinProtocol = ActiveProtocol();
-    int64_t nMasternode_Min_Age = MN_WINNER_MINIMUM_AGE;
-
-    int64_t nMasternode_Age = 0;
 
     BOOST_FOREACH (CMasternode& mn, vMasternodes) {
         if (mn.protocolVersion < nMinProtocol) {
             continue; // Skip obsolete versions
         }
-
+        
         mn.Check ();
         if (!mn.IsEnabled ())
             continue; // Skip not-enabled masternodes
@@ -588,9 +585,6 @@ CMasternode* CMasternodeMan::GetCurrentMasterNode(int mod, int64_t nBlockHeight,
 int CMasternodeMan::GetMasternodeRank(const CTxIn& vin, int64_t nBlockHeight, int minProtocol, bool fOnlyActive)
 {
     std::vector<pair<int64_t, CTxIn> > vecMasternodeScores;
-    int64_t nMasternode_Min_Age = MN_WINNER_MINIMUM_AGE;
-
-    int64_t nMasternode_Age = 0;
 
     //make sure we know about this block
     uint256 hash = 0;
@@ -698,15 +692,6 @@ void CMasternodeMan::ProcessMasternodeConnections()
 {
     //we don't care about this for regtest
     if (Params().NetworkID() == CBaseChainParams::REGTEST) return;
-
-    LOCK(cs_vNodes);
-    BOOST_FOREACH (CNode* pnode, vNodes) {
-        // if (pnode->fObfuScationMaster) {
-        //     LogPrint("masternode","Closing Masternode connection peer=%i \n", pnode->GetId());
-        //     pnode->fObfuScationMaster = false;
-        //     pnode->Release();
-        // }
-    }
 }
 
 void CMasternodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)

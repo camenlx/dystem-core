@@ -1,4 +1,5 @@
 // Copyright (c) 2011-2013 The Bitcoin developers
+// Copyright (c) 2017 The PIVX developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -97,12 +98,12 @@ Q_DECLARE_METATYPE(FreedesktopImage);
 
 // Image configuration settings
 const int CHANNELS = 4;
-const int BYTES_PER_PIVXEL = 4;
+const int BYTES_PER_PIXEL = 4;
 const int BITS_PER_SAMPLE = 8;
 
 FreedesktopImage::FreedesktopImage(const QImage& img) : width(img.width()),
                                                         height(img.height()),
-                                                        stride(img.width() * BYTES_PER_PIVXEL),
+                                                        stride(img.width() * BYTES_PER_PIXEL),
                                                         hasAlpha(true),
                                                         channels(CHANNELS),
                                                         bitsPerSample(BITS_PER_SAMPLE)
@@ -112,13 +113,13 @@ FreedesktopImage::FreedesktopImage(const QImage& img) : width(img.width()),
     const uint32_t* data = reinterpret_cast<const uint32_t*>(tmp.bits());
 
     unsigned int num_pixels = width * height;
-    image.resize(num_pixels * BYTES_PER_PIVXEL);
+    image.resize(num_pixels * BYTES_PER_PIXEL);
 
     for (unsigned int ptr = 0; ptr < num_pixels; ++ptr) {
-        image[ptr * BYTES_PER_PIVXEL + 0] = data[ptr] >> 16; // R
-        image[ptr * BYTES_PER_PIVXEL + 1] = data[ptr] >> 8;  // G
-        image[ptr * BYTES_PER_PIVXEL + 2] = data[ptr];       // B
-        image[ptr * BYTES_PER_PIVXEL + 3] = data[ptr] >> 24; // A
+        image[ptr * BYTES_PER_PIXEL + 0] = data[ptr] >> 16; // R
+        image[ptr * BYTES_PER_PIXEL + 1] = data[ptr] >> 8;  // G
+        image[ptr * BYTES_PER_PIXEL + 2] = data[ptr];       // B
+        image[ptr * BYTES_PER_PIXEL + 3] = data[ptr] >> 24; // A
     }
 }
 

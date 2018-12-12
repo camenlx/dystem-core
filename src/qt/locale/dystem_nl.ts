@@ -1500,10 +1500,6 @@ MultiSend: %1</translation>
 <context>
     <name>PrivacyDialog</name>
     <message>
-        <source>Enter an amount of Piv to convert to zPiv</source>
-        <translation>Vul de hoeveleheid in om Piv te converteren naar zPiv</translation>
-    </message>
-    <message>
         <source>0</source>
         <translation>0</translation>
     </message>
@@ -2733,33 +2729,6 @@ MultiSend: %1</translation>
     </message>
 </context>
 <context>
-    <name>ZPivControlDialog</name>
-    <message>
-        <source>Select zPiv to Spend</source>
-        <translation>Selecteer zPiv om te spenderen</translation>
-    </message>
-    <message>
-        <source>Quantity</source>
-        <translation>Hoeveelheid</translation>
-    </message>
-    <message>
-        <source>0</source>
-        <translation>0</translation>
-    </message>
-    <message>
-        <source>zPiv</source>
-        <translation>zPiv</translation>
-    </message>
-    <message>
-        <source>Select/Deselect All</source>
-        <translation>Selecteer/Deselecteer Alles</translation>
-    </message>
-    <message>
-        <source>Is Spendable</source>
-        <translation>Is Uitgeefbaar</translation>
-    </message>
-</context>
-<context>
     <name>dystem-core</name>
     <message>
         <source>(default: %s)</source>
@@ -3008,10 +2977,6 @@ MultiSend: %1</translation>
     <message>
         <source>Zerocoin options:</source>
         <translation>Zerocoin opties:</translation>
-    </message>
-    <message>
-        <source>failed to validate zerocoin</source>
-        <translation>mislukt om zerocoin te valideren</translation>
     </message>
     <message>
         <source>on startup</source>
