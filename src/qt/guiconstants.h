@@ -24,7 +24,8 @@ static const bool DEFAULT_SPLASHSCREEN = true;
 /* Transaction list -- unconfirmed transaction */
 #define COLOR_UNCONFIRMED QColor(76, 117, 161)
 /* Transaction list -- negative amount */
-#define COLOR_NEGATIVE QColor(236, 67, 67)
+#define COLOR_NEGATIVE QColor(245, 171, 171)
+// #define 
 /* Transaction list -- bare address (without label) */
 #define COLOR_BAREADDRESS QColor(140, 140, 140)
 /* Transaction list -- TX status decoration - open until date */
@@ -33,12 +34,15 @@ static const bool DEFAULT_SPLASHSCREEN = true;
 #define COLOR_TX_STATUS_OFFLINE QColor(192, 192, 192)
 /* Transaction list -- TX status decoration - default color */
 #define COLOR_BLACK QColor(245, 245, 245)
+/* Transaction list -- TX status decoration - default color */
+#define COLOR_INPUT QColor(171, 245, 171)
+//#define COLOR_INPUT QColor(245, 245, 171)
 /* Transaction list -- TX status decoration - conflicted */
-#define COLOR_CONFLICTED QColor(255, 0, 0)
+#define COLOR_CONFLICTED QColor(245, 0, 245)
 /* Transaction list -- TX status decoration - orphan (Light Gray #D3D3D3) */
-#define COLOR_ORPHAN QColor(211, 211, 211)
+#define COLOR_ORPHAN QColor(245, 171, 245)
 /* Transaction list -- TX status decoration - stake (BlueViolet #8A2BE2) */
-#define COLOR_STAKE QColor(138,43,226)
+#define COLOR_STAKE QColor(245, 245, 171)
 /* Tooltips longer than this (in characters) are converted into rich text,
    so that they can be word-wrapped.
  */

@@ -59,6 +59,7 @@ public:
         QString address = index.data(Qt::DisplayRole).toString();
         qint64 amount = index.data(TransactionTableModel::AmountRole).toLongLong();
         bool confirmed = index.data(TransactionTableModel::ConfirmedRole).toBool();
+        int type = index.data(TransactionTableModel::TypeRole).toInt();
 
         // Check transaction status
         int nStatus = index.data(TransactionTableModel::StatusRole).toInt();
@@ -96,9 +97,18 @@ public:
         } else if (!confirmed || fImmature) {
             p.setColor(COLOR_UNCONFIRMED);
         } else if (amount < 0) {
-            p.setColor(COLOR_NEGATIVE);
+            if( type == TransactionRecord::SendToSelf )
+                p.setColor(COLOR_INPUT);
+            else
+                p.setColor(COLOR_NEGATIVE);
         } else {
-            p.setColor(COLOR_BLACK);
+            if ( type == TransactionRecord::Generated || type == TransactionRecord::MNReward || type == TransactionRecord::StakeMint ) {
+                p.setColor(COLOR_STAKE);
+            } else if( type == TransactionRecord::RecvWithAddress || type == TransactionRecord::RecvFromOther || type == TransactionRecord::SendToSelf ) {
+                p.setColor(COLOR_INPUT);
+            } else {
+                p.setColor(COLOR_BLACK);
+            }
         }
         
         painter->setPen(p);
