@@ -33,7 +33,7 @@ static int column_alignments[] = {
     Qt::AlignLeft | Qt::AlignVCenter, /* date */
     Qt::AlignLeft | Qt::AlignVCenter, /* type */
     Qt::AlignLeft | Qt::AlignVCenter, /* address */
-    Qt::AlignRight | Qt::AlignVCenter /* amount */
+    Qt::AlignLeft | Qt::AlignVCenter /* amount */
 };
 
 // Comparison operator for sort/binary search of model tx list
@@ -356,15 +356,15 @@ QVariant TransactionTableModel::txAddressDecoration(const TransactionRecord* wtx
     case TransactionRecord::Generated:
     case TransactionRecord::StakeMint:
     case TransactionRecord::MNReward:
-        return QIcon(":/icons/tx_mined");
+        return QIcon(":/icons/tx_mined_2");
     case TransactionRecord::RecvWithAddress:
     case TransactionRecord::RecvFromOther:
-        return QIcon(":/icons/tx_input");
+        return QIcon(":/icons/tx_input_2");
     case TransactionRecord::SendToAddress:
     case TransactionRecord::SendToOther:
-        return QIcon(":/icons/tx_output");
+        return QIcon(":/icons/tx_output_2");
     default:
-        return QIcon(":/icons/tx_inout");
+        return QIcon(":/icons/tx_inout_2");
     }
 }
 

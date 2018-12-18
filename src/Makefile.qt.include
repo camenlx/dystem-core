@@ -237,9 +237,13 @@ RES_ICONS = \
   qt/res/icons/transaction2.png \
   qt/res/icons/transaction_conflicted.png \
   qt/res/icons/tx_inout.png \
+  qt/res/icons/tx_inout_2.png \
   qt/res/icons/tx_input.png \
+  qt/res/icons/tx_input_2.png \
   qt/res/icons/tx_output.png \
+  qt/res/icons/tx_output_2.png \
   qt/res/icons/tx_mined.png \
+  qt/res/icons/tx_mined_2.png \
   qt/res/icons/unit_dystem.png \
   qt/res/icons/unit_mdystem.png \
   qt/res/icons/unit_udystem.png \

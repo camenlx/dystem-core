@@ -82,7 +82,7 @@ QVariant RecentRequestsTableModel::data(const QModelIndex& index, int role) cons
         }
     } else if (role == Qt::TextAlignmentRole) {
         if (index.column() == Amount)
-            return (int)(Qt::AlignRight | Qt::AlignVCenter);
+            return (int)(Qt::AlignLeft | Qt::AlignVCenter);
     }
     return QVariant();
 }

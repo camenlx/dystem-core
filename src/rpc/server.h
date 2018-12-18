@@ -128,7 +128,7 @@ public:
 };
 
 /**
- * PIVX RPC command dispatcher.
+ * DTEM RPC command dispatcher.
  */
 class CRPCTable
 {
@@ -177,7 +177,7 @@ extern std::string HelpRequiringPassphrase();
 extern std::string HelpExampleCli(std::string methodname, std::string args);
 extern std::string HelpExampleRpc(std::string methodname, std::string args);
 
-extern void EnsureWalletIsUnlocked(bool fAllowAnonOnly = false);
+extern void EnsureWalletIsUnlocked(bool fAllowStakeOnly = false);
 
 extern UniValue getconnectioncount(const UniValue& params, bool fHelp); // in rpc/net.cpp
 extern UniValue getpeerinfo(const UniValue& params, bool fHelp);

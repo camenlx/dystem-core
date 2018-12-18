@@ -30,7 +30,7 @@
 
 using namespace std;
 
-void EnsureWalletIsUnlocked(bool fAllowAnonOnly);
+void EnsureWalletIsUnlocked(bool fAllowStakeOnly);
 
 std::string static EncodeDumpTime(int64_t nTime)
 {
@@ -347,7 +347,6 @@ UniValue dumpprivkey(const UniValue& params, bool fHelp)
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
 
-    //JIM: Since we dont want people to be able to dump priv keys when wallet is staking ensure the wallet is unlocked and not just for staking
     EnsureWalletIsUnlocked();
 
     string strAddress = params[0].get_str();

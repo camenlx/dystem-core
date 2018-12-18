@@ -36,9 +36,9 @@ std::string HelpRequiringPassphrase()
     return pwalletMain && pwalletMain->IsCrypted() ? "\nRequires wallet passphrase to be set with walletpassphrase call." : "";
 }
 
-void EnsureWalletIsUnlocked(bool fAllowAnonOnly)
+void EnsureWalletIsUnlocked(bool fAllowStakeOnly)
 {
-    if (pwalletMain->IsLocked())
+    if (pwalletMain->IsLocked() || (!fAllowStakeOnly && pwalletMain->fWalletUnlockStakingOnly))
         throw JSONRPCError(RPC_WALLET_UNLOCK_NEEDED, "Error: Please enter the wallet passphrase with walletpassphrase first.");
 }
 
@@ -494,7 +494,7 @@ UniValue signmessage(const UniValue& params, bool fHelp)
 {
     if (fHelp || params.size() != 2)
         throw runtime_error(
-            "signmessage \"stemaddress\" \"message\"\n"
+            "signmessage \"dtemaddress\" \"message\"\n"
             "\nSign a message with the private key of an address" +
             HelpRequiringPassphrase() + "\n"
 
