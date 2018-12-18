@@ -215,7 +215,7 @@ QLabel {
 }
 
 .QTextEdit:!focus {
-	color: cyan;
+	color: #324e6b;
 	background-color:whitesmoke;
 }
 
@@ -573,12 +573,13 @@ QScrollBar::add-line:horizontal {
 }
 
 QScrollBar:up-arrow, QScrollBar:down-arrow, QScrollBar:left-arrow, QScrollBar:right-arrow { 
-	width:10px;
-	height:10px;
+	width:102px;
+	height:102px;
 }
-
+/*
 QScrollBar:up-arrow {
 	background-image: url(':/images/upArrow_small');
+	border: solid 1px red;
 }
 
 QScrollBar:down-arrow {
@@ -592,7 +593,7 @@ QScrollBar:left-arrow {
 QScrollBar:right-arrow {
 	background-image: url(':/images/rightArrow_small');
 }
-
+*/
 QSlider::groove:horizontal {
 	border: 1px solid #bbb;
 	background: limegreen;
@@ -972,7 +973,7 @@ QWidget .QFrame#frame_RecentTransactions {
 QWidget .QFrame#frame_Balances > .QLabel {
 	min-width:190px;
 	font-weight:normal;
-	color:purple;
+	color:#324e6b;
 }
 
 
@@ -1667,7 +1668,7 @@ QTabWidget#tabWidget {
 /**************************** TRANSACTION DETAILS DIALOG ********************************/
 
 QDialog#TransactionDescDialog QTextEdit { 
-	border:1px solid blue;
+	border:1px solid #355271;
 }
 
 /**************************** MASTERNODE LIST ******************************************/
@@ -1699,5 +1700,5 @@ QCalendarWidget QAbstractItemView:enabled {
 
 /* Calendar widget days not in month*/
 QCalendarWidget QAbstractItemView:disabled { 
-	color:purple;
+	color:#324e6b;
 } 
