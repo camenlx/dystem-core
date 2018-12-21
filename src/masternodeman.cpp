@@ -203,7 +203,7 @@ bool CMasternodeMan::Add(CMasternode& mn)
 
     if (!mn.IsEnabled())
         return false;
-
+        
     CMasternode* pmn = Find(mn.vin);
     if (pmn == NULL) {
         LogPrint("masternode", "CMasternodeMan: Adding new Masternode %s - %i now\n", mn.vin.prevout.hash.ToString(), size() + 1);
@@ -353,6 +353,7 @@ int CMasternodeMan::stable_size ()
 
     BOOST_FOREACH (CMasternode& mn, vMasternodes) {
         if (mn.protocolVersion < nMinProtocol) {
+            
             continue; // Skip obsolete versions
         }
         
