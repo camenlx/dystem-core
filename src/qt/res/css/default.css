@@ -45,6 +45,19 @@ QToolBar {
 	spacing: 0;
 }
 
+QMenu {
+	background-color:#f8f6f6;
+}
+	
+QMenu::item {
+	color:#355271;
+}
+	
+QMenu::item:selected {
+	background-color:#f2f0f0;
+	color:#355271;
+}
+
 QToolBar > QToolButton {
 	qproperty-alignment: 'AlignVCenter | AlignCenter';
 	background-color: transparent;
@@ -167,6 +180,10 @@ QGroupBox {
 
 QToolTip {
 	background-color:whitesmoke;
+	color:#355271;
+}
+
+QAction {
 	color:#355271;
 }
 
