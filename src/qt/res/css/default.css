@@ -47,6 +47,7 @@ QToolBar {
 
 QMenu {
 	background-color:#f8f6f6;
+	color:#355271;
 }
 	
 QMenu::item {
@@ -140,7 +141,7 @@ QTabWidget {
 
 QTabWidget::pane {
 	background-color:whitesmoke;
-	border:1px solid lightgrey;
+	border:1px solid #d3d3d3;
 	color: #355271;
 	border-radius: 6px;
 }
@@ -172,6 +173,10 @@ QWidget {
 	font-family: "Open Sans";
 	font-size: 12px;
 	font-weight: 200;
+}
+
+QWidget AmountSpinBox {
+	color:#324e6b;
 }
 
 QGroupBox {
@@ -322,6 +327,7 @@ QComboBox {
 
 QComboBox:checked {
 	background:whitesmoke;
+	color:#355271;
 }
 
 QComboBox:editable {
@@ -332,6 +338,7 @@ QComboBox:editable {
 QComboBox::drop-down {
 	width:25px;
 	border:0px;
+	color:#355271;
 }
 
 QComboBox::down-arrow {
@@ -362,6 +369,16 @@ QComboBox::item:selected {
 	border:0px solid transparent;
 	background:#355271;
 	color:whitesmoke;
+}
+
+QComboBox#dateWidgetFilter {
+	background:whitesmoke;
+	color: #355271; 
+}
+
+QComboBox#typeWidgetFilter {
+	background:whitesmoke;
+	color: #355271; 
 }
 
 QComboBox::indicator {

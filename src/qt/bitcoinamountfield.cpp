@@ -192,8 +192,9 @@ BitcoinAmountField::BitcoinAmountField(QWidget* parent) : QWidget(parent),
 
     amount = new AmountSpinBox(this);
     // According to the Qt-CSS specs this should work, but doesn't
-    amount->setStyleSheet("QSpinBox::up-button:hover { background-color: #f2f2f2; }"
-                          "QSpinBox::down-button:hover { background-color: #f2f2f2; }");
+    amount->setStyleSheet("QLabel { color: #324e6b; }" 
+                            "QSpinBox::up-button:hover { background-color: #f2f2f2; }"
+                            "QSpinBox::down-button:hover { background-color: #f2f2f2; }");
     amount->setLocale(QLocale::c());
     amount->installEventFilter(this);
     amount->setMaximumWidth(170);

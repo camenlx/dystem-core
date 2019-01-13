@@ -74,6 +74,7 @@ TransactionView::TransactionView(QWidget* parent) : QWidget(parent), model(0), t
     dateWidget->addItem(tr("This year"), ThisYear);
     dateWidget->addItem(tr("Range..."), Range);
     dateWidget->setCurrentIndex(settings.value("transactionDate").toInt());
+    dateWidget->setObjectName("dateWidgetFilter");
     hlayout->addWidget(dateWidget);
 
     typeWidget = new QComboBox(this);
@@ -93,7 +94,7 @@ TransactionView::TransactionView(QWidget* parent) : QWidget(parent), model(0), t
     typeWidget->addItem(tr("Masternode Reward"), TransactionFilterProxy::TYPE(TransactionRecord::MNReward));
     typeWidget->addItem(tr("Other"), TransactionFilterProxy::TYPE(TransactionRecord::Other));
     typeWidget->setCurrentIndex(settings.value("transactionType").toInt());
-
+    typeWidget->setObjectName("typeWidgetFilter");
     hlayout->addWidget(typeWidget);
 
     addressWidget = new QLineEdit(this);
@@ -142,10 +143,6 @@ TransactionView::TransactionView(QWidget* parent) : QWidget(parent), model(0), t
     QAction* copyTxIDAction = new QAction(tr("Copy transaction ID"), this);
     QAction* editLabelAction = new QAction(tr("Edit label"), this);
     QAction* showDetailsAction = new QAction(tr("Show transaction details"), this);
-    //hideOrphansAction = new QAction(tr("Hide orphan stakes"), this);
-
-    //hideOrphansAction->setCheckable(true);
-    //hideOrphansAction->setChecked(settings.value("fHideOrphans", false).toBool());
 
     contextMenu = new QMenu();
     contextMenu->addAction(copyAddressAction);
