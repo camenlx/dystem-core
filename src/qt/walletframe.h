@@ -59,6 +59,10 @@ public slots:
     void gotoHistoryPage();
     /** Switch to masternode page */
     void gotoMasternodePage();
+    /** Switch to the Commissions page */
+    void gotToCommissionsPage();
+    /** Switch to the identity page */
+    void gotToIdentPage();
     /** Switch to receive coins page */
     void gotoReceiveCoinsPage();
     /** Switch to send coins page */

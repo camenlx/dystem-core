@@ -126,6 +126,20 @@ void WalletFrame::gotoMasternodePage() // Masternode list
         i.value()->gotoMasternodePage();
 }
 
+void WalletFrame::gotToIdentPage()
+{
+    QMap<QString, WalletView*>::const_iterator i;
+    for (i = mapWalletViews.constBegin(); i != mapWalletViews.constEnd(); ++i)
+        i.value()->gotToIdentPage();
+}
+
+void WalletFrame::gotToCommissionsPage()
+{
+    QMap<QString, WalletView*>::const_iterator i;
+    for (i = mapWalletViews.constBegin(); i != mapWalletViews.constEnd(); ++i)
+        i.value()->gotoCommissionsPage();
+}
+
 void WalletFrame::gotoBlockExplorerPage()
 {
     QMap<QString, WalletView*>::const_iterator i;

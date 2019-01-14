@@ -106,6 +106,14 @@ WalletView::WalletView(QWidget* parent) : QStackedWidget(parent),
         addWidget(masternodeListPage);
     }
 
+    //DYSTEM: Create and add a commissions list page
+    commissionListPage = new CommissionsList();
+    addWidget(commissionListPage);
+
+    //DYSTEM: User ident settings control page
+    identSettingsPage = new IdentSettings();
+    addWidget(identSettingsPage);
+
     // Clicking on a transaction on the overview pre-selects the transaction on the transaction history page
     connect(overviewPage, SIGNAL(transactionClicked(QModelIndex)), transactionView, SLOT(focusTransaction(QModelIndex)));
 
@@ -156,6 +164,8 @@ void WalletView::setClientModel(ClientModel* clientModel)
     if (settings.value("fShowMasternodesTab").toBool()) {
         masternodeListPage->setClientModel(clientModel);
     }
+    commissionListPage->setClientModel(clientModel);
+    identSettingsPage->setClientModel(clientModel);
 }
 
 void WalletView::setWalletModel(WalletModel* walletModel)
@@ -169,6 +179,8 @@ void WalletView::setWalletModel(WalletModel* walletModel)
     if (settings.value("fShowMasternodesTab").toBool()) {
         masternodeListPage->setWalletModel(walletModel);
     }
+    commissionListPage->setWalletModel(walletModel);
+    identSettingsPage->setWalletModel(walletModel);
     receiveCoinsPage->setModel(walletModel);
     sendCoinsPage->setModel(walletModel);
 
@@ -234,6 +246,16 @@ void WalletView::gotoMasternodePage()
     if (settings.value("fShowMasternodesTab").toBool()) {
         setCurrentWidget(masternodeListPage);
     }
+}
+
+void WalletView::gotoCommissionsPage()
+{
+    setCurrentWidget(commissionListPage);
+}
+
+void WalletView::gotToIdentPage()
+{
+    setCurrentWidget(identSettingsPage);
 }
 
 void WalletView::gotoReceiveCoinsPage()

@@ -31,7 +31,8 @@ class UnitDisplayStatusBarControl;
 class WalletFrame;
 class WalletModel;
 class MasternodeList;
-
+class CommissionsList;
+class IdentSettings;
 class CWallet;
 
 QT_BEGIN_NAMESPACE
@@ -95,6 +96,8 @@ private:
     QAction* overviewAction;
     QAction* historyAction;
     QAction* masternodeAction;
+    QAction* commissionsAction;
+    QAction* identAction;
     QAction* quitAction;
     QAction* sendCoinsAction;
     QAction* usedSendingAddressesAction;
@@ -208,6 +211,10 @@ private slots:
     void gotoBlockExplorerPage();
     /** Switch to masternode page */
     void gotoMasternodePage();
+    /** Switch to the commissions page */
+    void gotToCommissionsPage();
+    /** Switch to the identity page */
+    void gotToIdentPage();
     /** Switch to receive page */
     void gotoReceiveCoinsPage();
     /** Switch to send coins page */

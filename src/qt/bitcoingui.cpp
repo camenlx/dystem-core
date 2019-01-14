@@ -74,6 +74,8 @@ BitcoinGUI::BitcoinGUI(const NetworkStyle* networkStyle, QWidget* parent) : QMai
                                                                             overviewAction(0),
                                                                             historyAction(0),
                                                                             masternodeAction(0),
+                                                                            commissionsAction(0),
+                                                                            identAction(0),
                                                                             quitAction(0),
                                                                             sendCoinsAction(0),
                                                                             usedSendingAddressesAction(0),
@@ -295,6 +297,24 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
 #endif
     tabGroup->addAction(overviewAction);
 
+    //Make section for the Dystem Commissions list
+    QIcon commissionsIcon;
+    commissionsIcon.addFile(":/icons/commissions",QSize(40,40),QIcon::Normal,QIcon::On);
+    commissionsIcon.addFile(":/icons/commissions_off",QSize(40,40),QIcon::Normal,QIcon::Off);
+    commissionsAction = new QAction(QIcon(":/icons/commissions"), tr("&Commissions"), this);
+    commissionsAction->setStatusTip(tr("Browse Commissions"));
+    commissionsAction->setToolTip(commissionsAction->statusTip());
+    commissionsAction->setCheckable(true);
+    commissionsAction->setIcon(commissionsIcon);
+    #ifdef Q_OS_MAC
+        commissionsAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_2));
+    #else
+        v->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
+    #endif
+    tabGroup->addAction(commissionsAction);
+    connect(commissionsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(commissionsAction, SIGNAL(triggered()), this, SLOT(gotToCommissionsPage()));
+
     QIcon sendIcon;
     sendIcon.addFile(":/icons/send",QSize(40,40),QIcon::Normal,QIcon::On);
     sendIcon.addFile(":/icons/send_off",QSize(40,40),QIcon::Normal,QIcon::Off);
@@ -304,9 +324,9 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     sendCoinsAction->setCheckable(true);
     sendCoinsAction->setIcon(sendIcon);
 #ifdef Q_OS_MAC
-    sendCoinsAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_2));
+    sendCoinsAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_3));
 #else
-    sendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
+    sendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_3));
 #endif
     tabGroup->addAction(sendCoinsAction);
 
@@ -320,9 +340,9 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     receiveCoinsAction->setIcon(receiveIcon);
 
 #ifdef Q_OS_MAC
-    receiveCoinsAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_3));
+    receiveCoinsAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_4));
 #else
-    receiveCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_3));
+    receiveCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_4));
 #endif
     tabGroup->addAction(receiveCoinsAction);
 
@@ -336,9 +356,9 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     historyAction->setIcon(historyIcon);
 
 #ifdef Q_OS_MAC
-    historyAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_4));
+    historyAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_5));
 #else
-    historyAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_4));
+    historyAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_5));
 #endif
     tabGroup->addAction(historyAction);
 
@@ -363,6 +383,25 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
         connect(masternodeAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
         connect(masternodeAction, SIGNAL(triggered()), this, SLOT(gotoMasternodePage()));
     }
+
+    //Make section for the Dystem identity settings
+    QIcon identityIcon;
+    identityIcon.addFile(":/icons/identity",QSize(40,40),QIcon::Normal,QIcon::On);
+    identityIcon.addFile(":/icons/identity_off",QSize(40,40),QIcon::Normal,QIcon::Off);
+    identAction = new QAction(QIcon(":/icons/identity"), tr("&Identity"), this);
+    identAction->setStatusTip(tr("User settings"));
+    identAction->setToolTip(identAction->statusTip());
+    identAction->setCheckable(true);
+    identAction->setIcon(identityIcon);
+    #ifdef Q_OS_MAC
+        identAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_2));
+    #else
+        v->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
+    #endif
+    tabGroup->addAction(identAction);
+    connect(identAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(identAction, SIGNAL(triggered()), this, SLOT(gotToIdentPage()));
+    
 
     // These showNormalIfMinimized are needed because Send Coins and Receive Coins
     // can be triggered from the tray menu, and need to show the GUI to be useful.
@@ -551,10 +590,12 @@ void BitcoinGUI::createToolBars()
         toolbar->setObjectName("Main-Toolbar"); // Name for CSS addressing
         toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
         toolbar->addAction(overviewAction);
+        toolbar->addAction(commissionsAction);
         toolbar->addAction(sendCoinsAction);
         toolbar->addAction(receiveCoinsAction);
         toolbar->addAction(historyAction);
         toolbar->addAction(masternodeAction);
+        toolbar->addAction(identAction);
         toolbar->setMovable(false); // remove unused icon in upper left corner
         overviewAction->setChecked(true);
 
@@ -655,6 +696,8 @@ void BitcoinGUI::setWalletActionsEnabled(bool enabled)
     if (settings.value("fShowMasternodesTab").toBool()) {
         masternodeAction->setEnabled(enabled);
     }
+    commissionsAction->setEnabled(enabled);
+    identAction->setEnabled(enabled);
     encryptWalletAction->setEnabled(enabled);
     backupWalletAction->setEnabled(enabled);
     changePassphraseAction->setEnabled(enabled);
@@ -793,6 +836,18 @@ void BitcoinGUI::gotoMasternodePage()
         masternodeAction->setChecked(true);
         if (walletFrame) walletFrame->gotoMasternodePage();
     }
+}
+
+void BitcoinGUI::gotToIdentPage()
+{
+    identAction->setChecked(true);
+    if (walletFrame) walletFrame->gotToIdentPage();
+}
+
+void BitcoinGUI::gotToCommissionsPage()
+{
+    commissionsAction->setChecked(true);
+    if (walletFrame) walletFrame->gotToCommissionsPage();
 }
 
 void BitcoinGUI::gotoReceiveCoinsPage()
