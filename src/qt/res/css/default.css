@@ -278,9 +278,10 @@ QPushButton:hover {
 }
 
 QPushButton:pressed {
-	background-color: whitesmoke;
+	
+	background-color:#355271; 
 	border-color: #355271; 
-	color: #355271; 
+	color:  whitesmoke;
 }
 
 /* Special handling for statusbar-icons (which are partly QPushButtons) */
@@ -751,6 +752,7 @@ QDialog#OpenURIDialog QPushButton#selectFileButton:hover {
 
 QDialog#OpenURIDialog QPushButton#selectFileButton:pressed {
 	border:1px solid  #355271;
+	color: whitesmoke;
 }
 
 /**************************** SIGN/ VERIFY MESSAGE DIALOG *******************************/
