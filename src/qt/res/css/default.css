@@ -45,6 +45,20 @@ QToolBar {
 	spacing: 0;
 }
 
+QMenu {
+	background-color:#f8f6f6;
+	color:#355271;
+}
+	
+QMenu::item {
+	color:#355271;
+}
+	
+QMenu::item:selected {
+	background-color:#f2f0f0;
+	color:#355271;
+}
+
 QToolBar > QToolButton {
 	qproperty-alignment: 'AlignVCenter | AlignCenter';
 	background-color: transparent;
@@ -127,7 +141,7 @@ QTabWidget {
 
 QTabWidget::pane {
 	background-color:whitesmoke;
-	border:1px solid lightgrey;
+	border:1px solid #d3d3d3;
 	color: #355271;
 	border-radius: 6px;
 }
@@ -161,12 +175,20 @@ QWidget {
 	font-weight: 200;
 }
 
+QWidget AmountSpinBox {
+	color:#324e6b;
+}
+
 QGroupBox {
 	color:#355271;
 }
 
 QToolTip {
 	background-color:whitesmoke;
+	color:#355271;
+}
+
+QAction {
 	color:#355271;
 }
 
@@ -182,11 +204,13 @@ QLabel {
 /* Radio Button Labels */
 .QRadioButton { 
 	color: whitesmoke;
+	min-height:25px;
 }
 
 /* Checkbox Labels */
 .QCheckBox { 
 	color: whitesmoke;
+	max-height: 20px;
 }
 
 /* Text Entry Fields */
@@ -254,9 +278,10 @@ QPushButton:hover {
 }
 
 QPushButton:pressed {
-	background-color: whitesmoke;
+	
+	background-color:#355271; 
 	border-color: #355271; 
-	color: #355271; 
+	color:  whitesmoke;
 }
 
 /* Special handling for statusbar-icons (which are partly QPushButtons) */
@@ -303,6 +328,7 @@ QComboBox {
 
 QComboBox:checked {
 	background:whitesmoke;
+	color:#355271;
 }
 
 QComboBox:editable {
@@ -313,6 +339,7 @@ QComboBox:editable {
 QComboBox::drop-down {
 	width:25px;
 	border:0px;
+	color:#355271;
 }
 
 QComboBox::down-arrow {
@@ -343,6 +370,16 @@ QComboBox::item:selected {
 	border:0px solid transparent;
 	background:#355271;
 	color:whitesmoke;
+}
+
+QComboBox#dateWidgetFilter {
+	background:whitesmoke;
+	color: #355271; 
+}
+
+QComboBox#typeWidgetFilter {
+	background:whitesmoke;
+	color: #355271; 
 }
 
 QComboBox::indicator {
@@ -715,6 +752,7 @@ QDialog#OpenURIDialog QPushButton#selectFileButton:hover {
 
 QDialog#OpenURIDialog QPushButton#selectFileButton:pressed {
 	border:1px solid  #355271;
+	color: whitesmoke;
 }
 
 /**************************** SIGN/ VERIFY MESSAGE DIALOG *******************************/
@@ -788,7 +826,7 @@ QDialog#OptionsDialog > QLabel {
 	color: #355271;
 }
 
-QDialog#OptionsDialog QWidget#tabDisplay QValueComboBox {
+QDialog#OptionsDialog QWidget#tabDisplay QValueComboBox 
 	margin-top:0px;
 	margin-bottom:0px;
 }
@@ -800,13 +838,12 @@ QDialog#OptionsDialog QLabel#label_3 { /* Translations Missing? Label */
 }
 
 QDialog#OptionsDialog QCheckBox {
-	min-height:20px;
 	color: #355271;
 }
 
 QDialog#OptionsDialog QCheckBox#displayAddresses {
-	min-height:33px;
 	color: whitesmoke;
+
 }
 
 QDialog#OptionsDialog QLabel#labelStakeSplitThresholdText {
@@ -869,13 +906,14 @@ QDialog#RPCConsole .QGroupBox #line_2 { /* Network Out Line */
 }
 
 /**************************** MultiSendDialog *************************************************/
-
-QDialog#MultiSendDialog QLabel { /* Translations Missing? Label */
+/* Translations Missing? Label */
+QDialog#MultiSendDialog QLabel { 
 	background-color: white;
 	color: #355271;
 }
 
-QDialog#MultiSendDialog .QCheckBox { /* Translations Missing? Label */
+ /* Translations Missing? Label */
+QDialog#MultiSendDialog .QCheckBox {
 	color: #355271;
 }
 
@@ -1312,10 +1350,6 @@ QDialog#SendCoinsDialog .QFrame#frameCoinControl .QLabel#labelCoinControlChangeL
 QDialog#SendCoinsDialog .QCheckBox#checkSwiftTX { 
 	font-weight:bold;
 	border-radius:5px;
-	padding-top:20px;
-	padding-bottom:18px;
-	margin-left:10px;
-	margin-right:20px;
 	color: whitesmoke;
 }
 
@@ -1379,7 +1413,7 @@ QStackedWidget#SendCoinsEntry .QFrame#SendCoins > .QLabel {
 
 /**************************** COIN CONTROL POPUP ****************************************/
 
-/* Coin Control Quantity Label*/
+/* Coin Control Quantity Label */
 QDialog#CoinControlDialog .QLabel#labelCoinControlQuantityText { 
 	min-height:30px;
 	padding-left:15px;
@@ -1517,7 +1551,6 @@ color:transparent;
 
 /* Coin Control Widget Container */
 QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget { 
-	outline:0;
 	background-color:white;
 	border:1px solid #333;
 	color: #324e6b;
@@ -1526,10 +1559,10 @@ QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget {
 QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::item {
 }
 
-/* Coin Control Item (selected)*/
+/* Coin Control Item (selected) */
 QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::item:selected { 
-	color: #324e6b;
-	background-color: whitesmoke;
+	color: whitesmoke;
+	background-color: #324e6b;
 } 
 
 /* Coin Control Item (checked) */
@@ -1540,18 +1573,14 @@ QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::item:checked {
 
 /* Coin Control Branch Icon */
 QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::branch:selected { 
-	background-image: url(':/images/qtreeview_selected');
-	background-repeat:no-repeat;
-	background-position:center;
 	color: whitesmoke;
+	background-color: #324e6b;
 }
 
 /* Coin Control Branch Icon */
 QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::branch:checked { 
-	background-image: url(':/images/qtreeview_selected');
-	background-repeat:no-repeat;
-	background-position:center;
 	color: whitesmoke;
+	background-color: #324e6b;
 }
 
 QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::seperator {
@@ -1560,6 +1589,10 @@ QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::seperator {
 
 QDialog#CoinControlDialog .CoinControlTreeWidget#treeWidget::indicator { /* Coin Control Widget Checkbox */
 
+} 
+
+QCheckBox#checkBoxCoinControlChange {
+	color: whitesmoke;
 }
 
 /**************************** RECEIVE COINS ********************************************/

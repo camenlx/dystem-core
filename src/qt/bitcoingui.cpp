@@ -422,15 +422,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     aboutAction = new QAction(networkStyle->getAppIcon(), tr("&About Dystem Core"), this);
     aboutAction->setStatusTip(tr("Show information about Dystem Core"));
     aboutAction->setMenuRole(QAction::AboutRole);
-    /*
-#if QT_VERSION < 0x050000
-    aboutQtAction = new QAction(QIcon(":/trolltech/qmessagebox/images/qtlogo-64.png"), tr("About &Qt"), this);
-#else
-    aboutQtAction = new QAction(QIcon(":/qt-project.org/qmessagebox/images/qtlogo-64.png"), tr("About &Qt"), this);
-#endif
-    aboutQtAction->setStatusTip(tr("Show information about Qt"));
-    aboutQtAction->setMenuRole(QAction::AboutQtRole);
-*/
+
     optionsAction = new QAction(QIcon(":/icons/options"), tr("&Options..."), this);
     optionsAction->setStatusTip(tr("Modify configuration options for Dystem"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
@@ -456,6 +448,8 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     multiSendAction = new QAction(QIcon(":/icons/edit"), tr("&MultiSend"), this);
     multiSendAction->setToolTip(tr("MultiSend Settings"));
     multiSendAction->setCheckable(true);
+
+    //->setStyleSheet("background-color: yellow");
 
     openInfoAction = new QAction(QApplication::style()->standardIcon(QStyle::SP_MessageBoxInformation), tr("&Information"), this);
     openInfoAction->setStatusTip(tr("Show diagnostic information"));
