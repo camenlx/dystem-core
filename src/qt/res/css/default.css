@@ -1738,9 +1738,7 @@ QCalendarWidget QAbstractItemView:disabled {
 
 /********************************* COMMISSIONS WIDGET *************************************/
 
-
 QTabWidget#commissionsTabWidget::pane {
-	background-color:red;
 	color: #355271;
 	border-radius: 0px;
 }
@@ -1751,10 +1749,6 @@ QTableWidget#tableWidgetCommissions {
 
 QTableWidget#tableWidgetCommissionsCompleted {
 	background-color:whitesmoke;
-}
-
-QTableWidget QHBoxLayout {
-	background-color:green;
 }
 
 CommissionsList QTabBar::tab {
@@ -1775,4 +1769,84 @@ CommissionsList QTabBar::tab:first {
 CommissionsList QTabBar::tab:last {
 	border-top-right-radius: 8px;
 	border-right: 1px solid #d7d7d7;
+}
+
+/********************************* IDENT WIDGET *************************************/
+
+IdentSettings QFrame#accountChangeFrame, IdentSettings QFrame#signMessageFrame, IdentSettings QFrame#addressSelectFrame, IdentSettings QTabWidget::pane{
+	background-color:whitesmoke;
+	border-radius: 8px;
+	border: 1px solid #355271;
+}
+
+IdentSettings .QTextEdit, IdentSettings .QValidatedLineEdit, IdentSettings .QPlainTextEdit {
+	border: 1px solid #355271;
+	border-radius: 0px;
+}
+
+IdentSettings QLabel#addressTitleLabel, IdentSettings QLabel#accountTitleLabel,  IdentSettings QLabel#signingTitleLabel {
+	font-weight:bold;
+}
+
+IdentSettings QLabel#addressInfoLabel, IdentSettings QLabel#accountInfoLabel, IdentSettings QLabel#signInfoLabel {
+	color:#355271;
+	background-color:transparent;
+}
+
+IdentSettings QLabel#messageLabel, IdentSettings QLabel#signitureLabel, IdentSettings QLabel#statusLabel_SM {
+	border: 0px none #355271;
+}
+
+IdentSettings QTabWidget {
+	background-color:whitesmoke;
+	border: 0px none #355271;
+}
+
+IdentSettings QTabBar, IdentSettings QHBoxLayout#horizontalLayout_2  {
+	background-color:whitesmoke;
+}
+
+IdentSettings QTabBar::tab {
+	background-color:#355271;
+	color:whitesmoke;
+	padding-left:10px;
+	padding-right:10px;
+	padding-top:5px;
+	padding-bottom:5px;
+	border-top: 1px solid #d7d7d7;
+}
+
+IdentSettings QTabBar::tab:first {
+	border-top-left-radius: 8px;
+	border-left: 1px solid #d7d7d7;
+}
+
+IdentSettings QTabBar::tab:last {
+	border-top-right-radius: 8px;
+	border-right: 1px solid #d7d7d7;
+}
+
+IdentSettings QComboBox { 
+	padding: 3px 5px 3px 5px;
+	background:whitesmoke;
+	min-height:25px;
+	color:#355271;
+	border-radius: 8px;
+	border: 1px solid #355271;
+}
+
+IdentSettings QComboBox:checked {
+	background:whitesmoke;
+	color:#355271;
+}
+
+IdentSettings QComboBox:editable {
+	background:#355271;
+	border:0px solid transparent;
+}
+
+IdentSettings IdentSettings QComboBox::drop-down {
+	width:25px;
+	border:0px;
+	color:#355271;
 }

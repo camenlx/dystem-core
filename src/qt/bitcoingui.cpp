@@ -298,6 +298,7 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     tabGroup->addAction(overviewAction);
 
     //Make section for the Dystem Commissions list
+    
     QIcon commissionsIcon;
     commissionsIcon.addFile(":/icons/commissions",QSize(40,40),QIcon::Normal,QIcon::On);
     commissionsIcon.addFile(":/icons/commissions_off",QSize(40,40),QIcon::Normal,QIcon::Off);
@@ -394,14 +395,13 @@ void BitcoinGUI::createActions(const NetworkStyle* networkStyle)
     identAction->setCheckable(true);
     identAction->setIcon(identityIcon);
     #ifdef Q_OS_MAC
-        identAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_2));
+        identAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_7));
     #else
-        v->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
+        v->setShortcut(QKeySequence(Qt::ALT + Qt::Key_7));
     #endif
     tabGroup->addAction(identAction);
     connect(identAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(identAction, SIGNAL(triggered()), this, SLOT(gotToIdentPage()));
-    
 
     // These showNormalIfMinimized are needed because Send Coins and Receive Coins
     // can be triggered from the tray menu, and need to show the GUI to be useful.

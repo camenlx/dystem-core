@@ -6,22 +6,13 @@
 #include "commissionslist.h"
 #include "ui_commissionslist.h"
 
-#include "activemasternode.h"
 #include "clientmodel.h"
 #include "guiutil.h"
 #include "init.h"
-#include "masternode-sync.h"
-#include "masternodeconfig.h"
-#include "masternodeman.h"
-#include "sync.h"
 #include "wallet.h"
 #include "walletmodel.h"
-#include "askpassphrasedialog.h"
 
 #include <QMessageBox>
-#include <QTimer>
-
-CCriticalSection cs_masternodes;
 
 CommissionsList::CommissionsList(QWidget* parent) : QWidget(parent),
                                                   ui(new Ui::CommissionsList),
@@ -148,7 +139,7 @@ void CommissionsList::updateCommissionRow(QString strAlias, QString strAddr, CMa
 
 void CommissionsList::updateCommissionList(bool fForce)
 {
-    static int64_t nTimeMyListUpdated = 0;
+    //static int64_t nTimeMyListUpdated = 0;
 
     // automatically update my masternode list only once in MY_MASTERNODELIST_UPDATE_SECONDS seconds,
     // this update still can be triggered manually at any time via button click
@@ -188,5 +179,5 @@ void CommissionsList::on_tableWidgetCommissions_itemSelectionChanged()
 
 void CommissionsList::on_RefreshButton_clicked()
 {
-    updateCommissionList(true);
+    //updateCommissionList(true);
 }

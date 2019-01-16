@@ -31,7 +31,7 @@ QT_BEGIN_NAMESPACE
 class QModelIndex;
 QT_END_NAMESPACE
 
-/** Masternode Manager page widget */
+/** User Ident page widget */
 class IdentSettings : public QWidget
 {
     Q_OBJECT
@@ -42,34 +42,20 @@ public:
 
     void setClientModel(ClientModel* clientModel);
     void setWalletModel(WalletModel* walletModel);
-    void StartAlias(std::string strAlias);
-    void StartAll(std::string strCommand = "start-all");
 
 private:
     QMenu* contextMenu;
-    int64_t nTimeFilterUpdated;
-    bool fFilterUpdated;
 
 public Q_SLOTS:
-    void updateMyMasternodeInfo(QString strAlias, QString strAddr, CMasternode* pmn);
-    void updateMyNodeList(bool fForce = false);
 
 Q_SIGNALS:
 
 private:
-    QTimer* timer;
     Ui::IdentSettings* ui;
     ClientModel* clientModel;
     WalletModel* walletModel;
-    CCriticalSection cs_mnlistupdate;
-    QString strCurrentFilter;
 
 private Q_SLOTS:
-    void showContextMenu(const QPoint&);
-    void on_startButton_clicked();
-    void on_startAllButton_clicked();
-    void on_startMissingButton_clicked();
-    void on_tableWidgetMyMasternodes_itemSelectionChanged();
-    void on_UpdateButton_clicked();
+
 };
 #endif // IDENTSETTINGS_H

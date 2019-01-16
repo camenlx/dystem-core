@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>978</width>
-    <height>457</height>
+    <width>985</width>
+    <height>823</height>
    </rect>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>1100</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Form</string>
@@ -46,297 +52,135 @@
         <property name="bottomMargin">
          <number>0</number>
         </property>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_Header" stretch="1">
-          <item>
-           <widget class="QLabel" name="labelOverviewHeaderRight">
-            <property name="minimumSize">
-             <size>
-              <width>464</width>
-              <height>10</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>10</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>14</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
        </layout>
       </widget>
      </item>
      <item>
       <widget class="QFrame" name="frame_BG">
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>850</height>
+        </size>
+       </property>
        <layout class="QVBoxLayout" name="verticalLayout_3">
         <property name="leftMargin">
-         <number>6</number>
+         <number>20</number>
         </property>
         <property name="topMargin">
-         <number>6</number>
+         <number>20</number>
         </property>
         <property name="rightMargin">
-         <number>6</number>
+         <number>20</number>
         </property>
         <property name="bottomMargin">
-         <number>6</number>
+         <number>20</number>
         </property>
         <item>
-         <widget class="QFrame" name="frame_Content">
-          <layout class="QVBoxLayout" name="verticalLayout">
-           <property name="spacing">
-            <number>0</number>
-           </property>
-           <property name="leftMargin">
-            <number>0</number>
-           </property>
-           <property name="topMargin">
-            <number>0</number>
-           </property>
-           <property name="rightMargin">
-            <number>0</number>
-           </property>
-           <property name="bottomMargin">
-            <number>0</number>
-           </property>
-           <item>
-            <layout class="QGridLayout" name="gridLayout_2">
-             <property name="spacing">
-              <number>2</number>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <property name="sizeConstraint">
+           <enum>QLayout::SetNoConstraint</enum>
+          </property>
+          <item>
+           <widget class="QFrame" name="addressFrame">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>180</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <property name="topMargin">
+              <number>0</number>
              </property>
-             <item row="0" column="0">
-              <widget class="QFrame" name="frameList">
-               <layout class="QVBoxLayout" name="verticalLayout_2">
+             <property name="bottomMargin">
+              <number>10</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="addressTitleLabel">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Address</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="addressSelectFrame">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_8">
+                <property name="leftMargin">
+                 <number>20</number>
+                </property>
+                <property name="topMargin">
+                 <number>20</number>
+                </property>
+                <property name="rightMargin">
+                 <number>20</number>
+                </property>
                 <property name="bottomMargin">
-                 <number>1</number>
+                 <number>20</number>
                 </property>
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_note">
-                  <property name="bottomMargin">
-                   <number>0</number>
-                  </property>
-                  <item>
-                   <widget class="QLabel" name="updateNote">
-                    <property name="font">
-                     <font>
-                      <family>Open Sans</family>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>Note: Status of your masternodes in local wallet can potentially be slightly incorrect.&lt;br /&gt;Always wait for wallet to sync additional data and then double check from another node&lt;br /&gt;if your node should be running but you still see &quot;MISSING&quot; in &quot;Status&quot; field.</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <widget class="QTableWidget" name="tableWidgetCommissions">
-                  <property name="minimumSize">
+                 <widget class="QLabel" name="addressInfoLabel">
+                  <property name="maximumSize">
                    <size>
-                    <width>695</width>
-                    <height>0</height>
+                    <width>923</width>
+                    <height>50</height>
                    </size>
                   </property>
-                  <property name="palette">
-                   <palette>
-                    <active>
-                     <colorrole role="Text">
-                      <brush brushstyle="SolidPattern">
-                       <color alpha="255">
-                        <red>51</red>
-                        <green>51</green>
-                        <blue>51</blue>
-                       </color>
-                      </brush>
-                     </colorrole>
-                    </active>
-                    <inactive>
-                     <colorrole role="Text">
-                      <brush brushstyle="SolidPattern">
-                       <color alpha="255">
-                        <red>51</red>
-                        <green>51</green>
-                        <blue>51</blue>
-                       </color>
-                      </brush>
-                     </colorrole>
-                    </inactive>
-                    <disabled>
-                     <colorrole role="Text">
-                      <brush brushstyle="SolidPattern">
-                       <color alpha="255">
-                        <red>85</red>
-                        <green>85</green>
-                        <blue>85</blue>
-                       </color>
-                      </brush>
-                     </colorrole>
-                    </disabled>
-                   </palette>
+                  <property name="text">
+                   <string>Select an address you wish to sign in with. You may use multiple addresses to sign in for applying to commissions and creating commissions. For each address you use as a login a fee is required to register that address with the newtork.</string>
                   </property>
-                  <property name="font">
-                   <font>
-                    <family>Open Sans</family>
-                   </font>
-                  </property>
-                  <property name="editTriggers">
-                   <set>QAbstractItemView::NoEditTriggers</set>
-                  </property>
-                  <property name="alternatingRowColors">
+                  <property name="wordWrap">
                    <bool>true</bool>
                   </property>
-                  <property name="selectionMode">
-                   <enum>QAbstractItemView::SingleSelection</enum>
-                  </property>
-                  <property name="selectionBehavior">
-                   <enum>QAbstractItemView::SelectRows</enum>
-                  </property>
-                  <property name="sortingEnabled">
-                   <bool>true</bool>
-                  </property>
-                  <attribute name="horizontalHeaderStretchLastSection">
-                   <bool>true</bool>
-                  </attribute>
-                  <column>
-                   <property name="text">
-                    <string>Alias</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>Address</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>Protocol</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>Status</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>Active</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>Last Seen (UTC)</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>Pubkey</string>
-                   </property>
-                  </column>
                  </widget>
                 </item>
                 <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_5">
+                 <layout class="QHBoxLayout" name="horizontalLayout_2">
+                  <property name="leftMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
                   <property name="bottomMargin">
                    <number>0</number>
                   </property>
                   <item>
-                   <widget class="QPushButton" name="startButton">
-                    <property name="font">
-                     <font>
-                      <family>Open Sans</family>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>S&amp;tart alias</string>
-                    </property>
-                   </widget>
+                   <widget class="QComboBox" name="comboBox_2"/>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="startAllButton">
-                    <property name="font">
-                     <font>
-                      <family>Open Sans</family>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>Start &amp;all</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="startMissingButton">
-                    <property name="font">
-                     <font>
-                      <family>Open Sans</family>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>Start &amp;MISSING</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QPushButton" name="UpdateButton">
-                    <property name="font">
-                     <font>
-                      <family>Open Sans</family>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>&amp;Update status</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="autoupdate_label">
-                    <property name="font">
-                     <font>
-                      <family>Open Sans</family>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>Status will be updated automatically in (sec):</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="QLabel" name="secondsLabel">
-                    <property name="font">
-                     <font>
-                      <family>Open Sans</family>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>0</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <spacer name="horizontalSpacer_5">
-                    <property name="orientation">
-                     <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeHint" stdset="0">
+                   <widget class="QPushButton" name="pushButton_2">
+                    <property name="maximumSize">
                      <size>
-                      <width>40</width>
-                      <height>20</height>
+                      <width>150</width>
+                      <height>16777215</height>
                      </size>
                     </property>
-                   </spacer>
+                    <property name="text">
+                     <string>Select</string>
+                    </property>
+                   </widget>
                   </item>
                  </layout>
                 </item>
@@ -344,9 +188,414 @@
               </widget>
              </item>
             </layout>
-           </item>
-          </layout>
-         </widget>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <item>
+           <widget class="QFrame" name="accountSelectFrame">
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_9">
+             <property name="leftMargin">
+              <number>10</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>10</number>
+             </property>
+             <property name="bottomMargin">
+              <number>10</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="accountTitleLabel">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Account</string>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="accountChangeFrame">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_11">
+                <property name="leftMargin">
+                 <number>20</number>
+                </property>
+                <property name="topMargin">
+                 <number>20</number>
+                </property>
+                <property name="rightMargin">
+                 <number>20</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>20</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="accountInfoLabel">
+                  <property name="text">
+                   <string>This address is XXXX. You can change the level of subscriptoion below. A fee is charged each time you increase the account level.</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_3">
+                  <item>
+                   <widget class="QComboBox" name="comboBox_3"/>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="pushButton_3">
+                    <property name="maximumSize">
+                     <size>
+                      <width>150</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                    <property name="text">
+                     <string>Upgrade</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_7">
+          <item>
+           <widget class="QFrame" name="bip32Frame">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>440</height>
+             </size>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_10">
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>10</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="signingTitleLabel">
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>20</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Signing</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="signMessageFrame">
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_12">
+                <property name="leftMargin">
+                 <number>20</number>
+                </property>
+                <property name="topMargin">
+                 <number>20</number>
+                </property>
+                <property name="rightMargin">
+                 <number>20</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>20</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="signInfoLabel">
+                  <property name="text">
+                   <string>You can verify any users identity by asking them to sign a message here. Enter there address, and the signiture. </string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QTabWidget" name="signingTabWidget">
+                  <property name="currentIndex">
+                   <number>0</number>
+                  </property>
+                  <widget class="QWidget" name="tab">
+                   <attribute name="title">
+                    <string>Sign</string>
+                   </attribute>
+                   <layout class="QVBoxLayout" name="verticalLayout_6">
+                    <item>
+                     <widget class="QLabel" name="messageLabel">
+                      <property name="text">
+                       <string>Message</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QTextEdit" name="textEdit"/>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="signitureLabel">
+                      <property name="text">
+                       <string>Signature</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QTextEdit" name="textEdit_2"/>
+                    </item>
+                    <item>
+                     <layout class="QHBoxLayout" name="horizontalLayout_3_SM">
+                      <item>
+                       <widget class="QPushButton" name="signMessageButton_SM">
+                        <property name="font">
+                         <font>
+                          <family>Open Sans</family>
+                         </font>
+                        </property>
+                        <property name="toolTip">
+                         <string>Sign the message to prove you own this DYSTEM address</string>
+                        </property>
+                        <property name="text">
+                         <string>Sign &amp;Message</string>
+                        </property>
+                        <property name="icon">
+                         <iconset resource="../dystem.qrc">
+                          <normaloff>:/icons/edit</normaloff>:/icons/edit</iconset>
+                        </property>
+                        <property name="autoDefault">
+                         <bool>false</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="clearButton_SM">
+                        <property name="font">
+                         <font>
+                          <family>Open Sans</family>
+                         </font>
+                        </property>
+                        <property name="toolTip">
+                         <string>Reset all sign message fields</string>
+                        </property>
+                        <property name="text">
+                         <string>Clear &amp;All</string>
+                        </property>
+                        <property name="icon">
+                         <iconset resource="../dystem.qrc">
+                          <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
+                        </property>
+                        <property name="autoDefault">
+                         <bool>false</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_1_SM">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>48</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="statusLabel_SM">
+                        <property name="font">
+                         <font>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="wordWrap">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_2_SM">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>48</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                     </layout>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="tab_2">
+                   <attribute name="title">
+                    <string>Verify</string>
+                   </attribute>
+                   <layout class="QVBoxLayout" name="verticalLayout_13">
+                    <item>
+                     <widget class="QLabel" name="label">
+                      <property name="text">
+                       <string>Address</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QValidatedLineEdit" name="addressIn_VM">
+                      <property name="toolTip">
+                       <string>The DYSTEM address the message was signed with</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLabel" name="label_2">
+                      <property name="text">
+                       <string>Signiture</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPlainTextEdit" name="messageIn_VM"/>
+                    </item>
+                    <item>
+                     <widget class="QValidatedLineEdit" name="signatureIn_VM"/>
+                    </item>
+                    <item>
+                     <layout class="QHBoxLayout" name="horizontalLayout_2_VM">
+                      <item>
+                       <widget class="QPushButton" name="verifyMessageButton_VM">
+                        <property name="toolTip">
+                         <string>Verify the message to ensure it was signed with the specified DYSTEM address</string>
+                        </property>
+                        <property name="text">
+                         <string>Verify &amp;Message</string>
+                        </property>
+                        <property name="icon">
+                         <iconset resource="../dystem.qrc">
+                          <normaloff>:/icons/transaction_0</normaloff>:/icons/transaction_0</iconset>
+                        </property>
+                        <property name="autoDefault">
+                         <bool>false</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="clearButton_VM">
+                        <property name="toolTip">
+                         <string>Reset all verify message fields</string>
+                        </property>
+                        <property name="text">
+                         <string>Clear &amp;All</string>
+                        </property>
+                        <property name="icon">
+                         <iconset resource="../dystem.qrc">
+                          <normaloff>:/icons/remove</normaloff>:/icons/remove</iconset>
+                        </property>
+                        <property name="autoDefault">
+                         <bool>false</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_1_VM">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>48</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="statusLabel_VM">
+                        <property name="font">
+                         <font>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                        <property name="wordWrap">
+                         <bool>true</bool>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_2_VM">
+                        <property name="orientation">
+                         <enum>Qt::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>40</width>
+                          <height>48</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                     </layout>
+                    </item>
+                   </layout>
+                  </widget>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </widget>
@@ -355,6 +604,15 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <customwidgets>
+  <customwidget>
+   <class>QValidatedLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>qvalidatedlineedit.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../dystem.qrc"/>
+ </resources>
  <connections/>
 </ui>

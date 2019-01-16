@@ -27,7 +27,7 @@ QT_BEGIN_NAMESPACE
 class QModelIndex;
 QT_END_NAMESPACE
 
-/** Masternode Manager page widget */
+/** Commission list page widget */
 class CommissionsList : public QWidget
 {
     Q_OBJECT
@@ -51,8 +51,6 @@ private:
     Ui::CommissionsList* ui;
     ClientModel* clientModel;
     WalletModel* walletModel;
-    //CCriticalSection cs_mnlistupdate;
-    //QString strCurrentFilter;
 
 private Q_SLOTS:
     void on_tableWidgetCommissions_itemSelectionChanged();
