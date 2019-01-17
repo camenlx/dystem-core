@@ -117,6 +117,7 @@ BITCOIN_CORE_H = \
   masternodeman.h \
   masternodeconfig.h \
   masternode-helpers.h \
+  Dystem/Commissions/DCommission.h \
   merkleblock.h \
   miner.h \
   mruset.h \
@@ -234,6 +235,7 @@ libbitcoin_wallet_a_SOURCES = \
   masternodeconfig.cpp \
   masternodeman.cpp \
   masternode-helpers.cpp \
+  Dystem/Commissions/DCommission.cpp \
   rpcdump.cpp \
   rpcwallet.cpp \
   kernel.cpp \
@@ -448,7 +450,6 @@ CLEANFILES += script/*.gcda script/*.gcno
 CLEANFILES += univalue/*.gcda univalue/*.gcno
 CLEANFILES += zmq/*.gcda zmq/*.gcno
 CLEANFILES += obj/build.h
-
 
 EXTRA_DIST = leveldb
 
