@@ -4,7 +4,7 @@
 
 DIST_SUBDIRS = secp256k1 univalue
 
-AM_LDFLAGS = $(PTHREAD_CFLAGS) $(LIBTOOL_LDFLAGS) $(HARDENED_LDFLAGS)
+AM_LDFLAGS = $(PTHREAD_CFLAGS) $(LIBTOOL_LDFLAGS) $(HARDENED_LDFLAGS) $(CURL_LIBS) $(JSONCPP_LIBS)
 AM_CXXFLAGS = $(HARDENED_CXXFLAGS) $(ERROR_CXXFLAGS)
 AM_CPPFLAGS = $(HARDENED_CPPFLAGS)
 EXTRA_LIBRARIES =
@@ -118,6 +118,8 @@ BITCOIN_CORE_H = \
   masternodeconfig.h \
   masternode-helpers.h \
   Dystem/Commissions/DCommission.h \
+  Dystem/Commissions/DCommissionManager.h \
+  Dystem/CURLWrapper.h \
   merkleblock.h \
   miner.h \
   mruset.h \
@@ -222,6 +224,7 @@ endif
 # when wallet enabled
 libbitcoin_wallet_a_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 libbitcoin_wallet_a_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+#libbitcoin_wallet_a_LIBADD = -L/usr.curl.la
 libbitcoin_wallet_a_SOURCES = \
   activemasternode.cpp \
   bip38.cpp \
@@ -236,6 +239,8 @@ libbitcoin_wallet_a_SOURCES = \
   masternodeman.cpp \
   masternode-helpers.cpp \
   Dystem/Commissions/DCommission.cpp \
+  Dystem/Commissions/DCommissionManager.cpp \
+  Dystem/CURLWrapper.cpp \
   rpcdump.cpp \
   rpcwallet.cpp \
   kernel.cpp \
@@ -373,9 +378,9 @@ dystemd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNP
 
 # dystem-cli binary #
 dystem_cli_SOURCES = dystem-cli.cpp
-dystem_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
-dystem_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
-dystem_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+dystem_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS) 
+dystem_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) 
+dystem_cli_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS) 
 
 if TARGET_WINDOWS
 dystem_cli_SOURCES += dystem-cli-res.rc
@@ -392,8 +397,8 @@ dystem_cli_LDADD += $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EVENT_LIBS)
 
 # dystem-tx binary #
 dystem_tx_SOURCES = dystem-tx.cpp
-dystem_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
-dystem_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+dystem_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) 
+dystem_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS) 
 dystem_tx_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
@@ -405,7 +410,7 @@ dystem_tx_LDADD = \
   $(LIBBITCOIN_COMMON) \
   $(LIBBITCOIN_UTIL) \
   $(LIBBITCOIN_CRYPTO) \
-  $(LIBSECP256K1)
+  $(LIBSECP256K1) 
 
 dystem_tx_LDADD += $(BOOST_LIBS) $(CRYPTO_LIBS)
 #

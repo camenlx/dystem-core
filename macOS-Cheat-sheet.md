@@ -15,11 +15,15 @@ brew install pkg-config
 
 brew install boost
 
+brew install curl
+
+brew install jsoncpp
+
 brew install g++
 
-export LDFLAGS=-L/usr/local/opt/openssl/lib
-export CPPFLAGS=-I/usr/local/opt/openssl/include
-
+export LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/jsoncpp/lib"
+export CPPFLAGS="-I/usr/local/opt/openssl/include -I/usr/local/opt/jsoncpp/include"
+export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig /usr/local/opt/jsoncpp/lib/pkgconfig"
 
 // WALLET GUIDE
 

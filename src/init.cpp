@@ -26,6 +26,7 @@
 #include "masternodeconfig.h"
 #include "masternodeman.h"
 #include "masternode-helpers.h"
+#include "Dystem/Commissions/DCommissionManager.h"
 #include "miner.h"
 #include "net.h"
 #include "rpc/server.h"
@@ -1609,7 +1610,7 @@ bool AppInit2()
             MilliSleep(10);
     }
 
-    // ********************************************************* Step 10: setup ObfuScation
+    // ********************************************************* Step 10: setup masternodes
 
     uiInterface.InitMessage(_("Loading masternode cache..."));
 
@@ -1731,7 +1732,21 @@ bool AppInit2()
 
     threadGroup.create_thread(boost::bind(&ThreadMasternodePool));
 
-    // ********************************************************* Step 11: start node
+    // ********************************************************* Step 11: startup commissions
+
+    uiInterface.InitMessage(_("Loading Commissions..."));
+    DCommisionsDB commissiondb;
+    DCommisionsDB::ReadResult commissionReadResult = commissiondb.Read(commissionsmanager, false);
+    if (commissionReadResult == DCommisionsDB::FileError)
+        LogPrintf("Missing coimmission cache file - commissions.dat, will try to recreate\n");
+    else if (commissionReadResult != DCommisionsDB::Ok) {
+        LogPrintf("Error reading commissions.dat: ");
+        if (commissionReadResult == DCommisionsDB::IncorrectFormat)
+            LogPrintf("commissions  magic is ok but data has invalid format, will try to recreate\n");
+        else
+            LogPrintf("file format is unknown or invalid, please fix it manually\n");
+
+    // ********************************************************* Step 12: start node
 
     if (!CheckDiskSpace())
         return false;
@@ -1761,6 +1776,8 @@ bool AppInit2()
         GenerateBitcoins(GetBoolArg("-gen", false), pwalletMain, GetArg("-genproclimit", 1));
 #endif
 
+    
+    }
     // ********************************************************* Step 12: finished
 
     SetRPCWarmupFinished();
