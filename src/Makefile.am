@@ -120,6 +120,7 @@ BITCOIN_CORE_H = \
   Dystem/Commissions/DCommission.h \
   Dystem/Commissions/DCommissionManager.h \
   Dystem/CURLWrapper.h \
+  Dystem/Util/adaptive_parser.h \
   merkleblock.h \
   miner.h \
   mruset.h \
@@ -241,6 +242,7 @@ libbitcoin_wallet_a_SOURCES = \
   Dystem/Commissions/DCommission.cpp \
   Dystem/Commissions/DCommissionManager.cpp \
   Dystem/CURLWrapper.cpp \
+  Dystem/Util/adaptive_parser.cpp \
   rpcdump.cpp \
   rpcwallet.cpp \
   kernel.cpp \

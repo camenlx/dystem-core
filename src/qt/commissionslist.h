@@ -1,10 +1,11 @@
-// Copyright (c) 2014-2016 The Dash Developers
 // Copyright (c) 2018-2019 The Dystem developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef COMMISSIONLIST_H
 #define COMMISSIONLIST_H
+
+#include "../Dystem/Commissions/DCommission.h"
 
 #include "masternode.h"
 #include "platformstyle.h"
@@ -14,6 +15,8 @@
 #include <QMenu>
 #include <QTimer>
 #include <QWidget>
+
+#define COMMISSIONS_REFRESH_SECONDS 10
 
 namespace Ui
 {
@@ -40,20 +43,24 @@ public:
     void setWalletModel(WalletModel* walletModel);
 
 private:
+    int64_t nTimeFilterUpdated;
 
-public Q_SLOTS:
-    void updateCommissionRow(QString strAlias, QString strAddr, CMasternode* pmn);
-    void updateCommissionList(bool fForce = false);
+    public Q_SLOTS:
+    void updateCommissionRow(DCommission com);
+    void updateCommissionList();
 
-Q_SIGNALS:
+    Q_SIGNALS:
 
-private:
-    Ui::CommissionsList* ui;
-    ClientModel* clientModel;
-    WalletModel* walletModel;
+    private:
+        QTimer* timer;
+        Ui::CommissionsList* ui;
+        ClientModel* clientModel;
+        WalletModel* walletModel;
+        CCriticalSection cs_commissions;
 
-private Q_SLOTS:
-    void on_tableWidgetCommissions_itemSelectionChanged();
-    void on_RefreshButton_clicked();
+    private Q_SLOTS:
+        void on_tableWidgetCommissions_itemSelectionChanged();
+        void on_tableWidgetCommissionsCompleted_itemSelectionChanged();
+        void on_refreshButton_clicked();
 };
 #endif // COMMISSIONLIST_H

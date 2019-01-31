@@ -1,18 +1,33 @@
-// Copyright (c) 2014-2016 The Dash Developers
 // Copyright (c) 2018-2019 The Dystem developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "commissionslist.h"
+//Dystem includes
 #include "ui_commissionslist.h"
+#include "commissionslist.h"
+#include "../Dystem/Commissions/DCommissionManager.h"
+#include "../Dystem/Util/adaptive_parser.h"
 
+//Bitcoin/Dash/PIVX includes
 #include "clientmodel.h"
 #include "guiutil.h"
 #include "init.h"
 #include "wallet.h"
 #include "walletmodel.h"
 
+//STD / Boost includes
+#include <sstream>
+#include <iostream>
+#include <boost/date_time/posix_time/posix_time.hpp>
+  
+//QT includes
 #include <QMessageBox>
+
+CCriticalSection cs_commissions;
+
+using namespace boost::posix_time;
+using namespace mylib::datetime;
+using namespace std;
 
 CommissionsList::CommissionsList(QWidget* parent) : QWidget(parent),
                                                   ui(new Ui::CommissionsList),
@@ -21,10 +36,10 @@ CommissionsList::CommissionsList(QWidget* parent) : QWidget(parent),
 {
     ui->setupUi(this);
 
-    int columnTitleWidth = 340;
+    int columnTitleWidth = 300;
     int columnStartDateWidth = 160;
     int columnCurrencyWidth = 80;
-    int columnFeeWidth = 80;
+    int columnFeeWidth = 120;
     int columnCommissionerWidth = 230;
     int columnStatusWidth = 130;
 
@@ -46,8 +61,11 @@ CommissionsList::CommissionsList(QWidget* parent) : QWidget(parent),
 
     ui->tableWidgetCommissionsCompleted->setContextMenuPolicy(Qt::CustomContextMenu);
 
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(updateCommissionList()));
+    timer->start(1000);
 
-    updateCommissionList(true);
+    updateCommissionList();
 }
 
 CommissionsList::~CommissionsList()
@@ -65,119 +83,148 @@ void CommissionsList::setWalletModel(WalletModel* model)
     this->walletModel = model;
 }
 
-/*
-//DO NOT REMOVE EXAPLE OF HOW TO SHOW A MESSAGE BOX
-void CommissionsList::StartAlias(std::string strAlias)
+void CommissionsList::updateCommissionRow(DCommission com)
 {
-    std::string strStatusHtml;
-    strStatusHtml += "<center>Alias: " + strAlias;
+    //TODO: MUST AD VALIDATION TO MAKE TITLES UNIQUE
+    LOCK(cs_commissions);
+    //If the commission active or being worked on show it in the active list
+    QString strTitle = QString::fromStdString(com.title);
+     
+    //Format the fee correctly
+    std::stringstream feeStream;
+    feeStream.precision(8);
+    feeStream << fixed << com.fee;
 
-    BOOST_FOREACH (CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
-        if (mne.getAlias() == strAlias) {
-            std::string strError;
-            CMasternodeBroadcast mnb;
+    //Format the date correctly
+    //TODO: Move this out to a date format helper class. 
+    std::string stringDate;
+    adaptive_parser parser { adaptive_parser::full_match, { "%Y-%m-%dT%H:%M:%SZ" } };
 
-            bool fSuccess = CMasternodeBroadcast::Create(mne.getIp(), mne.getPrivKey(), mne.getTxHash(), mne.getOutputIndex(), strError, mnb);
+    try {
+        std::stringstream date_str;
+        boost::posix_time::ptime pt_1 = boost::posix_time::from_time_t(parser(com.createdAt).count());
+        boost::gregorian::date d = pt_1.date();
+        date_str << d.year() << "-" << std::setw(2) << std::setfill('0') << d.month().as_number() << "-" << std::setw(2) << std::setfill('0') << d.day();
+        stringDate = date_str.str();
+    } catch(std::exception const& e) { }
 
-            if (fSuccess) {
-                strStatusHtml += "<br>Successfully started masternode.";
-                mnodeman.UpdateMasternodeList(mnb);
-                mnb.Relay();
-            } else {
-                strStatusHtml += "<br>Failed to start masternode.<br>Error: " + strError;
+    if(com.state == DCommission::COMMISSION_ACTIVE ||
+        com.state == DCommission::COMMISSION_AWARDED ||
+        com.state == DCommission::COMMISSION_ACCEPTED) {        
+        bool fOldRowFound = false;
+        int nNewRow = 0;
+
+        for (int i = 0; i < ui->tableWidgetCommissions->rowCount(); i++) {
+            if (ui->tableWidgetCommissions->item(i, 0)->text() == strTitle) {
+                fOldRowFound = true;
+                nNewRow = i;
+                break;
             }
-            break;
         }
-    }
-    strStatusHtml += "</center>";
 
-    QMessageBox msg;
-    msg.setText(QString::fromStdString(strStatusHtml));
-    msg.exec();
-
-    updateMyNodeList(true);
-}
-*/
-
-void CommissionsList::updateCommissionRow(QString strAlias, QString strAddr, CMasternode* pmn)
-{
-    /*
-    LOCK(cs_mnlistupdate);
-    bool fOldRowFound = false;
-    int nNewRow = 0;
-
-    for (int i = 0; i < ui->tableWidgetCommissions->rowCount(); i++) {
-        if (ui->tableWidgetCommissions->item(i, 0)->text() == strAlias) {
-            fOldRowFound = true;
-            nNewRow = i;
-            break;
+        if (nNewRow == 0 && !fOldRowFound) {
+            nNewRow = ui->tableWidgetCommissions->rowCount();
+            ui->tableWidgetCommissions->insertRow(nNewRow);
         }
+
+        QTableWidgetItem* titleItem = new QTableWidgetItem(strTitle);
+        QTableWidgetItem* startItem = new QTableWidgetItem(QString::fromStdString(stringDate));
+        QTableWidgetItem* currencyItem = new QTableWidgetItem(QString::fromStdString(com.coin));
+        QTableWidgetItem* feeItem = new QTableWidgetItem(QString::fromStdString(feeStream.str()));
+        QTableWidgetItem* commissionerItem = new QTableWidgetItem(QString::fromStdString(com.authorName));
+
+        ui->tableWidgetCommissions->setItem(nNewRow, 0, titleItem);
+        ui->tableWidgetCommissions->setItem(nNewRow, 1, startItem);
+        ui->tableWidgetCommissions->setItem(nNewRow, 2, currencyItem);
+        ui->tableWidgetCommissions->setItem(nNewRow, 3, feeItem);
+        ui->tableWidgetCommissions->setItem(nNewRow, 4, commissionerItem);
+
+    } else {
+        //If a commission is closed or completed show it in the completed list. 
+        //If it has been culled from the data chain it wnot be shown in either list.
+        bool fOldRowFound = false;
+        int nNewRow = 0;
+
+        for (int i = 0; i < ui->tableWidgetCommissionsCompleted->rowCount(); i++) {
+            if (ui->tableWidgetCommissionsCompleted->item(i, 0)->text() == strTitle) {
+                fOldRowFound = true;
+                nNewRow = i;
+                break;
+            }
+        }
+
+        if (nNewRow == 0 && !fOldRowFound) {
+            nNewRow = ui->tableWidgetCommissionsCompleted->rowCount();
+            ui->tableWidgetCommissionsCompleted->insertRow(nNewRow);
+        }
+
+        QTableWidgetItem* titleItem = new QTableWidgetItem(strTitle);
+        QTableWidgetItem* currencyItem = new QTableWidgetItem(QString::fromStdString(com.coin));
+        QTableWidgetItem* feeItem = new QTableWidgetItem(QString::fromStdString(feeStream.str()));
+        QTableWidgetItem* commissionerItem = new QTableWidgetItem(QString::fromStdString(com.authorName));
+        QTableWidgetItem* statusItem = new QTableWidgetItem(QString::fromStdString(com.finalStatus));
+
+        ui->tableWidgetCommissionsCompleted->setItem(nNewRow, 0, titleItem);
+        ui->tableWidgetCommissionsCompleted->setItem(nNewRow, 1, currencyItem);
+        ui->tableWidgetCommissionsCompleted->setItem(nNewRow, 2, feeItem);
+        ui->tableWidgetCommissionsCompleted->setItem(nNewRow, 3, commissionerItem);
+        ui->tableWidgetCommissionsCompleted->setItem(nNewRow, 4, statusItem);
     }
-
-    if (nNewRow == 0 && !fOldRowFound) {
-        nNewRow = ui->tableWidgetCommissions->rowCount();
-        ui->tableWidgetCommissions->insertRow(nNewRow);
-    }
-
-    QTableWidgetItem* aliasItem = new QTableWidgetItem(strAlias);
-    QTableWidgetItem* addrItem = new QTableWidgetItem(pmn ? QString::fromStdString(pmn->addr.ToString()) : strAddr);
-    QTableWidgetItem* protocolItem = new QTableWidgetItem(QString::number(pmn ? pmn->protocolVersion : -1));
-    QTableWidgetItem* statusItem = new QTableWidgetItem(QString::fromStdString(pmn ? pmn->GetStatus() : "MISSING"));
-    GUIUtil::DHMSTableWidgetItem* activeSecondsItem = new GUIUtil::DHMSTableWidgetItem(pmn ? (pmn->lastPing.sigTime - pmn->sigTime) : 0);
-    QTableWidgetItem* lastSeenItem = new QTableWidgetItem(QString::fromStdString(DateTimeStrFormat("%Y-%m-%d %H:%M", pmn ? pmn->lastPing.sigTime : 0)));
-    QTableWidgetItem* pubkeyItem = new QTableWidgetItem(QString::fromStdString(pmn ? CBitcoinAddress(pmn->pubKeyCollateralAddress.GetID()).ToString() : ""));
-
-    ui->tableWidgetCommissions->setItem(nNewRow, 0, aliasItem);
-    ui->tableWidgetCommissions->setItem(nNewRow, 1, addrItem);
-    ui->tableWidgetCommissions->setItem(nNewRow, 2, protocolItem);
-    ui->tableWidgetCommissions->setItem(nNewRow, 3, statusItem);
-    ui->tableWidgetCommissions->setItem(nNewRow, 4, activeSecondsItem);
-    ui->tableWidgetCommissions->setItem(nNewRow, 5, lastSeenItem);
-    ui->tableWidgetCommissions->setItem(nNewRow, 6, pubkeyItem);
-    */
 }
 
-void CommissionsList::updateCommissionList(bool fForce)
+void CommissionsList::updateCommissionList()
 {
-    //static int64_t nTimeMyListUpdated = 0;
+    static int64_t nTimeMyListUpdated = 0;
 
-    // automatically update my masternode list only once in MY_MASTERNODELIST_UPDATE_SECONDS seconds,
-    // this update still can be triggered manually at any time via button click
+    // automatically update commissions
+    //Note whilst API driven still need to press refersh to get new commissions
+    int64_t nSecondsTillUpdate = nTimeMyListUpdated + COMMISSIONS_REFRESH_SECONDS - GetTime();
+    if (nSecondsTillUpdate > 0) return;
+        nTimeMyListUpdated = GetTime();
 
-    /*
-    int64_t nSecondsTillUpdate = nTimeMyListUpdated + MY_MASTERNODELIST_UPDATE_SECONDS - GetTime();
-    ui->secondsLabel->setText(QString::number(nSecondsTillUpdate));
-
-    if (nSecondsTillUpdate > 0 && !fForce) return;
-    nTimeMyListUpdated = GetTime();
-
+    //Loop through the commissions and populate each list respecitvely
     ui->tableWidgetCommissions->setSortingEnabled(false);
-    BOOST_FOREACH (CMasternodeConfig::CMasternodeEntry mne, masternodeConfig.getEntries()) {
-        int nIndex;
-        if(!mne.castOutputIndex(nIndex))
-            continue;
-
-        CTxIn txin = CTxIn(uint256S(mne.getTxHash()), uint32_t(nIndex));
-        CMasternode* pmn = mnodeman.Find(txin);
-        updateCommissionRow(QString::fromStdString(mne.getAlias()), QString::fromStdString(mne.getIp()), pmn);
+    ui->tableWidgetCommissionsCompleted->setSortingEnabled(false);
+    BOOST_FOREACH (DCommission com, commissionsmanager.getCommissions()) {
+        updateCommissionRow(com);
     }
     ui->tableWidgetCommissions->setSortingEnabled(true);
-
-    // reset "timer"
-    ui->secondsLabel->setText("0");
-    */
+    ui->tableWidgetCommissionsCompleted->setSortingEnabled(true);
 }
 
 void CommissionsList::on_tableWidgetCommissions_itemSelectionChanged()
 {
-    /*
     if (ui->tableWidgetCommissions->selectedItems().count() > 0) {
-        ui->startButton->setEnabled(true);
+        QTableWidgetItem* item = ui->tableWidgetCommissions->selectedItems().at(0);
+
+        std::string errorMessage;
+        errorMessage += "WARNING: Feature still in devlelopment. The commissions \'" + item->text().toStdString() + "\' can not be applied for presently in the wallet. This is currently under development.";
+        
+        QMessageBox msg;
+        msg.setStyleSheet("QLabel{color: #355271;}");
+        msg.setText(QString::fromStdString(errorMessage));
+        msg.exec();
     }
-    */
 }
 
-void CommissionsList::on_RefreshButton_clicked()
+void CommissionsList::on_tableWidgetCommissionsCompleted_itemSelectionChanged()
 {
-    //updateCommissionList(true);
+    if (ui->tableWidgetCommissionsCompleted->selectedItems().count() > 0) {
+        QTableWidgetItem* item = ui->tableWidgetCommissionsCompleted->selectedItems().at(0);
+        QTableWidgetItem* status = ui->tableWidgetCommissionsCompleted->selectedItems().at(4);
+
+        std::string errorMessage;
+        errorMessage += "ERROR: You can not apply for a completed commission. The commissions \'" + item->text().toStdString() + "\' has been " + status->text().toStdString() + ".";
+        
+        QMessageBox msg;
+        msg.setStyleSheet("QLabel{color: #355271;}");
+        msg.setText(QString::fromStdString(errorMessage));
+        msg.exec();
+    }
+}
+
+void CommissionsList::on_refreshButton_clicked()
+{
+    DCommisionsDB commissiondb;
+    commissiondb.Read(commissionsmanager, false);
 }
