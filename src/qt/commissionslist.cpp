@@ -96,7 +96,6 @@ void CommissionsList::updateCommissionRow(DCommission com)
     feeStream << fixed << com.fee;
 
     //Format the date correctly
-    //TODO: Move this out to a date format helper class. 
     std::string stringDate;
     adaptive_parser parser { adaptive_parser::full_match, { "%Y-%m-%dT%H:%M:%SZ" } };
 
@@ -177,7 +176,7 @@ void CommissionsList::updateCommissionList()
     static int64_t nTimeMyListUpdated = 0;
 
     // automatically update commissions
-    //Note whilst API driven still need to press refersh to get new commissions
+    // Note whilst API driven still need to press refersh to get new commissions
     int64_t nSecondsTillUpdate = nTimeMyListUpdated + COMMISSIONS_REFRESH_SECONDS - GetTime();
     if (nSecondsTillUpdate > 0) return;
         nTimeMyListUpdated = GetTime();
@@ -198,8 +197,8 @@ void CommissionsList::on_tableWidgetCommissions_itemSelectionChanged()
         QTableWidgetItem* item = ui->tableWidgetCommissions->selectedItems().at(0);
 
         std::string errorMessage;
-        errorMessage += "WARNING: Feature still in devlelopment. The commissions \'" + item->text().toStdString() + "\' can not be applied for presently in the wallet. This is currently under development.";
-        
+        errorMessage += "WARNING: Feature still in development. The commissions \'" + item->text().toStdString() + "\' can not be applied for presently in the wallet. This is currently under development.";
+
         QMessageBox msg;
         msg.setStyleSheet("QLabel{color: #355271;}");
         msg.setText(QString::fromStdString(errorMessage));

@@ -27,6 +27,7 @@
 #include "masternodeman.h"
 #include "masternode-helpers.h"
 #include "Dystem/Commissions/DCommissionManager.h"
+#include "Dystem/Ident/DIdentManager.h"
 #include "miner.h"
 #include "net.h"
 #include "rpc/server.h"
@@ -1745,8 +1746,24 @@ bool AppInit2()
             LogPrintf("commissions  magic is ok but data has invalid format, will try to recreate\n");
         else
             LogPrintf("file format is unknown or invalid, please fix it manually\n");
+    }
 
-    // ********************************************************* Step 12: start node
+    // ********************************************************* Step 12: startup Identities
+
+    uiInterface.InitMessage(_("Loading Identities..."));
+    DIdentDB identdb;
+    DIdentDB::ReadResult identReadResult = identdb.Read(identManager, false);
+    if (identReadResult == DIdentDB::FileError)
+        LogPrintf("Missing ident cache file - idents.dat, will try to recreate\n");
+    else if (identReadResult != DIdentDB::Ok) {
+        LogPrintf("Error reading ident.dat: ");
+        if (identReadResult == DIdentDB::IncorrectFormat)
+            LogPrintf("Identity magic is ok but data has invalid format, will try to recreate\n");
+        else
+            LogPrintf("file format is unknown or invalid, please fix it manually\n");
+    }
+
+    // ********************************************************* Step 13: start node
 
     if (!CheckDiskSpace())
         return false;
@@ -1776,8 +1793,6 @@ bool AppInit2()
         GenerateBitcoins(GetBoolArg("-gen", false), pwalletMain, GetArg("-genproclimit", 1));
 #endif
 
-    
-    }
     // ********************************************************* Step 12: finished
 
     SetRPCWarmupFinished();

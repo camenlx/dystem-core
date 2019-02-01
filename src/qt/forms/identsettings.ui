@@ -145,7 +145,7 @@
                    </size>
                   </property>
                   <property name="text">
-                   <string>Select an address you wish to sign in with. You may use multiple addresses to sign in for applying to commissions and creating commissions. For each address you use as a login a fee is required to register that address with the newtork.</string>
+                   <string>Select an address you wish to sign in with when using commissions by selecting the addrress below and pressung the 'use' button. You may use multiple addresses to sign in for applying to commissions and creating commissions. For each address you use as a login a fee is required to register that address with the newtork.</string>
                   </property>
                   <property name="wordWrap">
                    <bool>true</bool>
@@ -167,10 +167,10 @@
                    <number>0</number>
                   </property>
                   <item>
-                   <widget class="QComboBox" name="comboBox_2"/>
+                   <widget class="QComboBox" name="addressComboBox"/>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pushButton_2">
+                   <widget class="QPushButton" name="selectAddressButton">
                     <property name="maximumSize">
                      <size>
                       <width>150</width>
@@ -178,7 +178,7 @@
                      </size>
                     </property>
                     <property name="text">
-                     <string>Select</string>
+                     <string>Use</string>
                     </property>
                    </widget>
                   </item>
@@ -262,10 +262,10 @@
                 <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_3">
                   <item>
-                   <widget class="QComboBox" name="comboBox_3"/>
+                   <widget class="QComboBox" name="accountLevelComboBox"/>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="pushButton_3">
+                   <widget class="QPushButton" name="upgradeAccountComboBox">
                     <property name="maximumSize">
                      <size>
                       <width>150</width>

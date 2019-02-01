@@ -119,6 +119,8 @@ BITCOIN_CORE_H = \
   masternode-helpers.h \
   Dystem/Commissions/DCommission.h \
   Dystem/Commissions/DCommissionManager.h \
+  Dystem/Ident/DIdent.h \
+  Dystem/Ident/DIdentManager.h \
   Dystem/CURLWrapper.h \
   Dystem/Util/adaptive_parser.h \
   merkleblock.h \
@@ -241,6 +243,8 @@ libbitcoin_wallet_a_SOURCES = \
   masternode-helpers.cpp \
   Dystem/Commissions/DCommission.cpp \
   Dystem/Commissions/DCommissionManager.cpp \
+  Dystem/Ident/DIdent.cpp \
+  Dystem/Ident/DIdentManager.cpp \
   Dystem/CURLWrapper.cpp \
   Dystem/Util/adaptive_parser.cpp \
   rpcdump.cpp \

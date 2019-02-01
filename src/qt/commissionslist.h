@@ -45,11 +45,8 @@ public:
 private:
     int64_t nTimeFilterUpdated;
 
-    public Q_SLOTS:
     void updateCommissionRow(DCommission com);
     void updateCommissionList();
-
-    Q_SIGNALS:
 
     private:
         QTimer* timer;

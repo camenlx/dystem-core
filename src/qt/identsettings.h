@@ -6,23 +6,20 @@
 #ifndef IDENTSETTINGS_H
 #define IDENTSETTINGS_H
 
-#include "masternode.h"
-#include "platformstyle.h"
-#include "sync.h"
 #include "util.h"
 
-#include <QMenu>
-#include <QTimer>
 #include <QWidget>
 
-#define MY_MASTERNODELIST_UPDATE_SECONDS 60
-#define MASTERNODELIST_UPDATE_SECONDS 15
-#define MASTERNODELIST_FILTER_COOLDOWN_SECONDS 3
+class AddressTableModel;
 
 namespace Ui
 {
 class IdentSettings;
 }
+
+QT_BEGIN_NAMESPACE
+class QSortFilterProxyModel;
+QT_END_NAMESPACE
 
 class ClientModel;
 class WalletModel;
@@ -42,20 +39,20 @@ public:
 
     void setClientModel(ClientModel* clientModel);
     void setWalletModel(WalletModel* walletModel);
-
-private:
-    QMenu* contextMenu;
-
-public Q_SLOTS:
-
-Q_SIGNALS:
+    void showEvent(QShowEvent *);
 
 private:
     Ui::IdentSettings* ui;
     ClientModel* clientModel;
     WalletModel* walletModel;
+    AddressTableModel* addressModel;
+    QSortFilterProxyModel* proxyModel;
+    std::vector<std::vector<std::string>> addresses;
+
+    void refreshUserAddresses();
 
 private Q_SLOTS:
-
+        void on_selectAddressButton_clicked();
+        void on_upgradeAccountComboBox_clicked();
 };
 #endif // IDENTSETTINGS_H

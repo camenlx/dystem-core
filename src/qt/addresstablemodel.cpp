@@ -1,6 +1,7 @@
 // Copyright (c) 2011-2014 The Bitcoin developers
 // Copyright (c) 2014-2015 The Dash developers
 // Copyright (c) 2015-2017 The PIVX developers
+// Copyright (c) 2019 The Dystem Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -404,4 +405,17 @@ int AddressTableModel::lookupAddress(const QString& address) const
 void AddressTableModel::emitDataChanged(int idx)
 {
     emit dataChanged(index(idx, 0, QModelIndex()), index(idx, columns.length() - 1, QModelIndex()));
+}
+
+/** DYSTEM ADDITIONS **/
+std::vector<std::vector<std::string>> AddressTableModel::listMyAddrreses() {
+    vector<vector<string>> addresses;
+    for (int i = 0; i < priv->size(); i++) {
+        AddressTableEntry* rec = priv->index(i);
+        vector<string> record;
+        record.push_back(rec->address.toStdString());
+        record.push_back(rec->label.toStdString());
+        addresses.push_back(record);
+    }
+    return addresses;
 }

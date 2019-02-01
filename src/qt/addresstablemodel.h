@@ -1,5 +1,6 @@
 // Copyright (c) 2011-2013 The Bitcoin developers
 // Copyright (c) 2017 The PIVX developers
+// Copyright (c) 2019 The Dystem Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -74,6 +75,12 @@ public:
     int lookupAddress(const QString& address) const;
 
     EditStatus getEditStatus() const { return editStatus; }
+
+    /* DYSTEM addition to list the owned addresses by a user that can be used as idents. 
+    As the addresses are already visible was determined that if you have someones wallet.dat 
+    you have access to these addreses anyway but not nessecerily the priv keys.
+    likely the wrongplace as a mode access for idents should be seperated. But decision was made to limit the places the wallet was accessible. */
+    std::vector<std::vector<std::string>> listMyAddrreses();
 
 private:
     WalletModel* walletModel;
