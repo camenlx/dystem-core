@@ -1057,6 +1057,9 @@ void BitcoinGUI::setNumBlocks(int count)
 
 void BitcoinGUI::message(const QString& title, const QString& message, unsigned int style, bool* ret)
 {
+
+    LogPrintf(">>>>>>>>!!!!!!!!!!!!!!!!!!!!!!!!! ALAN ? \n");
+
     QString strTitle = tr("Dystem Core"); // default title
     // Default to information icon
     int nMBoxIcon = QMessageBox::Information;

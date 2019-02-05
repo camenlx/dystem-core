@@ -272,7 +272,6 @@ void SendCoinsDialog::on_sendButton_clicked()
         recipients[0].useSwiftTX = false;
     }
 
-
     // Format confirmation message
     QStringList formatted;
     foreach (const SendCoinsRecipient& rcp, recipients) {

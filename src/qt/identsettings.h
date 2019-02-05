@@ -6,30 +6,39 @@
 #ifndef IDENTSETTINGS_H
 #define IDENTSETTINGS_H
 
-#include "util.h"
+#include "walletmodel.h"
 
 #include <QWidget>
+#include <QObject>
+#include <QDialog>
 
 class AddressTableModel;
+class SendCoinsEntry;
+class ClientModel;
+class OptionsModel;
+class WalletModel;
+
+
+//TODO: Check and remove these
+class SendCoinsEntry;
+class SendCoinsRecipient;
 
 namespace Ui
 {
 class IdentSettings;
 }
 
+//TODO: These should be in a single namespace
 QT_BEGIN_NAMESPACE
 class QSortFilterProxyModel;
 QT_END_NAMESPACE
-
-class ClientModel;
-class WalletModel;
 
 QT_BEGIN_NAMESPACE
 class QModelIndex;
 QT_END_NAMESPACE
 
 /** User Ident page widget */
-class IdentSettings : public QWidget
+class IdentSettings : public QDialog
 {
     Q_OBJECT
 
@@ -48,11 +57,20 @@ private:
     AddressTableModel* addressModel;
     QSortFilterProxyModel* proxyModel;
     std::vector<std::vector<std::string>> addresses;
-
+    bool fNewRecipientAllowed;
+    void send(QList<SendCoinsRecipient> recipients, QString strFee, QStringList formatted);
+    void processSendCoinsReturn(const WalletModel::SendCoinsReturn& sendCoinsReturn, const QString& msgArg = QString(), bool fPrepare = false);
     void refreshUserAddresses();
 
+private slots:
+    void addressSelected(const QString& index);
+    void upgradeOptionSelected(const QString& index);
+
+signals:
+    // Fired when a message should be reported to the user
+    void message(const QString& title, const QString& message, unsigned int style);
+
 private Q_SLOTS:
-        void on_selectAddressButton_clicked();
-        void on_upgradeAccountComboBox_clicked();
+        void on_upgradeAccountButton_clicked();
 };
 #endif // IDENTSETTINGS_H

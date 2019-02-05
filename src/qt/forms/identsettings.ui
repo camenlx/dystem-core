@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>985</width>
+    <width>1006</width>
     <height>823</height>
    </rect>
   </property>
@@ -169,19 +169,6 @@
                   <item>
                    <widget class="QComboBox" name="addressComboBox"/>
                   </item>
-                  <item>
-                   <widget class="QPushButton" name="selectAddressButton">
-                    <property name="maximumSize">
-                     <size>
-                      <width>150</width>
-                      <height>16777215</height>
-                     </size>
-                    </property>
-                    <property name="text">
-                     <string>Use</string>
-                    </property>
-                   </widget>
-                  </item>
                  </layout>
                 </item>
                </layout>
@@ -255,7 +242,10 @@
                 <item>
                  <widget class="QLabel" name="accountInfoLabel">
                   <property name="text">
-                   <string>This address is XXXX. You can change the level of subscriptoion below. A fee is charged each time you increase the account level.</string>
+                   <string>The account address you are viewing is XXXX. You can upgrade your account below. A fee is charged each time you increase the account level.</string>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
                   </property>
                  </widget>
                 </item>
@@ -265,7 +255,7 @@
                    <widget class="QComboBox" name="accountLevelComboBox"/>
                   </item>
                   <item>
-                   <widget class="QPushButton" name="upgradeAccountComboBox">
+                   <widget class="QPushButton" name="upgradeAccountButton">
                     <property name="maximumSize">
                      <size>
                       <width>150</width>

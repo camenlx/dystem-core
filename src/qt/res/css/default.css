@@ -1778,7 +1778,11 @@ IdentSettings QFrame#accountChangeFrame, IdentSettings QFrame#signMessageFrame, 
 	border-radius: 8px;
 	border: 1px solid #355271;
 }
-
+/*
+IdentSettings .QWidget {
+	background-color:transparent;
+}
+*/
 IdentSettings .QTextEdit, IdentSettings .QValidatedLineEdit, IdentSettings .QPlainTextEdit {
 	border: 1px solid #355271;
 	border-radius: 0px;
