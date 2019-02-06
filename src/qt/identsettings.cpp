@@ -17,10 +17,13 @@
 #include "clientmodel.h"
 #include "optionsmodel.h"
 #include "masternode-helpers.h"
+#include "coincontrol.h"
+#include "init.h"
 
 //STD / Boost includes
 #include <QMessageBox>
 
+CCoinControl* IdentSettings::registerCoinControl = new CCoinControl();
 
 IdentSettings::IdentSettings(QWidget* parent) : QDialog(parent),
                                                 ui(new Ui::IdentSettings),
@@ -120,6 +123,9 @@ void IdentSettings::on_upgradeAccountButton_clicked() {
     QList<SendCoinsRecipient> recipients;
     recipients.push_back(SendCoinsRecipient());
 
+    //Just to be sure
+    registerCoinControl->UnSelectAll();
+
     //Check all master and super nodes are sunched in the chai before allowing users to upgrade there accounts
     if (!masternodeSync.IsBlockchainSynced()) {
         std::string errorMessage;
@@ -137,7 +143,7 @@ void IdentSettings::on_upgradeAccountButton_clicked() {
 
         //Calculate fee based on the block height and select correct signup address
         std::string addressStr;
-        CAmount registrationFee;
+        CAmount registrationFee = -1;
         if( type.toStdString() == "Content creator" ) {
             addressStr = std::string("D62NsasWcwr6SmBQVq55e9M8cYANLkdUs5");
             registrationFee = identManager.getDeterministicCreatorFee(clientModel->getNumBlocks());
@@ -171,6 +177,10 @@ void IdentSettings::on_upgradeAccountButton_clicked() {
         if (!walletModel->isMine(address)) {
 
 //TODO: Need to check that the user isn't already in the ident list using this address and they are trying to register twice
+            if(getUnspoentUTXOLisForAddress(rec.at(0))) {
+
+            }
+
 //TODO: Need to adjust the payment addresses as we need to send from the currently selectedident address. 
             LogPrintf("SENDING ADDRESS SHOULD BE.... %s \n",rec.at(0));
 
@@ -246,6 +256,7 @@ void IdentSettings::send(QList<SendCoinsRecipient> recipients, QString strFee, Q
     // prepare transaction for getting txFee earlier
     WalletModelTransaction currentTransaction(recipients);
     WalletModel::SendCoinsReturn prepareStatus;
+//TODO: Always append IdentSettings::registerCoinControl here as we are selcting a list of UTXO's from an address
     if (walletModel->getOptionsModel()->getCoinControlFeatures()) // coin control enabled
         prepareStatus = walletModel->prepareTransaction(currentTransaction, CoinControlDialog::coinControl);
     else
@@ -396,4 +407,96 @@ void IdentSettings::processSendCoinsReturn(const WalletModel::SendCoinsReturn& s
     }
 
     clientModel->emit message(tr("Send Coins"), msgParams.first, msgParams.second);
+}
+
+bool IdentSettings::getUnspoentUTXOLisForAddress(std::string address)
+{
+    if (!walletModel || !walletModel->getOptionsModel() || !walletModel->getAddressTableModel())
+        return false;
+
+    LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> ATTEMPTING UTXO HUNT LOOKING FOR ADDRESS %s \n", address.c_str() );
+
+    map<QString, vector<COutput>> mapCoins;
+    walletModel->listCoins(mapCoins);
+
+    BOOST_FOREACH (PAIRTYPE(QString, vector<COutput>) coins, mapCoins) {
+        QString sWalletAddress = coins.first;
+        QString sWalletLabel = walletModel->getAddressTableModel()->labelForAddress(sWalletAddress);
+        if (sWalletLabel.isEmpty())
+            sWalletLabel = tr("(no label)");
+
+        CAmount nSum = 0;
+        double dPrioritySum = 0;
+        int nChildren = 0;
+        int nInputSum = 0;
+
+        LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> FOUND INITIAL ADDRESS %s \n",sWalletAddress.toStdString().c_str());
+//TODO: This needs to run from the first 
+        for(const COutput& out: coins.second) {
+
+            int nInputSize = 0;
+            nSum += out.tx->vout[out.i].nValue;
+            nChildren++;
+
+            // address
+            CTxDestination outputAddress;
+            QString sAddress = "";
+            if (ExtractDestination(out.tx->vout[out.i].scriptPubKey, outputAddress)) {
+                sAddress = QString::fromStdString(CBitcoinAddress(outputAddress).ToString());
+
+                LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> CHEKCING ADDRESS: %s \n",sAddress.toStdString().c_str());
+                // if listMode or change => show Dystem address. In tree mode, address is not shown again for direct wallet address outputs
+                if (sAddress == sWalletAddress)
+                {
+                     LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> MATCH\n");                    
+
+                    CPubKey pubkey;
+                    CKeyID* keyid = boost::get<CKeyID>(&outputAddress);
+                    if (keyid && walletModel->getPubKey(*keyid, pubkey) && !pubkey.IsCompressed())
+                        nInputSize = 29; // 29 = 180 - 151 (public key is 180 bytes, priority free area is 151 bytes)
+
+                    uint256 txhash = out.tx->GetHash();
+
+//TODO: Don't try and include UTXO sets that are locked to avoid messing up 
+                    //if (walletModel->isLockedCoin(txhash, out.i)) 
+                    {
+                        QString sLabel = walletModel->getAddressTableModel()->labelForAddress(sAddress);
+                        LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> LABEL: %s \n",sLabel.toStdString().c_str() );
+                        LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> Ammount: %f \n", out.tx->vout[out.i].nValue );
+                        LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> TXTIME: %ld \n", out.tx->GetTxTime() );
+                        LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> CONFIRMATIONS: %ld \n", out.nDepth );
+                        double dPriority = ((double)out.tx->vout[out.i].nValue / (nInputSize + 78)) * (out.nDepth + 1); // 78 = 2 * 34 + 10
+                        LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> PRIORITY: %f \n", dPriority );
+                        dPrioritySum += (double)out.tx->vout[out.i].nValue * (out.nDepth + 1);
+                        nInputSum += nInputSize;
+
+                        LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> HASH: %s \n", txhash.GetHex().c_str() );
+                        LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> VOUT INDEX: %i \n", out.i );
+
+                        /*
+                        // transaction hash
+                        uint256 txhash = out.tx->GetHash();
+
+                        // vout index
+                        itemOutput->setText(COLUMN_VOUT_INDEX, QString::number(out.i));
+
+                        // disable locked coins
+                        if (model->isLockedCoin(txhash, out.i)) {
+                            COutPoint outpt(txhash, out.i);
+                            coinControl->UnSelect(outpt); // just to be sure
+                            itemOutput->setDisabled(true);
+                            itemOutput->setIcon(COLUMN_CHECKBOX, QIcon(":/icons/lock_closed"));
+                        }
+
+                        // set checkbox
+                        if (coinControl->IsSelected(txhash, out.i))
+                            itemOutput->setCheckState(COLUMN_CHECKBOX, Qt::Checked);
+                        */
+                    }
+                }
+            }
+        }
+    }
+
+    return true;
 }

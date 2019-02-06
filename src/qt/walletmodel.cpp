@@ -309,6 +309,8 @@ WalletModel::SendCoinsReturn WalletModel::prepareTransaction(WalletModelTransact
 
 WalletModel::SendCoinsReturn WalletModel::sendCoins(WalletModelTransaction& transaction)
 {
+    LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> WalletModel::sendCoins\n");
+
     QByteArray transaction_array; /* store serialized transaction */
 
     if (isStakingUnlocked()) {
@@ -327,6 +329,9 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(WalletModelTransaction& tran
                 std::string value;
                 rcp.paymentRequest.SerializeToString(&value);
                 newTx->vOrderForm.push_back(make_pair(key, value));
+
+                LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> paymentRequest 1111 ADDRESS: strAddress %s \n" , rcp.address.toStdString().c_str());
+
             } else if (!rcp.message.isEmpty()) // Message from normal dystem:URI (dystem:XyZ...?message=example)
             {
                 newTx->vOrderForm.push_back(make_pair("Message", rcp.message.toStdString()));
@@ -353,6 +358,9 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(WalletModelTransaction& tran
         if (!rcp.paymentRequest.IsInitialized()) {
 
             std::string strAddress = rcp.address.toStdString();
+
+            LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> paymentRequest ADDRESS: strAddress %s \n" , strAddress.c_str());
+
             CTxDestination dest = CBitcoinAddress(strAddress).Get();
             std::string strLabel = rcp.label.toStdString();
 
@@ -603,6 +611,7 @@ void WalletModel::getOutputs(const std::vector<COutPoint>& vOutpoints, std::vect
         if (!wallet->mapWallet.count(outpoint.hash)) continue;
         int nDepth = wallet->mapWallet[outpoint.hash].GetDepthInMainChain();
         if (nDepth < 0) continue;
+        LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> OUTPOINT TO STRING %s \n", outpoint.ToString().c_str());
         COutput out(&wallet->mapWallet[outpoint.hash], outpoint.n, nDepth, true);
         vOutputs.push_back(out);
     }

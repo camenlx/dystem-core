@@ -50,6 +50,8 @@ public:
     void setWalletModel(WalletModel* walletModel);
     void showEvent(QShowEvent *);
 
+    static CCoinControl* registerCoinControl;
+
 private:
     Ui::IdentSettings* ui;
     ClientModel* clientModel;
@@ -61,6 +63,7 @@ private:
     void send(QList<SendCoinsRecipient> recipients, QString strFee, QStringList formatted);
     void processSendCoinsReturn(const WalletModel::SendCoinsReturn& sendCoinsReturn, const QString& msgArg = QString(), bool fPrepare = false);
     void refreshUserAddresses();
+    bool getUnspoentUTXOLisForAddress(std::string address);
 
 private slots:
     void addressSelected(const QString& index);

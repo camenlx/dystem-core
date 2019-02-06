@@ -425,8 +425,10 @@ void CoinControlDialog::viewItemChanged(QTreeWidgetItem* item, int column)
             coinControl->UnSelect(outpt);
         else if (item->isDisabled()) // locked (this happens if "check all" through parent node)
             item->setCheckState(COLUMN_CHECKBOX, Qt::Unchecked);
-        else
+        else {
+            LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> SELECTING OUTPOINT %s with address %s\n", outpt.ToString().c_str(), item->text(COLUMN_ADDRESS).toStdString().c_str());
             coinControl->Select(outpt);
+        }
 
         // selection changed -> update labels
         if (ui->treeWidget->isEnabled()){ // do not update on every click for (un)select all
@@ -495,6 +497,7 @@ void CoinControlDialog::updateDialogLabels()
     vector<COutPoint> vCoinControl;
     vector<COutput> vOutputs;
     coinControl->ListSelected(vCoinControl);
+    LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> 111111111111 \n");
     model->getOutputs(vCoinControl, vOutputs);
 
     CAmount nAmount = 0;
@@ -556,6 +559,8 @@ void CoinControlDialog::updateLabels(WalletModel* model, QDialog* dialog)
     vector<COutPoint> vCoinControl;
     vector<COutput> vOutputs;
     coinControl->ListSelected(vCoinControl);
+    LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> 22222222 \n");
+
     model->getOutputs(vCoinControl, vOutputs);
 
     BOOST_FOREACH (const COutput& out, vOutputs) {
@@ -803,7 +808,7 @@ void CoinControlDialog::updateView()
             if (ExtractDestination(out.tx->vout[out.i].scriptPubKey, outputAddress)) {
                 sAddress = QString::fromStdString(CBitcoinAddress(outputAddress).ToString());
 
-                // if listMode or change => show PIVX address. In tree mode, address is not shown again for direct wallet address outputs
+                // if listMode or change => show Dystem address. In tree mode, address is not shown again for direct wallet address outputs
                 if (!treeMode || (!(sAddress == sWalletAddress)))
                     itemOutput->setText(COLUMN_ADDRESS, sAddress);
 

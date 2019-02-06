@@ -333,6 +333,9 @@ void SendCoinsDialog::on_sendButton_clicked()
 
 void SendCoinsDialog::send(QList<SendCoinsRecipient> recipients, QString strFee, QStringList formatted)
 {
+    foreach (const SendCoinsRecipient& rcp, recipients) {
+        LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> SendCoinsDialog::send RECIPIENT %s \n" , rcp.address.toStdString().c_str());
+    }
     // prepare transaction for getting txFee earlier
     WalletModelTransaction currentTransaction(recipients);
     WalletModel::SendCoinsReturn prepareStatus;

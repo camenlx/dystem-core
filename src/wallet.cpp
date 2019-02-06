@@ -1618,6 +1618,9 @@ bool CWallet::SelectCoinsMinConf(const CAmount& nTargetValue, int nConfMine, int
 
 bool CWallet::SelectCoins(const CAmount& nTargetValue, set<pair<const CWalletTx*, unsigned int> >& setCoinsRet, CAmount& nValueRet, const CCoinControl* coinControl, AvailableCoinsType coin_type, bool useIX) const
 {
+
+    LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CWallet::SelectCoins\n");
+
     // Note: this function should never be used for "always free" tx types like dstx
 
     vector<COutput> vCoins;
@@ -1733,6 +1736,8 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, CAmount> >& vecSend,
     bool useIX,
     CAmount nFeePay)
 {
+
+    LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> CWallet::CreateTransaction 222222222222222222\n");
     if (useIX && nFeePay < CENT) nFeePay = CENT;
 
     CAmount nValue = 0;
@@ -1950,6 +1955,8 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, CAmount> >& vecSend,
 
 bool CWallet::CreateTransaction(CScript scriptPubKey, const CAmount& nValue, CWalletTx& wtxNew, CReserveKey& reservekey, CAmount& nFeeRet, std::string& strFailReason, const CCoinControl* coinControl, AvailableCoinsType coin_type, bool useIX, CAmount nFeePay)
 {
+    LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> CWallet::CreateTransaction 111111111111\n");
+
     vector<pair<CScript, CAmount> > vecSend;
     vecSend.push_back(make_pair(scriptPubKey, nValue));
     return CreateTransaction(vecSend, wtxNew, reservekey, nFeeRet, strFailReason, coinControl, coin_type, useIX, nFeePay);
