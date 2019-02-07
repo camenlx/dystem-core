@@ -426,7 +426,6 @@ void CoinControlDialog::viewItemChanged(QTreeWidgetItem* item, int column)
         else if (item->isDisabled()) // locked (this happens if "check all" through parent node)
             item->setCheckState(COLUMN_CHECKBOX, Qt::Unchecked);
         else {
-            LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> SELECTING OUTPOINT %s with address %s\n", outpt.ToString().c_str(), item->text(COLUMN_ADDRESS).toStdString().c_str());
             coinControl->Select(outpt);
         }
 
@@ -497,7 +496,6 @@ void CoinControlDialog::updateDialogLabels()
     vector<COutPoint> vCoinControl;
     vector<COutput> vOutputs;
     coinControl->ListSelected(vCoinControl);
-    LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> 111111111111 \n");
     model->getOutputs(vCoinControl, vOutputs);
 
     CAmount nAmount = 0;
@@ -559,7 +557,6 @@ void CoinControlDialog::updateLabels(WalletModel* model, QDialog* dialog)
     vector<COutPoint> vCoinControl;
     vector<COutput> vOutputs;
     coinControl->ListSelected(vCoinControl);
-    LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> 22222222 \n");
 
     model->getOutputs(vCoinControl, vOutputs);
 

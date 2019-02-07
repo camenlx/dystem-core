@@ -147,16 +147,13 @@ void IdentSettings::on_upgradeAccountButton_clicked() {
         if( type.toStdString() == "Content creator" ) {
             addressStr = std::string("D62NsasWcwr6SmBQVq55e9M8cYANLkdUs5");
             registrationFee = identManager.getDeterministicCreatorFee(clientModel->getNumBlocks());
-            LogPrintf("NUM OF BLOCKS ARE .... %i FEE %i \n", clientModel->getNumBlocks(),registrationFee);
         } else if ( type.toStdString() == "Commissioner" ) {
             addressStr = std::string("DLwitd7pAH7hqMAed31YFTHRELDonsXwpA");
             registrationFee = identManager.getCommissionerFee(clientModel->getNumBlocks());
         }
 
         //If the blockheight for when this fee is introduced hasnt passed an error is thrown. Users may only register after the start blockheight.
-        if(registrationFee == -1) {
-             LogPrintf("NUM OF BLOCKS ARE .... ERROR");
-            
+        if(registrationFee == -1) {            
             std::string errorMessage("You may not register until the identity system has launched. Please wait until blockheight: ");
             errorMessage += std::to_string(REGISTRATION_START_BLOCKHEIGHT);
             QMessageBox err_block_msg;
@@ -176,70 +173,95 @@ void IdentSettings::on_upgradeAccountButton_clicked() {
         //Confifm the address doesnt belong to me first as you shouldnt be sending these payments to yourself. Error check that should never happen.
         if (!walletModel->isMine(address)) {
 
+            //Adjust the payment utxo set based on the selected address as we need to send from the currently selected ident address. 
+            IdentSettings::UTXORegistrationState utxoState = createUnpsentUTXOListForAddress(rec.at(0), registrationFee);
+            if( utxoState == NotFound ) {
+                std::stringstream ss;
+                ss << std::fixed << std::setprecision(8) << registrationFee;
+                std::string errorMessage("No funds found. It appears you have no DTEM at this address. Please send ");
+                errorMessage += ss.str() + " DTEM to this address and register once confirmed.";
+                QMessageBox msg;
+                msg.setStyleSheet("QLabel{color: #355271;}");
+                msg.setText(QString::fromStdString(errorMessage));
+                msg.exec();
+                return;
+            } else if( utxoState == NotEnoughFunds ) {
+                std::stringstream ss;
+                ss << std::fixed << std::setprecision(8) << registrationFee;
+                std::string errorMessage("ERROR: Not enough funds found. It appears you don't have enough DTEM at this address. Please send ");
+                errorMessage += ss.str() + " DTEM to this address and register once confirmed.";
+                QMessageBox msg;
+                msg.setStyleSheet("QLabel{color: #355271;}");
+                msg.setText(QString::fromStdString(errorMessage));
+                msg.exec();
+                return;
+            }else if( utxoState == None ) {
+                std::string errorMessage = "DEVELOPER ERROR: The model object when constructing the UTXO set is a null pointer.";
+                QMessageBox msg;
+                msg.setStyleSheet("QLabel{color: #355271;}");
+                msg.setText(QString::fromStdString(errorMessage));
+                msg.exec();
+                return;
+            } else {
+
 //TODO: Need to check that the user isn't already in the ident list using this address and they are trying to register twice
-            if(getUnspoentUTXOLisForAddress(rec.at(0))) {
+                QString strFunds = "";
+                QString strFee = "";
+                recipients[0].inputType = ALL_COINS;
+                recipients[0].useSwiftTX = false;
 
-            }
+                QStringList formatted;
+                // generate bold amount string
+                QString amount = "<b>" + BitcoinUnits::formatHtmlWithUnit(walletModel->getOptionsModel()->getDisplayUnit(), recipients[0].amount);
+                amount.append("</b> ").append(strFunds);
 
-//TODO: Need to adjust the payment addresses as we need to send from the currently selectedident address. 
-            LogPrintf("SENDING ADDRESS SHOULD BE.... %s \n",rec.at(0));
+                // generate monospace address string
+                QString address = "<span style='font-family: Open Sans;'>" + recipients[0].address;
+                address.append("</span>");
 
-            QString strFunds = "";
-            QString strFee = "";
-            recipients[0].inputType = ALL_COINS;
-            recipients[0].useSwiftTX = false;
+                QString recipientElement;
 
-            QStringList formatted;
-            // generate bold amount string
-            QString amount = "<b>" + BitcoinUnits::formatHtmlWithUnit(walletModel->getOptionsModel()->getDisplayUnit(), recipients[0].amount);
-            amount.append("</b> ").append(strFunds);
-
-            // generate monospace address string
-            QString address = "<span style='font-family: Open Sans;'>" + recipients[0].address;
-            address.append("</span>");
-
-            QString recipientElement;
-
-            if (!recipients[0].paymentRequest.IsInitialized()) // normal payment
-            {
-                if (recipients[0].label.length() > 0) // label with address
+                if (!recipients[0].paymentRequest.IsInitialized()) // normal payment
                 {
-                    recipientElement = tr("%1 to %2").arg(amount, GUIUtil::HtmlEscape(recipients[0].label));
-                    recipientElement.append(QString(" (%1)").arg(address));
-                } else // just address
+                    if (recipients[0].label.length() > 0) // label with address
+                    {
+                        recipientElement = tr("%1 to %2").arg(amount, GUIUtil::HtmlEscape(recipients[0].label));
+                        recipientElement.append(QString(" (%1)").arg(address));
+                    } else // just address
+                    {
+                        recipientElement = tr("%1 to %2").arg(amount, address);
+                    }
+                } else if (!recipients[0].authenticatedMerchant.isEmpty()) // secure payment request
+                {
+                    recipientElement = tr("%1 to %2").arg(amount, GUIUtil::HtmlEscape(recipients[0].authenticatedMerchant));
+                } else // insecure payment request
                 {
                     recipientElement = tr("%1 to %2").arg(amount, address);
                 }
-            } else if (!recipients[0].authenticatedMerchant.isEmpty()) // secure payment request
-            {
-                recipientElement = tr("%1 to %2").arg(amount, GUIUtil::HtmlEscape(recipients[0].authenticatedMerchant));
-            } else // insecure payment request
-            {
-                recipientElement = tr("%1 to %2").arg(amount, address);
-            }
 
-            formatted.append(recipientElement);
+                formatted.append(recipientElement);
 
-            fNewRecipientAllowed = false;
-                    
-            // request unlock only if was locked or unlocked for mixing:
-            // this way we let users unlock by walletpassphrase or by menu
-            // and make many transactions while unlocking through this dialog
-            // will call relock
-            WalletModel::EncryptionStatus encStatus = walletModel->getEncryptionStatus();
-            if (encStatus == walletModel->Locked || encStatus == walletModel->UnlockedForStakingOnly) {
-                WalletModel::UnlockContext ctx(walletModel->requestUnlock(AskPassphraseDialog::Context::Send_DTEM, true));
-                if (!ctx.isValid()) {
-                    // Unlock wallet was cancelled
-                    fNewRecipientAllowed = true;
+                fNewRecipientAllowed = false;
+                        
+                // request unlock only if was locked or unlocked for mixing:
+                // this way we let users unlock by walletpassphrase or by menu
+                // and make many transactions while unlocking through this dialog
+                // will call relock
+                WalletModel::EncryptionStatus encStatus = walletModel->getEncryptionStatus();
+                if (encStatus == walletModel->Locked || encStatus == walletModel->UnlockedForStakingOnly) {
+                    WalletModel::UnlockContext ctx(walletModel->requestUnlock(AskPassphraseDialog::Context::Send_DTEM, true));
+                    if (!ctx.isValid()) {
+                        // Unlock wallet was cancelled
+                        fNewRecipientAllowed = true;
+                        return;
+                    }
+                    send(recipients, strFee, formatted);
                     return;
                 }
-                send(recipients, strFee, formatted);
-                return;
-            }
 
-            // already unlocked or not encrypted at all
-            send(recipients, strFee, formatted);
+                // already unlocked or not encrypted at all
+                send(recipients, strFee, formatted);
+            }
         } else {
             std::string errorMessage;
             errorMessage += "ERROR: You cannot send registration fees to yourself. You are obviously changing the code trying to hack registration, simply it just wont work.";
@@ -256,11 +278,9 @@ void IdentSettings::send(QList<SendCoinsRecipient> recipients, QString strFee, Q
     // prepare transaction for getting txFee earlier
     WalletModelTransaction currentTransaction(recipients);
     WalletModel::SendCoinsReturn prepareStatus;
-//TODO: Always append IdentSettings::registerCoinControl here as we are selcting a list of UTXO's from an address
-    if (walletModel->getOptionsModel()->getCoinControlFeatures()) // coin control enabled
-        prepareStatus = walletModel->prepareTransaction(currentTransaction, CoinControlDialog::coinControl);
-    else
-        prepareStatus = walletModel->prepareTransaction(currentTransaction);
+    
+    //Always append IdentSettings::registerCoinControl here as we are selcting a list of UTXO's from an address
+    prepareStatus = walletModel->prepareTransaction(currentTransaction, IdentSettings::registerCoinControl);
 
     // process prepareStatus and on error generate message shown to user
     processSendCoinsReturn(prepareStatus,
@@ -273,6 +293,14 @@ void IdentSettings::send(QList<SendCoinsRecipient> recipients, QString strFee, Q
 
     CAmount txFee = currentTransaction.getTransactionFee();
     QString questionString = tr("Are you sure you want to send?");
+    QString type = ui->accountLevelComboBox->currentText();
+    
+    if( type.toStdString() == "Content creator" ) {
+        questionString.append("<br /><br />Are you sure you want to send the below fee to register as a content creator?");
+    } else if ( type.toStdString() == "Commissioner" ) {
+        questionString.append("<br /><br />Are you sure you want to send the below fee to register as a commissioner?");
+    }
+
     questionString.append("<br /><br />%1");
 
     if (txFee > 0) {
@@ -409,94 +437,59 @@ void IdentSettings::processSendCoinsReturn(const WalletModel::SendCoinsReturn& s
     clientModel->emit message(tr("Send Coins"), msgParams.first, msgParams.second);
 }
 
-bool IdentSettings::getUnspoentUTXOLisForAddress(std::string address)
+IdentSettings::UTXORegistrationState IdentSettings::createUnpsentUTXOListForAddress(std::string address, double ammount)
 {
     if (!walletModel || !walletModel->getOptionsModel() || !walletModel->getAddressTableModel())
-        return false;
-
-    LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> ATTEMPTING UTXO HUNT LOOKING FOR ADDRESS %s \n", address.c_str() );
+        return None;
 
     map<QString, vector<COutput>> mapCoins;
     walletModel->listCoins(mapCoins);
 
+    double totalSum = 0.0;
+
     BOOST_FOREACH (PAIRTYPE(QString, vector<COutput>) coins, mapCoins) {
         QString sWalletAddress = coins.first;
-        QString sWalletLabel = walletModel->getAddressTableModel()->labelForAddress(sWalletAddress);
-        if (sWalletLabel.isEmpty())
-            sWalletLabel = tr("(no label)");
 
-        CAmount nSum = 0;
-        double dPrioritySum = 0;
-        int nChildren = 0;
-        int nInputSum = 0;
-
-        LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> FOUND INITIAL ADDRESS %s \n",sWalletAddress.toStdString().c_str());
-//TODO: This needs to run from the first 
         for(const COutput& out: coins.second) {
 
             int nInputSize = 0;
-            nSum += out.tx->vout[out.i].nValue;
-            nChildren++;
-
             // address
             CTxDestination outputAddress;
             QString sAddress = "";
             if (ExtractDestination(out.tx->vout[out.i].scriptPubKey, outputAddress)) {
                 sAddress = QString::fromStdString(CBitcoinAddress(outputAddress).ToString());
 
-                LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> CHEKCING ADDRESS: %s \n",sAddress.toStdString().c_str());
-                // if listMode or change => show Dystem address. In tree mode, address is not shown again for direct wallet address outputs
-                if (sAddress == sWalletAddress)
+                uint256 txhash = out.tx->GetHash();
+                if ( !walletModel->isLockedCoin(txhash, out.i) && sAddress == sWalletAddress && sAddress.toStdString() == address )
                 {
-                     LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> MATCH\n");                    
-
                     CPubKey pubkey;
                     CKeyID* keyid = boost::get<CKeyID>(&outputAddress);
                     if (keyid && walletModel->getPubKey(*keyid, pubkey) && !pubkey.IsCompressed())
                         nInputSize = 29; // 29 = 180 - 151 (public key is 180 bytes, priority free area is 151 bytes)
 
-                    uint256 txhash = out.tx->GetHash();
+                    double relativeAmmount = (double)(out.tx->vout[out.i].nValue) / (double)(COIN);
+                    totalSum += relativeAmmount;
 
-//TODO: Don't try and include UTXO sets that are locked to avoid messing up 
-                    //if (walletModel->isLockedCoin(txhash, out.i)) 
-                    {
-                        QString sLabel = walletModel->getAddressTableModel()->labelForAddress(sAddress);
-                        LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> LABEL: %s \n",sLabel.toStdString().c_str() );
-                        LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> Ammount: %f \n", out.tx->vout[out.i].nValue );
-                        LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> TXTIME: %ld \n", out.tx->GetTxTime() );
-                        LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> CONFIRMATIONS: %ld \n", out.nDepth );
-                        double dPriority = ((double)out.tx->vout[out.i].nValue / (nInputSize + 78)) * (out.nDepth + 1); // 78 = 2 * 34 + 10
-                        LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> PRIORITY: %f \n", dPriority );
-                        dPrioritySum += (double)out.tx->vout[out.i].nValue * (out.nDepth + 1);
-                        nInputSum += nInputSize;
+                    QString sLabel = walletModel->getAddressTableModel()->labelForAddress(sAddress);
+                    LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> ADDING IDENTITY FEE HASH %s FOR ADDRESS: %s \n", txhash.GetHex().c_str() ,sLabel.toStdString().c_str() );
 
-                        LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> HASH: %s \n", txhash.GetHex().c_str() );
-                        LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> VOUT INDEX: %i \n", out.i );
-
-                        /*
-                        // transaction hash
-                        uint256 txhash = out.tx->GetHash();
-
-                        // vout index
-                        itemOutput->setText(COLUMN_VOUT_INDEX, QString::number(out.i));
-
-                        // disable locked coins
-                        if (model->isLockedCoin(txhash, out.i)) {
-                            COutPoint outpt(txhash, out.i);
-                            coinControl->UnSelect(outpt); // just to be sure
-                            itemOutput->setDisabled(true);
-                            itemOutput->setIcon(COLUMN_CHECKBOX, QIcon(":/icons/lock_closed"));
-                        }
-
-                        // set checkbox
-                        if (coinControl->IsSelected(txhash, out.i))
-                            itemOutput->setCheckState(COLUMN_CHECKBOX, Qt::Checked);
-                        */
-                    }
+                    //Add the output the the unspent UTXO list
+                    COutPoint outpt(txhash, out.i);
+                    registerCoinControl->Select(outpt);
                 }
             }
         }
     }
+    
+    if( totalSum == 0.0 ) {
+        //No UTXO's found for this address
+        return NotFound;
+    }
+    else if( totalSum < ammount ) {
+        //UTXO's found but not enough to cover the fee
+        return NotEnoughFunds;
+    }
 
-    return true;
+    //Everything is fine
+    return Complete;
 }

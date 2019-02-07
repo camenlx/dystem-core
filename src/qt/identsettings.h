@@ -46,11 +46,19 @@ public:
     explicit IdentSettings(QWidget* parent = 0);
     ~IdentSettings();
 
+    enum UTXORegistrationState {
+            None,
+            NotFound,
+            NotEnoughFunds,
+            Complete
+    };
+
     void setClientModel(ClientModel* clientModel);
     void setWalletModel(WalletModel* walletModel);
     void showEvent(QShowEvent *);
 
     static CCoinControl* registerCoinControl;
+    
 
 private:
     Ui::IdentSettings* ui;
@@ -63,7 +71,7 @@ private:
     void send(QList<SendCoinsRecipient> recipients, QString strFee, QStringList formatted);
     void processSendCoinsReturn(const WalletModel::SendCoinsReturn& sendCoinsReturn, const QString& msgArg = QString(), bool fPrepare = false);
     void refreshUserAddresses();
-    bool getUnspoentUTXOLisForAddress(std::string address);
+    IdentSettings::UTXORegistrationState createUnpsentUTXOListForAddress(std::string address, double ammount);
 
 private slots:
     void addressSelected(const QString& index);
