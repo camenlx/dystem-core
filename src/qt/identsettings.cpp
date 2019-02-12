@@ -145,10 +145,10 @@ void IdentSettings::on_upgradeAccountButton_clicked() {
         std::string addressStr;
         CAmount registrationFee = -1;
         if( type.toStdString() == "Content creator" ) {
-            addressStr = std::string("D62NsasWcwr6SmBQVq55e9M8cYANLkdUs5");
+            addressStr.assign(REGISTRATION_CONTENT_CREATOR_ADDRESS);
             registrationFee = identManager.getDeterministicCreatorFee(clientModel->getNumBlocks());
         } else if ( type.toStdString() == "Commissioner" ) {
-            addressStr = std::string("DLwitd7pAH7hqMAed31YFTHRELDonsXwpA");
+            addressStr.assign(REGISTRATION_COMMISSIONER_ADDRESS);
             registrationFee = identManager.getCommissionerFee(clientModel->getNumBlocks());
         }
 

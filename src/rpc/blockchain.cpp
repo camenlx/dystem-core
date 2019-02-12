@@ -355,12 +355,14 @@ UniValue getblock(const UniValue& params, bool fHelp)
         throw JSONRPCError(RPC_INTERNAL_ERROR, "Can't read block from disk");
 
     if (!fVerbose) {
+        LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> NOT VERBOSE \n");
         CDataStream ssBlock(SER_NETWORK, PROTOCOL_VERSION);
         ssBlock << block;
         std::string strHex = HexStr(ssBlock.begin(), ssBlock.end());
         return strHex;
     }
 
+    LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> VERBOSE \n");
     return blockToJSON(block, pblockindex);
 }
 

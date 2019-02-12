@@ -18,22 +18,13 @@ class ClientModel;
 class OptionsModel;
 class WalletModel;
 
-
-//TODO: Check and remove these
-class SendCoinsEntry;
-class SendCoinsRecipient;
-
 namespace Ui
 {
 class IdentSettings;
 }
 
-//TODO: These should be in a single namespace
 QT_BEGIN_NAMESPACE
 class QSortFilterProxyModel;
-QT_END_NAMESPACE
-
-QT_BEGIN_NAMESPACE
 class QModelIndex;
 QT_END_NAMESPACE
 
