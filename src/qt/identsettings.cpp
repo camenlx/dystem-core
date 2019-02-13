@@ -119,7 +119,7 @@ void IdentSettings::upgradeOptionSelected(const QString& index) {
 void IdentSettings::on_upgradeAccountButton_clicked() {
     if (!walletModel || !walletModel->getOptionsModel())
         return;
-
+//THIOSIS A BLATENT CHANGE
     QList<SendCoinsRecipient> recipients;
     recipients.push_back(SendCoinsRecipient());
 
