@@ -5,7 +5,7 @@
 #ifndef COMMISSIONLIST_H
 #define COMMISSIONLIST_H
 
-#include "../Dystem/Commissions/DCommission.h"
+#include "../DystemCore/Commissions/DCommission.h"
 
 #include "masternode.h"
 #include "platformstyle.h"

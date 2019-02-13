@@ -6,7 +6,7 @@
 //Dystem includes
 #include "identsettings.h"
 #include "ui_identsettings.h"
-#include "../Dystem/Ident/DIdentManager.h"
+#include "../DystemCore/Ident/DIdentManager.h"
 
 //Bitcoin/Dash/PIVX includes
 #include "addresstablemodel.h"
@@ -119,7 +119,7 @@ void IdentSettings::upgradeOptionSelected(const QString& index) {
 void IdentSettings::on_upgradeAccountButton_clicked() {
     if (!walletModel || !walletModel->getOptionsModel())
         return;
-//THIOSIS A BLATENT CHANGE
+
     QList<SendCoinsRecipient> recipients;
     recipients.push_back(SendCoinsRecipient());
 

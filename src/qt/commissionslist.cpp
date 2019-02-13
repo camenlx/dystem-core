@@ -5,8 +5,8 @@
 //Dystem includes
 #include "ui_commissionslist.h"
 #include "commissionslist.h"
-#include "../Dystem/Commissions/DCommissionManager.h"
-#include "../Dystem/Util/adaptive_parser.h"
+#include "../DystemCore/Commissions/DCommissionManager.h"
+#include "../DystemCore/Util/adaptive_parser.h"
 
 //Bitcoin/Dash/PIVX includes
 #include "clientmodel.h"

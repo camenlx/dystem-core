@@ -117,12 +117,12 @@ BITCOIN_CORE_H = \
   masternodeman.h \
   masternodeconfig.h \
   masternode-helpers.h \
-  Dystem/Commissions/DCommission.h \
-  Dystem/Commissions/DCommissionManager.h \
-  Dystem/Ident/DIdent.h \
-  Dystem/Ident/DIdentManager.h \
-  Dystem/CURLWrapper.h \
-  Dystem/Util/adaptive_parser.h \
+  DystemCore/Commissions/DCommission.h \
+  DystemCore/Commissions/DCommissionManager.h \
+  DystemCore/Ident/DIdent.h \
+  DystemCore/Ident/DIdentManager.h \
+  DystemCore/CURLWrapper.h \
+  DystemCore/Util/adaptive_parser.h \
   merkleblock.h \
   miner.h \
   mruset.h \
@@ -241,12 +241,12 @@ libbitcoin_wallet_a_SOURCES = \
   masternodeconfig.cpp \
   masternodeman.cpp \
   masternode-helpers.cpp \
-  Dystem/Commissions/DCommission.cpp \
-  Dystem/Commissions/DCommissionManager.cpp \
-  Dystem/Ident/DIdent.cpp \
-  Dystem/Ident/DIdentManager.cpp \
-  Dystem/CURLWrapper.cpp \
-  Dystem/Util/adaptive_parser.cpp \
+  DystemCore/Commissions/DCommission.cpp \
+  DystemCore/Commissions/DCommissionManager.cpp \
+  DystemCore/Ident/DIdent.cpp \
+  DystemCore/Ident/DIdentManager.cpp \
+  DystemCore/CURLWrapper.cpp \
+  DystemCore/Util/adaptive_parser.cpp \
   rpcdump.cpp \
   rpcwallet.cpp \
   kernel.cpp \

@@ -4,7 +4,7 @@
 
 #include "DCommissionManager.h"
 #include "DCommission.h"
-#include "Dystem/CURLWrapper.h"
+#include "DystemCore/CURLWrapper.h"
 
 #include "util.h"
 #include "clientversion.h"
