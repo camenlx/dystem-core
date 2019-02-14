@@ -83,6 +83,7 @@
         <file alias="splash">res/images/splash.png</file>
     </qresource>
     <qresource prefix="/movies">
+        <file alias="spinner">res/movies/spinner.png</file>
         <file alias="spinner-000">res/movies/spinner-000.png</file>
         <file alias="spinner-001">res/movies/spinner-001.png</file>
         <file alias="spinner-002">res/movies/spinner-002.png</file>

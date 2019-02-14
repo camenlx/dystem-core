@@ -1778,11 +1778,7 @@ IdentSettings QFrame#accountChangeFrame, IdentSettings QFrame#signMessageFrame, 
 	border-radius: 8px;
 	border: 1px solid #355271;
 }
-/*
-IdentSettings .QWidget {
-	background-color:transparent;
-}
-*/
+
 IdentSettings .QTextEdit, IdentSettings .QValidatedLineEdit, IdentSettings .QPlainTextEdit {
 	border: 1px solid #355271;
 	border-radius: 0px;
@@ -1853,4 +1849,24 @@ IdentSettings IdentSettings QComboBox::drop-down {
 	width:25px;
 	border:0px;
 	color:#355271;
+}
+
+/********************************* LOADER WIDGET ************************************/
+
+LoaderDialog QFrame {
+	background-color:whitesmoke;
+	border-radius: 8px;
+	border: 1px solid #355271;
+}
+
+LoaderDialog QLabel#loaderMessage {
+	background-color:whitesmoke;
+	font-family: "Open Sans";
+	color:#	;
+	font-size: 12px;
+	font-weight: 200;
+}
+
+LoaderDialog QPixmap {
+	background-color:whitesmoke;
 }

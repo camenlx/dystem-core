@@ -6,6 +6,7 @@
 //Dystem includes
 #include "identsettings.h"
 #include "ui_identsettings.h"
+#include "loaderdialog.h"
 #include "../DystemCore/Ident/DIdentManager.h"
 
 //Bitcoin/Dash/PIVX includes
