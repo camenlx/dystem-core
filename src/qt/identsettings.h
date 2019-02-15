@@ -6,8 +6,11 @@
 #ifndef IDENTSETTINGS_H
 #define IDENTSETTINGS_H
 
+//Dystem includes
 #include "walletmodel.h"
+#include "loaderdialog.h"
 
+//STD / Boost / QT includes
 #include <QWidget>
 #include <QObject>
 #include <QDialog>
@@ -58,11 +61,21 @@ private:
     AddressTableModel* addressModel;
     QSortFilterProxyModel* proxyModel;
     std::vector<std::vector<std::string>> addresses;
+    LoaderDialog dlg;
+    bool initialized;
+    IdentSettings::UTXORegistrationState createUnpsentUTXOListForAddress(std::string address, double ammount);
+
+    //Thread safe warning messages and dialogs
+    void showDialogMessage(std::string message);
+    void hideDialogMessage();
+    void showWarningMessage(std::string message);
+
     bool fNewRecipientAllowed;
     void send(QList<SendCoinsRecipient> recipients, QString strFee, QStringList formatted);
     void processSendCoinsReturn(const WalletModel::SendCoinsReturn& sendCoinsReturn, const QString& msgArg = QString(), bool fPrepare = false);
     void refreshUserAddresses();
-    IdentSettings::UTXORegistrationState createUnpsentUTXOListForAddress(std::string address, double ammount);
+
+    void scanIdent(std::string currentAddress, std::string alias);
 
 private slots:
     void addressSelected(const QString& index);
@@ -73,6 +86,6 @@ signals:
     void message(const QString& title, const QString& message, unsigned int style);
 
 private Q_SLOTS:
-        void on_upgradeAccountButton_clicked();
+    void on_upgradeAccountButton_clicked();
 };
 #endif // IDENTSETTINGS_H

@@ -3,12 +3,15 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+//Dystem includes
 #include "loaderdialog.h"
 #include "ui_loaderdialog.h"
 
+//Bitcoin/Dash/PIVX includes
 #include "guiutil.h"
 #include "wallet.h"
 
+//STD / Boost / QT includes
 #include <QString>
 #include <QPainter>
 
@@ -16,20 +19,21 @@ using namespace std;
 
 LoaderDialog::LoaderDialog(QWidget* parent, bool fMultisigEnabled) : QDialog(parent, Qt::CustomizeWindowHint),
                                                         ui(new Ui::LoaderDialog),
-                                                        model(0)
+                                                        isShown(0)
 {
     ui->setupUi(this);
 
     /* Open CSS when configured */
     this->setStyleSheet(GUIUtil::loadStyleSheet());
 
-    //Load spinner assets
+    //Load spinner assets   
     spinnerMap = QPixmap(":/movies/spinner");
     
     update();
 
     timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(update()));
+    timer->moveToThread(qApp->thread());
+    connect(timer, SIGNAL(timeout()), this, SLOT(spinWeasel()));
     timer->start(60);
 }
 
@@ -38,12 +42,26 @@ LoaderDialog::~LoaderDialog()
     delete ui;
 }
 
-void LoaderDialog::setModel(WalletModel* model)
-{
-    this->model = model;
+void LoaderDialog::show() {
+    if(!isShown) {
+        isShown = true;
+        exec();
+    }
 }
 
-void LoaderDialog::update() {
+void LoaderDialog::hide() {
+    if(isShown) {
+        isShown = false;
+        close();
+    }
+}
+
+void LoaderDialog::setLoaderText(std::string message)
+{
+    ui->loaderMessage->setText(QString::fromStdString(message) + "…");
+}
+
+void LoaderDialog::spinWeasel() {
 
     spinRot += 15;
 
@@ -61,13 +79,4 @@ void LoaderDialog::update() {
     p.end();
 
     ui->spinnerIcon->setPixmap(rotate);
-}
-
-// ok button
-void LoaderDialog::buttonBoxClicked(QAbstractButton* button)
-{
-    /*
-    if (ui->buttonBox->buttonRole(button) == QDialogButtonBox::AcceptRole)
-        done(QDialog::Accepted); // closes the dialog
-    */
 }

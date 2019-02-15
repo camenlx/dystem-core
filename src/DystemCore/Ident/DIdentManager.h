@@ -5,7 +5,10 @@
 #ifndef IDENTMANAGER_H
 #define IDENTMANAGER_H
 
+//Dystem includes
 #include "DIdent.h"
+
+//Bitcoin/Dash/PIVX includes
 #include "main.h"
 #include "net.h"
 #include "util.h"
@@ -13,6 +16,7 @@
 using namespace std;
 
 class DIdentManager;
+class DIdentHead;
 
 extern DIdentManager identManager;
 
@@ -84,20 +88,18 @@ public:
 
     DIdentManager();
     DIdentManager(DIdentManager& other);
-    
-    // Retrive correct state enum for the string value of 
-    int getRoleFromString(std::string roleStr);
 
-    // Add an new commission to the mempool
-    void Add(std::string& address, std::string& alias);
+    // Add an new ident to the list
+    void Add(DIdent* newIdent);
 
-    std::string ToString() const;
+    // Return an ident from the list
+    DIdent Get(std::string& address);
+
+    // Clear the current list of idents
+    void Clear();
     
     //Return read only list of commissions for display and analysis
     std::vector<DIdent>& getIdents();
-
-    // Clear the current list of Commissions
-    void Clear();
 
     //Save the users updated settings to the disk
     void saveSettings();
@@ -109,10 +111,22 @@ public:
     double getCommissionerFee(int blockHeight);
 
     //Validate a user of particular role is verified based on a block hash, address and role.
-    bool validateUserAccountByHash(std::string hash, std::string searchAddr, IdentType type);
+    DIdentHead validateUserAccountByHash(std::string hash, std::string searchAddr, IdentType type);
 
     //Validate a user of particular role is verified based on a address and role.
-    bool validateUserAccountByAddress(std::string searchAddr, IdentType type);
+    DIdentHead validateUserAccountByAddress(std::string searchAddr, IdentType type);
+
+    std::string ToString() const;
+};
+
+class DIdentHead
+{
+    public:
+        DIdentManager::IdentType identType;
+        std::string TXHash;
+        long blockHeight;
+
+    DIdentHead(DIdentManager::IdentType type = DIdentManager::None, std::string hash = "", long height = -1);
 };
 
 #endif //IDENTMANAGER_H

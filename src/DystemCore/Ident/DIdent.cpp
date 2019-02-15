@@ -7,19 +7,44 @@
 DIdent::DIdent() 
 {
     LOCK(cs);
-    role = roles::PREVERIFIED;
-    verificationBlockHeight = -1; //Set default to an impossible block height for validation of an invalid datablock.
+
     address = string("");
     alias = string("");
-    isActiveLoginAddress = false;
+    isPresentActiveIdent = false;
+    isContentProvider = false;
+    contentProviderTXHash = string("");
+    verificationContentProviderBlockHeight = -1; //Set default to an impossible block height for validation of an invalid height.
+    isCommissioner = false;
+    commisionerTXHash = string("");
+    verificationCommissionerBlockHeight = -1; //Set default to an impossible block height for validation of an invalid height.
 }
 
 DIdent::DIdent(const DIdent& other)
 {
     LOCK(cs);
-    role = other.role;
-    verificationBlockHeight = other.verificationBlockHeight;
     address = other.address;
     alias = other.alias;
-    isActiveLoginAddress = other.isActiveLoginAddress;
+    isPresentActiveIdent = false;
+    isContentProvider = other.isContentProvider;
+    contentProviderTXHash = other.contentProviderTXHash;
+    verificationContentProviderBlockHeight = other.verificationContentProviderBlockHeight;
+    isCommissioner = other.isCommissioner;
+    commisionerTXHash = other.commisionerTXHash;
+    verificationCommissionerBlockHeight = other.verificationCommissionerBlockHeight;
+}
+
+std::string DIdent::ToString() const
+{
+    std::ostringstream info;
+    info << "\naddress: " << address;
+    info << "\nalias: " << alias;
+    info << "\nisPresentActiveIdent: " << isPresentActiveIdent;
+    info << "\nisContentProvider: " << isContentProvider;
+    info << "\ncontentProviderTXHash: " << contentProviderTXHash;
+    info << "\nverificationContentProviderBlockHeight: " << verificationContentProviderBlockHeight;
+    info << "\nisCommissioner: " << isCommissioner;
+    info << "\ncommisionerTXHash: " << commisionerTXHash;
+    info << "\nsverificationCommissionerBlockHeight: " << verificationCommissionerBlockHeight;
+
+    return info.str();
 }

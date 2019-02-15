@@ -6,7 +6,6 @@
 //Dystem includes
 #include "identsettings.h"
 #include "ui_identsettings.h"
-#include "loaderdialog.h"
 #include "../DystemCore/Ident/DIdentManager.h"
 
 //Bitcoin/Dash/PIVX includes
@@ -21,8 +20,15 @@
 #include "coincontrol.h"
 #include "init.h"
 
-//STD / Boost includes
+//STD / Boost / QT includes
 #include <QMessageBox>
+
+#include <QDebug>
+#include <QThread>
+#include <QString>
+#include<QtConcurrent/QtConcurrent>
+//#include <qtconcurrentrun.h>
+#include <QApplication>
 
 CCoinControl* IdentSettings::registerCoinControl = new CCoinControl();
 
@@ -79,10 +85,14 @@ void IdentSettings::refreshUserAddresses() {
 
         //Add the users addresses to the address drop down
         addresses = walletModel->getAddressTableModel()->listMyAddrreses();
+        ui->addressComboBox->addItem(QString::fromStdString("Select your ident address…"));
+
         for ( std::vector<std::vector<std::string>>::const_iterator it = addresses.begin(); it != addresses.end(); ++it) {
             std::vector<std::string> rec = *it;
             ui->addressComboBox->addItem(QString::fromStdString(rec.at(1)) + " : " + QString::fromStdString(rec.at(0)));
         }
+
+        initialized = true;
     }
 }
 
@@ -92,19 +102,124 @@ void IdentSettings::showEvent(QShowEvent *)
 }
 
 void IdentSettings::addressSelected(const QString& index) {
-    if( addresses.size() > 0 && ui->addressComboBox->currentIndex() > -1 ) {
-        QString item = ui->addressComboBox->itemData(ui->addressComboBox->currentIndex()).toString();
-         std::vector<std::string> rec = addresses.at(ui->addressComboBox->currentIndex());
-//TODO: We should be adding this at the point of upgrade
-        //identManager.Add(rec.at(1), rec.at(0));
-        std::string labelCopy = std::string("The account address you are viewing is ");
-        labelCopy += rec.at(0);
-        labelCopy += ". You can upgrade your account below. A fee is charged each time you increase the account level.";
-        ui->accountInfoLabel->setText(QString(labelCopy.c_str()));
-
-//TODO: Need to read from the ident DB here to see if an entry has already been made for this address and update the upgradeOption accordingly to represent the current status.
-
+    if( addresses.size() > 0 && ui->addressComboBox->currentIndex() > 0 ) {
+        if( initialized ) {           
+            std::vector<std::string> rec = addresses.at(ui->addressComboBox->currentIndex()-1);
+            std::string labelCopy = std::string("The account address you are viewing is ");
+            labelCopy += rec.at(0);
+            labelCopy += ". You can upgrade your account below. A fee is charged each time you increase the account level.";
+            ui->accountInfoLabel->setText(QString(labelCopy.c_str()));
+            //Firstly check to see if the user is in the DB 
+            showDialogMessage("Checking idents");
+            QFuture<void> f1 = QtConcurrent::run( this, &IdentSettings::scanIdent, rec.at(0), rec.at(1) );
+        }
     }
+}
+
+void IdentSettings::scanIdent(std::string currentAddress, std::string alias) {
+    //First check to see if the ident exists inthe manager db
+    DIdent ident = identManager.Get(currentAddress);
+    //No valid ident was found
+
+    //Search for a ident read head position for a content provider
+    showDialogMessage("Checking provider");
+    DIdentHead providerHead = identManager.validateUserAccountByAddress(currentAddress, DIdentManager::ContentCreator);
+
+    //Search for a ident read head position for a commissioner
+    showDialogMessage("Checking commissioner");
+    DIdentHead commissionerHead = identManager.validateUserAccountByAddress(currentAddress, DIdentManager::Commissioner);
+
+    if(providerHead.blockHeight == -1 && commissionerHead.blockHeight == -1) {
+        //Neither were found show dialog asking users to update there account if they want to use it.
+        showWarningMessage("This address appears to not be a commissioner or a content provider. Please register this account below.");
+    } else {
+        DIdent* newIdent = new DIdent();
+        std::ostringstream info;
+        info << "This identity is now set as your active ident. You are registered as ";
+        if( ident.address != "" ) {
+            //If the ident does exist update its details, write update to disk and keep the local DB updated
+            newIdent->address.assign(ident.address);
+            newIdent->alias.assign(ident.alias);
+            newIdent->isContentProvider = ident.isContentProvider;
+            newIdent->contentProviderTXHash.assign(ident.contentProviderTXHash);
+            newIdent->verificationContentProviderBlockHeight = ident.verificationContentProviderBlockHeight;
+            newIdent->isCommissioner = ident.isCommissioner;
+            newIdent->commisionerTXHash.assign(ident.commisionerTXHash);
+            newIdent->verificationCommissionerBlockHeight = ident.verificationCommissionerBlockHeight;
+        }
+ 
+        newIdent->address.assign(currentAddress);
+        newIdent->alias.assign(alias);
+
+        if(providerHead.blockHeight != -1) {
+            //This address is a content provider add / update the ident
+            newIdent->isContentProvider = true;
+            newIdent->contentProviderTXHash.assign(providerHead.TXHash);
+            newIdent->verificationContentProviderBlockHeight = providerHead.blockHeight;
+            info << "a content provider";
+        }
+
+        if(commissionerHead.blockHeight != -1) {
+            //This address is a content provider add / update the ident
+            newIdent->isCommissioner = true;
+            newIdent->commisionerTXHash.assign(commissionerHead.TXHash);
+            newIdent->verificationCommissionerBlockHeight = commissionerHead.blockHeight;
+            if(providerHead.blockHeight != -1) 
+                info << " and";
+            info << " a commissioner";
+        }
+
+        info << ".";
+
+        showWarningMessage(info.str());
+
+        identManager.Add(newIdent);
+    }
+
+//TODO: Pass in a blockheight to the searches to only search new blocks if the ident exists in the DB
+//TODO: Update the second type dialog if the user is already registered
+
+    hideDialogMessage();
+}
+
+void IdentSettings::showDialogMessage(std::string message) {
+
+    QTimer* timer = new QTimer();
+    timer->moveToThread(qApp->thread());
+    timer->setSingleShot(true);
+    QObject::connect(timer, &QTimer::timeout, [=]()
+    {
+        dlg.setLoaderText(message);    
+        dlg.show();
+    });
+    QMetaObject::invokeMethod(timer, "start", Qt::QueuedConnection, Q_ARG(int, 0));
+}
+
+void IdentSettings::hideDialogMessage() {
+    QTimer* timer = new QTimer();
+    timer->moveToThread(qApp->thread());
+    timer->setSingleShot(true);
+    QObject::connect(timer, &QTimer::timeout, [=]()
+    {
+       dlg.hide();
+    });
+    QMetaObject::invokeMethod(timer, "start", Qt::QueuedConnection, Q_ARG(int, 0));
+}
+
+void IdentSettings::showWarningMessage(std::string message) {
+    hideDialogMessage();
+
+    QTimer* timer = new QTimer();
+    timer->moveToThread(qApp->thread());
+    timer->setSingleShot(true);
+    QObject::connect(timer, &QTimer::timeout, [=]()
+    {
+        QMessageBox msg;
+        msg.setStyleSheet("QLabel{color: #355271;}");
+        msg.setText(QString::fromStdString(message));
+        msg.exec();
+    });
+    QMetaObject::invokeMethod(timer, "start", Qt::QueuedConnection, Q_ARG(int, 0));
 }
 
 void IdentSettings::upgradeOptionSelected(const QString& index) {
@@ -120,6 +235,9 @@ void IdentSettings::upgradeOptionSelected(const QString& index) {
 void IdentSettings::on_upgradeAccountButton_clicked() {
     if (!walletModel || !walletModel->getOptionsModel())
         return;
+
+    if( ui->addressComboBox->currentIndex() <= 0 )
+        showWarningMessage("Please select a valid address.");
 
     QList<SendCoinsRecipient> recipients;
     recipients.push_back(SendCoinsRecipient());
@@ -142,13 +260,27 @@ void IdentSettings::on_upgradeAccountButton_clicked() {
         if(type.toStdString() == "None")
             return;
 
+        showDialogMessage("Registering");
+
+        //Get the current addrress 
+        std::vector<std::string> rec = addresses.at(ui->addressComboBox->currentIndex()-1);
+
         //Calculate fee based on the block height and select correct signup address
         std::string addressStr;
         CAmount registrationFee = -1;
+        DIdent ident = identManager.Get(rec.at(0));
         if( type.toStdString() == "Content creator" ) {
+            if(ident.isContentProvider) {
+                showWarningMessage("This user is alreeady a content provider.");
+                return;
+            }
             addressStr.assign(REGISTRATION_CONTENT_CREATOR_ADDRESS);
             registrationFee = identManager.getDeterministicCreatorFee(clientModel->getNumBlocks());
         } else if ( type.toStdString() == "Commissioner" ) {
+            if(ident.isContentProvider) {
+                showWarningMessage("This user is alreeady a Commissioner.");
+                return;
+            }
             addressStr.assign(REGISTRATION_COMMISSIONER_ADDRESS);
             registrationFee = identManager.getCommissionerFee(clientModel->getNumBlocks());
         }
@@ -157,10 +289,7 @@ void IdentSettings::on_upgradeAccountButton_clicked() {
         if(registrationFee == -1) {            
             std::string errorMessage("You may not register until the identity system has launched. Please wait until blockheight: ");
             errorMessage += std::to_string(REGISTRATION_START_BLOCKHEIGHT);
-            QMessageBox err_block_msg;
-            err_block_msg.setStyleSheet("QLabel{color: #355271;}");
-            err_block_msg.setText(QString::fromStdString(errorMessage));
-            err_block_msg.exec();
+            showWarningMessage(errorMessage);
             return;
         }
 
@@ -168,12 +297,10 @@ void IdentSettings::on_upgradeAccountButton_clicked() {
         CBitcoinAddress address = addressStr;
         recipients[0].address = QString(addressStr.c_str());  
 
-        std::vector<std::string> rec = addresses.at(ui->addressComboBox->currentIndex());
         recipients[0].amount = registrationFee * COIN;  
 
         //Confifm the address doesnt belong to me first as you shouldnt be sending these payments to yourself. Error check that should never happen.
         if (!walletModel->isMine(address)) {
-
             //Adjust the payment utxo set based on the selected address as we need to send from the currently selected ident address. 
             IdentSettings::UTXORegistrationState utxoState = createUnpsentUTXOListForAddress(rec.at(0), registrationFee);
             if( utxoState == NotFound ) {
@@ -181,31 +308,20 @@ void IdentSettings::on_upgradeAccountButton_clicked() {
                 ss << std::fixed << std::setprecision(8) << registrationFee;
                 std::string errorMessage("No funds found. It appears you have no DTEM at this address. Please send ");
                 errorMessage += ss.str() + " DTEM to this address and register once confirmed.";
-                QMessageBox msg;
-                msg.setStyleSheet("QLabel{color: #355271;}");
-                msg.setText(QString::fromStdString(errorMessage));
-                msg.exec();
+                showWarningMessage(errorMessage);
                 return;
             } else if( utxoState == NotEnoughFunds ) {
                 std::stringstream ss;
                 ss << std::fixed << std::setprecision(8) << registrationFee;
                 std::string errorMessage("ERROR: Not enough funds found. It appears you don't have enough DTEM at this address. Please send ");
                 errorMessage += ss.str() + " DTEM to this address and register once confirmed.";
-                QMessageBox msg;
-                msg.setStyleSheet("QLabel{color: #355271;}");
-                msg.setText(QString::fromStdString(errorMessage));
-                msg.exec();
+                showWarningMessage(errorMessage);
                 return;
-            }else if( utxoState == None ) {
-                std::string errorMessage = "DEVELOPER ERROR: The model object when constructing the UTXO set is a null pointer.";
-                QMessageBox msg;
-                msg.setStyleSheet("QLabel{color: #355271;}");
-                msg.setText(QString::fromStdString(errorMessage));
-                msg.exec();
+            } else if( utxoState == None ) {
+                showWarningMessage("DEVELOPER ERROR: The model object when constructing the UTXO set is a null pointer.");
                 return;
             } else {
-
-//TODO: Need to check that the user isn't already in the ident list using this address and they are trying to register twice
+                
                 QString strFunds = "";
                 QString strFee = "";
                 recipients[0].inputType = ALL_COINS;
@@ -451,14 +567,16 @@ IdentSettings::UTXORegistrationState IdentSettings::createUnpsentUTXOListForAddr
     BOOST_FOREACH (PAIRTYPE(QString, vector<COutput>) coins, mapCoins) {
         QString sWalletAddress = coins.first;
 
-        for(const COutput& out: coins.second) {
+        LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>>>> LIST %s \n", sWalletAddress.toStdString().c_str());
 
+        for(const COutput& out: coins.second) {
             int nInputSize = 0;
             // address
             CTxDestination outputAddress;
             QString sAddress = "";
             if (ExtractDestination(out.tx->vout[out.i].scriptPubKey, outputAddress)) {
                 sAddress = QString::fromStdString(CBitcoinAddress(outputAddress).ToString());
+                LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>>>> ADDR %s sWalletAddress %s address %s \n", sAddress.toStdString().c_str(), sWalletAddress.toStdString().c_str(), address.c_str());
 
                 uint256 txhash = out.tx->GetHash();
                 if ( !walletModel->isLockedCoin(txhash, out.i) && sAddress == sWalletAddress && sAddress.toStdString() == address )
@@ -469,11 +587,10 @@ IdentSettings::UTXORegistrationState IdentSettings::createUnpsentUTXOListForAddr
                         nInputSize = 29; // 29 = 180 - 151 (public key is 180 bytes, priority free area is 151 bytes)
 
                     double relativeAmmount = (double)(out.tx->vout[out.i].nValue) / (double)(COIN);
+                    LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>>>> REALITIVE AMMOUNT %f \n", relativeAmmount);
                     totalSum += relativeAmmount;
 
                     QString sLabel = walletModel->getAddressTableModel()->labelForAddress(sAddress);
-                    LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>> ADDING IDENTITY FEE HASH %s FOR ADDRESS: %s \n", txhash.GetHex().c_str() ,sLabel.toStdString().c_str() );
-
                     //Add the output the the unspent UTXO list
                     COutPoint outpt(txhash, out.i);
                     registerCoinControl->Select(outpt);

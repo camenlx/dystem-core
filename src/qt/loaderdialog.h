@@ -6,11 +6,10 @@
 #ifndef LOADERDIALOG_H
 #define LOADERDIALOG_H
 
+//STD / Boost / QT includes
 #include <QAbstractButton>
 #include <QTimer>
 #include <QDialog>
-
-class WalletModel;
 
 namespace Ui
 {
@@ -25,20 +24,19 @@ public:
     explicit LoaderDialog(QWidget* parent = nullptr, bool fMultisigEnabled = false);
     ~LoaderDialog();
 
-    void setModel(WalletModel* model);
+    void setLoaderText(std::string message);
+    void show();
+    void hide();
  
 private:
     Ui::LoaderDialog* ui;
-    WalletModel* model;
     QTimer* timer;
     QPixmap spinnerMap;
     int spinRot;
-
-public Q_SLOTS:
-    void update();
+    bool isShown;
 
 private slots:
-    void buttonBoxClicked(QAbstractButton*);
+    void spinWeasel();
 
 };
 
