@@ -162,15 +162,18 @@ void DIdentManager::Add(DIdent* newIdent)
         if( ident->address == newIdent->address ) {
             //If the ident already exists don't replace it just update its flag and don't add it to the structure again.
             identAlreadyExists = true;
-            ident->isPresentActiveIdent = true;
+            newIdent->isPresentActiveIdent = true;
             break;
         } else {
             ident->isPresentActiveIdent = false;
         }
     }
+
    
-    if(!identAlreadyExists)
+    if(!identAlreadyExists) {
+        newIdent->isPresentActiveIdent = true;
         copyIdents->push_back(*newIdent);
+    }
     
     vMyIdents.swap(*copyIdents);
 
@@ -186,7 +189,21 @@ DIdent DIdentManager::Get(std::string& address) {
         DIdent ident = *it;
         if( ident.address == address ) {
             return ident;
-            break;
+        } 
+    }
+
+    return returnIdent;
+}
+
+DIdent DIdentManager::GetActive() {
+    DIdent returnIdent;
+
+    for (std::vector<DIdent>::iterator it = vMyIdents.begin(); it != vMyIdents.end(); ++it) {
+        DIdent ident = *it;
+        LogPrintf(" \n\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CHECKING  IN LIST \n %s\n", ident.ToString());
+        if( ident.isPresentActiveIdent  ) {
+            LogPrintf(" >>>>>>>>>>>>>>>>>>>>>>>>>>>>> FOUND IDENT IN LIST \n %s\n", ident.ToString());
+            return ident;
         } 
     }
 
@@ -242,7 +259,7 @@ struct CompareBlocksByHeight {
     }
 };
 
-DIdentHead DIdentManager::validateUserAccountByHash(std::string hash, std::string searchAddr, IdentType type) {
+DIdentHead DIdentManager::validateUserAccountByHash(std::string hash, std::string searchAddr, IdentType type, int forcedMinBlockHeight) {
     LOCK(cs_main);
 
     //Record the initial tip height for searching 
@@ -255,8 +272,13 @@ DIdentHead DIdentManager::validateUserAccountByHash(std::string hash, std::strin
     UniValue tipHashUniV(tipHashString);
     uint256 blockHash(ParseHashV(tipHashUniV, "parameter 1"));
 
+    int endBlockheight = REGISTRATION_START_BLOCKHEIGHT;
+    
+    if(forcedMinBlockHeight > 0)
+        endBlockheight = forcedMinBlockHeight;
+
     //Starting at the tip of the chain search backwards untill we find the hash and find the height
-    for( int currBlockHeight = chainActive.Height(); currBlockHeight >= REGISTRATION_START_BLOCKHEIGHT; currBlockHeight--) {
+    for( int currBlockHeight = chainActive.Height(); currBlockHeight >= endBlockheight; currBlockHeight--) {
 
         //Check to see the block is actually found        
         if( mapBlockIndex.count(blockHash) != 0 ) {
@@ -326,7 +348,7 @@ DIdentHead DIdentManager::validateUserAccountByHash(std::string hash, std::strin
     return DIdentHead();
 }
 
-DIdentHead DIdentManager::validateUserAccountByAddress(std::string searchAddr, IdentType type) {
+DIdentHead DIdentManager::validateUserAccountByAddress(std::string searchAddr, IdentType type, int forcedMinBlockHeight) {
      //Record the initial tip height for searching 
     std::string tipHashString = getTipAddressHash();
 
@@ -337,8 +359,13 @@ DIdentHead DIdentManager::validateUserAccountByAddress(std::string searchAddr, I
     UniValue tipHashUniV(tipHashString);
     uint256 blockHash(ParseHashV(tipHashUniV, "parameter 1"));
 
+    int endBlockheight = REGISTRATION_START_BLOCKHEIGHT;
+
+    if(forcedMinBlockHeight > 0)
+        endBlockheight = forcedMinBlockHeight;
+
     //Starting at the tip of the chain search backwards untill we find the hash and find the height
-    for( int currBlockHeight = chainActive.Height(); currBlockHeight >= REGISTRATION_START_BLOCKHEIGHT; currBlockHeight--) {
+    for( int currBlockHeight = chainActive.Height(); currBlockHeight >= endBlockheight; currBlockHeight--) {
         //Check to see the block is actually found        
         if( mapBlockIndex.count(blockHash) != 0 ) {
             //Block found 

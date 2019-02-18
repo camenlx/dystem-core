@@ -24,7 +24,7 @@ DIdent::DIdent(const DIdent& other)
     LOCK(cs);
     address = other.address;
     alias = other.alias;
-    isPresentActiveIdent = false;
+    isPresentActiveIdent =  other.isPresentActiveIdent;
     isContentProvider = other.isContentProvider;
     contentProviderTXHash = other.contentProviderTXHash;
     verificationContentProviderBlockHeight = other.verificationContentProviderBlockHeight;
@@ -44,7 +44,7 @@ std::string DIdent::ToString() const
     info << "\nverificationContentProviderBlockHeight: " << verificationContentProviderBlockHeight;
     info << "\nisCommissioner: " << isCommissioner;
     info << "\ncommisionerTXHash: " << commisionerTXHash;
-    info << "\nsverificationCommissionerBlockHeight: " << verificationCommissionerBlockHeight;
+    info << "\nverificationCommissionerBlockHeight: " << verificationCommissionerBlockHeight;
 
     return info.str();
 }

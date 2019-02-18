@@ -95,6 +95,9 @@ public:
     // Return an ident from the list
     DIdent Get(std::string& address);
 
+    // Return the current selected and active ident from the list
+    DIdent GetActive();
+
     // Clear the current list of idents
     void Clear();
     
@@ -111,10 +114,10 @@ public:
     double getCommissionerFee(int blockHeight);
 
     //Validate a user of particular role is verified based on a block hash, address and role.
-    DIdentHead validateUserAccountByHash(std::string hash, std::string searchAddr, IdentType type);
+    DIdentHead validateUserAccountByHash(std::string hash, std::string searchAddr, IdentType type, int forcedMinBlockHeight = -1);
 
     //Validate a user of particular role is verified based on a address and role.
-    DIdentHead validateUserAccountByAddress(std::string searchAddr, IdentType type);
+    DIdentHead validateUserAccountByAddress(std::string searchAddr, IdentType type, int forcedMinBlockHeight = -1);
 
     std::string ToString() const;
 };

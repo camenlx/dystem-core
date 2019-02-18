@@ -27,8 +27,7 @@
 #include <QThread>
 #include <QString>
 #include<QtConcurrent/QtConcurrent>
-//#include <qtconcurrentrun.h>
-#include <QApplication>
+//#include <QApplication>
 
 CCoinControl* IdentSettings::registerCoinControl = new CCoinControl();
 
@@ -99,9 +98,41 @@ void IdentSettings::refreshUserAddresses() {
 void IdentSettings::showEvent(QShowEvent *)
 {
     refreshUserAddresses();
+    if(initialized) {
+        DIdent current = identManager.GetActive();
+        if( addresses.size() > 0 && ui->accountLevelComboBox->currentIndex() > -1 ) {
+            if( current.isCommissioner ) {
+                for( int i = 1; i < addresses.size(); i++ ) {
+                    std::vector<std::string> rec = addresses.at(i);
+                    if( rec.at(0) == current.address )  {
+                        autoSelectedIdent = true;
+                        ui->addressComboBox->setCurrentIndex(i);
+                        ui->accountLevelComboBox->setCurrentIndex(2);
+                        break;
+                    }
+                }
+            } else if( current.isContentProvider ) {
+                for( int i = 1; i < addresses.size(); i++ ) {
+                    std::vector<std::string> rec = addresses.at(i);
+                    if( rec.at(0) == current.address )  {
+                        autoSelectedIdent = true;
+                        ui->addressComboBox->setCurrentIndex(i);
+                        ui->accountLevelComboBox->setCurrentIndex(1);
+                        break;
+                    }
+                }
+            }
+        }
+    }
 }
 
 void IdentSettings::addressSelected(const QString& index) {
+
+    if( autoSelectedIdent ) { 
+        autoSelectedIdent = false;
+        return;
+    }
+
     if( addresses.size() > 0 && ui->addressComboBox->currentIndex() > 0 ) {
         if( initialized ) {           
             std::vector<std::string> rec = addresses.at(ui->addressComboBox->currentIndex()-1);
@@ -123,11 +154,11 @@ void IdentSettings::scanIdent(std::string currentAddress, std::string alias) {
 
     //Search for a ident read head position for a content provider
     showDialogMessage("Checking provider");
-    DIdentHead providerHead = identManager.validateUserAccountByAddress(currentAddress, DIdentManager::ContentCreator);
+    DIdentHead providerHead = identManager.validateUserAccountByAddress(currentAddress, DIdentManager::ContentCreator, ident.verificationContentProviderBlockHeight);
 
     //Search for a ident read head position for a commissioner
     showDialogMessage("Checking commissioner");
-    DIdentHead commissionerHead = identManager.validateUserAccountByAddress(currentAddress, DIdentManager::Commissioner);
+    DIdentHead commissionerHead = identManager.validateUserAccountByAddress(currentAddress, DIdentManager::Commissioner, ident.verificationCommissionerBlockHeight);
 
     if(providerHead.blockHeight == -1 && commissionerHead.blockHeight == -1) {
         //Neither were found show dialog asking users to update there account if they want to use it.
@@ -140,6 +171,7 @@ void IdentSettings::scanIdent(std::string currentAddress, std::string alias) {
             //If the ident does exist update its details, write update to disk and keep the local DB updated
             newIdent->address.assign(ident.address);
             newIdent->alias.assign(ident.alias);
+            newIdent->isPresentActiveIdent = ident.isPresentActiveIdent;
             newIdent->isContentProvider = ident.isContentProvider;
             newIdent->contentProviderTXHash.assign(ident.contentProviderTXHash);
             newIdent->verificationContentProviderBlockHeight = ident.verificationContentProviderBlockHeight;
@@ -170,14 +202,11 @@ void IdentSettings::scanIdent(std::string currentAddress, std::string alias) {
         }
 
         info << ".";
+        
+        identManager.Add(newIdent);
 
         showWarningMessage(info.str());
-
-        identManager.Add(newIdent);
     }
-
-//TODO: Pass in a blockheight to the searches to only search new blocks if the ident exists in the DB
-//TODO: Update the second type dialog if the user is already registered
 
     hideDialogMessage();
 }
@@ -295,8 +324,7 @@ void IdentSettings::on_upgradeAccountButton_clicked() {
 
         //Use only this address for content creation. This address signifies the funds locked for content creation.
         CBitcoinAddress address = addressStr;
-        recipients[0].address = QString(addressStr.c_str());  
-
+        recipients[0].address = QString(addressStr.c_str());
         recipients[0].amount = registrationFee * COIN;  
 
         //Confifm the address doesnt belong to me first as you shouldnt be sending these payments to yourself. Error check that should never happen.
@@ -479,9 +507,6 @@ void IdentSettings::send(QList<SendCoinsRecipient> recipients, QString strFee, Q
     // process sendStatus and on error generate message shown to user
     processSendCoinsReturn(sendStatus);
 
-    if (sendStatus.status == WalletModel::OK) {
-//TODO: We should update any of the UI or emit any signals here to act upon the 
-    }
     fNewRecipientAllowed = true;
 
     walletModel->setWalletLocked(true);
@@ -567,8 +592,6 @@ IdentSettings::UTXORegistrationState IdentSettings::createUnpsentUTXOListForAddr
     BOOST_FOREACH (PAIRTYPE(QString, vector<COutput>) coins, mapCoins) {
         QString sWalletAddress = coins.first;
 
-        LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>>>> LIST %s \n", sWalletAddress.toStdString().c_str());
-
         for(const COutput& out: coins.second) {
             int nInputSize = 0;
             // address
@@ -576,7 +599,6 @@ IdentSettings::UTXORegistrationState IdentSettings::createUnpsentUTXOListForAddr
             QString sAddress = "";
             if (ExtractDestination(out.tx->vout[out.i].scriptPubKey, outputAddress)) {
                 sAddress = QString::fromStdString(CBitcoinAddress(outputAddress).ToString());
-                LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>>>> ADDR %s sWalletAddress %s address %s \n", sAddress.toStdString().c_str(), sWalletAddress.toStdString().c_str(), address.c_str());
 
                 uint256 txhash = out.tx->GetHash();
                 if ( !walletModel->isLockedCoin(txhash, out.i) && sAddress == sWalletAddress && sAddress.toStdString() == address )
@@ -587,7 +609,6 @@ IdentSettings::UTXORegistrationState IdentSettings::createUnpsentUTXOListForAddr
                         nInputSize = 29; // 29 = 180 - 151 (public key is 180 bytes, priority free area is 151 bytes)
 
                     double relativeAmmount = (double)(out.tx->vout[out.i].nValue) / (double)(COIN);
-                    LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>>>> REALITIVE AMMOUNT %f \n", relativeAmmount);
                     totalSum += relativeAmmount;
 
                     QString sLabel = walletModel->getAddressTableModel()->labelForAddress(sAddress);

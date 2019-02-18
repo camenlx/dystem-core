@@ -63,6 +63,7 @@ private:
     std::vector<std::vector<std::string>> addresses;
     LoaderDialog dlg;
     bool initialized;
+    bool autoSelectedIdent;
     IdentSettings::UTXORegistrationState createUnpsentUTXOListForAddress(std::string address, double ammount);
 
     //Thread safe warning messages and dialogs
