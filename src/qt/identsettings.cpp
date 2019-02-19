@@ -98,36 +98,39 @@ void IdentSettings::refreshUserAddresses() {
 void IdentSettings::showEvent(QShowEvent *)
 {
     refreshUserAddresses();
+    autoSelectedIdent = true;
+    UpdateCurentIdentSelection();
+}
+
+bool IdentSettings::UpdateCurentIdentSelection() {
     if(initialized) {
-        DIdent current = identManager.GetActive();
         if( addresses.size() > 0 && ui->accountLevelComboBox->currentIndex() > -1 ) {
+            DIdent current = identManager.GetActive();
             if( current.isCommissioner ) {
-                for( int i = 1; i < addresses.size(); i++ ) {
+                for( unsigned long i = 1; i < addresses.size(); i++ ) {
                     std::vector<std::string> rec = addresses.at(i);
                     if( rec.at(0) == current.address )  {
-                        autoSelectedIdent = true;
-                        ui->addressComboBox->setCurrentIndex(i);
+                        ui->addressComboBox->setCurrentIndex(i+1);
                         ui->accountLevelComboBox->setCurrentIndex(2);
-                        break;
+                        return true;
                     }
                 }
             } else if( current.isContentProvider ) {
-                for( int i = 1; i < addresses.size(); i++ ) {
+                for( unsigned long i = 1; i < addresses.size(); i++ ) {
                     std::vector<std::string> rec = addresses.at(i);
                     if( rec.at(0) == current.address )  {
-                        autoSelectedIdent = true;
-                        ui->addressComboBox->setCurrentIndex(i);
+                        ui->addressComboBox->setCurrentIndex(i+1);
                         ui->accountLevelComboBox->setCurrentIndex(1);
-                        break;
+                        return true;
                     }
                 }
             }
         }
     }
+    return false;
 }
 
 void IdentSettings::addressSelected(const QString& index) {
-
     if( autoSelectedIdent ) { 
         autoSelectedIdent = false;
         return;
@@ -150,17 +153,24 @@ void IdentSettings::addressSelected(const QString& index) {
 void IdentSettings::scanIdent(std::string currentAddress, std::string alias) {
     //First check to see if the ident exists inthe manager db
     DIdent ident = identManager.Get(currentAddress);
-    //No valid ident was found
 
     //Search for a ident read head position for a content provider
     showDialogMessage("Checking provider");
-    DIdentHead providerHead = identManager.validateUserAccountByAddress(currentAddress, DIdentManager::ContentCreator, ident.verificationContentProviderBlockHeight);
+    long providerEndBlockHeight = ident.verificationContentProviderBlockHeight;
+    if( ident.contentProviderLastScanHeightReached > 0 ) 
+        providerEndBlockHeight = ident.contentProviderLastScanHeightReached;
+    
+    DIdentHead providerHead = identManager.validateUserAccountByAddress(currentAddress, DIdentManager::ContentCreator, providerEndBlockHeight);
 
     //Search for a ident read head position for a commissioner
     showDialogMessage("Checking commissioner");
-    DIdentHead commissionerHead = identManager.validateUserAccountByAddress(currentAddress, DIdentManager::Commissioner, ident.verificationCommissionerBlockHeight);
+    long commissionerEndBlockHeight = ident.verificationContentProviderBlockHeight;
+    if( ident.commissionerProviderLastScanHeightReached > 0 ) 
+        commissionerEndBlockHeight = ident.commissionerProviderLastScanHeightReached;
 
-    if(providerHead.blockHeight == -1 && commissionerHead.blockHeight == -1) {
+    DIdentHead commissionerHead = identManager.validateUserAccountByAddress(currentAddress, DIdentManager::Commissioner, commissionerEndBlockHeight);
+
+    if(providerHead.blockHeight == -1 && commissionerHead.blockHeight == -1 && !ident.isContentProvider && !ident.isCommissioner) {
         //Neither were found show dialog asking users to update there account if they want to use it.
         showWarningMessage("This address appears to not be a commissioner or a content provider. Please register this account below.");
     } else {
@@ -182,12 +192,19 @@ void IdentSettings::scanIdent(std::string currentAddress, std::string alias) {
  
         newIdent->address.assign(currentAddress);
         newIdent->alias.assign(alias);
+        //Add a reference to the last block height that was reached so we can avoid scanning already scanned blocks
+        newIdent->contentProviderLastScanHeightReached = providerHead.scanStartBlockHeight;
+        //Add a reference to the last block height that was reached so we can avoid scanning already scanned blocks
+        newIdent->commissionerProviderLastScanHeightReached = commissionerHead.scanStartBlockHeight;
 
         if(providerHead.blockHeight != -1) {
             //This address is a content provider add / update the ident
             newIdent->isContentProvider = true;
             newIdent->contentProviderTXHash.assign(providerHead.TXHash);
             newIdent->verificationContentProviderBlockHeight = providerHead.blockHeight;
+        }
+
+        if(providerHead.blockHeight != -1 || ident.isContentProvider) {
             info << "a content provider";
         }
 
@@ -196,15 +213,23 @@ void IdentSettings::scanIdent(std::string currentAddress, std::string alias) {
             newIdent->isCommissioner = true;
             newIdent->commisionerTXHash.assign(commissionerHead.TXHash);
             newIdent->verificationCommissionerBlockHeight = commissionerHead.blockHeight;
-            if(providerHead.blockHeight != -1) 
+        }
+
+        if(commissionerHead.blockHeight != -1 || ident.isCommissioner) {
+            if(providerHead.blockHeight != -1 || ident.isContentProvider) 
                 info << " and";
             info << " a commissioner";
         }
 
         info << ".";
-        
+
+        //Add the updated ident to the manager DB
         identManager.Add(newIdent);
 
+        //Update the UI to correctly show the role for the currently active Ident
+        UpdateCurentIdentSelection();
+
+        //Explain to the user what has happened and what impacts it has in terms of using this identity.
         showWarningMessage(info.str());
     }
 

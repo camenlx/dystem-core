@@ -6,6 +6,7 @@
 #define COMMISSIONLIST_H
 
 #include "../DystemCore/Commissions/DCommission.h"
+#include "loaderdialog.h"
 
 #include "masternode.h"
 #include "platformstyle.h"
@@ -47,17 +48,22 @@ private:
 
     void updateCommissionRow(DCommission com);
     void updateCommissionList();
+    
+    void showDialogMessage(std::string message);
+    void hideDialogMessage();
+    void showWarningMessage(std::string message);
+    
+private:
+    QTimer* timer;
+    Ui::CommissionsList* ui;
+    ClientModel* clientModel;
+    WalletModel* walletModel;
+    CCriticalSection cs_commissions;
+    LoaderDialog dlg;
 
-    private:
-        QTimer* timer;
-        Ui::CommissionsList* ui;
-        ClientModel* clientModel;
-        WalletModel* walletModel;
-        CCriticalSection cs_commissions;
-
-    private Q_SLOTS:
-        void on_tableWidgetCommissions_itemSelectionChanged();
-        void on_tableWidgetCommissionsCompleted_itemSelectionChanged();
-        void on_refreshButton_clicked();
+private Q_SLOTS:
+    void on_tableWidgetCommissions_itemSelectionChanged();
+    void on_tableWidgetCommissionsCompleted_itemSelectionChanged();
+    void on_refreshButton_clicked();
 };
 #endif // COMMISSIONLIST_H

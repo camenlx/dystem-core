@@ -163,13 +163,19 @@ void DIdentManager::Add(DIdent* newIdent)
             //If the ident already exists don't replace it just update its flag and don't add it to the structure again.
             identAlreadyExists = true;
             newIdent->isPresentActiveIdent = true;
+            ident->isPresentActiveIdent = true;
+
+            //Some parameters we may still wish to update such as the last block height searched from. No need to research old blocks
+            ident->contentProviderLastScanHeightReached = newIdent->contentProviderLastScanHeightReached;
+            ident->commissionerProviderLastScanHeightReached = newIdent->commissionerProviderLastScanHeightReached;
+
             break;
         } else {
             ident->isPresentActiveIdent = false;
+            newIdent->isPresentActiveIdent = false;
         }
     }
 
-   
     if(!identAlreadyExists) {
         newIdent->isPresentActiveIdent = true;
         copyIdents->push_back(*newIdent);
@@ -200,9 +206,7 @@ DIdent DIdentManager::GetActive() {
 
     for (std::vector<DIdent>::iterator it = vMyIdents.begin(); it != vMyIdents.end(); ++it) {
         DIdent ident = *it;
-        LogPrintf(" \n\n>>>>>>>>>>>>>>>>>>>>>>>>>>>>> CHECKING  IN LIST \n %s\n", ident.ToString());
         if( ident.isPresentActiveIdent  ) {
-            LogPrintf(" >>>>>>>>>>>>>>>>>>>>>>>>>>>>> FOUND IDENT IN LIST \n %s\n", ident.ToString());
             return ident;
         } 
     }
@@ -272,13 +276,14 @@ DIdentHead DIdentManager::validateUserAccountByHash(std::string hash, std::strin
     UniValue tipHashUniV(tipHashString);
     uint256 blockHash(ParseHashV(tipHashUniV, "parameter 1"));
 
+    int startBlockheight = chainActive.Height();
     int endBlockheight = REGISTRATION_START_BLOCKHEIGHT;
     
     if(forcedMinBlockHeight > 0)
         endBlockheight = forcedMinBlockHeight;
 
     //Starting at the tip of the chain search backwards untill we find the hash and find the height
-    for( int currBlockHeight = chainActive.Height(); currBlockHeight >= endBlockheight; currBlockHeight--) {
+    for( int currBlockHeight = startBlockheight; currBlockHeight >= endBlockheight; currBlockHeight--) {
 
         //Check to see the block is actually found        
         if( mapBlockIndex.count(blockHash) != 0 ) {
@@ -323,14 +328,14 @@ DIdentHead DIdentManager::validateUserAccountByHash(std::string hash, std::strin
                                     if(fee <= getDeterministicCreatorFee(currBlockHeight-REGISTRATION_FEE_BLOCK_DRIFT) && fee >= getDeterministicCreatorFee(currBlockHeight)) {
                                         //Now finally match up the input address with a TXIN address to prove the sender is who they say they are
                                         if( findAddressInVin(searchAddr, transactionx.vin) ) {
-                                            return DIdentHead(DIdentManager::ContentCreator, tx.GetHash().GetHex(), currBlockHeight);
+                                            return DIdentHead(DIdentManager::ContentCreator, tx.GetHash().GetHex(), currBlockHeight, startBlockheight);
                                         }
                                     }                                    
                                 } else if( type == Commissioner && CBitcoinAddress(addr).ToString() == REGISTRATION_COMMISSIONER_ADDRESS ) {
                                     //As we are checking for an exact fee presently for a commissioner check and confirm
                                      if( fee == getCommissionerFee(currBlockHeight) ) {
                                          if( findAddressInVin(searchAddr, transactionx.vin) ) {
-                                            return DIdentHead(DIdentManager::Commissioner, tx.GetHash().GetHex(), currBlockHeight);
+                                            return DIdentHead(DIdentManager::Commissioner, tx.GetHash().GetHex(), currBlockHeight, startBlockheight);
                                         }
                                     }
                                 }
@@ -345,7 +350,7 @@ DIdentHead DIdentManager::validateUserAccountByHash(std::string hash, std::strin
         }
     }
 
-    return DIdentHead();
+    return DIdentHead(None, "", -1, startBlockheight);
 }
 
 DIdentHead DIdentManager::validateUserAccountByAddress(std::string searchAddr, IdentType type, int forcedMinBlockHeight) {
@@ -359,13 +364,14 @@ DIdentHead DIdentManager::validateUserAccountByAddress(std::string searchAddr, I
     UniValue tipHashUniV(tipHashString);
     uint256 blockHash(ParseHashV(tipHashUniV, "parameter 1"));
 
+    int startBlockheight = chainActive.Height();
     int endBlockheight = REGISTRATION_START_BLOCKHEIGHT;
 
     if(forcedMinBlockHeight > 0)
         endBlockheight = forcedMinBlockHeight;
 
     //Starting at the tip of the chain search backwards untill we find the hash and find the height
-    for( int currBlockHeight = chainActive.Height(); currBlockHeight >= endBlockheight; currBlockHeight--) {
+    for( int currBlockHeight = startBlockheight; currBlockHeight >= endBlockheight; currBlockHeight--) {
         //Check to see the block is actually found        
         if( mapBlockIndex.count(blockHash) != 0 ) {
             //Block found 
@@ -409,7 +415,7 @@ DIdentHead DIdentManager::validateUserAccountByAddress(std::string searchAddr, I
                                 if(fee <= getDeterministicCreatorFee(currBlockHeight-REGISTRATION_FEE_BLOCK_DRIFT) && fee >= getDeterministicCreatorFee(currBlockHeight)) {
                                     //Now finally match up the input address with a TXIN address to prove the sender is who they say they are
                                     if( findAddressInVin(searchAddr, transactionx.vin) ) {
-                                        return DIdentHead(DIdentManager::ContentCreator, tx.GetHash().GetHex(), currBlockHeight);
+                                        return DIdentHead(DIdentManager::ContentCreator, tx.GetHash().GetHex(), currBlockHeight, startBlockheight);
                                     }
                                 }                                    
                             } 
@@ -417,7 +423,7 @@ DIdentHead DIdentManager::validateUserAccountByAddress(std::string searchAddr, I
                                 //As we are checking for an exact fee presently for a commissioner check and confirm
                                 if( fee == getCommissionerFee(currBlockHeight) ) {
                                     if( findAddressInVin(searchAddr, transactionx.vin) ) {
-                                        return DIdentHead(DIdentManager::Commissioner, tx.GetHash().GetHex(), currBlockHeight);
+                                        return DIdentHead(DIdentManager::Commissioner, tx.GetHash().GetHex(), currBlockHeight, startBlockheight);
                                     }
                                 }
                             }   
@@ -431,7 +437,7 @@ DIdentHead DIdentManager::validateUserAccountByAddress(std::string searchAddr, I
         }
     }
 
-    return DIdentHead();
+    return DIdentHead(None, "", -1, startBlockheight);
 }
 
 std::string DIdentManager::getTipAddressHash() {
@@ -490,8 +496,9 @@ bool DIdentManager::findAddressInVin(std::string addrress, std::vector<CTxIn> vi
     return false;
 }
 
-DIdentHead::DIdentHead(DIdentManager::IdentType type, std::string hash, long height) {
+DIdentHead::DIdentHead(DIdentManager::IdentType type, std::string hash, long height, long scanBlockHeight) {
     identType = type;
     TXHash = hash;
     blockHeight = height;
+    scanStartBlockHeight = scanBlockHeight;
 }

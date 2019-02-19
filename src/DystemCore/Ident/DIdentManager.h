@@ -128,8 +128,9 @@ class DIdentHead
         DIdentManager::IdentType identType;
         std::string TXHash;
         long blockHeight;
+        long scanStartBlockHeight;
 
-    DIdentHead(DIdentManager::IdentType type = DIdentManager::None, std::string hash = "", long height = -1);
+    DIdentHead(DIdentManager::IdentType type = DIdentManager::None, std::string hash = "", long height = -1, long scanBlockHeight = -1);
 };
 
 #endif //IDENTMANAGER_H

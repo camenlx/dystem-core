@@ -71,6 +71,8 @@ private:
     void hideDialogMessage();
     void showWarningMessage(std::string message);
 
+    bool UpdateCurentIdentSelection();
+
     bool fNewRecipientAllowed;
     void send(QList<SendCoinsRecipient> recipients, QString strFee, QStringList formatted);
     void processSendCoinsReturn(const WalletModel::SendCoinsReturn& sendCoinsReturn, const QString& msgArg = QString(), bool fPrepare = false);

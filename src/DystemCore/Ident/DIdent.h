@@ -31,10 +31,11 @@ public:
     bool isContentProvider;
     std::string contentProviderTXHash;
     long verificationContentProviderBlockHeight;
+    long contentProviderLastScanHeightReached;
     bool isCommissioner;
     std::string commisionerTXHash;
     long verificationCommissionerBlockHeight;
-
+    long commissionerProviderLastScanHeightReached;
 
     DIdent();
     DIdent(const DIdent& other);
@@ -51,9 +52,11 @@ public:
         READWRITE(isContentProvider);
         READWRITE(contentProviderTXHash);
         READWRITE(verificationContentProviderBlockHeight);
+        READWRITE(contentProviderLastScanHeightReached);
         READWRITE(isCommissioner);
         READWRITE(commisionerTXHash);
         READWRITE(verificationCommissionerBlockHeight);
+        READWRITE(commissionerProviderLastScanHeightReached);
     }
 
     std::string ToString() const;
