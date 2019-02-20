@@ -44,6 +44,7 @@ QT_FORMS_UI = \
   qt/forms/intro.ui \
   qt/forms/masternodelist.ui \
   qt/forms/commissionslist.ui \
+  qt/forms/commissiondialog.ui \
   qt/forms/identsettings.ui \
   qt/forms/loaderdialog.ui \
   qt/forms/multisenddialog.ui \
@@ -81,6 +82,7 @@ QT_MOC_CPP = \
   qt/moc_macnotificationhandler.cpp \
   qt/moc_masternodelist.cpp \
   qt/moc_commissionslist.cpp \
+  qt/moc_commissiondialog.cpp \
   qt/moc_identsettings.cpp \
   qt/moc_loaderdialog.cpp \
   qt/moc_multisenddialog.cpp \
@@ -156,6 +158,7 @@ BITCOIN_QT_H = \
   qt/macnotificationhandler.h \
   qt/masternodelist.h \
   qt/commissionslist.h \
+  qt/commissiondialog.h \
   qt/identsettings.h \
   qt/loaderdialog.h \
   qt/multisenddialog.h \
@@ -308,6 +311,7 @@ BITCOIN_QT_CPP += \
   qt/editaddressdialog.cpp \
   qt/masternodelist.cpp \
   qt/commissionslist.cpp \
+  qt/commissiondialog.cpp \
   qt/identsettings.cpp \
   qt/multisenddialog.cpp \
   qt/multisigdialog.cpp\

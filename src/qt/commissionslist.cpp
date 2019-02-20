@@ -74,33 +74,7 @@ CommissionsList::~CommissionsList()
     delete ui;
 }
 
-void CommissionsList::showDialogMessage(std::string message) {
-
-    QTimer* timer = new QTimer();
-    timer->moveToThread(qApp->thread());
-    timer->setSingleShot(true);
-    QObject::connect(timer, &QTimer::timeout, [=]()
-    {
-        dlg.setLoaderText(message);    
-        dlg.show();
-    });
-    QMetaObject::invokeMethod(timer, "start", Qt::QueuedConnection, Q_ARG(int, 0));
-}
-
-void CommissionsList::hideDialogMessage() {
-    QTimer* timer = new QTimer();
-    timer->moveToThread(qApp->thread());
-    timer->setSingleShot(true);
-    QObject::connect(timer, &QTimer::timeout, [=]()
-    {
-       dlg.hide();
-    });
-    QMetaObject::invokeMethod(timer, "start", Qt::QueuedConnection, Q_ARG(int, 0));
-}
-
 void CommissionsList::showWarningMessage(std::string message) {
-    hideDialogMessage();
-
     QTimer* timer = new QTimer();
     timer->moveToThread(qApp->thread());
     timer->setSingleShot(true);
@@ -235,7 +209,6 @@ void CommissionsList::updateCommissionList()
 void CommissionsList::on_tableWidgetCommissions_itemSelectionChanged()
 {
     if (ui->tableWidgetCommissions->selectedItems().count() > 0) {
-        QTableWidgetItem* item = ui->tableWidgetCommissions->selectedItems().at(0);
 
         DIdent ident = identManager.GetActive();
 
@@ -243,18 +216,21 @@ void CommissionsList::on_tableWidgetCommissions_itemSelectionChanged()
             showWarningMessage("You have not enabled an identity address that has permissions to apply to commissions.\n\nGo to the Identity section along toe top. Select the address you wish to register as a content creator. Then register as a \"Content Creators\" in the Account section.\n\nIf you have already registered you will only need to select your previously registered address from the address list.");
         }
 
-        LogPrintf(">>>>>>>>>>>>>>>>>>>>>>>>>>> THE IDENT ALLOWS YOU TO APPLY \n");
+        QTableWidgetItem* item = ui->tableWidgetCommissions->selectedItems().at(0);
+        QTableWidgetItem* commissioner = ui->tableWidgetCommissions->selectedItems().at(4);
 
-        //
-        /*
-        std::string errorMessage;
-        errorMessage += "WARNING: Feature still in development. The commissions \'" + item->text().toStdString() + "\' can not be applied for presently in the wallet. This is currently under development.";
-
-        QMessageBox msg;
-        msg.setStyleSheet("QLabel{color: #355271;}");
-        msg.setText(QString::fromStdString(errorMessage));
-        msg.exec();
-        */
+        BOOST_FOREACH (DCommission com, commissionsmanager.getCommissions()) {
+            if( item->text().toStdString() == com.title && commissioner->text().toStdString() == com.authorName) {
+                if(com.state != DCommission::COMMISSION_ACTIVE) {
+                    showWarningMessage("This commission is not active. You may not apply for this commission. Please contact the dystem developers as this should not happen.");
+                } else {
+                    commissionDlg.setCommission(com);
+                    commissionDlg.show();
+                }
+                
+                break;
+            }
+        }
     }
 }
 

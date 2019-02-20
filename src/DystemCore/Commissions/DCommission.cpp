@@ -45,3 +45,25 @@ DCommission::DCommission(const DCommission& other)
     finalStatus = other.finalStatus;
     cullFromChainDate = other.cullFromChainDate;
 }
+
+std::string DCommission::ToString() const
+{
+    std::ostringstream info;
+    info << "\nstate: " << state;
+    info << "\ndataBlockHeight: " << dataBlockHeight;
+    info << "\nauthorName: " << authorName;
+    info << "\ncreatedAt: " << createdAt;
+    info << "\nawardedAt: " << awardedAt;
+    info << "\ndeletedAt: " << deletedAt;
+    info << "\nupdatedAt: " << updatedAt;
+    info << "\nawardedByAddr: " << awardedByAddr;
+    info << "\ntitle: " << title;
+    info << "\nbody: " << body;
+    info << "\ncoin: " << coin;
+    info << "\nfee: " << fee;
+    info << "\nfinalStatus: " << finalStatus;
+    info << "\ncullFromChainDate: " << cullFromChainDate;
+
+
+    return info.str();
+}

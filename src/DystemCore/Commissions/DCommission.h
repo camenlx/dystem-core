@@ -55,6 +55,8 @@ public:
     std::string finalStatus;
     time_t cullFromChainDate;
 
+    std::string ToString() const;
+
     DCommission();
     DCommission(const DCommission& other);
 

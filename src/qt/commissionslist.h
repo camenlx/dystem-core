@@ -6,7 +6,7 @@
 #define COMMISSIONLIST_H
 
 #include "../DystemCore/Commissions/DCommission.h"
-#include "loaderdialog.h"
+#include "commissiondialog.h"
 
 #include "masternode.h"
 #include "platformstyle.h"
@@ -48,9 +48,6 @@ private:
 
     void updateCommissionRow(DCommission com);
     void updateCommissionList();
-    
-    void showDialogMessage(std::string message);
-    void hideDialogMessage();
     void showWarningMessage(std::string message);
     
 private:
@@ -59,7 +56,7 @@ private:
     ClientModel* clientModel;
     WalletModel* walletModel;
     CCriticalSection cs_commissions;
-    LoaderDialog dlg;
+    CommissionDialog commissionDlg;
 
 private Q_SLOTS:
     void on_tableWidgetCommissions_itemSelectionChanged();

@@ -27,7 +27,6 @@
 #include <QThread>
 #include <QString>
 #include<QtConcurrent/QtConcurrent>
-//#include <QApplication>
 
 CCoinControl* IdentSettings::registerCoinControl = new CCoinControl();
 

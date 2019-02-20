@@ -1862,11 +1862,31 @@ LoaderDialog QFrame {
 LoaderDialog QLabel#loaderMessage {
 	background-color:whitesmoke;
 	font-family: "Open Sans";
-	color:#	;
+	color:#355271;
 	font-size: 12px;
 	font-weight: 200;
 }
 
 LoaderDialog QPixmap {
 	background-color:whitesmoke;
+}
+
+/********************************* COMMISSION DIALOG ************************************/
+
+QDialog#CommissionDialog {
+	background: qlineargradient(x1:0, y1:0, x2:0, y2:1,stop:0 #213453, stop: 0.5 #213151, stop:1 #0e1317)
+}
+
+CommissionDialog QLabel#createdLabel, CommissionDialog QLabel#feeLabel, CommissionDialog QLabel#authorLabel {
+	font-family: "Open Sans";
+	color:whitesmoke;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+CommissionDialog QPlainTextEdit {
+	font-family: "Open Sans";
+	color:#355271;
+	font-size: 14px;
+	font-weight: 500;
 }
